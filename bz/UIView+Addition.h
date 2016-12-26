@@ -15,3 +15,4 @@
 @interface UIView (Addition)
 - (void)setCorneRadius:(CGFloat)cornerRadius;
 @end
+

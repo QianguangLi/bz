@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1154B99E1E113C3E00C8459D /* NetService.m in Sources */ = {isa = PBXBuildFile; fileRef = 1154B99D1E113C3E00C8459D /* NetService.m */; };
+		1154B9A41E11736A00C8459D /* NSObject+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 1154B9A31E11736A00C8459D /* NSObject+Addition.m */; };
 		17E122BDA9BAA762D7A46B7F /* libPods-bz.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 63277A970CC28472312B0E2A /* libPods-bz.a */; };
 		617288AC1E10BCA40037DB40 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 617288AB1E10BCA40037DB40 /* main.m */; };
 		617288AF1E10BCA40037DB40 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 617288AE1E10BCA40037DB40 /* AppDelegate.mm */; };
@@ -54,6 +56,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1154B99C1E113C3E00C8459D /* NetService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetService.h; sourceTree = "<group>"; };
+		1154B99D1E113C3E00C8459D /* NetService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetService.m; sourceTree = "<group>"; };
+		1154B9A21E11736A00C8459D /* NSObject+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Addition.h"; sourceTree = "<group>"; };
+		1154B9A31E11736A00C8459D /* NSObject+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Addition.m"; sourceTree = "<group>"; };
 		2BBD9FECB363268F3739B789 /* libPods-bzUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-bzUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		54D4FF3445E3FD7D387B5F0E /* Pods-bz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bz.debug.xcconfig"; path = "Pods/Target Support Files/Pods-bz/Pods-bz.debug.xcconfig"; sourceTree = "<group>"; };
 		617288A71E10BCA40037DB40 /* bz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bz.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -139,6 +145,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1154B99B1E113C0400C8459D /* NetWorkingManager */ = {
+			isa = PBXGroup;
+			children = (
+				1154B99C1E113C3E00C8459D /* NetService.h */,
+				1154B99D1E113C3E00C8459D /* NetService.m */,
+			);
+			name = NetWorkingManager;
+			sourceTree = "<group>";
+		};
 		21DECBBC2E154760A3032807 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -177,6 +192,7 @@
 		617288A91E10BCA40037DB40 /* bz */ = {
 			isa = PBXGroup;
 			children = (
+				1154B99B1E113C0400C8459D /* NetWorkingManager */,
 				6172890E1E10F8580037DB40 /* model */,
 				6172890A1E10E3670037DB40 /* LocationManager */,
 				617288FC1E10C6F90037DB40 /* Global */,
@@ -279,6 +295,8 @@
 				617289161E11071A0037DB40 /* GlobalData.m */,
 				6172891D1E1118670037DB40 /* UIView+Addition.h */,
 				6172891E1E1118670037DB40 /* UIView+Addition.m */,
+				1154B9A21E11736A00C8459D /* NSObject+Addition.h */,
+				1154B9A31E11736A00C8459D /* NSObject+Addition.m */,
 			);
 			name = Global;
 			sourceTree = "<group>";
@@ -364,6 +382,7 @@
 				617288CB1E10BCA40037DB40 /* Frameworks */,
 				617288CC1E10BCA40037DB40 /* Resources */,
 				097547116CCA8B99C5CBABEC /* [CP] Copy Pods Resources */,
+				2C563963C27B23EB61030047 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -469,6 +488,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-bzUITests/Pods-bzUITests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		2C563963C27B23EB61030047 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-bzUITests/Pods-bzUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		6A817DF444AA9F0100DA1CD7 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -526,7 +560,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		CDC8CABD196EA6FC244B5624 /* [CP] Embed Pods Frameworks */ = {
@@ -556,7 +590,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		F6DCE8DD935EFE2C49D66137 /* [CP] Check Pods Manifest.lock */ = {
@@ -571,7 +605,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -586,8 +620,10 @@
 				617288F51E10BF070037DB40 /* ShoppingCartViewController.m in Sources */,
 				617288E31E10BE110037DB40 /* BaseTabBarController.m in Sources */,
 				6172891B1E110BCD0037DB40 /* LoginViewController.m in Sources */,
+				1154B9A41E11736A00C8459D /* NSObject+Addition.m in Sources */,
 				617288E91E10BE470037DB40 /* BaseViewController.m in Sources */,
 				617289141E1100B90037DB40 /* Utility.m in Sources */,
+				1154B99E1E113C3E00C8459D /* NetService.m in Sources */,
 				617288AF1E10BCA40037DB40 /* AppDelegate.mm in Sources */,
 				6172891F1E1118670037DB40 /* UIView+Addition.m in Sources */,
 				617288AC1E10BCA40037DB40 /* main.m in Sources */,

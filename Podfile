@@ -7,6 +7,7 @@ target 'bz' do
   pod 'AFNetworking', '~> 3.1.0'
   pod 'IQKeyboardManager', '~> 4.0.8'
   pod 'BaiduMapKit' #百度地图SDK
+  pod 'MBProgressHUD', '~> 1.0.0'
 
   # Pods for bz
 

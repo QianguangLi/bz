@@ -9,7 +9,7 @@
 #ifndef GlobalDefine_h
 #define GlobalDefine_h
 
-#define appDelegate ((AppDelegate *)[UIApplication sharedApplication].delegate)
+#define appDelegate ([UIApplication sharedApplication].delegate)
 
 #define IS_IOS_7 [[[UIDevice currentDevice] systemVersion] intValue] >= 7?YES:NO
 
@@ -63,5 +63,9 @@
 #define kBaiduMapKey @"2oniPq1HOAliSu1lUnk7iZQINbBq7Lhu"
 //获取地址位置信息后的通知
 #define kLocateUserSuccessNotification @"locate_user_success_notification"
+
+#define kBaseUrl @"http://103.48.169.52/BzApi"
+//登录URL
+#define kUserLoginUrl @"api/User/Login"
 
 #endif /* GlobalDefine_h */

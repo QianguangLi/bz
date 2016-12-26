@@ -10,6 +10,7 @@
 #import "BMKMapManager.h"
 #import "LocationService.h"
 #import "LoginViewController.h"
+#import "UIKit+AFNetworking.h"
 
 #import "IQKeyboardManager.h"
 
@@ -91,6 +92,9 @@
     keyboardManager.keyboardDistanceFromTextField = 5.f;
     keyboardManager.enableAutoToolbar = YES;
     keyboardManager.shouldResignOnTouchOutside = YES;
+    //网络指示器
+    AFNetworkActivityIndicatorManager *manager = [AFNetworkActivityIndicatorManager sharedManager];
+    manager.enabled = YES;
 }
 
 #pragma mark 百度地图
@@ -106,8 +110,8 @@
     
     //开启定位
     //TODO:开发阶段暂时关闭定位
-    LocationService *service = [LocationService sharedLocationService];
-    [service startUserLocationService];
+//    LocationService *service = [LocationService sharedLocationService];
+//    [service startUserLocationService];
 }
 
 #pragma mark UITabBarControllerDelegate

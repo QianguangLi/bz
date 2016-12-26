@@ -8,6 +8,7 @@
 
 #import "LoginViewController.h"
 #import "UIView+Addition.h"
+#import "NetService.h"
 
 @interface LoginViewController ()
 
@@ -27,6 +28,10 @@
     [self initNavigationItem];
     [_loginButton setImage:[UIImage imageWithColor:kPinkColor] forState:UIControlStateNormal];
     [_loginButton setCorneRadius:5];
+    
+    //TODO:开发模式预设账户密码
+    _userNameTF.text = @"liqianguang";
+    _passwordTF.text = @"8888888888";
 }
 
 - (void)initNavigationItem
@@ -44,6 +49,17 @@
 
 - (IBAction)login:(UIButton *)sender
 {
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:_userNameTF.text, @"memberid", [_passwordTF.text md5], @"password", nil];
+    NSLog(@"%@", dict);
+    [NetService POST:kUserLoginUrl parameters:dict complete:^(id responseObject, NSError *error) {
+        [Utility hideHUDForView:self.view];
+        if (error) {
+            NSLog(@"failure:%@", error);
+            return ;
+        }
+        NSLog(@"%@", responseObject);
+    }];
+    [Utility showHUDAddedTo:self.view];
     
 }
 

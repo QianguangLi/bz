@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "UserLocationModel.h"
+#import "MBProgressHUD.h"
 
 /**
  实用工具
@@ -26,4 +27,13 @@
  */
 + (UserLocationModel *)getUserLocationInformation;
 
+/**
+ 显示MBProgressHUD
+ */
++ (MBProgressHUD *)showHUDAddedTo:(UIView *)view;
+
+/**
+ 隐藏MBProgressHUD
+ */
++ (BOOL)hideHUDForView:(UIView *)view;
 @end

@@ -16,17 +16,20 @@ PODS:
     - AFNetworking/NSURLSession
   - BaiduMapKit (3.2)
   - IQKeyboardManager (4.0.8)
+  - MBProgressHUD (1.0.0)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.1.0)
   - BaiduMapKit
   - IQKeyboardManager (~> 4.0.8)
+  - MBProgressHUD (~> 1.0.0)
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   BaiduMapKit: c23aee47be89b2b939a92acfd06627114e897662
   IQKeyboardManager: 1a8189fa153bf09044355ee0ad36826f6767e7f7
+  MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
 
-PODFILE CHECKSUM: a751f5a860cb85c26054c25d0f7970cf3c632660
+PODFILE CHECKSUM: f35596dd7c29bb70ab226d0f441d1baee1160fd2
 
-COCOAPODS: 1.0.1
+COCOAPODS: 1.1.1

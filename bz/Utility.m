@@ -29,4 +29,18 @@
     return model;
 }
 
++ (MBProgressHUD *)showHUDAddedTo:(UIView *)view
+{
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
+    hud.label.text = @"加载中...";
+    hud.offset = CGPointMake(0, -32);
+    hud.contentColor = [UIColor whiteColor];
+    return hud;
+}
+
++ (BOOL)hideHUDForView:(UIView *)view
+{
+    return [MBProgressHUD hideHUDForView:view animated:YES];
+}
+
 @end
