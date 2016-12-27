@@ -26,7 +26,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    //TODO:观察登陆成功后通知
+    //观察登陆成功后通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginSuccess:) name:kLoginSuccessNotification object:nil];
     self.navigationController.navigationBarHidden = YES;
     [self initData];
     [self customView];
@@ -122,6 +123,11 @@
     if (buttonIndex == 1) {
         [self loginButtonAction];
     }
+}
+
+- (void)loginSuccess:(NSNotification *)notify
+{
+    NSLog(@"%@,%@", kLoginUserName, kLoginToken);
 }
 
 #pragma mark

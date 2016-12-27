@@ -33,6 +33,11 @@
 + (MBProgressHUD *)showHUDAddedTo:(UIView *)view;
 
 /**
+ 针对具体的task显示MBProgressHUD
+ */
++ (MBProgressHUD *)showHUDAddedTo:(UIView *)view forTask:(NSURLSessionTask *)task;
+
+/**
  隐藏MBProgressHUD
  */
 + (BOOL)hideHUDForView:(UIView *)view;

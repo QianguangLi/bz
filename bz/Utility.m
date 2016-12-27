@@ -38,6 +38,14 @@
     return hud;
 }
 
++ (MBProgressHUD *)showHUDAddedTo:(UIView *)view forTask:(NSURLSessionTask *)task
+{
+    if (!task) {
+        return nil;
+    }
+    return [self showHUDAddedTo:view];
+}
+
 + (BOOL)hideHUDForView:(UIView *)view
 {
     return [MBProgressHUD hideHUDForView:view animated:YES];

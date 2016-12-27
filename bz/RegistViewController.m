@@ -100,7 +100,7 @@
                                  [_passwordTF.text md5], @"password",
                                  phoneNumber, @"mobile",
                                  email, @"email", nil];
-    [NetService POST:kUserRegistUrl parameters:dict complete:^(id responseObject, NSError *error) {
+    NSURLSessionTask *task = [NetService POST:kUserRegistUrl parameters:dict complete:^(id responseObject, NSError *error) {
         [Utility hideHUDForView:self.view];
         if (error) {
             NSLog(@"failure:%@", error);
@@ -109,7 +109,7 @@
         NSLog(@"%@", responseObject);
         NSLog(@"%@", responseObject[@"errMsg"]);
     }];
-    [Utility showHUDAddedTo:self.view];
+    [Utility showHUDAddedTo:self.view forTask:task];
 }
 //是否同意
 - (IBAction)agreeAction:(UIButton *)sender

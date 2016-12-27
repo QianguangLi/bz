@@ -92,6 +92,14 @@
     keyboardManager.keyboardDistanceFromTextField = 5.f;
     keyboardManager.enableAutoToolbar = YES;
     keyboardManager.shouldResignOnTouchOutside = YES;
+    //网络状态
+    AFNetworkReachabilityManager *nrm = [AFNetworkReachabilityManager sharedManager];
+    [nrm startMonitoring];
+    __block AFNetworkReachabilityManager *weaknrm = nrm;
+    [nrm setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+        NSLog(@"%ld:%@", (long)status, [weaknrm localizedNetworkReachabilityStatusString]);
+        kHasNet = status != AFNetworkReachabilityStatusNotReachable ? YES : NO;
+    }];
     //网络指示器
     AFNetworkActivityIndicatorManager *manager = [AFNetworkActivityIndicatorManager sharedManager];
     manager.enabled = YES;
@@ -110,8 +118,8 @@
     
     //开启定位
     //TODO:开发阶段暂时关闭定位
-//    LocationService *service = [LocationService sharedLocationService];
-//    [service startUserLocationService];
+    LocationService *service = [LocationService sharedLocationService];
+    [service startUserLocationService];
 }
 
 #pragma mark UITabBarControllerDelegate

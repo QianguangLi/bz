@@ -11,15 +11,21 @@
 
 @interface NetService ()
 @end
-static AFHTTPSessionManager *manager = nil;
 
 @implementation NetService
 
 + (NSURLSessionTask *)GET:(NSString *)urlString parameters:(id)paramters complete:(Complete)complete
 {
-    manager = [AFHTTPSessionManager manager];
-    manager.requestSerializer.timeoutInterval = 30;
+    if (!kHasNet) {
+        [Utility showString:Localized(@"无网状况不好,请检查网络连接。") onView:appDelegate.window];
+        NSError *error = [NSError errorWithDomain:NSURLErrorDomain code:-1009 userInfo:@{
+                                                                                         NSLocalizedDescriptionKey:Localized(@"似乎已断开与互联网的连接。")}];
+        complete(nil, error);
+        return nil;
+    }
     urlString = [NSString stringWithFormat:@"%@/%@", kBaseUrl, urlString];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.requestSerializer.timeoutInterval = 30;
     NSURLSessionDataTask *task = [manager GET:urlString parameters:paramters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         complete(responseObject, nil);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -30,9 +36,16 @@ static AFHTTPSessionManager *manager = nil;
 
 + (NSURLSessionTask *)POST:(NSString *)urlString parameters:(id)parameters complete:(Complete)complete
 {
-    manager = [AFHTTPSessionManager manager];
-    manager.requestSerializer.timeoutInterval = 30;
+    if (!kHasNet) {
+        [Utility showString:Localized(@"无网状况不好,请检查网络连接。") onView:appDelegate.window];
+        NSError *error = [NSError errorWithDomain:NSURLErrorDomain code:-1009 userInfo:@{
+                                                                                         NSLocalizedDescriptionKey:Localized(@"似乎已断开与互联网的连接。")}];
+        complete(nil, error);
+        return nil;
+    }
     urlString = [NSString stringWithFormat:@"%@/%@", kBaseUrl, urlString];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.requestSerializer.timeoutInterval = 30;
     //添加签名 签名：token+key, token没有传空，key=kSignKey ,用MD5加密
     NSString *token = parameters[@"token"];
     NSString *sign = token ? [[NSString stringWithFormat:@"%@%@",token, kSignKey] md5] : [kSignKey md5];

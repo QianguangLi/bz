@@ -73,7 +73,7 @@
         return;
     }
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:_userNameTF.text, @"memberid", [_passwordTF.text md5], @"password", nil];
-    [NetService POST:kUserLoginUrl parameters:dict complete:^(id responseObject, NSError *error) {
+    NSURLSessionTask *task = [NetService POST:kUserLoginUrl parameters:dict complete:^(id responseObject, NSError *error) {
         [Utility hideHUDForView:self.view];
         if (error) {
             NSLog(@"failure:%@", error);
@@ -81,15 +81,21 @@
         }
         NSLog(@"%@", responseObject);
         if ([responseObject[@"no"] integerValue] == NetStatusSuccess) {
+            //储存登陆数据token
+            NSDictionary *dataDict = responseObject[@"data"];
+            kLoginUserName = dataDict[@"username"];
+            kLoginToken = dataDict[@"token"];
+            [GlobalData sharedGlobalData].isLogin = YES;
+            if (_isAutoLogin) {
+                // FIXME:如果是自动登录 执行储存登录信息操作
+            }
             //登陆成功后发送通知
             [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccessNotification object:nil];
-            //储存登陆数据token
-//            [GlobalData sharedGlobalData]
         } else {
             [Utility showString:responseObject[@"errMsg"] onView:self.view];
         }
     }];
-    [Utility showHUDAddedTo:self.view];
+    [Utility showHUDAddedTo:self.view forTask:task];
     
 }
 

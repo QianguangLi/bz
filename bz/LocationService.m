@@ -59,6 +59,7 @@ static LocationService *sharedLocationService = nil;
     _service = [[BMKLocationService alloc] init];
 }
 
+//反geo地理编码
 - (void)reverseUserLocation
 {
     if (!_search) {
