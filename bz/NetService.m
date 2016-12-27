@@ -19,7 +19,6 @@ static AFHTTPSessionManager *manager = nil;
 {
     manager = [AFHTTPSessionManager manager];
     manager.requestSerializer.timeoutInterval = 30;
-    NSLog(@"get:%@", manager);
     urlString = [NSString stringWithFormat:@"%@/%@", kBaseUrl, urlString];
     NSURLSessionDataTask *task = [manager GET:urlString parameters:paramters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         complete(responseObject, nil);
@@ -33,8 +32,13 @@ static AFHTTPSessionManager *manager = nil;
 {
     manager = [AFHTTPSessionManager manager];
     manager.requestSerializer.timeoutInterval = 30;
-    NSLog(@"post%@", manager);
     urlString = [NSString stringWithFormat:@"%@/%@", kBaseUrl, urlString];
+    //添加签名 签名：token+key, token没有传空，key=kSignKey ,用MD5加密
+    NSString *token = parameters[@"token"];
+    NSString *sign = token ? [[NSString stringWithFormat:@"%@%@",token, kSignKey] md5] : [kSignKey md5];
+    [parameters setObject:sign forKey:@"sign"];
+//    NSLog(@"%@", urlString);
+    NSLog(@"%@", parameters);
     NSURLSessionDataTask *task = [manager POST:urlString parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         complete(responseObject, nil);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {

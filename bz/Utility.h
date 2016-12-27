@@ -36,4 +36,16 @@
  隐藏MBProgressHUD
  */
 + (BOOL)hideHUDForView:(UIView *)view;
+
+/**
+ 在也没上显示文字2秒钟
+ */
++ (MBProgressHUD *)showString:(NSString *)string onView:(UIView *)view;
+
+//判断是否是手机号
++ (BOOL) isLegalMobile:(NSString *)mobile;
+//身份证验证方法
++ (BOOL)isLegalIDCardNumber:(NSString *)idCardNumber;
+//email验证
++ (BOOL)isLegalEmail:(NSString *)email;
 @end

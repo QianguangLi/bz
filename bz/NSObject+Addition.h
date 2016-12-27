@@ -14,6 +14,8 @@
 
 @interface NSString (md5)
 
+@property (copy, nonatomic, readonly) NSString *urlEncode;
+
 - (NSString *)md5;
 
 @end

@@ -117,9 +117,9 @@
 #pragma mark UITabBarControllerDelegate
 - (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController
 {
-    //没登陆不允许进入购物车和我页面，自动跳转到登陆页面
+    //没登陆不允许进入购物车页面，自动跳转到登陆页面
     if (!kIsLogin) {
-        if ([tabBarController.viewControllers indexOfObject:viewController] == 1 || [tabBarController.viewControllers indexOfObject:viewController] == 2) {
+        if ([tabBarController.viewControllers indexOfObject:viewController] == 1) {
             LoginViewController *loginVC = [[LoginViewController alloc] init];
             BaseNavigationController *loginNvc = [[BaseNavigationController alloc] initWithRootViewController:loginVC];
             [_rootController presentViewController:loginNvc animated:YES completion:^{

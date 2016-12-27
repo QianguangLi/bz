@@ -8,6 +8,7 @@
 
 #ifndef GlobalDefine_h
 #define GlobalDefine_h
+#import <Foundation/Foundation.h>
 
 #define appDelegate ([UIApplication sharedApplication].delegate)
 
@@ -59,13 +60,65 @@
 #undef  QGLog
 #define QGLog(s,...) printf("<%s,Line:%d> info:%s\n",[[NSString stringWithUTF8String:__FILE__]lastPathComponent].UTF8String,__LINE__,[NSString stringWithFormat:(s),##__VA_ARGS__].UTF8String)
 
+//签名key
+#define kSignKey @"BzApi161227"
 //百度地图key
 #define kBaiduMapKey @"2oniPq1HOAliSu1lUnk7iZQINbBq7Lhu"
 //获取地址位置信息后的通知
 #define kLocateUserSuccessNotification @"locate_user_success_notification"
+//登陆成功后的通知
+#define kLoginSuccessNotification @"login_success_notification"
 
-#define kBaseUrl @"http://103.48.169.52/BzApi"
+#define kBaseUrl @"http://103.48.169.52/bzapi"
 //登录URL
 #define kUserLoginUrl @"api/User/Login"
+//注册url
+#define kUserRegistUrl @"api/User/Regeister"
+
+typedef NS_ENUM(NSInteger, NetStatus) {
+    NetStatusSuccess = 00000,//请求成功
+    NetStatusNotFound,//找不到接口
+    NetStatusParameterAnomaly,//参数异常
+    NetStatusOutOfDate,//接口过时
+    NetStatusForbidden,//接口禁止调用
+    NetStatusNetAnomaly,//网络异常
+    NetStatusInterfaceAnomaly,//接口异常
+    NetStatusVerifyAPIKeyFailed,//apiKey验证失败
+    NetStatusMethodError,//请求方式错误
+    NetStatusVerifyTokenFailed,//token验证失败
+    
+    NetStatusUserNameExist,//用户名已存在
+    NetStatusPhoneExist,//电话已被注册
+    NetStatusEmailExist,//邮箱已被注册
+    NetStatusVerificationCodeError,//验证码错误
+    NetStatusCardExist,//身份证已被注册
+    
+    NetStatusLoginForbidden = 00020,//禁止登陆
+    NetStatusLoginFailed,//用户名或密码错误
+    NetStatusLogout,//账户被注销
+    NetStatusWaitActive,//账号待激活
+    
+    NetStatusTokenFailed = 00040,//  令牌验证失败(用户未登录)
+    NetStatusFaceError,//  头像格式不正确
+    NetStatusPicError,//  图片大小不正确
+    NetStatusBase64Error,//  无效的Base64值
+
+    NetStatusAddressExist = 00050,//  收货地址已存在
+    
+    NetStatusOrderRepeatDelete = 00060,//  请不要重复删除订单
+    NetStatusForbiddenDelete,//  已支付的订单无法删除
+    
+    NetStatusCancelCollect = 00070,//  已取消收藏
+    
+    NetStatusEmailEmpty = 80,//  邮件标题或内容为空
+    
+    NetStatusEmailRepeatDelete = 90,//  请不要重复删除
+    NetStatusEmialNoDelete,//  邮件未删除
+    NetStatusInvalidAction,//  无效的动作
+    
+    NetStatusOriginalPwdError = 00160,//  原始密码不正确
+
+
+};
 
 #endif /* GlobalDefine_h */

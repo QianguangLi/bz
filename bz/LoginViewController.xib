@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController">
             <connections>
+                <outlet property="loginAutoButton" destination="JWN-go-Plo" id="0fr-9a-X67"/>
                 <outlet property="loginButton" destination="0RS-zs-lo8" id="TYi-Ap-Bvm"/>
                 <outlet property="passwordTF" destination="aUW-60-cCJ" id="NIr-81-qE8"/>
                 <outlet property="userNameTF" destination="0JH-Cy-84k" id="lFY-eq-Exk"/>
@@ -74,15 +75,19 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" keyboardType="alphabet" secureTextEntry="YES"/>
                 </textField>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JWN-go-Plo">
-                    <rect key="frame" x="20" y="137" width="86" height="30"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JWN-go-Plo">
+                    <rect key="frame" x="20" y="137" width="113" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="ivL-XJ-ygd"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                    <state key="normal" title="一周内自动登录">
+                    <state key="normal" title="  一周内自动登录" image="unselected">
                         <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <state key="selected" image="selected"/>
+                    <connections>
+                        <action selector="loginAutoAction:" destination="-1" eventType="touchUpInside" id="L2p-c9-juC"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QQ6-VW-erO">
                     <rect key="frame" x="299" y="137" width="56" height="30"/>
@@ -143,4 +148,8 @@
             <point key="canvasLocation" x="33.5" y="84.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="selected" width="12" height="12"/>
+        <image name="unselected" width="20" height="20"/>
+    </resources>
 </document>

@@ -9,6 +9,7 @@
 #import "LoginViewController.h"
 #import "UIView+Addition.h"
 #import "NetService.h"
+#import "RegistViewController.h"
 
 @interface LoginViewController ()
 
@@ -16,6 +17,9 @@
 @property (weak, nonatomic) IBOutlet UITextField *passwordTF;
 
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
+@property (weak, nonatomic) IBOutlet UIButton *loginAutoButton;
+
+@property (assign, nonatomic) BOOL isAutoLogin;
 
 @end
 
@@ -30,27 +34,45 @@
     [_loginButton setCorneRadius:5];
     
     //TODO:开发模式预设账户密码
-    _userNameTF.text = @"liqianguang";
-    _passwordTF.text = @"8888888888";
+    _userNameTF.text = @"admin";
+    _passwordTF.text = @"admin";
+    
 }
 
 - (void)initNavigationItem
 {
-    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithTitle:Localized(@"取消") style:UIBarButtonItemStylePlain target:self action:@selector(leftItemAction:)];
+    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithTitle:Localized(@"取消") style:UIBarButtonItemStylePlain target:self action:@selector(cancelAction:)];
     self.navigationItem.leftBarButtonItem = leftItem;
+    
+    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithTitle:Localized(@"注册") style:UIBarButtonItemStylePlain target:self action:@selector(registAction:)];
+    self.navigationItem.rightBarButtonItem = rightItem;
 }
 
-- (void)leftItemAction:(UIBarButtonItem *)item
+- (void)cancelAction:(UIBarButtonItem *)item
 {
     [self dismissViewControllerAnimated:YES completion:^{
         //code
     }];
 }
 
+- (void)registAction:(UIBarButtonItem *)item
+{
+    //去注册
+    RegistViewController *registVC = [[RegistViewController alloc] init];
+    [self.navigationController pushViewController:registVC animated:YES];
+}
+
 - (IBAction)login:(UIButton *)sender
 {
+    if (IS_NULL_STRING(_userNameTF.text)) {
+        [Utility showString:@"账户名不能为空" onView:self.view];
+        return;
+    }
+    if (IS_NULL_STRING(_passwordTF.text)) {
+        [Utility showString:@"密码不能为空" onView:self.view];
+        return;
+    }
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:_userNameTF.text, @"memberid", [_passwordTF.text md5], @"password", nil];
-    NSLog(@"%@", dict);
     [NetService POST:kUserLoginUrl parameters:dict complete:^(id responseObject, NSError *error) {
         [Utility hideHUDForView:self.view];
         if (error) {
@@ -58,9 +80,23 @@
             return ;
         }
         NSLog(@"%@", responseObject);
+        if ([responseObject[@"no"] integerValue] == NetStatusSuccess) {
+            //登陆成功后发送通知
+            [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccessNotification object:nil];
+            //储存登陆数据token
+//            [GlobalData sharedGlobalData]
+        } else {
+            [Utility showString:responseObject[@"errMsg"] onView:self.view];
+        }
     }];
     [Utility showHUDAddedTo:self.view];
     
+}
+
+- (IBAction)loginAutoAction:(UIButton *)sender
+{
+    sender.selected = !sender.selected;
+    _isAutoLogin = sender.selected;
 }
 
 - (IBAction)forgotPassword:(UIButton *)sender

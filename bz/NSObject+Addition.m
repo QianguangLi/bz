@@ -15,6 +15,11 @@
 
 @implementation NSString (md5)
 
+- (NSString *)urlEncode
+{
+    return (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef)self, NULL, (CFStringRef) @"!*'();:@&=+$,/?%#[]", kCFStringEncodingUTF8));
+}
+
 - (NSString *)md5
 {
     if(self == nil || [self length] == 0)
