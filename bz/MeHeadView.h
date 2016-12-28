@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UserModel.h"
 
 /**
  我 页面 tableview header
@@ -22,10 +23,13 @@
  */
 - (void)orderButtonAction:(NSInteger)orderType;
 
+
 @end
 
 @interface MeHeadView : UIView
 
 @property (assign, nonatomic) id<MeHeadViewDelegate> delegate;
+
+- (void)setUserModel:(UserModel *)userModel;
 
 @end

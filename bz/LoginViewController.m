@@ -80,19 +80,23 @@
             return ;
         }
         NSLog(@"%@", responseObject);
-        if ([responseObject[@"no"] integerValue] == NetStatusSuccess) {
+        if ([responseObject[kStatusCode] integerValue] == NetStatusSuccess) {
             //储存登陆数据token
-            NSDictionary *dataDict = responseObject[@"data"];
+            NSDictionary *dataDict = responseObject[kResponseData];
             kLoginUserName = dataDict[@"username"];
             kLoginToken = dataDict[@"token"];
+            kUserLevel = [dataDict[@"access"] integerValue];
             [GlobalData sharedGlobalData].isLogin = YES;
             if (_isAutoLogin) {
                 // FIXME:如果是自动登录 执行储存登录信息操作
             }
             //登陆成功后发送通知
             [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccessNotification object:nil];
+            [self dismissViewControllerAnimated:YES completion:^{
+                
+            }];
         } else {
-            [Utility showString:responseObject[@"errMsg"] onView:self.view];
+            [Utility showString:responseObject[kErrMsg] onView:self.view];
         }
     }];
     [Utility showHUDAddedTo:self.view forTask:task];

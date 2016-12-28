@@ -7,6 +7,7 @@
 //
 
 #import "MeHeadView.h"
+#import "UIImageView+AFNetworking.h"
 //头像宽高
 #define kHeadIconWidth 80.f
 //自身总高度
@@ -85,8 +86,6 @@
     if (_delegate && [_delegate respondsToSelector:@selector(loginButtonAction)]) {
         [_delegate loginButtonAction];
     }
-    UILabel *label = (UILabel *)[self viewWithTag:100];
-    NSLog(@"%@", label.text);
 }
 
 - (void)btnAction:(UIButton *)btn
@@ -94,6 +93,12 @@
     if (_delegate && [_delegate respondsToSelector:@selector(orderButtonAction:)]) {
         [_delegate orderButtonAction:btn.tag];
     }
+}
+
+- (void)setUserModel:(UserModel *)userModel
+{
+    [_faceImageView setImageWithURL:[NSURL URLWithString:userModel.faceUrl] placeholderImage:[UIImage imageNamed:@"member-head"]];
+    [_loginButton setTitle:userModel.loginName forState:UIControlStateNormal];
 }
 
 /*

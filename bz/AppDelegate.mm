@@ -20,6 +20,8 @@
 #import "ShoppingCartViewController.h"
 #import "MeViewController.h"
 
+#import "DataBaseService.h"
+
 @interface AppDelegate () <UITabBarControllerDelegate>
 {
     BMKMapManager *_mapManager;
@@ -37,6 +39,15 @@
     [self setBMKMap];
     //初始化控制器
     [self setRootController];
+    
+    //处理地址 数据库
+    BOOL addressCached = [[NSUserDefaults standardUserDefaults] boolForKey:@"address_cached"];
+    DataBaseService *service = [DataBaseService sharedService];
+    if (!addressCached) {
+        [service requestAddress];
+    } else {
+        
+    }
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
@@ -77,7 +88,7 @@
 - (void)systemSetting
 {
     //设置不透明
-    [UINavigationBar appearance].translucent = NO;
+//    [UINavigationBar appearance].translucent = NO;
     [UITabBar appearance].translucent = NO;
     //导航栏颜色
     [UINavigationBar appearance].barTintColor = [UIColor whiteColor];
@@ -93,6 +104,7 @@
     keyboardManager.enableAutoToolbar = YES;
     keyboardManager.shouldResignOnTouchOutside = YES;
     //网络状态
+    kHasNet = YES;//默认有网络，防止网络延迟导致没有网络
     AFNetworkReachabilityManager *nrm = [AFNetworkReachabilityManager sharedManager];
     [nrm startMonitoring];
     __block AFNetworkReachabilityManager *weaknrm = nrm;

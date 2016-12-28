@@ -39,6 +39,13 @@
 		6172891B1E110BCD0037DB40 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 617289191E110BCD0037DB40 /* LoginViewController.m */; };
 		6172891C1E110BCD0037DB40 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6172891A1E110BCD0037DB40 /* LoginViewController.xib */; };
 		6172891F1E1118670037DB40 /* UIView+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6172891E1E1118670037DB40 /* UIView+Addition.m */; };
+		61A09EC71E1386E200C58519 /* DataBaseService.m in Sources */ = {isa = PBXBuildFile; fileRef = 61A09EC61E1386E200C58519 /* DataBaseService.m */; };
+		61A09ECA1E138D8D00C58519 /* Address.m in Sources */ = {isa = PBXBuildFile; fileRef = 61A09EC91E138D8D00C58519 /* Address.m */; };
+		61A09ECD1E13AFFC00C58519 /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 61A09ECC1E13AFFC00C58519 /* UserModel.m */; };
+		61A09ED11E13D86200C58519 /* GoodsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61A09ECF1E13D86200C58519 /* GoodsViewController.m */; };
+		61A09ED21E13D86200C58519 /* GoodsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61A09ED01E13D86200C58519 /* GoodsViewController.xib */; };
+		61A09ED71E13EA2C00C58519 /* GoodsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 61A09ED51E13EA2C00C58519 /* GoodsCell.m */; };
+		61A09ED81E13EA2C00C58519 /* GoodsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61A09ED61E13EA2C00C58519 /* GoodsCell.xib */; };
 		C7AE5725228759A1D4099EE2 /* libPods-bzTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C819CC4F9EC579CD896525DC /* libPods-bzTests.a */; };
 		CB60EDAD8A812E83A6DC6A46 /* libPods-bzUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BBD9FECB363268F3739B789 /* libPods-bzUITests.a */; };
 /* End PBXBuildFile section */
@@ -121,6 +128,18 @@
 		6172891A1E110BCD0037DB40 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		6172891D1E1118670037DB40 /* UIView+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Addition.h"; sourceTree = "<group>"; };
 		6172891E1E1118670037DB40 /* UIView+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Addition.m"; sourceTree = "<group>"; };
+		61A09EC51E1386E200C58519 /* DataBaseService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataBaseService.h; sourceTree = "<group>"; };
+		61A09EC61E1386E200C58519 /* DataBaseService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataBaseService.m; sourceTree = "<group>"; };
+		61A09EC81E138D8D00C58519 /* Address.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Address.h; sourceTree = "<group>"; };
+		61A09EC91E138D8D00C58519 /* Address.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Address.m; sourceTree = "<group>"; };
+		61A09ECB1E13AFFC00C58519 /* UserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
+		61A09ECC1E13AFFC00C58519 /* UserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
+		61A09ECE1E13D86200C58519 /* GoodsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsViewController.h; sourceTree = "<group>"; };
+		61A09ECF1E13D86200C58519 /* GoodsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsViewController.m; sourceTree = "<group>"; };
+		61A09ED01E13D86200C58519 /* GoodsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoodsViewController.xib; sourceTree = "<group>"; };
+		61A09ED41E13EA2C00C58519 /* GoodsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsCell.h; sourceTree = "<group>"; };
+		61A09ED51E13EA2C00C58519 /* GoodsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsCell.m; sourceTree = "<group>"; };
+		61A09ED61E13EA2C00C58519 /* GoodsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoodsCell.xib; sourceTree = "<group>"; };
 		63277A970CC28472312B0E2A /* libPods-bz.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-bz.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9531E3B048B237F24D71B746 /* Pods-bzUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bzUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-bzUITests/Pods-bzUITests.release.xcconfig"; sourceTree = "<group>"; };
 		C5657D440376AF6D55313C1A /* Pods-bzTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bzTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-bzTests/Pods-bzTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -224,6 +243,7 @@
 		617288A91E10BCA40037DB40 /* bz */ = {
 			isa = PBXGroup;
 			children = (
+				61A09EC41E1386B900C58519 /* DateBase */,
 				1154B99B1E113C0400C8459D /* NetWorkingManager */,
 				6172890E1E10F8580037DB40 /* model */,
 				6172890A1E10E3670037DB40 /* LocationManager */,
@@ -287,9 +307,13 @@
 		617288EA1E10BE770037DB40 /* FirstPage */ = {
 			isa = PBXGroup;
 			children = (
+				61A09ED31E13EA1500C58519 /* Cells */,
 				617288ED1E10BEF30037DB40 /* FirstPageViewController.h */,
 				617288EE1E10BEF30037DB40 /* FirstPageViewController.m */,
 				617288EF1E10BEF30037DB40 /* FirstPageViewController.xib */,
+				61A09ECE1E13D86200C58519 /* GoodsViewController.h */,
+				61A09ECF1E13D86200C58519 /* GoodsViewController.m */,
+				61A09ED01E13D86200C58519 /* GoodsViewController.xib */,
 			);
 			name = FirstPage;
 			sourceTree = "<group>";
@@ -352,8 +376,31 @@
 			children = (
 				6172890F1E10F8750037DB40 /* UserLocationModel.h */,
 				617289101E10F8750037DB40 /* UserLocationModel.m */,
+				61A09ECB1E13AFFC00C58519 /* UserModel.h */,
+				61A09ECC1E13AFFC00C58519 /* UserModel.m */,
 			);
 			name = model;
+			sourceTree = "<group>";
+		};
+		61A09EC41E1386B900C58519 /* DateBase */ = {
+			isa = PBXGroup;
+			children = (
+				61A09EC51E1386E200C58519 /* DataBaseService.h */,
+				61A09EC61E1386E200C58519 /* DataBaseService.m */,
+				61A09EC81E138D8D00C58519 /* Address.h */,
+				61A09EC91E138D8D00C58519 /* Address.m */,
+			);
+			name = DateBase;
+			sourceTree = "<group>";
+		};
+		61A09ED31E13EA1500C58519 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				61A09ED41E13EA2C00C58519 /* GoodsCell.h */,
+				61A09ED51E13EA2C00C58519 /* GoodsCell.m */,
+				61A09ED61E13EA2C00C58519 /* GoodsCell.xib */,
+			);
+			name = Cells;
 			sourceTree = "<group>";
 		};
 		B0E55AF93A2A71BE17D3BAE1 /* Frameworks */ = {
@@ -490,7 +537,9 @@
 				617288BD1E10BCA40037DB40 /* LaunchScreen.storyboard in Resources */,
 				6172891C1E110BCD0037DB40 /* LoginViewController.xib in Resources */,
 				616A09AA1E11FF1600FCF886 /* RegistViewController.xib in Resources */,
+				61A09ED21E13D86200C58519 /* GoodsViewController.xib in Resources */,
 				617288BA1E10BCA40037DB40 /* Assets.xcassets in Resources */,
+				61A09ED81E13EA2C00C58519 /* GoodsCell.xib in Resources */,
 				616A09B41E128AC600FCF886 /* MeCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -599,7 +648,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		CDC8CABD196EA6FC244B5624 /* [CP] Embed Pods Frameworks */ = {
@@ -629,7 +678,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		F6DCE8DD935EFE2C49D66137 /* [CP] Check Pods Manifest.lock */ = {
@@ -644,7 +693,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -656,6 +705,7 @@
 			files = (
 				617288FA1E10BF110037DB40 /* MeViewController.m in Sources */,
 				617289171E11071A0037DB40 /* GlobalData.m in Sources */,
+				61A09ECA1E138D8D00C58519 /* Address.m in Sources */,
 				617288F51E10BF070037DB40 /* ShoppingCartViewController.m in Sources */,
 				617288E31E10BE110037DB40 /* BaseTabBarController.m in Sources */,
 				6172891B1E110BCD0037DB40 /* LoginViewController.m in Sources */,
@@ -663,13 +713,17 @@
 				617288E91E10BE470037DB40 /* BaseViewController.m in Sources */,
 				617289141E1100B90037DB40 /* Utility.m in Sources */,
 				1154B99E1E113C3E00C8459D /* NetService.m in Sources */,
+				61A09ED71E13EA2C00C58519 /* GoodsCell.m in Sources */,
+				61A09ECD1E13AFFC00C58519 /* UserModel.m in Sources */,
 				617288AF1E10BCA40037DB40 /* AppDelegate.mm in Sources */,
 				6172891F1E1118670037DB40 /* UIView+Addition.m in Sources */,
 				617288AC1E10BCA40037DB40 /* main.m in Sources */,
 				6172890D1E10E3860037DB40 /* LocationService.m in Sources */,
 				616A09B31E128AC600FCF886 /* MeCell.m in Sources */,
 				617288F01E10BEF30037DB40 /* FirstPageViewController.m in Sources */,
+				61A09EC71E1386E200C58519 /* DataBaseService.m in Sources */,
 				616A09A91E11FF1600FCF886 /* RegistViewController.m in Sources */,
+				61A09ED11E13D86200C58519 /* GoodsViewController.m in Sources */,
 				617288B81E10BCA40037DB40 /* bz.xcdatamodeld in Sources */,
 				616A09AE1E1253F800FCF886 /* MeHeadView.m in Sources */,
 				617288E61E10BE360037DB40 /* BaseNavigationController.m in Sources */,

@@ -57,7 +57,7 @@
             return;
         }
         phoneNumber = _phoneTF.text;
-        email = @"";
+        email = @"\"\"";
     } else {
         //TODO:验证邮箱
         if (IS_NULL_STRING(_phoneTF.text)) {
@@ -68,7 +68,7 @@
             [Utility showString:Localized(@"请正确输入电子邮箱账号") onView:self.view];
             return;
         }
-        phoneNumber = @"";
+        phoneNumber = @"\"\"";
         email = _phoneTF.text;
     }
     //TODO:暂时没有验证码
@@ -107,7 +107,7 @@
             return ;
         }
         NSLog(@"%@", responseObject);
-        NSLog(@"%@", responseObject[@"errMsg"]);
+        NSLog(@"%@", responseObject[kErrMsg]);
     }];
     [Utility showHUDAddedTo:self.view forTask:task];
 }

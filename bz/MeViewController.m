@@ -11,6 +11,8 @@
 #import "MeCell.h"
 #import "LoginViewController.h"
 #import "BaseNavigationController.h"
+#import "NetService.h"
+#import "UserModel.h"
 
 @interface MeViewController () <UITableViewDelegate, UITableViewDataSource, MeHeadViewDelegate, UIAlertViewDelegate>
 
@@ -18,6 +20,8 @@
 @property (strong, nonatomic) UITableView *mTableView;
 
 @property (strong, nonatomic) NSMutableArray *dataArray;
+
+@property (strong, nonatomic) MeHeadView *headView;
 
 @end
 
@@ -38,13 +42,13 @@
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, -kScreenHeight, kScreenWidth, kScreenHeight)];
     view.backgroundColor = kPinkColor;
     
-    MeHeadView *headView = [[MeHeadView alloc] init];
-    headView.delegate = self;
+    _headView = [[MeHeadView alloc] init];
+    _headView.delegate = self;
     _mTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - 49) style:UITableViewStylePlain];
     //保持上部分颜色一致
     [_mTableView addSubview:view];
     
-    _mTableView.tableHeaderView = headView;
+    _mTableView.tableHeaderView = _headView;
     _mTableView.backgroundColor = [UIColor clearColor];
     _mTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _mTableView.showsVerticalScrollIndicator = NO;
@@ -104,6 +108,10 @@
 #pragma mark MeHeadViewDelegate
 - (void)loginButtonAction
 {
+    if (kIsLogin) {
+        //如果登陆了 取消点击反应
+        return;
+    }
     LoginViewController *loginVC = [[LoginViewController alloc] init];
     BaseNavigationController *loginNvc = [[BaseNavigationController alloc] initWithRootViewController:loginVC];
     [self presentViewController:loginNvc animated:YES completion:^{
@@ -127,7 +135,22 @@
 
 - (void)loginSuccess:(NSNotification *)notify
 {
-    NSLog(@"%@,%@", kLoginUserName, kLoginToken);
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:kLoginToken, @"Token", nil];
+    NSURLSessionTask *task = [NetService GET:kGetMemberInfoUrl parameters:dict complete:^(id responseObject, NSError *error) {
+        [Utility hideHUDForView:self.view];
+        if (error) {
+            NSLog(@"failure:%@", error);
+            return ;
+        }
+        if ([responseObject[kStatusCode] integerValue] == NetStatusSuccess) {
+            NSDictionary *dataDict = responseObject[kResponseData];
+            UserModel *userModel = [[UserModel alloc] initWithDict:dataDict];
+            [_headView setUserModel:userModel];
+        } else {
+            [Utility showString:responseObject[kErrMsg] onView:self.view];
+        }
+    }];
+    [Utility showHUDAddedTo:self.view forTask:task];
 }
 
 #pragma mark

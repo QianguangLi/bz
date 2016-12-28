@@ -16,3 +16,8 @@
 - (void)setCorneRadius:(CGFloat)cornerRadius;
 @end
 
+@interface UILabel (Addition)
+
+- (void)setStrikeLine;
+
+@end

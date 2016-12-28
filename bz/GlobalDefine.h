@@ -29,12 +29,13 @@
 #define IS_IPHONE_6P    ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )736 ) < DBL_EPSILON )
 
 #define QGCOLOR(r,g,b,a) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:a]
-#define kPinkColor QGCOLOR(225, 29, 118, 1)
+#define kPinkColor QGCOLOR(227, 28, 118, 1)
 
 #define kLoginUserName [GlobalData sharedGlobalData].userName
 #define kIsLogin [GlobalData sharedGlobalData].isLogin
 #define kLoginToken [GlobalData sharedGlobalData].token
 #define kHasNet [GlobalData sharedGlobalData].hasNet
+#define kUserLevel [GlobalData sharedGlobalData].userLevel
 
 #define StringFromNumber(num) [NSString stringWithFormat:@"%ld", (long)num]
 #define StringFromFloat(num) [NSString stringWithFormat:@"%.2f", num]
@@ -75,6 +76,14 @@
 //注册url
 #define kUserRegistUrl @"api/User/Regeister"
 
+#define kGetMemberInfoUrl @"api/User/GetMemberInfo"
+
+typedef NS_ENUM(NSInteger, UserLevel) {
+    UserLevelMember = 0,//会员
+    UserLevelStore,//门店
+    UserLevelCompany,//供应商
+};
+//网络状态码
 typedef NS_ENUM(NSInteger, NetStatus) {
     NetStatusSuccess = 00000,//请求成功
     NetStatusNotFound,//找不到接口
@@ -117,8 +126,23 @@ typedef NS_ENUM(NSInteger, NetStatus) {
     NetStatusInvalidAction,//  无效的动作
     
     NetStatusOriginalPwdError = 00160,//  原始密码不正确
-
-
 };
+
+//字段定义
+#define kAccountName @"accountName" //开户名
+#define kAddr @"addr" //国家区域
+#define kAddress @"address"  //详细地址
+#define kBankAccount @"bankAccount"  //开户账号
+#define kBankName @"bankName"  //开户行名字
+#define kDZBalance @"dzbalance"  //电子账户余额
+#define kEmail @"email"  //电子邮箱
+#define kFaceUrl @"faceUrl" //用户头像地址
+#define kIDCard @"idCard"  //身份证号
+#define kJFBalance @"jfbalance" //积分账户余额
+#define kJJBalance @"jjbalance" //奖金账户余额
+#define kLoginName @"loginName" //登陆名
+#define kMobile @"mobile" //手机号
+#define kName @"name" //公司名字
+#define kZipCode @"zipCode" //邮编
 
 #endif /* GlobalDefine_h */

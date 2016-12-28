@@ -12,6 +12,10 @@
 //typedef void(^FailureBlock)(NSURLSessionDataTask *task, NSError *error);
 typedef void(^Complete)(id responseObject, NSError *error);
 
+#define kStatusCode @"no"
+#define kErrMsg @"errMsg"
+#define kResponseData @"data"
+
 @interface NetService : NSObject
 
 /**

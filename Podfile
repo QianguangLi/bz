@@ -8,6 +8,8 @@ target 'bz' do
   pod 'IQKeyboardManager', '~> 4.0.8'
   pod 'BaiduMapKit' #百度地图SDK
   pod 'MBProgressHUD', '~> 1.0.0'
+  pod 'FMDB', '~> 2.6.2'
+  pod 'PYSearch'
 
   # Pods for bz
 

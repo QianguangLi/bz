@@ -36,5 +36,21 @@
     layer.cornerRadius = cornerRadius;
     layer.masksToBounds = YES;
 }
+@end
+
+@implementation UILabel (Addition)
+
+- (void)setStrikeLine
+{
+    NSAttributedString *attrStr =
+    [[NSAttributedString alloc]initWithString:self.text
+                                  attributes:
+  @{NSFontAttributeName:self.font,
+    NSForegroundColorAttributeName:self.textColor,
+    NSStrikethroughStyleAttributeName:@(NSUnderlineStyleSingle|NSUnderlinePatternSolid),
+    NSStrikethroughColorAttributeName:self.textColor}];
+    self.text = nil;
+    self.attributedText = attrStr;
+}
 
 @end

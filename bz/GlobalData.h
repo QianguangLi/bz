@@ -16,7 +16,7 @@
 + (GlobalData *)sharedGlobalData;
 
 //登陆类型
-@property (assign, nonatomic) NSInteger loginTpey;
+@property (assign, nonatomic) NSInteger userLevel;
 //是否登陆
 @property (assign, nonatomic) BOOL isLogin;
 //登录信息
