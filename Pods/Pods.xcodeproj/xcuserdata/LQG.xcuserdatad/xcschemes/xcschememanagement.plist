@@ -9,12 +9,27 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>FMDB.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>IQKeyboardManager.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
 		<key>MBProgressHUD.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>MJRefresh.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>PYSearch.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -37,12 +52,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>49B1F69B048C9836563E0455258136E5</key>
+		<key>04CF549EBEEE7BC87AEAE35397184D94</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>53052535C6911FD5D00146BA34E6878D</key>
+		<key>49B1F69B048C9836563E0455258136E5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -57,12 +72,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>8642CC820CE8C5B88C113D7F47AF4BC3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>9650B5ADCE86F1A055FAFC635284BDB5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>9E033EDB5EC0819481B0546434FA577B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B2D1D6AE037AD3BADD821AF03289BA43</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CE9DF709DF0A06E62699C1275B848F7D</key>
 		<dict>
 			<key>primary</key>
 			<true/>

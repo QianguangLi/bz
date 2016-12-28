@@ -45,7 +45,7 @@
         _pv.font = [UIFont systemFontOfSize:14];
         _distriWay.font = [UIFont systemFontOfSize:14];
     }
-    [_marketPrice setStrikeLine];
+    [_marketPrice setStrikeLineText:_marketPrice.text];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

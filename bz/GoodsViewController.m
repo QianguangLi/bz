@@ -8,6 +8,7 @@
 
 #import "GoodsViewController.h"
 #import "GoodsCell.h"
+#import "MJRefresh.h"
 
 @interface GoodsViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -17,15 +18,6 @@
 @end
 //上次偏移量
 static CGFloat previousOffsetY = 0.f;
-
-BOOL isUpScroll(CGFloat currentOffsetY)
-{
-    if (currentOffsetY > previousOffsetY) {
-        return YES;
-    } else {
-        return NO;
-    }
-}
 
 @implementation GoodsViewController
 
@@ -44,10 +36,19 @@ BOOL isUpScroll(CGFloat currentOffsetY)
 //    _goodsTableView.showsVerticalScrollIndicator = NO;
     _goodsTableView.delegate = self;
     _goodsTableView.dataSource = self;
-    _goodsTableView.contentInset = UIEdgeInsetsMake(2.5, 0, 2.5, 0);
+//    _goodsTableView.contentInset = UIEdgeInsetsMake(2.5, 0, 2.5, 0);
     
     [self.view addSubview:_goodsTableView];
     [_goodsTableView registerNib:[UINib nibWithNibName:@"GoodsCell" bundle:nil] forCellReuseIdentifier:@"GoodsCell"];
+    
+    _goodsTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        NSLog(@"header refresh");
+    }];
+    _goodsTableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        NSLog(@"footer refresh");
+    }];
+    
+    [_goodsTableView.mj_header beginRefreshing];
 }
 
 #pragma mark - UITableViewDelegate
@@ -65,6 +66,10 @@ BOOL isUpScroll(CGFloat currentOffsetY)
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return kScreenWidth*100.0/320.0;
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
 }
 
 #pragma mark - UIScrollViewDelegate

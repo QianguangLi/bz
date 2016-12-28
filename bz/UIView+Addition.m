@@ -22,7 +22,6 @@
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     
-    
     return image;
 }
 
@@ -36,19 +35,20 @@
     layer.cornerRadius = cornerRadius;
     layer.masksToBounds = YES;
 }
+
 @end
 
 @implementation UILabel (Addition)
 
-- (void)setStrikeLine
+- (void)setStrikeLineText:(NSString *)text
 {
     NSAttributedString *attrStr =
-    [[NSAttributedString alloc]initWithString:self.text
+    [[NSAttributedString alloc]initWithString:text
                                   attributes:
-  @{NSFontAttributeName:self.font,
+    @{NSFontAttributeName:self.font,
     NSForegroundColorAttributeName:self.textColor,
     NSStrikethroughStyleAttributeName:@(NSUnderlineStyleSingle|NSUnderlinePatternSolid),
-    NSStrikethroughColorAttributeName:self.textColor}];
+    NSStrikethroughColorAttributeName:[UIColor redColor]}];
     self.text = nil;
     self.attributedText = attrStr;
 }

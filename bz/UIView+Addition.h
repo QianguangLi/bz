@@ -18,6 +18,6 @@
 
 @interface UILabel (Addition)
 
-- (void)setStrikeLine;
+- (void)setStrikeLineText:(NSString *)text;
 
 @end

@@ -35,6 +35,10 @@
     self.navigationController.navigationBarHidden = YES;
     [self initData];
     [self customView];
+    
+    if (kIsLogin) {
+        [self loginSuccess:nil];
+    }
 }
 
 - (void)customView
@@ -136,6 +140,7 @@
 - (void)loginSuccess:(NSNotification *)notify
 {
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:kLoginToken, @"Token", nil];
+    __block MeViewController *weakSelf = self;
     NSURLSessionTask *task = [NetService GET:kGetMemberInfoUrl parameters:dict complete:^(id responseObject, NSError *error) {
         [Utility hideHUDForView:self.view];
         if (error) {
@@ -145,7 +150,7 @@
         if ([responseObject[kStatusCode] integerValue] == NetStatusSuccess) {
             NSDictionary *dataDict = responseObject[kResponseData];
             UserModel *userModel = [[UserModel alloc] initWithDict:dataDict];
-            [_headView setUserModel:userModel];
+            [weakSelf.headView setUserModel:userModel];
         } else {
             [Utility showString:responseObject[kErrMsg] onView:self.view];
         }
