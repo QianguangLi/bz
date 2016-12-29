@@ -46,7 +46,9 @@
 - (void)barItemAction:(UIBarButtonItem *)item
 {
     if (item.tag == 200) {
-        
+        NSLog(@"search item touched!");
+    } else if (item.tag) {
+        NSLog(@"message item touched");
     }
 }
 
@@ -63,7 +65,7 @@
     //创建二级导航按钮
     for (int i = 0; i < contentArray.count; i++) {
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-        btn.frame = CGRectMake(_secondNavigation.frame.size.width/contentArray.count * i, 0, _secondNavigation.frame.size.width/contentArray.count, _secondNavigation.frame.size.height);
+        btn.frame = CGRectMake(kScreenWidth/contentArray.count * i, 0, kScreenWidth/contentArray.count, _secondNavigation.frame.size.height);
         [btn setTitle:contentArray[i][@"title"] forState:UIControlStateNormal];
         //设置tag为订单类型
         [btn setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
