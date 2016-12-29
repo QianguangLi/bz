@@ -44,7 +44,7 @@ static CGFloat previousOffsetY = 0.f;
     _goodsTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         NSLog(@"header refresh");
     }];
-    _goodsTableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+    _goodsTableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
         NSLog(@"footer refresh");
     }];
     

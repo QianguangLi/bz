@@ -10,6 +10,21 @@
 		1154B99E1E113C3E00C8459D /* NetService.m in Sources */ = {isa = PBXBuildFile; fileRef = 1154B99D1E113C3E00C8459D /* NetService.m */; };
 		1154B9A41E11736A00C8459D /* NSObject+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 1154B9A31E11736A00C8459D /* NSObject+Addition.m */; };
 		17E122BDA9BAA762D7A46B7F /* libPods-bz.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 63277A970CC28472312B0E2A /* libPods-bz.a */; };
+		615FBF271E14B60500F50C0D /* MyOrdersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 615FBF251E14B60500F50C0D /* MyOrdersViewController.m */; };
+		615FBF281E14B60500F50C0D /* MyOrdersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 615FBF261E14B60500F50C0D /* MyOrdersViewController.xib */; };
+		615FBF371E14BF0400F50C0D /* GoodsCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 615FBF351E14BF0400F50C0D /* GoodsCategoryViewController.m */; };
+		615FBF381E14BF0400F50C0D /* GoodsCategoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 615FBF361E14BF0400F50C0D /* GoodsCategoryViewController.xib */; };
+		615FBF3C1E14CB2200F50C0D /* OrderListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 615FBF3A1E14CB2200F50C0D /* OrderListViewController.m */; };
+		615FBF3D1E14CB2200F50C0D /* OrderListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 615FBF3B1E14CB2200F50C0D /* OrderListViewController.xib */; };
+		615FBF411E14E9AC00F50C0D /* RefreshViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 615FBF3F1E14E9AC00F50C0D /* RefreshViewController.m */; };
+		615FBF421E14E9AC00F50C0D /* RefreshViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 615FBF401E14E9AC00F50C0D /* RefreshViewController.xib */; };
+		615FBF451E14FAB300F50C0D /* OrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 615FBF441E14FAB300F50C0D /* OrderModel.m */; };
+		615FBF521E15064400F50C0D /* OrderProductCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 615FBF501E15064400F50C0D /* OrderProductCell.m */; };
+		615FBF531E15064400F50C0D /* OrderProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 615FBF511E15064400F50C0D /* OrderProductCell.xib */; };
+		615FBF571E15066200F50C0D /* OrderListTopCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 615FBF551E15066200F50C0D /* OrderListTopCell.m */; };
+		615FBF581E15066200F50C0D /* OrderListTopCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 615FBF561E15066200F50C0D /* OrderListTopCell.xib */; };
+		615FBF5C1E1506AB00F50C0D /* OrderListBottomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 615FBF5A1E1506AB00F50C0D /* OrderListBottomCell.m */; };
+		615FBF5D1E1506AB00F50C0D /* OrderListBottomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 615FBF5B1E1506AB00F50C0D /* OrderListBottomCell.xib */; };
 		616A09A91E11FF1600FCF886 /* RegistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 616A09A71E11FF1600FCF886 /* RegistViewController.m */; };
 		616A09AA1E11FF1600FCF886 /* RegistViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 616A09A81E11FF1600FCF886 /* RegistViewController.xib */; };
 		616A09AE1E1253F800FCF886 /* MeHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 616A09AD1E1253F800FCF886 /* MeHeadView.m */; };
@@ -74,6 +89,29 @@
 		1154B9A31E11736A00C8459D /* NSObject+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Addition.m"; sourceTree = "<group>"; };
 		2BBD9FECB363268F3739B789 /* libPods-bzUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-bzUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		54D4FF3445E3FD7D387B5F0E /* Pods-bz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bz.debug.xcconfig"; path = "Pods/Target Support Files/Pods-bz/Pods-bz.debug.xcconfig"; sourceTree = "<group>"; };
+		615FBF241E14B60500F50C0D /* MyOrdersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyOrdersViewController.h; sourceTree = "<group>"; };
+		615FBF251E14B60500F50C0D /* MyOrdersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyOrdersViewController.m; sourceTree = "<group>"; };
+		615FBF261E14B60500F50C0D /* MyOrdersViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyOrdersViewController.xib; sourceTree = "<group>"; };
+		615FBF341E14BF0400F50C0D /* GoodsCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsCategoryViewController.h; sourceTree = "<group>"; };
+		615FBF351E14BF0400F50C0D /* GoodsCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsCategoryViewController.m; sourceTree = "<group>"; };
+		615FBF361E14BF0400F50C0D /* GoodsCategoryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoodsCategoryViewController.xib; sourceTree = "<group>"; };
+		615FBF391E14CB2200F50C0D /* OrderListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderListViewController.h; sourceTree = "<group>"; };
+		615FBF3A1E14CB2200F50C0D /* OrderListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderListViewController.m; sourceTree = "<group>"; };
+		615FBF3B1E14CB2200F50C0D /* OrderListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderListViewController.xib; sourceTree = "<group>"; };
+		615FBF3E1E14E9AC00F50C0D /* RefreshViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefreshViewController.h; sourceTree = "<group>"; };
+		615FBF3F1E14E9AC00F50C0D /* RefreshViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefreshViewController.m; sourceTree = "<group>"; };
+		615FBF401E14E9AC00F50C0D /* RefreshViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RefreshViewController.xib; sourceTree = "<group>"; };
+		615FBF431E14FAB300F50C0D /* OrderModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderModel.h; sourceTree = "<group>"; };
+		615FBF441E14FAB300F50C0D /* OrderModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderModel.m; sourceTree = "<group>"; };
+		615FBF4F1E15064400F50C0D /* OrderProductCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderProductCell.h; sourceTree = "<group>"; };
+		615FBF501E15064400F50C0D /* OrderProductCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderProductCell.m; sourceTree = "<group>"; };
+		615FBF511E15064400F50C0D /* OrderProductCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderProductCell.xib; sourceTree = "<group>"; };
+		615FBF541E15066200F50C0D /* OrderListTopCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderListTopCell.h; sourceTree = "<group>"; };
+		615FBF551E15066200F50C0D /* OrderListTopCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderListTopCell.m; sourceTree = "<group>"; };
+		615FBF561E15066200F50C0D /* OrderListTopCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderListTopCell.xib; sourceTree = "<group>"; };
+		615FBF591E1506AB00F50C0D /* OrderListBottomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderListBottomCell.h; sourceTree = "<group>"; };
+		615FBF5A1E1506AB00F50C0D /* OrderListBottomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderListBottomCell.m; sourceTree = "<group>"; };
+		615FBF5B1E1506AB00F50C0D /* OrderListBottomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderListBottomCell.xib; sourceTree = "<group>"; };
 		616A09A61E11FF1600FCF886 /* RegistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistViewController.h; sourceTree = "<group>"; };
 		616A09A71E11FF1600FCF886 /* RegistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistViewController.m; sourceTree = "<group>"; };
 		616A09A81E11FF1600FCF886 /* RegistViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegistViewController.xib; sourceTree = "<group>"; };
@@ -199,6 +237,46 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		615FBF231E14B5DC00F50C0D /* Orders */ = {
+			isa = PBXGroup;
+			children = (
+				615FBF491E15056800F50C0D /* Cells */,
+				615FBF241E14B60500F50C0D /* MyOrdersViewController.h */,
+				615FBF251E14B60500F50C0D /* MyOrdersViewController.m */,
+				615FBF261E14B60500F50C0D /* MyOrdersViewController.xib */,
+				615FBF391E14CB2200F50C0D /* OrderListViewController.h */,
+				615FBF3A1E14CB2200F50C0D /* OrderListViewController.m */,
+				615FBF3B1E14CB2200F50C0D /* OrderListViewController.xib */,
+			);
+			name = Orders;
+			sourceTree = "<group>";
+		};
+		615FBF331E14BEDD00F50C0D /* GoodsCategory */ = {
+			isa = PBXGroup;
+			children = (
+				615FBF341E14BF0400F50C0D /* GoodsCategoryViewController.h */,
+				615FBF351E14BF0400F50C0D /* GoodsCategoryViewController.m */,
+				615FBF361E14BF0400F50C0D /* GoodsCategoryViewController.xib */,
+			);
+			name = GoodsCategory;
+			sourceTree = "<group>";
+		};
+		615FBF491E15056800F50C0D /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				615FBF4F1E15064400F50C0D /* OrderProductCell.h */,
+				615FBF501E15064400F50C0D /* OrderProductCell.m */,
+				615FBF511E15064400F50C0D /* OrderProductCell.xib */,
+				615FBF541E15066200F50C0D /* OrderListTopCell.h */,
+				615FBF551E15066200F50C0D /* OrderListTopCell.m */,
+				615FBF561E15066200F50C0D /* OrderListTopCell.xib */,
+				615FBF591E1506AB00F50C0D /* OrderListBottomCell.h */,
+				615FBF5A1E1506AB00F50C0D /* OrderListBottomCell.m */,
+				615FBF5B1E1506AB00F50C0D /* OrderListBottomCell.xib */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
 		616A09AB1E12539800FCF886 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -250,6 +328,7 @@
 				617288FC1E10C6F90037DB40 /* Global */,
 				617288EC1E10BEB00037DB40 /* Me */,
 				617288EB1E10BE8A0037DB40 /* ShoppingCart */,
+				615FBF331E14BEDD00F50C0D /* GoodsCategory */,
 				617288EA1E10BE770037DB40 /* FirstPage */,
 				617288E01E10BDC90037DB40 /* BaseController */,
 				617288AD1E10BCA40037DB40 /* AppDelegate.h */,
@@ -300,6 +379,9 @@
 				617288E51E10BE360037DB40 /* BaseNavigationController.m */,
 				617288E71E10BE470037DB40 /* BaseViewController.h */,
 				617288E81E10BE470037DB40 /* BaseViewController.m */,
+				615FBF3E1E14E9AC00F50C0D /* RefreshViewController.h */,
+				615FBF3F1E14E9AC00F50C0D /* RefreshViewController.m */,
+				615FBF401E14E9AC00F50C0D /* RefreshViewController.xib */,
 			);
 			name = BaseController;
 			sourceTree = "<group>";
@@ -331,6 +413,7 @@
 		617288EC1E10BEB00037DB40 /* Me */ = {
 			isa = PBXGroup;
 			children = (
+				615FBF231E14B5DC00F50C0D /* Orders */,
 				616A09AF1E128AAB00FCF886 /* Cells */,
 				616A09AB1E12539800FCF886 /* Views */,
 				617288F71E10BF110037DB40 /* MeViewController.h */,
@@ -378,6 +461,8 @@
 				617289101E10F8750037DB40 /* UserLocationModel.m */,
 				61A09ECB1E13AFFC00C58519 /* UserModel.h */,
 				61A09ECC1E13AFFC00C58519 /* UserModel.m */,
+				615FBF431E14FAB300F50C0D /* OrderModel.h */,
+				615FBF441E14FAB300F50C0D /* OrderModel.m */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -530,10 +615,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				615FBF581E15066200F50C0D /* OrderListTopCell.xib in Resources */,
+				615FBF381E14BF0400F50C0D /* GoodsCategoryViewController.xib in Resources */,
 				617288F61E10BF070037DB40 /* ShoppingCartViewController.xib in Resources */,
+				615FBF531E15064400F50C0D /* OrderProductCell.xib in Resources */,
 				617289021E10CBEF0037DB40 /* Localizable.strings in Resources */,
+				615FBF421E14E9AC00F50C0D /* RefreshViewController.xib in Resources */,
+				615FBF3D1E14CB2200F50C0D /* OrderListViewController.xib in Resources */,
 				617288F11E10BEF30037DB40 /* FirstPageViewController.xib in Resources */,
 				617288FB1E10BF110037DB40 /* MeViewController.xib in Resources */,
+				615FBF5D1E1506AB00F50C0D /* OrderListBottomCell.xib in Resources */,
 				617288BD1E10BCA40037DB40 /* LaunchScreen.storyboard in Resources */,
 				6172891C1E110BCD0037DB40 /* LoginViewController.xib in Resources */,
 				616A09AA1E11FF1600FCF886 /* RegistViewController.xib in Resources */,
@@ -541,6 +632,7 @@
 				617288BA1E10BCA40037DB40 /* Assets.xcassets in Resources */,
 				61A09ED81E13EA2C00C58519 /* GoodsCell.xib in Resources */,
 				616A09B41E128AC600FCF886 /* MeCell.xib in Resources */,
+				615FBF281E14B60500F50C0D /* MyOrdersViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -648,7 +740,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		CDC8CABD196EA6FC244B5624 /* [CP] Embed Pods Frameworks */ = {
@@ -678,7 +770,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		F6DCE8DD935EFE2C49D66137 /* [CP] Check Pods Manifest.lock */ = {
@@ -693,7 +785,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -705,6 +797,7 @@
 			files = (
 				617288FA1E10BF110037DB40 /* MeViewController.m in Sources */,
 				617289171E11071A0037DB40 /* GlobalData.m in Sources */,
+				615FBF451E14FAB300F50C0D /* OrderModel.m in Sources */,
 				61A09ECA1E138D8D00C58519 /* Address.m in Sources */,
 				617288F51E10BF070037DB40 /* ShoppingCartViewController.m in Sources */,
 				617288E31E10BE110037DB40 /* BaseTabBarController.m in Sources */,
@@ -712,18 +805,25 @@
 				1154B9A41E11736A00C8459D /* NSObject+Addition.m in Sources */,
 				617288E91E10BE470037DB40 /* BaseViewController.m in Sources */,
 				617289141E1100B90037DB40 /* Utility.m in Sources */,
+				615FBF521E15064400F50C0D /* OrderProductCell.m in Sources */,
 				1154B99E1E113C3E00C8459D /* NetService.m in Sources */,
 				61A09ED71E13EA2C00C58519 /* GoodsCell.m in Sources */,
 				61A09ECD1E13AFFC00C58519 /* UserModel.m in Sources */,
 				617288AF1E10BCA40037DB40 /* AppDelegate.mm in Sources */,
+				615FBF371E14BF0400F50C0D /* GoodsCategoryViewController.m in Sources */,
+				615FBF5C1E1506AB00F50C0D /* OrderListBottomCell.m in Sources */,
 				6172891F1E1118670037DB40 /* UIView+Addition.m in Sources */,
 				617288AC1E10BCA40037DB40 /* main.m in Sources */,
+				615FBF271E14B60500F50C0D /* MyOrdersViewController.m in Sources */,
+				615FBF571E15066200F50C0D /* OrderListTopCell.m in Sources */,
 				6172890D1E10E3860037DB40 /* LocationService.m in Sources */,
 				616A09B31E128AC600FCF886 /* MeCell.m in Sources */,
+				615FBF3C1E14CB2200F50C0D /* OrderListViewController.m in Sources */,
 				617288F01E10BEF30037DB40 /* FirstPageViewController.m in Sources */,
 				61A09EC71E1386E200C58519 /* DataBaseService.m in Sources */,
 				616A09A91E11FF1600FCF886 /* RegistViewController.m in Sources */,
 				61A09ED11E13D86200C58519 /* GoodsViewController.m in Sources */,
+				615FBF411E14E9AC00F50C0D /* RefreshViewController.m in Sources */,
 				617288B81E10BCA40037DB40 /* bz.xcdatamodeld in Sources */,
 				616A09AE1E1253F800FCF886 /* MeHeadView.m in Sources */,
 				617288E61E10BE360037DB40 /* BaseNavigationController.m in Sources */,

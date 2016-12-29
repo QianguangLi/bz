@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "JSONModel.h"
 
-@interface UserModel : NSObject
+@interface UserModel : JSONModel
 
 @property (copy, nonatomic) NSString *accountName;//开户名
 @property (copy, nonatomic) NSString *addr;//国家区域
@@ -26,6 +27,6 @@
 @property (copy, nonatomic) NSString *name;//公司名字
 @property (copy, nonatomic) NSString *zipCode;//邮编
 
-- (instancetype)initWithDict:(NSDictionary *)dict;
+//- (instancetype)initWithDict:(NSDictionary *)dict;
 
 @end

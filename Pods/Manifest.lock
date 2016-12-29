@@ -14,33 +14,36 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
-  - BaiduMapKit (3.2.1)
+  - BaiduMapKit (3.2)
   - FMDB (2.6.2):
     - FMDB/standard (= 2.6.2)
   - FMDB/standard (2.6.2)
   - IQKeyboardManager (4.0.8)
+  - JSONModel (1.7.0)
   - MBProgressHUD (1.0.0)
   - MJRefresh (3.1.12)
   - PYSearch (0.5.0)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.1.0)
-  - BaiduMapKit (~> 3.2.1)
+  - BaiduMapKit
   - FMDB (~> 2.6.2)
   - IQKeyboardManager (~> 4.0.8)
+  - JSONModel (~> 1.7.0)
   - MBProgressHUD (~> 1.0.0)
   - MJRefresh (~> 3.1.12)
   - PYSearch
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
-  BaiduMapKit: 9c748785aa3dddfc41dcb70c14b21ce32f680930
+  BaiduMapKit: c23aee47be89b2b939a92acfd06627114e897662
   FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
   IQKeyboardManager: 1a8189fa153bf09044355ee0ad36826f6767e7f7
+  JSONModel: 840bc0fcffb24b8454d2c026bf26fea454b8e98d
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
   PYSearch: 6b228b461b240d0354cca57d3de3dcf3a4297005
 
-PODFILE CHECKSUM: 732620f1868a4986d94d4c771ffbd7f8f2823bea
+PODFILE CHECKSUM: ddab3890164f8487f269f7fee5502aee1ba3a4cd
 
-COCOAPODS: 1.1.1
+COCOAPODS: 1.0.1

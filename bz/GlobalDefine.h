@@ -75,13 +75,25 @@
 #define kUserLoginUrl @"api/User/Login"
 //注册url
 #define kUserRegistUrl @"api/User/Regeister"
-
+//获取用户信息url
 #define kGetMemberInfoUrl @"api/User/GetMemberInfo"
-
+//获取我的订单url
+#define kGetMyOrders @"api/User/MyOrders"
+//用户权限
 typedef NS_ENUM(NSInteger, UserLevel) {
     UserLevelMember = 0,//会员
     UserLevelStore,//门店
     UserLevelCompany,//供应商
+};
+//订单类型
+typedef NS_ENUM(NSInteger, OrderType) {
+    OrderTypeAll = -1,//全部
+    OrderTypeWaitPay,//待付款
+    OrderTypeWaitPost,//待发货
+    OrderTypeWaitRecive,//待收货
+    OrderTypeWaitComment,//待评价
+    OrderTypeInvalid,//已失效
+    OrderTypeSuccess,//交易成功
 };
 //网络状态码
 typedef NS_ENUM(NSInteger, NetStatus) {
@@ -144,5 +156,9 @@ typedef NS_ENUM(NSInteger, NetStatus) {
 #define kMobile @"mobile" //手机号
 #define kName @"name" //公司名字
 #define kZipCode @"zipCode" //邮编
+
+#define kPageIndex @"pageIndex" //第几页
+#define kPageSize @"pageSize" //每页大小
+#define kPageCount @"pageCount" //总页数
 
 #endif /* GlobalDefine_h */

@@ -13,6 +13,7 @@
 #import "BaseNavigationController.h"
 #import "NetService.h"
 #import "UserModel.h"
+#import "MyOrdersViewController.h"
 
 @interface MeViewController () <UITableViewDelegate, UITableViewDataSource, MeHeadViewDelegate, UIAlertViewDelegate>
 
@@ -32,13 +33,25 @@
     // Do any additional setup after loading the view from its nib.
     //观察登陆成功后通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginSuccess:) name:kLoginSuccessNotification object:nil];
-    self.navigationController.navigationBarHidden = YES;
+//    self.navigationController.navigationBarHidden = YES;
     [self initData];
     [self customView];
-    
+    //判断是否登陆
     if (kIsLogin) {
         [self loginSuccess:nil];
     }
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBarHidden = YES;
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    self.navigationController.navigationBarHidden = NO;
 }
 
 - (void)customView
@@ -123,10 +136,21 @@
     }];
 }
 
-- (void)orderButtonAction:(NSInteger)orderType
+- (void)orderButtonAction:(NSInteger)type
 {
+    if (!kIsLogin) {
+        UIAlertView *av = [[UIAlertView alloc] initWithTitle:Localized(@"温馨提示") message:Localized(@"登陆后才可进行操作,是否去登陆") delegate:self  cancelButtonTitle:Localized(@"再看看") otherButtonTitles:Localized(@"去登陆"), nil];
+        [av show];
+        return;
+    }
     //TODO:页面 三个订单点击事件
-    NSLog(@"%ld", (long)orderType);
+//    NSLog(@"%ld", (long)type);
+    if (type == 0) {
+        MyOrdersViewController *myOrderVC = [[MyOrdersViewController alloc] init];
+        //从我进去默认全部订单
+        myOrderVC.orderType = OrderTypeAll;
+        [self.navigationController pushViewController:myOrderVC animated:YES];
+    }
 }
 
 #pragma mark UIAlertViewDelegate
@@ -149,7 +173,8 @@
         }
         if ([responseObject[kStatusCode] integerValue] == NetStatusSuccess) {
             NSDictionary *dataDict = responseObject[kResponseData];
-            UserModel *userModel = [[UserModel alloc] initWithDict:dataDict];
+//            UserModel *userModel = [[UserModel alloc] initWithDict:dataDict];
+            UserModel *userModel = [[UserModel alloc] initWithDictionary:dataDict error:nil];
             [weakSelf.headView setUserModel:userModel];
         } else {
             [Utility showString:responseObject[kErrMsg] onView:self.view];

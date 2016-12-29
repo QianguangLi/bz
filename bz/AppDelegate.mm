@@ -17,6 +17,7 @@
 #import "BaseTabBarController.h"
 #import "BaseNavigationController.h"
 #import "FirstPageViewController.h"
+#import "GoodsCategoryViewController.h"
 #import "ShoppingCartViewController.h"
 #import "MeViewController.h"
 
@@ -62,6 +63,13 @@
     firstPage.title = Localized(@"博真科际");
     [firstPage setTabBarItem:firstPageItem];
     BaseNavigationController *firstPageNvc = [[BaseNavigationController alloc] initWithRootViewController:firstPage];
+    //分类
+    GoodsCategoryViewController *goodsCategory = [[GoodsCategoryViewController alloc] init];
+    UITabBarItem *goodsCategoryItem = [[UITabBarItem alloc] initWithTitle:Localized(@"商品分类") image:[[UIImage imageNamed:@"buttom_fenlei-gray"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[[UIImage imageNamed:@"buttom_fenlei-red"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+    goodsCategory.title = Localized(@"商品分类");
+    [goodsCategory setTabBarItem:goodsCategoryItem];
+    BaseNavigationController *goodsCategoryNvc = [[BaseNavigationController alloc] initWithRootViewController:goodsCategory];
+
     //购物车
     ShoppingCartViewController *shoppingCart = [[ShoppingCartViewController alloc] init];
     UITabBarItem *shoppingCartItem = [[UITabBarItem alloc] initWithTitle:Localized(@"购物车") image:[[UIImage imageNamed:@"buttom-shopping-gray"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[[UIImage imageNamed:@"buttom-shopping-red"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
@@ -77,7 +85,7 @@
     //Tabbar
     _rootController = [[BaseTabBarController alloc] init];
     _rootController.delegate = self;
-    _rootController.viewControllers = @[firstPageNvc, shoppingCartNvc, meNvc];
+    _rootController.viewControllers = @[firstPageNvc, goodsCategoryNvc, shoppingCartNvc, meNvc];
     self.window.rootViewController = _rootController;
 }
 
@@ -139,7 +147,7 @@
 {
     //没登陆不允许进入购物车页面，自动跳转到登陆页面
     if (!kIsLogin) {
-        if ([tabBarController.viewControllers indexOfObject:viewController] == 1) {
+        if ([tabBarController.viewControllers indexOfObject:viewController] == 2) {
             LoginViewController *loginVC = [[LoginViewController alloc] init];
             BaseNavigationController *loginNvc = [[BaseNavigationController alloc] initWithRootViewController:loginVC];
             [_rootController presentViewController:loginNvc animated:YES completion:^{

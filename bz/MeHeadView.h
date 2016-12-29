@@ -19,9 +19,9 @@
 /**
  我 页面的三个订单点击
 
- @param orderType 0我的订单 1代付订单 2常购清单
+ @param type 0我的订单 1代付订单 2常购清单
  */
-- (void)orderButtonAction:(NSInteger)orderType;
+- (void)orderButtonAction:(NSInteger)type;
 
 
 @end

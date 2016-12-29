@@ -34,8 +34,8 @@
     [_loginButton setCorneRadius:5];
     
     //TODO:开发模式预设账户密码
-    _userNameTF.text = @"admin";
-    _passwordTF.text = @"admin";
+    _userNameTF.text = @"lisilisi";
+    _passwordTF.text = @"000000";
     
 }
 
@@ -79,7 +79,6 @@
             NSLog(@"failure:%@", error);
             return ;
         }
-        NSLog(@"%@", responseObject);
         if ([responseObject[kStatusCode] integerValue] == NetStatusSuccess) {
             //储存登陆数据token
             NSDictionary *dataDict = responseObject[kResponseData];
