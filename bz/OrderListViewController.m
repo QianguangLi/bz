@@ -59,11 +59,15 @@
             NSDictionary *dataDict = responseObject[kResponseData];
             weakSelf.pageCount = [dataDict[kPageCount] integerValue];
             NSArray *listArray = dataDict[@"list"];
+            if (pullDown) {
+                [weakSelf.dataArray removeAllObjects];
+            }
             for (NSDictionary *orderDict in listArray) {
                 OrderModel *orderModel = [[OrderModel alloc] initWithDictionary:orderDict error:nil];
                 [weakSelf.dataArray addObject:orderModel];
             }
             [weakSelf.mTableView reloadData];
+            [weakSelf showTipWithNoData:IS_NULL_ARRAY(weakSelf.dataArray)];
         } else {
             [Utility showString:responseObject[kErrMsg] onView:self.view];
         }

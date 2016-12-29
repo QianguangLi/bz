@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "OrderModel.h"
+#import "ProductModel.h"
 
 @interface OrderProductCell : UITableViewCell
 

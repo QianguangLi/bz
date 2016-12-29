@@ -11,6 +11,8 @@
 
 @interface RefreshViewController ()
 
+@property (strong, nonatomic) UILabel *tipView;
+
 @end
 
 @implementation RefreshViewController
@@ -31,6 +33,14 @@
     _mTableView.backgroundColor = QGCOLOR(238, 238, 239, 1);
     _mTableView.contentInset = UIEdgeInsetsMake(5, 0, 0, 0);
     [self.view addSubview:_mTableView];
+    
+    _tipView = [[UILabel alloc] initWithFrame:CGRectMake(0, 60, kScreenWidth, 30)];
+    _tipView.text = Localized(@"无数据");
+    _tipView.textColor = [UIColor lightGrayColor];
+    _tipView.textAlignment = NSTextAlignmentCenter;
+    _tipView.hidden = YES;
+    [_mTableView addSubview:_tipView];
+    
     [self setRefreshControl];
 }
 
@@ -45,6 +55,7 @@
     if (_isRequireRefreshHeader) {
         __weak RefreshViewController *vc = self;
         self.mTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+            [self showTipWithNoData:NO];
             vc.pageIndex = 0;
             //            [vc.dataArray removeAllObjects];
             //            [vc.mTableView reloadData];
@@ -56,11 +67,12 @@
     if (_isRequireRefreshFooter) {
         __weak RefreshViewController *vc = self;
         self.mTableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
-            if (vc.pageIndex == vc.pageCount-1) {
+            if (vc.pageIndex >= vc.pageCount-1) {
                 [Utility showString:Localized(@"已经是最后一页了！") onView:vc.view];
                 [vc.mTableView.mj_footer endRefreshingWithNoMoreData];
                 return;
             }
+            [self showTipWithNoData:NO];
             vc.pageIndex++;
             [vc requestDataListPullDown:NO withWeakSelf:vc];
         }];
@@ -80,6 +92,11 @@
     if (_isRequireRefreshFooter) {
         [self.mTableView.mj_footer endRefreshing];
     }
+}
+
+- (void)showTipWithNoData:(BOOL)show
+{
+    _tipView.hidden = !show;
 }
 
 - (void)didReceiveMemoryWarning {

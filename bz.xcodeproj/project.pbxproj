@@ -61,6 +61,7 @@
 		61A09ED21E13D86200C58519 /* GoodsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61A09ED01E13D86200C58519 /* GoodsViewController.xib */; };
 		61A09ED71E13EA2C00C58519 /* GoodsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 61A09ED51E13EA2C00C58519 /* GoodsCell.m */; };
 		61A09ED81E13EA2C00C58519 /* GoodsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61A09ED61E13EA2C00C58519 /* GoodsCell.xib */; };
+		61F437F31E153A5000762CAF /* ProductModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 61F437F21E153A5000762CAF /* ProductModel.m */; };
 		C7AE5725228759A1D4099EE2 /* libPods-bzTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C819CC4F9EC579CD896525DC /* libPods-bzTests.a */; };
 		CB60EDAD8A812E83A6DC6A46 /* libPods-bzUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BBD9FECB363268F3739B789 /* libPods-bzUITests.a */; };
 /* End PBXBuildFile section */
@@ -178,6 +179,8 @@
 		61A09ED41E13EA2C00C58519 /* GoodsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsCell.h; sourceTree = "<group>"; };
 		61A09ED51E13EA2C00C58519 /* GoodsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsCell.m; sourceTree = "<group>"; };
 		61A09ED61E13EA2C00C58519 /* GoodsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoodsCell.xib; sourceTree = "<group>"; };
+		61F437F11E153A5000762CAF /* ProductModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductModel.h; sourceTree = "<group>"; };
+		61F437F21E153A5000762CAF /* ProductModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductModel.m; sourceTree = "<group>"; };
 		63277A970CC28472312B0E2A /* libPods-bz.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-bz.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9531E3B048B237F24D71B746 /* Pods-bzUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bzUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-bzUITests/Pods-bzUITests.release.xcconfig"; sourceTree = "<group>"; };
 		C5657D440376AF6D55313C1A /* Pods-bzTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bzTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-bzTests/Pods-bzTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -463,6 +466,8 @@
 				61A09ECC1E13AFFC00C58519 /* UserModel.m */,
 				615FBF431E14FAB300F50C0D /* OrderModel.h */,
 				615FBF441E14FAB300F50C0D /* OrderModel.m */,
+				61F437F11E153A5000762CAF /* ProductModel.h */,
+				61F437F21E153A5000762CAF /* ProductModel.m */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -800,6 +805,7 @@
 				615FBF451E14FAB300F50C0D /* OrderModel.m in Sources */,
 				61A09ECA1E138D8D00C58519 /* Address.m in Sources */,
 				617288F51E10BF070037DB40 /* ShoppingCartViewController.m in Sources */,
+				61F437F31E153A5000762CAF /* ProductModel.m in Sources */,
 				617288E31E10BE110037DB40 /* BaseTabBarController.m in Sources */,
 				6172891B1E110BCD0037DB40 /* LoginViewController.m in Sources */,
 				1154B9A41E11736A00C8459D /* NSObject+Addition.m in Sources */,

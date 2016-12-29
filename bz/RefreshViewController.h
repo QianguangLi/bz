@@ -24,4 +24,6 @@
 
 - (void)stopRefreshing;
 
+- (void)showTipWithNoData:(BOOL)show;
+
 @end

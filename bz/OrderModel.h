@@ -11,18 +11,9 @@
 
 @protocol ProductModel;
 
-@interface ProductModel : JSONModel
-
-@property (copy, nonatomic) NSString *productId;//商品id
-@property (copy, nonatomic) NSString *pName;//商品名字
-@property (assign, nonatomic) float price;//价格
-@property (copy, nonatomic) NSString *pImgUrl;//图片
-@property (assign, nonatomic) double pv;//积分
-@property (assign, nonatomic) NSUInteger quantity;//数量
-@property (copy, nonatomic) NSString *propertyd;//尺寸
-
-@end
-
+/**
+ 订单model
+ */
 @interface OrderModel : JSONModel
 
 @property (copy, nonatomic) NSString *bagging;//包装费
