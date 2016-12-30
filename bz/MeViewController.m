@@ -14,6 +14,7 @@
 #import "NetService.h"
 #import "UserModel.h"
 #import "MyOrdersViewController.h"
+#import "FunctionListViewController.h"
 
 @interface MeViewController () <UITableViewDelegate, UITableViewDataSource, MeHeadViewDelegate, UIAlertViewDelegate>
 
@@ -83,13 +84,13 @@
 - (void)initData
 {
     _dataArray = [NSMutableArray array];
-    _dataArray = @[@{@"title":@"我的购物车", @"subTitle":@""},
-                   @{@"title":@"会员信息", @"subTitle":@"会员信息修改等"},
-                   @{@"title":@"账户信息", @"subTitle":@"账户明细"},
-                   @{@"title":@"收藏商品", @"subTitle":@""},
-                   @{@"title":@"我的信件", @"subTitle":@""},
-                   @{@"title":@"进入我的门店", @"subTitle":@""},
-                   @{@"title":@"帮助中心", @"subTitle":@""}].mutableCopy;
+    _dataArray = @[@{@"title":Localized(@"我的购物车"), @"subTitle":@""},
+                   @{@"title":Localized(@"会员信息"), @"subTitle":Localized(@"会员信息修改等")},
+                   @{@"title":Localized(@"账户信息"), @"subTitle":Localized(@"账户明细")},
+                   @{@"title":Localized(@"收藏商品"), @"subTitle":@""},
+                   @{@"title":Localized(@"我的信件"), @"subTitle":@""},
+                   @{@"title":Localized(@"进入我的门店"), @"subTitle":@""},
+                   @{@"title":Localized(@"帮助中心"), @"subTitle":@""}].mutableCopy;
 }
 
 #pragma mark UITableViewDelegate
@@ -120,6 +121,58 @@
         return;
     }
     //TODO:登陆后可进行的操作
+    switch (indexPath.row) {
+        case MeMenuShoppingCart:
+        {
+            appDelegate.rootController.selectedIndex = 2;
+        }
+            break;
+        case MeMenuMemberInfo:
+        {
+            FunctionListViewController *vc = [[FunctionListViewController alloc] init];
+            vc.menu = MeMenuMemberInfo;
+            vc.title = Localized(@"会员信息");
+            vc.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+            break;
+        case MeMenuAccountInfo:
+        {
+            FunctionListViewController *vc = [[FunctionListViewController alloc] init];
+            vc.menu = MeMenuAccountInfo;
+            vc.title = Localized(@"账户信息");
+            vc.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+            break;
+        case MeMenuCollectGoods:
+        {
+            
+        }
+            break;
+        case MeMenuEmail:
+        {
+            FunctionListViewController *vc = [[FunctionListViewController alloc] init];
+            vc.menu = MeMenuEmail;
+            vc.title = Localized(@"我的信件");
+            vc.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+            break;
+        case MeMenuMendian:
+        {
+            
+        }
+            break;
+        case MeMenuHelpCenter:
+        {
+            
+        }
+            break;
+            
+        default:
+            break;
+    }
 }
 
 #pragma mark MeHeadViewDelegate

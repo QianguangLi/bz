@@ -12,4 +12,6 @@
 
 - (void)setContentWithDict:(NSDictionary *)dict;
 
+- (void)setContentWithText:(NSString *)text;
+
 @end

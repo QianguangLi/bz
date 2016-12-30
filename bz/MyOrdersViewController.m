@@ -8,6 +8,7 @@
 
 #import "MyOrdersViewController.h"
 #import "OrderListViewController.h"
+#import "YLButton.h"
 
 @interface MyOrdersViewController () <UIPageViewControllerDelegate, UIPageViewControllerDataSource>
 
@@ -64,15 +65,13 @@
   ];
     //创建二级导航按钮
     for (int i = 0; i < contentArray.count; i++) {
-        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+        YLButton *btn = [YLButton buttonWithType:UIButtonTypeCustom];
         btn.frame = CGRectMake(kScreenWidth/contentArray.count * i, 0, kScreenWidth/contentArray.count, _secondNavigation.frame.size.height);
         [btn setTitle:contentArray[i][@"title"] forState:UIControlStateNormal];
-        //设置tag为订单类型
+        btn.titleLabel.font = [UIFont systemFontOfSize:15];
         [btn setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
-        UIImage *selectedImage = [[UIImage imageNamed:@"more-red"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-        [btn setImage:selectedImage forState:UIControlStateSelected];
-//        [btn setImageEdgeInsets:UIEdgeInsetsMake(0, 65, 0, 0)];
-//        [btn setTitleEdgeInsets:UIEdgeInsetsMake(0, -10, 0, 0)];
+        [btn setRightImage:[UIImage imageNamed:@"more-red"] forState:UIControlStateSelected];
+        //设置tag为订单类型
         btn.tag = [contentArray[i][@"orderType"] integerValue] + 100;
         [btn setTitleColor:kPinkColor forState:UIControlStateSelected];
         [btn addTarget:self action:@selector(secondNavigationAction:) forControlEvents:UIControlEventTouchUpInside];

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
-@class BaseTabBarController;
+#import "BaseTabBarController.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

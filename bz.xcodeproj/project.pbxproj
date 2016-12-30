@@ -54,6 +54,12 @@
 		6172891B1E110BCD0037DB40 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 617289191E110BCD0037DB40 /* LoginViewController.m */; };
 		6172891C1E110BCD0037DB40 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6172891A1E110BCD0037DB40 /* LoginViewController.xib */; };
 		6172891F1E1118670037DB40 /* UIView+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6172891E1E1118670037DB40 /* UIView+Addition.m */; };
+		617F79741E15FEF800E139CF /* YLButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 617F79731E15FEF800E139CF /* YLButton.m */; };
+		617F79781E1620FF00E139CF /* FunctionListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 617F79761E1620FF00E139CF /* FunctionListViewController.m */; };
+		617F79791E1620FF00E139CF /* FunctionListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 617F79771E1620FF00E139CF /* FunctionListViewController.xib */; };
+		617F797C1E1633F600E139CF /* AddressPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 617F797B1E1633F600E139CF /* AddressPickerView.m */; };
+		617F797F1E1651C700E139CF /* BZStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 617F797E1E1651C700E139CF /* BZStoryboard.storyboard */; };
+		617F79821E16544800E139CF /* UpdateMemberInfoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 617F79811E16544800E139CF /* UpdateMemberInfoTableViewController.m */; };
 		61A09EC71E1386E200C58519 /* DataBaseService.m in Sources */ = {isa = PBXBuildFile; fileRef = 61A09EC61E1386E200C58519 /* DataBaseService.m */; };
 		61A09ECA1E138D8D00C58519 /* Address.m in Sources */ = {isa = PBXBuildFile; fileRef = 61A09EC91E138D8D00C58519 /* Address.m */; };
 		61A09ECD1E13AFFC00C58519 /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 61A09ECC1E13AFFC00C58519 /* UserModel.m */; };
@@ -167,6 +173,16 @@
 		6172891A1E110BCD0037DB40 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		6172891D1E1118670037DB40 /* UIView+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Addition.h"; sourceTree = "<group>"; };
 		6172891E1E1118670037DB40 /* UIView+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Addition.m"; sourceTree = "<group>"; };
+		617F79721E15FEF800E139CF /* YLButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLButton.h; sourceTree = "<group>"; };
+		617F79731E15FEF800E139CF /* YLButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLButton.m; sourceTree = "<group>"; };
+		617F79751E1620FF00E139CF /* FunctionListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FunctionListViewController.h; sourceTree = "<group>"; };
+		617F79761E1620FF00E139CF /* FunctionListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FunctionListViewController.m; sourceTree = "<group>"; };
+		617F79771E1620FF00E139CF /* FunctionListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FunctionListViewController.xib; sourceTree = "<group>"; };
+		617F797A1E1633F600E139CF /* AddressPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressPickerView.h; sourceTree = "<group>"; };
+		617F797B1E1633F600E139CF /* AddressPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressPickerView.m; sourceTree = "<group>"; };
+		617F797E1E1651C700E139CF /* BZStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BZStoryboard.storyboard; sourceTree = "<group>"; };
+		617F79801E16544800E139CF /* UpdateMemberInfoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdateMemberInfoTableViewController.h; sourceTree = "<group>"; };
+		617F79811E16544800E139CF /* UpdateMemberInfoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdateMemberInfoTableViewController.m; sourceTree = "<group>"; };
 		61A09EC51E1386E200C58519 /* DataBaseService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataBaseService.h; sourceTree = "<group>"; };
 		61A09EC61E1386E200C58519 /* DataBaseService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataBaseService.m; sourceTree = "<group>"; };
 		61A09EC81E138D8D00C58519 /* Address.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Address.h; sourceTree = "<group>"; };
@@ -324,6 +340,7 @@
 		617288A91E10BCA40037DB40 /* bz */ = {
 			isa = PBXGroup;
 			children = (
+				617F79701E15FEB900E139CF /* Assistent */,
 				61A09EC41E1386B900C58519 /* DateBase */,
 				1154B99B1E113C0400C8459D /* NetWorkingManager */,
 				6172890E1E10F8580037DB40 /* model */,
@@ -336,6 +353,7 @@
 				617288E01E10BDC90037DB40 /* BaseController */,
 				617288AD1E10BCA40037DB40 /* AppDelegate.h */,
 				617288AE1E10BCA40037DB40 /* AppDelegate.mm */,
+				617F797E1E1651C700E139CF /* BZStoryboard.storyboard */,
 				617288B91E10BCA40037DB40 /* Assets.xcassets */,
 				617288BB1E10BCA40037DB40 /* LaunchScreen.storyboard */,
 				617288BE1E10BCA40037DB40 /* Info.plist */,
@@ -416,6 +434,7 @@
 		617288EC1E10BEB00037DB40 /* Me */ = {
 			isa = PBXGroup;
 			children = (
+				617F797D1E16511400E139CF /* MemberInfo */,
 				615FBF231E14B5DC00F50C0D /* Orders */,
 				616A09AF1E128AAB00FCF886 /* Cells */,
 				616A09AB1E12539800FCF886 /* Views */,
@@ -428,6 +447,9 @@
 				616A09A61E11FF1600FCF886 /* RegistViewController.h */,
 				616A09A71E11FF1600FCF886 /* RegistViewController.m */,
 				616A09A81E11FF1600FCF886 /* RegistViewController.xib */,
+				617F79751E1620FF00E139CF /* FunctionListViewController.h */,
+				617F79761E1620FF00E139CF /* FunctionListViewController.m */,
+				617F79771E1620FF00E139CF /* FunctionListViewController.xib */,
 			);
 			name = Me;
 			sourceTree = "<group>";
@@ -470,6 +492,34 @@
 				61F437F21E153A5000762CAF /* ProductModel.m */,
 			);
 			name = model;
+			sourceTree = "<group>";
+		};
+		617F79701E15FEB900E139CF /* Assistent */ = {
+			isa = PBXGroup;
+			children = (
+				617F79711E15FEF800E139CF /* YLButton */,
+				617F797A1E1633F600E139CF /* AddressPickerView.h */,
+				617F797B1E1633F600E139CF /* AddressPickerView.m */,
+			);
+			name = Assistent;
+			sourceTree = "<group>";
+		};
+		617F79711E15FEF800E139CF /* YLButton */ = {
+			isa = PBXGroup;
+			children = (
+				617F79721E15FEF800E139CF /* YLButton.h */,
+				617F79731E15FEF800E139CF /* YLButton.m */,
+			);
+			path = YLButton;
+			sourceTree = "<group>";
+		};
+		617F797D1E16511400E139CF /* MemberInfo */ = {
+			isa = PBXGroup;
+			children = (
+				617F79801E16544800E139CF /* UpdateMemberInfoTableViewController.h */,
+				617F79811E16544800E139CF /* UpdateMemberInfoTableViewController.m */,
+			);
+			name = MemberInfo;
 			sourceTree = "<group>";
 		};
 		61A09EC41E1386B900C58519 /* DateBase */ = {
@@ -628,6 +678,7 @@
 				615FBF421E14E9AC00F50C0D /* RefreshViewController.xib in Resources */,
 				615FBF3D1E14CB2200F50C0D /* OrderListViewController.xib in Resources */,
 				617288F11E10BEF30037DB40 /* FirstPageViewController.xib in Resources */,
+				617F79791E1620FF00E139CF /* FunctionListViewController.xib in Resources */,
 				617288FB1E10BF110037DB40 /* MeViewController.xib in Resources */,
 				615FBF5D1E1506AB00F50C0D /* OrderListBottomCell.xib in Resources */,
 				617288BD1E10BCA40037DB40 /* LaunchScreen.storyboard in Resources */,
@@ -638,6 +689,7 @@
 				61A09ED81E13EA2C00C58519 /* GoodsCell.xib in Resources */,
 				616A09B41E128AC600FCF886 /* MeCell.xib in Resources */,
 				615FBF281E14B60500F50C0D /* MyOrdersViewController.xib in Resources */,
+				617F797F1E1651C700E139CF /* BZStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -808,6 +860,7 @@
 				61F437F31E153A5000762CAF /* ProductModel.m in Sources */,
 				617288E31E10BE110037DB40 /* BaseTabBarController.m in Sources */,
 				6172891B1E110BCD0037DB40 /* LoginViewController.m in Sources */,
+				617F79741E15FEF800E139CF /* YLButton.m in Sources */,
 				1154B9A41E11736A00C8459D /* NSObject+Addition.m in Sources */,
 				617288E91E10BE470037DB40 /* BaseViewController.m in Sources */,
 				617289141E1100B90037DB40 /* Utility.m in Sources */,
@@ -820,6 +873,7 @@
 				615FBF5C1E1506AB00F50C0D /* OrderListBottomCell.m in Sources */,
 				6172891F1E1118670037DB40 /* UIView+Addition.m in Sources */,
 				617288AC1E10BCA40037DB40 /* main.m in Sources */,
+				617F797C1E1633F600E139CF /* AddressPickerView.m in Sources */,
 				615FBF271E14B60500F50C0D /* MyOrdersViewController.m in Sources */,
 				615FBF571E15066200F50C0D /* OrderListTopCell.m in Sources */,
 				6172890D1E10E3860037DB40 /* LocationService.m in Sources */,
@@ -830,7 +884,9 @@
 				616A09A91E11FF1600FCF886 /* RegistViewController.m in Sources */,
 				61A09ED11E13D86200C58519 /* GoodsViewController.m in Sources */,
 				615FBF411E14E9AC00F50C0D /* RefreshViewController.m in Sources */,
+				617F79821E16544800E139CF /* UpdateMemberInfoTableViewController.m in Sources */,
 				617288B81E10BCA40037DB40 /* bz.xcdatamodeld in Sources */,
+				617F79781E1620FF00E139CF /* FunctionListViewController.m in Sources */,
 				616A09AE1E1253F800FCF886 /* MeHeadView.m in Sources */,
 				617288E61E10BE360037DB40 /* BaseNavigationController.m in Sources */,
 				617289111E10F8750037DB40 /* UserLocationModel.m in Sources */,

@@ -8,6 +8,7 @@
 
 #import "MeHeadView.h"
 #import "UIImageView+AFNetworking.h"
+#import "UIView+Addition.h"
 //头像宽高
 #define kHeadIconWidth 80.f
 //自身总高度
@@ -43,6 +44,7 @@
     _faceImageView.center = CGPointMake(self.frame.size.width/2.0, backView.frame.size.height/2.0 - 20);
     _faceImageView.image = [UIImage imageNamed:@"member-head"];
     _faceImageView.backgroundColor = [UIColor clearColor];
+    [_faceImageView setCorneRadius:kHeadIconWidth/2];
     [backView addSubview:_faceImageView];
     
     _loginButton = [UIButton buttonWithType:UIButtonTypeCustom];

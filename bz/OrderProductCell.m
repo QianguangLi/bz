@@ -25,22 +25,22 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
-    if (IS_IPHONE_5) {
-        _pName.font = [UIFont systemFontOfSize:15];
-        _price.font = [UIFont systemFontOfSize:15];
-        _property.font = [UIFont systemFontOfSize:15];
-        _quantity.font = [UIFont systemFontOfSize:11];
-    } else if (IS_IPHONE_6) {
-        _pName.font = [UIFont systemFontOfSize:16];
-        _price.font = [UIFont systemFontOfSize:16];
-        _property.font = [UIFont systemFontOfSize:16];
-        _quantity.font = [UIFont systemFontOfSize:12];
-    } else if (IS_IPHONE_6P) {
-        _pName.font = [UIFont systemFontOfSize:17];
-        _price.font = [UIFont systemFontOfSize:17];
-        _property.font = [UIFont systemFontOfSize:17];
-        _quantity.font = [UIFont systemFontOfSize:13];
-    }
+//    if (IS_IPHONE_5) {
+//        _pName.font = [UIFont systemFontOfSize:15];
+//        _price.font = [UIFont systemFontOfSize:15];
+//        _property.font = [UIFont systemFontOfSize:15];
+//        _quantity.font = [UIFont systemFontOfSize:11];
+//    } else if (IS_IPHONE_6) {
+//        _pName.font = [UIFont systemFontOfSize:16];
+//        _price.font = [UIFont systemFontOfSize:16];
+//        _property.font = [UIFont systemFontOfSize:16];
+//        _quantity.font = [UIFont systemFontOfSize:12];
+//    } else if (IS_IPHONE_6P) {
+//        _pName.font = [UIFont systemFontOfSize:17];
+//        _price.font = [UIFont systemFontOfSize:17];
+//        _property.font = [UIFont systemFontOfSize:17];
+//        _quantity.font = [UIFont systemFontOfSize:13];
+//    }
 }
 
 - (void)setContentWithProductModel:(ProductModel *)productModel
@@ -49,7 +49,7 @@
     [_pImage setImageWithURL:[NSURL URLWithString:productModel.pImgUrl] placeholderImage:[UIImage imageNamed:@"productpic"]];
     _pName.text = productModel.pName;
     _property.text = productModel.propertyd;
-    _price.text = [NSString stringWithFormat:@"%.2f", productModel.price];
+    _price.text = [NSString stringWithFormat:@"￥%.2f", productModel.price];
     _quantity.text = [NSString stringWithFormat:@"x%lu", (long)productModel.quantity];
     
 }

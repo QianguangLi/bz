@@ -27,6 +27,12 @@
     _subTitleLabel.text = dict[@"subTitle"];
 }
 
+- (void)setContentWithText:(NSString *)text
+{
+    _titleLabel.text = text;
+    _subTitleLabel.text = @"";
+}
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 

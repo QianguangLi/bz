@@ -110,11 +110,11 @@
     OrderModel *orderModel = self.dataArray[indexPath.section];
     NSArray *products = orderModel.products;
     if (indexPath.row == 0) {
-        return 44;
+        return 35;
     } else if (indexPath.row == products.count + 1) {
         return 49;
     } else {
-        return kScreenWidth/3.0;
+        return 91;//kScreenWidth/3.5
     }
 }
 

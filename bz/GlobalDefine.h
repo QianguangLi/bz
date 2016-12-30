@@ -10,7 +10,7 @@
 #define GlobalDefine_h
 #import <Foundation/Foundation.h>
 
-#define appDelegate ([UIApplication sharedApplication].delegate)
+#define appDelegate ((AppDelegate *)[UIApplication sharedApplication].delegate)
 
 #define IS_IOS_7 [[[UIDevice currentDevice] systemVersion] intValue] >= 7?YES:NO
 
@@ -95,6 +95,17 @@ typedef NS_ENUM(NSInteger, OrderType) {
     OrderTypeInvalid,//已失效
     OrderTypeSuccess,//交易成功
 };
+//我页面功能菜单
+typedef NS_ENUM(NSInteger, MeMenu) {
+    MeMenuShoppingCart = 0,//我的购物车
+    MeMenuMemberInfo,//会员信息
+    MeMenuAccountInfo,//账户信息
+    MeMenuCollectGoods,//收藏商品
+    MeMenuEmail,//我的信件
+    MeMenuMendian,//我的门店
+    MeMenuHelpCenter,//帮助中心
+};
+
 //网络状态码
 typedef NS_ENUM(NSInteger, NetStatus) {
     NetStatusSuccess = 00000,//请求成功

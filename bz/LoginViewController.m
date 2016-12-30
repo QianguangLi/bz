@@ -12,7 +12,10 @@
 #import "RegistViewController.h"
 
 @interface LoginViewController ()
-
+{
+    UIBarButtonItem *_registItem;
+    NSURLSessionTask *_task;
+}
 @property (weak, nonatomic) IBOutlet UITextField *userNameTF;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTF;
 
@@ -44,12 +47,13 @@
     UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithTitle:Localized(@"取消") style:UIBarButtonItemStylePlain target:self action:@selector(cancelAction:)];
     self.navigationItem.leftBarButtonItem = leftItem;
     
-    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithTitle:Localized(@"注册") style:UIBarButtonItemStylePlain target:self action:@selector(registAction:)];
-    self.navigationItem.rightBarButtonItem = rightItem;
+    _registItem = [[UIBarButtonItem alloc] initWithTitle:Localized(@"注册") style:UIBarButtonItemStylePlain target:self action:@selector(registAction:)];
+    self.navigationItem.rightBarButtonItem = _registItem;
 }
 
 - (void)cancelAction:(UIBarButtonItem *)item
 {
+    [_task cancel];
     [self dismissViewControllerAnimated:YES completion:^{
         //code
     }];
@@ -72,8 +76,11 @@
         [Utility showString:@"密码不能为空" onView:self.view];
         return;
     }
+    //登录过程中关闭注册
+    _registItem.enabled = NO;
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:_userNameTF.text, @"memberid", [_passwordTF.text md5], @"password", nil];
-    NSURLSessionTask *task = [NetService POST:kUserLoginUrl parameters:dict complete:^(id responseObject, NSError *error) {
+    _task = [NetService POST:kUserLoginUrl parameters:dict complete:^(id responseObject, NSError *error) {
+        _registItem.enabled = YES;
         [Utility hideHUDForView:self.view];
         if (error) {
             NSLog(@"failure:%@", error);
@@ -98,7 +105,7 @@
             [Utility showString:responseObject[kErrMsg] onView:self.view];
         }
     }];
-    [Utility showHUDAddedTo:self.view forTask:task];
+    [Utility showHUDAddedTo:self.view forTask:_task];
     
 }
 

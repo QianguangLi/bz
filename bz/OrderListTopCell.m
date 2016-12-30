@@ -25,7 +25,7 @@
 
 - (void)setContentWithOrderModel:(OrderModel *)orderModel
 {
-    _orderid.text = orderModel.orderId;
+    _orderid.text = orderModel.storename;
     switch (orderModel.payStatus) {
         case OrderTypeWaitPay:
         {

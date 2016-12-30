@@ -14,7 +14,6 @@
 
 #import "IQKeyboardManager.h"
 
-#import "BaseTabBarController.h"
 #import "BaseNavigationController.h"
 #import "FirstPageViewController.h"
 #import "GoodsCategoryViewController.h"

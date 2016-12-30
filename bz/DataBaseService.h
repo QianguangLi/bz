@@ -25,5 +25,5 @@
 //查询所有地址信息
 - (void)selectAll;
 //根据areaPid查询其下面的所有地址
-- (NSArray<Address *> *)getAddressWithAreaPid:(NSString *)areaPid;
+- (NSArray<Address *> *)getAddressWithAreaPid:(NSString *)areaPid withLevel:(int)level;
 @end

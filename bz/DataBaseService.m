@@ -145,13 +145,18 @@ static DataBaseService *sharedService = nil;
     [self closeDataBase];
 }
 
-- (NSArray<Address *> *)getAddressWithAreaPid:(NSString *)areaPid
+- (NSArray<Address *> *)getAddressWithAreaPid:(NSString *)areaPid withLevel:(int)level
 {
     if (![self openDataBase]) {
         return nil;
     }
     //410200 开封
-    FMResultSet *set = [_db executeQuery:@"select * from address where areapid = ?", areaPid];
+    FMResultSet *set = nil;
+    if (level == 0) {
+        set = [_db executeQuery:@"select * from address where level = ?", [NSNumber numberWithInt:level]];
+    } else
+        set = [_db executeQuery:@"select * from address where areaPid = ? and level = ?", areaPid, [NSNumber numberWithInt:level]];
+    
     NSMutableArray *addressArray = [NSMutableArray array];
     while ([set next]) {
         Address *address = [[Address alloc] init];

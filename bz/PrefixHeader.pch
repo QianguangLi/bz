@@ -15,5 +15,6 @@
 #import "Utility.h"
 #import "GlobalData.h"
 #import "NSObject+Addition.h"
+#import "AppDelegate.h"
 
 #endif /* PrefixHeader_pch */

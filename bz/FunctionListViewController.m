@@ -1,0 +1,110 @@
+//
+//  FunctionListViewController.m
+//  bz
+//
+//  Created by qianchuang on 2016/12/30.
+//  Copyright © 2016年 ing. All rights reserved.
+//
+
+#import "FunctionListViewController.h"
+#import "MeCell.h"
+#import "UpdateMemberInfoTableViewController.h"
+
+@interface FunctionListViewController () <UITableViewDelegate, UITableViewDataSource>
+@property (weak, nonatomic) IBOutlet UITableView *functionTableView;
+@property (strong, nonatomic) NSArray *functionArray;
+@end
+
+@implementation FunctionListViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view from its nib.
+    [self initFunctionArray];
+    _functionTableView.contentInset = UIEdgeInsetsMake(5, 0, 0, 0);
+    [_functionTableView registerNib:[UINib nibWithNibName:@"MeCell" bundle:nil] forCellReuseIdentifier:@"MeCell"];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:NO animated:NO];
+}
+
+- (void)initFunctionArray
+{
+    switch (_menu) {
+        case MeMenuMemberInfo:
+        {
+            _functionArray = [NSArray arrayWithObjects:Localized(@"会员信息修改"), Localized(@"会员收货地址"), Localized(@"会员账号安全"), nil];
+        }
+            break;
+        case MeMenuAccountInfo:
+        {
+            _functionArray = [NSArray arrayWithObjects:Localized(@"账户明细"), Localized(@"电子钱包充值"), Localized(@"充值浏览"), Localized(@"奖金提现"), Localized(@"奖金提现浏览"), nil];
+        }
+            break;
+        case MeMenuEmail:
+        {
+            _functionArray = [NSArray arrayWithObjects:Localized(@"写信"), Localized(@"收件箱"), Localized(@"发件箱"), Localized(@"废件箱"), nil];
+        }
+            break;
+            
+        default:
+            break;
+    }
+}
+
+#pragma mark - UITableViewDelegate
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return _functionArray.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    MeCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MeCell" forIndexPath:indexPath];
+    [cell setContentWithText:_functionArray[indexPath.row]];
+    return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 60.f;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (_menu == MeMenuMemberInfo) {
+        switch (indexPath.row) {
+            case 0:
+            {
+                UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"BZStoryboard" bundle:nil];
+                 UpdateMemberInfoTableViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"UpdateMemberInfoTableViewController"];
+                [self.navigationController pushViewController:vc animated:YES];
+            }
+                break;
+                
+            default:
+                break;
+        }
+    }
+}
+
+#pragma mark -
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
+
+@end
