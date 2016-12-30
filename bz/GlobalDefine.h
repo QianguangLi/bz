@@ -79,6 +79,8 @@
 #define kGetMemberInfoUrl @"api/User/GetMemberInfo"
 //获取我的订单url
 #define kGetMyOrders @"api/User/MyOrders"
+//修改会员资料
+#define kUpdateMember @"api/User/ModifyMember"
 //用户权限
 typedef NS_ENUM(NSInteger, UserLevel) {
     UserLevelMember = 0,//会员

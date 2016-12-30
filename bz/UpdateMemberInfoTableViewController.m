@@ -7,20 +7,46 @@
 //
 
 #import "UpdateMemberInfoTableViewController.h"
+#import "AddressPickerView.h"
+#import "NetService.h"
+#import "UserModel.h"
 
-@interface UpdateMemberInfoTableViewController ()
+@interface UpdateMemberInfoTableViewController () <AddressPickerViewDelegate>
 {
     UIButton *_updateButton;
+    NSURLSessionTask *_task;
+    NSURLSessionTask *_updateTask;
+    NSString *_areaid;//国家地区
 }
+
+@property (weak, nonatomic) IBOutlet UITextField *memberName;//会员姓名
+@property (weak, nonatomic) IBOutlet UITextField *phoneNumber;//手机号码
+@property (weak, nonatomic) IBOutlet UITextField *email;//邮箱
+@property (weak, nonatomic) IBOutlet UITextField *idCard;//身份证
+@property (weak, nonatomic) IBOutlet AddressPickerView *areaCode;//国家区域
+@property (weak, nonatomic) IBOutlet UITextField *detailAddress;//详细地址
+@property (weak, nonatomic) IBOutlet UITextField *zipCode;//邮编
+@property (weak, nonatomic) IBOutlet UITextField *bankName;//开户行名称
+@property (weak, nonatomic) IBOutlet UITextField *accountName;//开户名
+@property (weak, nonatomic) IBOutlet UITextField *bankAccount;//开户行账号
+
 @end
 
 @implementation UpdateMemberInfoTableViewController
+
+- (void)dealloc
+{
+    [_task cancel];
+    [_updateTask cancel];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = Localized(@"会员信息修改");
     self.view.backgroundColor = QGCOLOR(237, 238, 239, 1);
+    _areaCode.delegate = self;
     
+    [self getMemberInfo];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -39,11 +65,82 @@
     }
 }
 
-- (void)updateMemberInfo:(UIButton *)btn
+- (void)getMemberInfo
 {
-    
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:kLoginToken, @"Token", nil];
+    __block UpdateMemberInfoTableViewController *weakSelf = self;
+    _task = [NetService GET:kGetMemberInfoUrl parameters:dict complete:^(id responseObject, NSError *error) {
+        [Utility hideHUDForView:self.view];
+        if (error) {
+            NSLog(@"failure:%@", error);
+            return ;
+        }
+        NSLog(@"%@", responseObject);
+        if ([responseObject[kStatusCode] integerValue] == NetStatusSuccess) {
+            NSDictionary *dataDict = responseObject[kResponseData];
+            //            UserModel *userModel = [[UserModel alloc] initWithDict:dataDict];
+            UserModel *userModel = [[UserModel alloc] initWithDictionary:dataDict error:nil];
+            [weakSelf reloadData:userModel With:weakSelf];
+        } else {
+            [Utility showString:responseObject[kErrMsg] onView:self.view];
+        }
+    }];
+    [Utility showHUDAddedTo:self.view forTask:_task];
 }
 
+- (void)reloadData:(UserModel *)userModel With:(UpdateMemberInfoTableViewController * __weak)weakSelf
+{
+    weakSelf.memberName.text = userModel.loginName;
+    weakSelf.phoneNumber.text = userModel.mobile;
+    weakSelf.email.text = userModel.email;
+    weakSelf.idCard.text = userModel.idCard;
+    weakSelf.detailAddress.text = userModel.address;
+    weakSelf.zipCode.text = userModel.zipCode;
+    weakSelf.bankName.text = userModel.bankName;
+    weakSelf.accountName.text = userModel.accountName;
+    weakSelf.bankAccount.text = userModel.bankAccount;
+}
+
+- (void)updateMemberInfo:(UIButton *)btn
+{
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                 kLoginToken, @"Token",
+                                 _memberName.text, @"Membername",
+                                 _phoneNumber.text, @"Memberphone",
+                                 _email.text, @"Memberemail",
+                                 _idCard.text, @"Memberidcard",
+                                 _detailAddress.text, @"Memberaddress",
+                                 _zipCode.text, @"Memberzip",
+                                 _bankName.text, @"BankName",
+                                 _accountName.text, @"BankAccount",
+                                 _bankAccount.text, @"AccountName",
+                                 _areaid, @"Areacode",
+                                 nil];
+    NSLog(@"%@", dict);
+    _updateTask = [NetService POST:kUpdateMember parameters:dict complete:^(id responseObject, NSError *error) {
+        [Utility hideHUDForView:self.view];
+        if (error) {
+            NSLog(@"failure:%@", error);
+            return ;
+        }
+        NSLog(@"%@", responseObject);
+        if ([responseObject[kStatusCode] integerValue] == NetStatusSuccess) {
+            NSDictionary *dataDict = responseObject[kResponseData];
+        } else {
+            [Utility showString:responseObject[kErrMsg] onView:self.view];
+        }
+    }];
+    [Utility showHUDAddedTo:self.view forTask:_updateTask];
+}
+
+#pragma mark - AddressPickerViewDelegate
+- (void)addressSelectedCountry:(NSString *)countryid province:(NSString *)provinceid city:(NSString *)cityid county:(NSString *)countyid
+{
+    NSLog(@"%@,%@,%@,%@", countryid, provinceid, cityid, countyid);
+    _areaid = [NSString stringWithFormat:@"%@,%@,%@,%@", countryid, provinceid, cityid, countyid];
+}
+
+#pragma mark -
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

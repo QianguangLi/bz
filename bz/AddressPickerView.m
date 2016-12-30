@@ -8,6 +8,8 @@
 
 #import "AddressPickerView.h"
 #import "DataBaseService.h"
+#import "IQKeyboardManager.h"
+
 //输入框高度
 #define kTextFieldHeight 30.f
 //输入框间隔
@@ -19,7 +21,7 @@
 }
 @property (strong, nonatomic) UITextField *currentTextField;
 
-@property (strong, nonatomic) NSArray<Address*> *addressArray;
+@property (strong, nonatomic) NSMutableArray<Address*> *addressArray;
 
 @property (copy, nonnull) NSString *countryid;
 @property (copy, nonnull) NSString *provinceid;
@@ -83,7 +85,10 @@
     pickerView.dataSource = self;
     
     _currentTextField = textField;
-    _addressArray = [self loadAddress];
+    Address *address = [[Address alloc] init];
+    address.areaName = Localized(@"请选择");
+    _addressArray = [NSMutableArray arrayWithObject:address];
+    [_addressArray addObjectsFromArray:[self loadAddress]];
     _currentTextField.inputView = pickerView;
     [pickerView selectRow:0 inComponent:0 animated:YES];
 }
@@ -109,7 +114,7 @@
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 {
-    return IS_NULL_ARRAY(_addressArray) ? 1 : _addressArray.count;
+    return _addressArray.count;
 }
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
