@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		1154B99E1E113C3E00C8459D /* NetService.m in Sources */ = {isa = PBXBuildFile; fileRef = 1154B99D1E113C3E00C8459D /* NetService.m */; };
 		1154B9A41E11736A00C8459D /* NSObject+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 1154B9A31E11736A00C8459D /* NSObject+Addition.m */; };
+		115E35831E175258002A9957 /* RightCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 115E35811E175258002A9957 /* RightCell.m */; };
+		115E35841E175258002A9957 /* RightCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 115E35821E175258002A9957 /* RightCell.xib */; };
+		115E35881E1766EE002A9957 /* CollectionSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 115E35861E1766EE002A9957 /* CollectionSectionHeaderView.m */; };
+		115E35891E1766EE002A9957 /* CollectionSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 115E35871E1766EE002A9957 /* CollectionSectionHeaderView.xib */; };
+		115E358D1E17706B002A9957 /* LeftCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 115E358B1E17706B002A9957 /* LeftCell.m */; };
+		115E358E1E17706B002A9957 /* LeftCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 115E358C1E17706B002A9957 /* LeftCell.xib */; };
 		17E122BDA9BAA762D7A46B7F /* libPods-bz.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 63277A970CC28472312B0E2A /* libPods-bz.a */; };
 		615FBF271E14B60500F50C0D /* MyOrdersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 615FBF251E14B60500F50C0D /* MyOrdersViewController.m */; };
 		615FBF281E14B60500F50C0D /* MyOrdersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 615FBF261E14B60500F50C0D /* MyOrdersViewController.xib */; };
@@ -94,6 +100,15 @@
 		1154B99D1E113C3E00C8459D /* NetService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetService.m; sourceTree = "<group>"; };
 		1154B9A21E11736A00C8459D /* NSObject+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Addition.h"; sourceTree = "<group>"; };
 		1154B9A31E11736A00C8459D /* NSObject+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Addition.m"; sourceTree = "<group>"; };
+		115E35801E175258002A9957 /* RightCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RightCell.h; sourceTree = "<group>"; };
+		115E35811E175258002A9957 /* RightCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RightCell.m; sourceTree = "<group>"; };
+		115E35821E175258002A9957 /* RightCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RightCell.xib; sourceTree = "<group>"; };
+		115E35851E1766EE002A9957 /* CollectionSectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionSectionHeaderView.h; sourceTree = "<group>"; };
+		115E35861E1766EE002A9957 /* CollectionSectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionSectionHeaderView.m; sourceTree = "<group>"; };
+		115E35871E1766EE002A9957 /* CollectionSectionHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollectionSectionHeaderView.xib; sourceTree = "<group>"; };
+		115E358A1E17706B002A9957 /* LeftCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftCell.h; sourceTree = "<group>"; };
+		115E358B1E17706B002A9957 /* LeftCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftCell.m; sourceTree = "<group>"; };
+		115E358C1E17706B002A9957 /* LeftCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LeftCell.xib; sourceTree = "<group>"; };
 		2BBD9FECB363268F3739B789 /* libPods-bzUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-bzUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		54D4FF3445E3FD7D387B5F0E /* Pods-bz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bz.debug.xcconfig"; path = "Pods/Target Support Files/Pods-bz/Pods-bz.debug.xcconfig"; sourceTree = "<group>"; };
 		615FBF241E14B60500F50C0D /* MyOrdersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyOrdersViewController.h; sourceTree = "<group>"; };
@@ -243,6 +258,22 @@
 			name = NetWorkingManager;
 			sourceTree = "<group>";
 		};
+		115E357F1E175211002A9957 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				115E35801E175258002A9957 /* RightCell.h */,
+				115E35811E175258002A9957 /* RightCell.m */,
+				115E35821E175258002A9957 /* RightCell.xib */,
+				115E35851E1766EE002A9957 /* CollectionSectionHeaderView.h */,
+				115E35861E1766EE002A9957 /* CollectionSectionHeaderView.m */,
+				115E35871E1766EE002A9957 /* CollectionSectionHeaderView.xib */,
+				115E358A1E17706B002A9957 /* LeftCell.h */,
+				115E358B1E17706B002A9957 /* LeftCell.m */,
+				115E358C1E17706B002A9957 /* LeftCell.xib */,
+			);
+			name = Cell;
+			sourceTree = "<group>";
+		};
 		21DECBBC2E154760A3032807 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -273,6 +304,7 @@
 		615FBF331E14BEDD00F50C0D /* GoodsCategory */ = {
 			isa = PBXGroup;
 			children = (
+				115E357F1E175211002A9957 /* Cell */,
 				615FBF341E14BF0400F50C0D /* GoodsCategoryViewController.h */,
 				615FBF351E14BF0400F50C0D /* GoodsCategoryViewController.m */,
 				615FBF361E14BF0400F50C0D /* GoodsCategoryViewController.xib */,
@@ -676,10 +708,13 @@
 				615FBF531E15064400F50C0D /* OrderProductCell.xib in Resources */,
 				617289021E10CBEF0037DB40 /* Localizable.strings in Resources */,
 				615FBF421E14E9AC00F50C0D /* RefreshViewController.xib in Resources */,
+				115E358E1E17706B002A9957 /* LeftCell.xib in Resources */,
+				115E35841E175258002A9957 /* RightCell.xib in Resources */,
 				615FBF3D1E14CB2200F50C0D /* OrderListViewController.xib in Resources */,
 				617288F11E10BEF30037DB40 /* FirstPageViewController.xib in Resources */,
 				617F79791E1620FF00E139CF /* FunctionListViewController.xib in Resources */,
 				617288FB1E10BF110037DB40 /* MeViewController.xib in Resources */,
+				115E35891E1766EE002A9957 /* CollectionSectionHeaderView.xib in Resources */,
 				615FBF5D1E1506AB00F50C0D /* OrderListBottomCell.xib in Resources */,
 				617288BD1E10BCA40037DB40 /* LaunchScreen.storyboard in Resources */,
 				6172891C1E110BCD0037DB40 /* LoginViewController.xib in Resources */,
@@ -864,6 +899,7 @@
 				1154B9A41E11736A00C8459D /* NSObject+Addition.m in Sources */,
 				617288E91E10BE470037DB40 /* BaseViewController.m in Sources */,
 				617289141E1100B90037DB40 /* Utility.m in Sources */,
+				115E35831E175258002A9957 /* RightCell.m in Sources */,
 				615FBF521E15064400F50C0D /* OrderProductCell.m in Sources */,
 				1154B99E1E113C3E00C8459D /* NetService.m in Sources */,
 				61A09ED71E13EA2C00C58519 /* GoodsCell.m in Sources */,
@@ -882,12 +918,14 @@
 				617288F01E10BEF30037DB40 /* FirstPageViewController.m in Sources */,
 				61A09EC71E1386E200C58519 /* DataBaseService.m in Sources */,
 				616A09A91E11FF1600FCF886 /* RegistViewController.m in Sources */,
+				115E358D1E17706B002A9957 /* LeftCell.m in Sources */,
 				61A09ED11E13D86200C58519 /* GoodsViewController.m in Sources */,
 				615FBF411E14E9AC00F50C0D /* RefreshViewController.m in Sources */,
 				617F79821E16544800E139CF /* UpdateMemberInfoTableViewController.m in Sources */,
 				617288B81E10BCA40037DB40 /* bz.xcdatamodeld in Sources */,
 				617F79781E1620FF00E139CF /* FunctionListViewController.m in Sources */,
 				616A09AE1E1253F800FCF886 /* MeHeadView.m in Sources */,
+				115E35881E1766EE002A9957 /* CollectionSectionHeaderView.m in Sources */,
 				617288E61E10BE360037DB40 /* BaseNavigationController.m in Sources */,
 				617289111E10F8750037DB40 /* UserLocationModel.m in Sources */,
 			);

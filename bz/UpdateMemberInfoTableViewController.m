@@ -125,7 +125,7 @@
         }
         NSLog(@"%@", responseObject);
         if ([responseObject[kStatusCode] integerValue] == NetStatusSuccess) {
-            NSDictionary *dataDict = responseObject[kResponseData];
+//            NSDictionary *dataDict = responseObject[kResponseData];
         } else {
             [Utility showString:responseObject[kErrMsg] onView:self.view];
         }
