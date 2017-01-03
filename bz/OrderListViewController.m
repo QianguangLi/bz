@@ -15,10 +15,18 @@
 #import "OrderListBottomCell.h"
 
 @interface OrderListViewController () <UITableViewDelegate, UITableViewDataSource>
-
+{
+    NSURLSessionTask *_task;
+}
 @end
 
 @implementation OrderListViewController
+
+- (void)dealloc
+{
+    [_task cancel];
+    NSLog(@"dealloc");
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -48,7 +56,7 @@
                                  StringFromNumber(weakSelf.pageSize), kPageSize,
                                  StringFromNumber(_orderType), @"payStatus",
                                  @"", @"orderid", nil];
-    [NetService POST:kGetMyOrders parameters:dict complete:^(id responseObject, NSError *error) {
+    _task = [NetService POST:kGetMyOrders parameters:dict complete:^(id responseObject, NSError *error) {
         [weakSelf stopRefreshing];
         if (error) {
             NSLog(@"failure:%@", error);
@@ -69,7 +77,7 @@
             [weakSelf.mTableView reloadData];
             [weakSelf showTipWithNoData:IS_NULL_ARRAY(weakSelf.dataArray)];
         } else {
-            [Utility showString:responseObject[kErrMsg] onView:self.view];
+            [Utility showString:responseObject[kErrMsg] onView:weakSelf.view];
         }
     }];
     

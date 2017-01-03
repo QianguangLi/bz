@@ -141,8 +141,9 @@
 #pragma mark - 公共方法
 - (void)endRefreshing
 {
+    __weak MJRefreshHeader *weakSelf = self;
     dispatch_async(dispatch_get_main_queue(), ^{
-        self.state = MJRefreshStateIdle;
+        weakSelf.state = MJRefreshStateIdle;
     });
 }
 

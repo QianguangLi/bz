@@ -69,6 +69,8 @@
 #define kLocateUserSuccessNotification @"locate_user_success_notification"
 //登陆成功后的通知
 #define kLoginSuccessNotification @"login_success_notification"
+//添加或更新收货地址成功通知
+#define kAddOrUpdateShoppingAddressSuccess @"add_or_update_shopping_address_success"
 
 #define kBaseUrl @"http://103.48.169.52/bzapi"
 //登录URL
@@ -79,8 +81,16 @@
 #define kGetMemberInfoUrl @"api/User/GetMemberInfo"
 //获取我的订单url
 #define kGetMyOrders @"api/User/MyOrders"
-//修改会员资料
+//修改会员资料url
 #define kUpdateMember @"api/User/ModifyMember"
+//获取收货地址url
+#define kGetShoppingAddressUrl @"api/User/GetConsigneeAddress"
+//添加或修改收货地址
+#define kAddOrUpdateShoppingAddressUrl @"api/User/ManageConsigneeAddress"
+//根据id获取收货地址
+#define kGetAddressByIdUrl @"api/User/GetConAddressById"
+//设置默认或者删除 收货地址url
+#define kSetDefOrDelUrl @"api/User/SetDefAddrOrDel"
 //用户权限
 typedef NS_ENUM(NSInteger, UserLevel) {
     UserLevelMember = 0,//会员

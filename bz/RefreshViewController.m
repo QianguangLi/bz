@@ -44,7 +44,7 @@
     [self setRefreshControl];
 }
 
--(void)startHeardRefresh
+- (void)startHeardRefresh
 {
     [self.mTableView.mj_header beginRefreshing];
 }
@@ -55,7 +55,7 @@
     if (_isRequireRefreshHeader) {
         __weak RefreshViewController *vc = self;
         self.mTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-            [self showTipWithNoData:NO];
+            [vc showTipWithNoData:NO];
             vc.pageIndex = 0;
             //            [vc.dataArray removeAllObjects];
             //            [vc.mTableView reloadData];
@@ -72,7 +72,7 @@
                 [vc.mTableView.mj_footer endRefreshingWithNoMoreData];
                 return;
             }
-            [self showTipWithNoData:NO];
+            [vc showTipWithNoData:NO];
             vc.pageIndex++;
             [vc requestDataListPullDown:NO withWeakSelf:vc];
         }];
@@ -86,17 +86,19 @@
 
 - (void)stopRefreshing
 {
+    __weak RefreshViewController *weakSelf = self;
     if (_isRequireRefreshHeader) {
-        [self.mTableView.mj_header endRefreshing];
+        [weakSelf.mTableView.mj_header endRefreshing];
     }
     if (_isRequireRefreshFooter) {
-        [self.mTableView.mj_footer endRefreshing];
+        [weakSelf.mTableView.mj_footer endRefreshing];
     }
 }
 
 - (void)showTipWithNoData:(BOOL)show
 {
-    _tipView.hidden = !show;
+    __weak RefreshViewController *weakSelf = self;
+    weakSelf.tipView.hidden = !show;
 }
 
 - (void)didReceiveMemoryWarning {

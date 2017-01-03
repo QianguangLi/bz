@@ -11,7 +11,7 @@
 #import "NetService.h"
 #import "UserModel.h"
 
-@interface UpdateMemberInfoTableViewController () <AddressPickerViewDelegate>
+@interface UpdateMemberInfoTableViewController () <AddressPickerViewDelegate, UIAlertViewDelegate>
 {
     UIButton *_updateButton;
     NSURLSessionTask *_task;
@@ -99,6 +99,8 @@
     weakSelf.bankName.text = userModel.bankName;
     weakSelf.accountName.text = userModel.accountName;
     weakSelf.bankAccount.text = userModel.bankAccount;
+    
+    [weakSelf.areaCode setDefaultAddressWithAreaIDString:userModel.addrcode];
 }
 
 - (void)updateMemberInfo:(UIButton *)btn
@@ -112,11 +114,12 @@
                                  _detailAddress.text, @"Memberaddress",
                                  _zipCode.text, @"Memberzip",
                                  _bankName.text, @"BankName",
-                                 _accountName.text, @"BankAccount",
-                                 _bankAccount.text, @"AccountName",
+                                 _accountName.text, @"AccountName",
+                                 _bankAccount.text, @"BankAccount",
                                  _areaid, @"Areacode",
                                  nil];
     NSLog(@"%@", dict);
+    __weak UpdateMemberInfoTableViewController *weakSelf = self;
     _updateTask = [NetService POST:kUpdateMember parameters:dict complete:^(id responseObject, NSError *error) {
         [Utility hideHUDForView:self.view];
         if (error) {
@@ -126,11 +129,13 @@
         NSLog(@"%@", responseObject);
         if ([responseObject[kStatusCode] integerValue] == NetStatusSuccess) {
 //            NSDictionary *dataDict = responseObject[kResponseData];
+            UIAlertView *av = [[UIAlertView alloc] initWithTitle:Localized(@"提示") message:Localized(@"信息修改成功") delegate:self cancelButtonTitle:Localized(@"确定") otherButtonTitles:nil, nil];
+            [av show];
         } else {
-            [Utility showString:responseObject[kErrMsg] onView:self.view];
+            [Utility showString:responseObject[kErrMsg] onView:weakSelf.view];
         }
     }];
-    [Utility showHUDAddedTo:self.view forTask:_updateTask];
+    [Utility showHUDAddedTo:weakSelf.view forTask:_updateTask];
 }
 
 #pragma mark - AddressPickerViewDelegate
@@ -138,6 +143,12 @@
 {
     NSLog(@"%@,%@,%@,%@", countryid, provinceid, cityid, countyid);
     _areaid = [NSString stringWithFormat:@"%@,%@,%@,%@", countryid, provinceid, cityid, countyid];
+}
+
+#pragma mark - UIAlertViewDelegate
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    
 }
 
 #pragma mark -

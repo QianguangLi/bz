@@ -26,7 +26,7 @@
 //    return self;
 //}
 
-- (void)setBMKAddressComponent:(BMKAddressComponent *)compoent
+- (void)setBMKAddressComponent:(BMKAddressComponent *)compoent andLocation:(CLLocationCoordinate2D)location
 {
     _streetName = compoent.streetName;
     _streetNumber = compoent.streetNumber;
@@ -35,6 +35,9 @@
     _province = compoent.province;
     _country = compoent.country;
     _countryCode = compoent.countryCode;
+    
+    _latitude = location.latitude;
+    _longitude = location.longitude;
 }
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder
@@ -50,6 +53,8 @@
         self.province = [aDecoder decodeObjectForKey:@"province"];
         self.country = [aDecoder decodeObjectForKey:@"country"];
         self.countryCode = [aDecoder decodeObjectForKey:@"countryCode"];
+        self.latitude = [aDecoder decodeDoubleForKey:@"latitude"];
+        self.longitude = [aDecoder decodeDoubleForKey:@"longitude"];
     }
     return self;
 }
@@ -63,6 +68,8 @@
     [aCoder encodeObject:self.province forKey:@"province"];
     [aCoder encodeObject:self.country forKey:@"country"];
     [aCoder encodeObject:self.countryCode forKey:@"countryCode"];
+    [aCoder encodeDouble:self.latitude forKey:@"latitude"];
+    [aCoder encodeDouble:self.longitude forKey:@"longitude"];
 }
 
 @end

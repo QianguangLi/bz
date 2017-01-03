@@ -9,6 +9,7 @@
 #import "FunctionListViewController.h"
 #import "MeCell.h"
 #import "UpdateMemberInfoTableViewController.h"
+#import "ShoppingAddressViewController.h"
 
 @interface FunctionListViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *functionTableView;
@@ -79,8 +80,17 @@
         switch (indexPath.row) {
             case 0:
             {
+                //会员信息修改
                 UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"BZStoryboard" bundle:nil];
                  UpdateMemberInfoTableViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"UpdateMemberInfoTableViewController"];
+                [self.navigationController pushViewController:vc animated:YES];
+            }
+                break;
+            case 1:
+            {
+                //会员收货地址
+                ShoppingAddressViewController *vc = [[ShoppingAddressViewController alloc] init];
+                vc.isRequireRefreshHeader = YES;
                 [self.navigationController pushViewController:vc animated:YES];
             }
                 break;

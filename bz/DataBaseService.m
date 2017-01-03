@@ -170,4 +170,25 @@ static DataBaseService *sharedService = nil;
     [self closeDataBase];
     return addressArray;
 }
+
+- (Address *)getAddressWithAreaID:(NSString *)areaId
+{
+    if (![self openDataBase]) {
+        return nil;
+    }
+    //410200 开封
+    FMResultSet *set = nil;
+    set = [_db executeQuery:@"select * from address where areaId = ?", areaId];
+    
+    Address *address = [[Address alloc] init];
+    while ([set next]) {
+        address.ID =[set intForColumn:@"ID"];
+        address.areaId =  [set stringForColumn:@"areaId"];
+        address.areaName = [set stringForColumn:@"areaName"];
+        address.level =[set intForColumn:@"level"];
+        address.areaPid = [set stringForColumn:@"areaPid"];
+    }
+    [self closeDataBase];
+    return address;
+}
 @end

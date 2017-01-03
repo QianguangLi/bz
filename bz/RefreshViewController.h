@@ -22,6 +22,8 @@
 
 - (void)requestDataListPullDown:(BOOL)pullDown withWeakSelf:(RefreshViewController * __weak)weakSelf;
 
+-(void)startHeardRefresh;
+
 - (void)stopRefreshing;
 
 - (void)showTipWithNoData:(BOOL)show;

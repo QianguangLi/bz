@@ -59,7 +59,8 @@
 #pragma mark - 公共方法
 - (void)endRefreshingWithNoMoreData
 {
-    self.state = MJRefreshStateNoMoreData;
+    __weak MJRefreshFooter *weakSelf = self;
+    weakSelf.state = MJRefreshStateNoMoreData;
 }
 
 - (void)noticeNoMoreData

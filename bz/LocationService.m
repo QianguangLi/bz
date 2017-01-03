@@ -101,7 +101,7 @@ static LocationService *sharedLocationService = nil;
           
           NSLog(@"%@", result.address);
           UserLocationModel *model = [[UserLocationModel alloc] init];
-          [model setBMKAddressComponent:result.addressDetail];
+          [model setBMKAddressComponent:result.addressDetail andLocation:result.location];
           //持久化用户地理位置信息
           [Utility persistentUserLocationInformation:model];
           //发送通知：成功获取地址位置信息

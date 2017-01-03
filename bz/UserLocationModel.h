@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "BMKMapView.h"
 @class BMKAddressComponent;
 /**
  用户地理位置模型
@@ -28,7 +28,11 @@
 /// 国家代码
 @property (nonatomic, strong) NSString* countryCode;
 
+///地址坐标
+@property (assign, nonatomic) CLLocationDegrees latitude;
+@property (assign, nonatomic) CLLocationDegrees longitude;
+
 //- (instancetype)initWithBMKAddressComponent:(BMKAddressComponent *)compoent;
-- (void)setBMKAddressComponent:(BMKAddressComponent *)compoent;
+- (void)setBMKAddressComponent:(BMKAddressComponent *)compoent andLocation:(CLLocationCoordinate2D)location;
 
 @end

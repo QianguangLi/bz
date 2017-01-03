@@ -23,10 +23,16 @@
 
 @property (strong, nonatomic) NSMutableArray<Address*> *addressArray;
 
-@property (copy, nonnull) NSString *countryid;
-@property (copy, nonnull) NSString *provinceid;
-@property (copy, nonnull) NSString *cityid;
-@property (copy, nonnull) NSString *countyid;
+@property (copy, nonatomic) NSString *countryid;
+@property (copy, nonatomic) NSString *provinceid;
+@property (copy, nonatomic) NSString *cityid;
+@property (copy, nonatomic) NSString *countyid;
+
+@property (copy, nonatomic) NSString *countryName;
+@property (copy, nonatomic) NSString *provinceName;
+@property (copy, nonatomic) NSString *cityName;
+@property (copy, nonatomic) NSString *countyName;
+
 
 @end
 
@@ -51,6 +57,20 @@
     self.backgroundColor = [UIColor clearColor];
     self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, 241.5, self.frame.size.height);
     [self initTextFields];
+}
+
+- (void)setDefaultAddressWithAreaIDString:(NSString *)string
+{
+    NSArray *arr = [string componentsSeparatedByString:@","];
+    for (int i = 0; i < arr.count; i++) {
+        Address *address = [service getAddressWithAreaID:arr[i]];
+        UITextField *tf = (UITextField *)[self viewWithTag:100 + i];
+        tf.text = address.areaName ? address.areaName : Localized(@"请选择");
+    }
+    _countryid = arr[0];
+    _provinceid = arr[1];
+    _cityid = arr[2];
+    _countyid = arr[3];
 }
 
 - (void)initTextFields
@@ -134,27 +154,39 @@
     Address *address = [_addressArray objectAtIndex:row];
     if (_currentTextField.tag == 100) {
         _countryid = address.areaId;
+        _countryName = address.areaName;
         _provinceid = nil;
+        _provinceName = nil;
         _cityid = nil;
+        _cityName = nil;
         _countyid = nil;
+        _countyName = nil;
     } else if (_currentTextField.tag == 101) {
         _provinceid = address.areaId;
+        _provinceName = address.areaName;
         _cityid = nil;
+        _cityName = nil;
         _countyid = nil;
+        _countyName = nil;
     } else if (_currentTextField.tag == 102) {
         _cityid = address.areaId;
+        _cityName = address.areaName;
         _countyid = nil;
+        _countyName = nil;
     } else if (_currentTextField.tag == 103) {
         _countyid = address.areaId;
+        _countyName = address.areaName;
     }
     for (int i = (int)_currentTextField.tag + 1; i <= 103; i++) {
         UITextField *tf = [self viewWithTag:i];
         tf.text = Localized(@"请选择");
     }
-    NSLog(@"%@ %@", address.areaName, address.areaId);
     _currentTextField.text = address.areaName;
     if (_delegate && [_delegate respondsToSelector:@selector(addressSelectedCountry:province:city:county:)]) {
         [_delegate addressSelectedCountry:_countryid province:_provinceid city:_cityid county:_countyid];
+    }
+    if (_delegate && [_delegate respondsToSelector:@selector(addressSelectedCountryName:provinceName:cityName:countyName:)]) {
+        [_delegate addressSelectedCountryName:_countryName provinceName:_provinceName cityName:_cityName countyName:_countyName];
     }
 }
 

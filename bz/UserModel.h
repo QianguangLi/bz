@@ -26,6 +26,7 @@
 @property (copy, nonatomic) NSString *mobile;//手机号
 @property (copy, nonatomic) NSString *name;//公司名字
 @property (copy, nonatomic) NSString *zipCode;//邮编
+@property (copy, nonatomic) NSString *addrcode;//国家区域编码
 
 //- (instancetype)initWithDict:(NSDictionary *)dict;
 

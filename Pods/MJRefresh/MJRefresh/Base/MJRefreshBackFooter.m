@@ -128,15 +128,17 @@
 
 - (void)endRefreshing
 {
+    __weak MJRefreshBackFooter *weakSelf = self;
     dispatch_async(dispatch_get_main_queue(), ^{
-        self.state = MJRefreshStateIdle;
+        weakSelf.state = MJRefreshStateIdle;
     });
 }
 
 - (void)endRefreshingWithNoMoreData
 {
+    __weak MJRefreshFooter *weakSelf = self;
     dispatch_async(dispatch_get_main_queue(), ^{
-        self.state = MJRefreshStateNoMoreData;
+        weakSelf.state = MJRefreshStateNoMoreData;
     });
 }
 #pragma mark - 私有方法

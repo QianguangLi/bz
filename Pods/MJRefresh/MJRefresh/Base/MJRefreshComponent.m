@@ -171,7 +171,8 @@
 #pragma mark 结束刷新状态
 - (void)endRefreshing
 {
-    self.state = MJRefreshStateIdle;
+    __weak MJRefreshComponent *weakSelf = self;
+    weakSelf.state = MJRefreshStateIdle;
 }
 
 - (void)endRefreshingWithCompletionBlock:(void (^)())completionBlock
