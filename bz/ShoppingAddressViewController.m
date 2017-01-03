@@ -100,6 +100,7 @@
     ShoppingAddressModel *model = self.dataArray[indexPath.row];
     _setDefODelId = model.conId;
     UIAlertView *av = [[UIAlertView alloc] initWithTitle:Localized(@"提示") message:Localized(@"确定要删除收货地址?") delegate:self cancelButtonTitle:Localized(@"取消") otherButtonTitles:Localized(@"确认"), nil];
+    //删除提示
     [av show];
 }
 
