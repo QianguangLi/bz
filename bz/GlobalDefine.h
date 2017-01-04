@@ -91,6 +91,12 @@
 #define kGetAddressByIdUrl @"api/User/GetConAddressById"
 //设置默认或者删除 收货地址url
 #define kSetDefOrDelUrl @"api/User/SetDefAddrOrDel"
+//获取账户信息url
+#define kGetUserAccountUrl @"api/User/Account"
+//电子钱包充值url
+#define kUserRechargeUrl @"api/User/Recharge"
+//充值浏览url
+#define kUserRechargeScanUrl @"api/User/RechargeView"
 //用户权限
 typedef NS_ENUM(NSInteger, UserLevel) {
     UserLevelMember = 0,//会员

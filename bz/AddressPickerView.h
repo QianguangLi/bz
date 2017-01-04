@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @protocol AddressPickerViewDelegate <NSObject>
-
+@optional
 - (void)addressSelectedCountry:(NSString *)countryid province:(NSString *)provinceid city:(NSString *)cityid county:(NSString *)countyid;
 
 - (void)addressSelectedCountryName:(NSString *)countryName provinceName:(NSString *)provinceName cityName:(NSString *)cityName countyName:(NSString *)countyName;

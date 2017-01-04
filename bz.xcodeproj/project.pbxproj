@@ -72,6 +72,21 @@
 		617F797C1E1633F600E139CF /* AddressPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 617F797B1E1633F600E139CF /* AddressPickerView.m */; };
 		617F797F1E1651C700E139CF /* BZStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 617F797E1E1651C700E139CF /* BZStoryboard.storyboard */; };
 		617F79821E16544800E139CF /* UpdateMemberInfoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 617F79811E16544800E139CF /* UpdateMemberInfoTableViewController.m */; };
+		6193197E1E1CA41200AF63E7 /* DZMoneyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6193197C1E1CA41200AF63E7 /* DZMoneyViewController.m */; };
+		6193197F1E1CA41200AF63E7 /* DZMoneyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6193197D1E1CA41200AF63E7 /* DZMoneyViewController.xib */; };
+		6193198C1E1CB22200AF63E7 /* GFCalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 619319831E1CB22200AF63E7 /* GFCalendarCell.m */; };
+		6193198D1E1CB22200AF63E7 /* GFCalendarMonth.m in Sources */ = {isa = PBXBuildFile; fileRef = 619319851E1CB22200AF63E7 /* GFCalendarMonth.m */; };
+		6193198E1E1CB22200AF63E7 /* GFCalendarScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 619319871E1CB22200AF63E7 /* GFCalendarScrollView.m */; };
+		6193198F1E1CB22200AF63E7 /* GFCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 619319891E1CB22200AF63E7 /* GFCalendarView.m */; };
+		619319901E1CB22200AF63E7 /* NSDate+GFCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 6193198B1E1CB22200AF63E7 /* NSDate+GFCalendar.m */; };
+		619319951E1CB41800AF63E7 /* DZMoneyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 619319931E1CB41800AF63E7 /* DZMoneyCell.m */; };
+		619319961E1CB41800AF63E7 /* DZMoneyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 619319941E1CB41800AF63E7 /* DZMoneyCell.xib */; };
+		619319991E1CB89800AF63E7 /* DZMoneyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 619319981E1CB89800AF63E7 /* DZMoneyModel.m */; };
+		6193199C1E1CEE5800AF63E7 /* DZMoneyRechargeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6193199B1E1CEE5800AF63E7 /* DZMoneyRechargeViewController.m */; };
+		619319A01E1CF67800AF63E7 /* RechargeScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6193199E1E1CF67800AF63E7 /* RechargeScanViewController.m */; };
+		619319A11E1CF67800AF63E7 /* RechargeScanViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6193199F1E1CF67800AF63E7 /* RechargeScanViewController.xib */; };
+		619319A51E1CF70A00AF63E7 /* RechargeScanCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 619319A31E1CF70A00AF63E7 /* RechargeScanCell.m */; };
+		619319A61E1CF70A00AF63E7 /* RechargeScanCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 619319A41E1CF70A00AF63E7 /* RechargeScanCell.xib */; };
 		61A09EC71E1386E200C58519 /* DataBaseService.m in Sources */ = {isa = PBXBuildFile; fileRef = 61A09EC61E1386E200C58519 /* DataBaseService.m */; };
 		61A09ECA1E138D8D00C58519 /* Address.m in Sources */ = {isa = PBXBuildFile; fileRef = 61A09EC91E138D8D00C58519 /* Address.m */; };
 		61A09ECD1E13AFFC00C58519 /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 61A09ECC1E13AFFC00C58519 /* UserModel.m */; };
@@ -214,6 +229,33 @@
 		617F797E1E1651C700E139CF /* BZStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BZStoryboard.storyboard; sourceTree = "<group>"; };
 		617F79801E16544800E139CF /* UpdateMemberInfoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdateMemberInfoTableViewController.h; sourceTree = "<group>"; };
 		617F79811E16544800E139CF /* UpdateMemberInfoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdateMemberInfoTableViewController.m; sourceTree = "<group>"; };
+		6193197B1E1CA41200AF63E7 /* DZMoneyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZMoneyViewController.h; sourceTree = "<group>"; };
+		6193197C1E1CA41200AF63E7 /* DZMoneyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZMoneyViewController.m; sourceTree = "<group>"; };
+		6193197D1E1CA41200AF63E7 /* DZMoneyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DZMoneyViewController.xib; sourceTree = "<group>"; };
+		619319811E1CB22200AF63E7 /* GFCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFCalendar.h; sourceTree = "<group>"; };
+		619319821E1CB22200AF63E7 /* GFCalendarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFCalendarCell.h; sourceTree = "<group>"; };
+		619319831E1CB22200AF63E7 /* GFCalendarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFCalendarCell.m; sourceTree = "<group>"; };
+		619319841E1CB22200AF63E7 /* GFCalendarMonth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFCalendarMonth.h; sourceTree = "<group>"; };
+		619319851E1CB22200AF63E7 /* GFCalendarMonth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFCalendarMonth.m; sourceTree = "<group>"; };
+		619319861E1CB22200AF63E7 /* GFCalendarScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFCalendarScrollView.h; sourceTree = "<group>"; };
+		619319871E1CB22200AF63E7 /* GFCalendarScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFCalendarScrollView.m; sourceTree = "<group>"; };
+		619319881E1CB22200AF63E7 /* GFCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFCalendarView.h; sourceTree = "<group>"; };
+		619319891E1CB22200AF63E7 /* GFCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFCalendarView.m; sourceTree = "<group>"; };
+		6193198A1E1CB22200AF63E7 /* NSDate+GFCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+GFCalendar.h"; sourceTree = "<group>"; };
+		6193198B1E1CB22200AF63E7 /* NSDate+GFCalendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+GFCalendar.m"; sourceTree = "<group>"; };
+		619319921E1CB41800AF63E7 /* DZMoneyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZMoneyCell.h; sourceTree = "<group>"; };
+		619319931E1CB41800AF63E7 /* DZMoneyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZMoneyCell.m; sourceTree = "<group>"; };
+		619319941E1CB41800AF63E7 /* DZMoneyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DZMoneyCell.xib; sourceTree = "<group>"; };
+		619319971E1CB89800AF63E7 /* DZMoneyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZMoneyModel.h; sourceTree = "<group>"; };
+		619319981E1CB89800AF63E7 /* DZMoneyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZMoneyModel.m; sourceTree = "<group>"; };
+		6193199A1E1CEE5800AF63E7 /* DZMoneyRechargeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZMoneyRechargeViewController.h; sourceTree = "<group>"; };
+		6193199B1E1CEE5800AF63E7 /* DZMoneyRechargeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZMoneyRechargeViewController.m; sourceTree = "<group>"; };
+		6193199D1E1CF67800AF63E7 /* RechargeScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RechargeScanViewController.h; sourceTree = "<group>"; };
+		6193199E1E1CF67800AF63E7 /* RechargeScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RechargeScanViewController.m; sourceTree = "<group>"; };
+		6193199F1E1CF67800AF63E7 /* RechargeScanViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RechargeScanViewController.xib; sourceTree = "<group>"; };
+		619319A21E1CF70A00AF63E7 /* RechargeScanCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RechargeScanCell.h; sourceTree = "<group>"; };
+		619319A31E1CF70A00AF63E7 /* RechargeScanCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RechargeScanCell.m; sourceTree = "<group>"; };
+		619319A41E1CF70A00AF63E7 /* RechargeScanCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RechargeScanCell.xib; sourceTree = "<group>"; };
 		61A09EC51E1386E200C58519 /* DataBaseService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataBaseService.h; sourceTree = "<group>"; };
 		61A09EC61E1386E200C58519 /* DataBaseService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataBaseService.m; sourceTree = "<group>"; };
 		61A09EC81E138D8D00C58519 /* Address.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Address.h; sourceTree = "<group>"; };
@@ -492,6 +534,7 @@
 		617288EC1E10BEB00037DB40 /* Me */ = {
 			isa = PBXGroup;
 			children = (
+				6193197A1E1CA38500AF63E7 /* Account */,
 				617F797D1E16511400E139CF /* MemberInfo */,
 				615FBF231E14B5DC00F50C0D /* Orders */,
 				616A09AF1E128AAB00FCF886 /* Cells */,
@@ -550,6 +593,8 @@
 				61F437F21E153A5000762CAF /* ProductModel.m */,
 				6164482A1E1B4B290007E50E /* ShoppingAddressModel.h */,
 				6164482B1E1B4B290007E50E /* ShoppingAddressModel.m */,
+				619319971E1CB89800AF63E7 /* DZMoneyModel.h */,
+				619319981E1CB89800AF63E7 /* DZMoneyModel.m */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -557,6 +602,7 @@
 		617F79701E15FEB900E139CF /* Assistent */ = {
 			isa = PBXGroup;
 			children = (
+				619319801E1CB22200AF63E7 /* GFCalendar */,
 				617F79711E15FEF800E139CF /* YLButton */,
 				617F797A1E1633F600E139CF /* AddressPickerView.h */,
 				617F797B1E1633F600E139CF /* AddressPickerView.m */,
@@ -586,6 +632,53 @@
 				6164482E1E1B6A030007E50E /* AddShoppingAddressViewController.m */,
 			);
 			name = MemberInfo;
+			sourceTree = "<group>";
+		};
+		6193197A1E1CA38500AF63E7 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				619319911E1CB40300AF63E7 /* Cells */,
+				6193197B1E1CA41200AF63E7 /* DZMoneyViewController.h */,
+				6193197C1E1CA41200AF63E7 /* DZMoneyViewController.m */,
+				6193197D1E1CA41200AF63E7 /* DZMoneyViewController.xib */,
+				6193199A1E1CEE5800AF63E7 /* DZMoneyRechargeViewController.h */,
+				6193199B1E1CEE5800AF63E7 /* DZMoneyRechargeViewController.m */,
+				6193199D1E1CF67800AF63E7 /* RechargeScanViewController.h */,
+				6193199E1E1CF67800AF63E7 /* RechargeScanViewController.m */,
+				6193199F1E1CF67800AF63E7 /* RechargeScanViewController.xib */,
+			);
+			name = Account;
+			sourceTree = "<group>";
+		};
+		619319801E1CB22200AF63E7 /* GFCalendar */ = {
+			isa = PBXGroup;
+			children = (
+				619319811E1CB22200AF63E7 /* GFCalendar.h */,
+				619319821E1CB22200AF63E7 /* GFCalendarCell.h */,
+				619319831E1CB22200AF63E7 /* GFCalendarCell.m */,
+				619319841E1CB22200AF63E7 /* GFCalendarMonth.h */,
+				619319851E1CB22200AF63E7 /* GFCalendarMonth.m */,
+				619319861E1CB22200AF63E7 /* GFCalendarScrollView.h */,
+				619319871E1CB22200AF63E7 /* GFCalendarScrollView.m */,
+				619319881E1CB22200AF63E7 /* GFCalendarView.h */,
+				619319891E1CB22200AF63E7 /* GFCalendarView.m */,
+				6193198A1E1CB22200AF63E7 /* NSDate+GFCalendar.h */,
+				6193198B1E1CB22200AF63E7 /* NSDate+GFCalendar.m */,
+			);
+			path = GFCalendar;
+			sourceTree = "<group>";
+		};
+		619319911E1CB40300AF63E7 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				619319921E1CB41800AF63E7 /* DZMoneyCell.h */,
+				619319931E1CB41800AF63E7 /* DZMoneyCell.m */,
+				619319941E1CB41800AF63E7 /* DZMoneyCell.xib */,
+				619319A21E1CF70A00AF63E7 /* RechargeScanCell.h */,
+				619319A31E1CF70A00AF63E7 /* RechargeScanCell.m */,
+				619319A41E1CF70A00AF63E7 /* RechargeScanCell.xib */,
+			);
+			name = Cells;
 			sourceTree = "<group>";
 		};
 		61A09EC41E1386B900C58519 /* DateBase */ = {
@@ -736,6 +829,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				619319A11E1CF67800AF63E7 /* RechargeScanViewController.xib in Resources */,
 				615FBF581E15066200F50C0D /* OrderListTopCell.xib in Resources */,
 				615FBF381E14BF0400F50C0D /* GoodsCategoryViewController.xib in Resources */,
 				617288F61E10BF070037DB40 /* ShoppingCartViewController.xib in Resources */,
@@ -747,14 +841,17 @@
 				115E35841E175258002A9957 /* RightCell.xib in Resources */,
 				615FBF3D1E14CB2200F50C0D /* OrderListViewController.xib in Resources */,
 				617288F11E10BEF30037DB40 /* FirstPageViewController.xib in Resources */,
+				619319A61E1CF70A00AF63E7 /* RechargeScanCell.xib in Resources */,
 				617F79791E1620FF00E139CF /* FunctionListViewController.xib in Resources */,
 				617288FB1E10BF110037DB40 /* MeViewController.xib in Resources */,
+				6193197F1E1CA41200AF63E7 /* DZMoneyViewController.xib in Resources */,
 				115E35891E1766EE002A9957 /* CollectionSectionHeaderView.xib in Resources */,
 				615FBF5D1E1506AB00F50C0D /* OrderListBottomCell.xib in Resources */,
 				617288BD1E10BCA40037DB40 /* LaunchScreen.storyboard in Resources */,
 				616448291E1B459E0007E50E /* AddressCell.xib in Resources */,
 				6172891C1E110BCD0037DB40 /* LoginViewController.xib in Resources */,
 				616A09AA1E11FF1600FCF886 /* RegistViewController.xib in Resources */,
+				619319961E1CB41800AF63E7 /* DZMoneyCell.xib in Resources */,
 				61A09ED21E13D86200C58519 /* GoodsViewController.xib in Resources */,
 				617288BA1E10BCA40037DB40 /* Assets.xcassets in Resources */,
 				61A09ED81E13EA2C00C58519 /* GoodsCell.xib in Resources */,
@@ -924,13 +1021,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				617288FA1E10BF110037DB40 /* MeViewController.m in Sources */,
+				619319901E1CB22200AF63E7 /* NSDate+GFCalendar.m in Sources */,
 				617289171E11071A0037DB40 /* GlobalData.m in Sources */,
 				615FBF451E14FAB300F50C0D /* OrderModel.m in Sources */,
 				616448221E1B39B90007E50E /* ShoppingAddressViewController.m in Sources */,
 				61A09ECA1E138D8D00C58519 /* Address.m in Sources */,
+				619319951E1CB41800AF63E7 /* DZMoneyCell.m in Sources */,
 				617288F51E10BF070037DB40 /* ShoppingCartViewController.m in Sources */,
 				61F437F31E153A5000762CAF /* ProductModel.m in Sources */,
 				617288E31E10BE110037DB40 /* BaseTabBarController.m in Sources */,
+				6193198C1E1CB22200AF63E7 /* GFCalendarCell.m in Sources */,
+				6193198D1E1CB22200AF63E7 /* GFCalendarMonth.m in Sources */,
 				6172891B1E110BCD0037DB40 /* LoginViewController.m in Sources */,
 				617F79741E15FEF800E139CF /* YLButton.m in Sources */,
 				1154B9A41E11736A00C8459D /* NSObject+Addition.m in Sources */,
@@ -940,6 +1041,7 @@
 				115E35831E175258002A9957 /* RightCell.m in Sources */,
 				615FBF521E15064400F50C0D /* OrderProductCell.m in Sources */,
 				1154B99E1E113C3E00C8459D /* NetService.m in Sources */,
+				6193197E1E1CA41200AF63E7 /* DZMoneyViewController.m in Sources */,
 				61A09ED71E13EA2C00C58519 /* GoodsCell.m in Sources */,
 				61A09ECD1E13AFFC00C58519 /* UserModel.m in Sources */,
 				617288AF1E10BCA40037DB40 /* AppDelegate.mm in Sources */,
@@ -947,23 +1049,29 @@
 				615FBF5C1E1506AB00F50C0D /* OrderListBottomCell.m in Sources */,
 				6172891F1E1118670037DB40 /* UIView+Addition.m in Sources */,
 				617288AC1E10BCA40037DB40 /* main.m in Sources */,
+				6193198E1E1CB22200AF63E7 /* GFCalendarScrollView.m in Sources */,
 				617F797C1E1633F600E139CF /* AddressPickerView.m in Sources */,
 				615FBF271E14B60500F50C0D /* MyOrdersViewController.m in Sources */,
 				615FBF571E15066200F50C0D /* OrderListTopCell.m in Sources */,
 				6164482F1E1B6A030007E50E /* AddShoppingAddressViewController.m in Sources */,
 				6172890D1E10E3860037DB40 /* LocationService.m in Sources */,
+				6193198F1E1CB22200AF63E7 /* GFCalendarView.m in Sources */,
+				619319991E1CB89800AF63E7 /* DZMoneyModel.m in Sources */,
 				616A09B31E128AC600FCF886 /* MeCell.m in Sources */,
 				615FBF3C1E14CB2200F50C0D /* OrderListViewController.m in Sources */,
 				617288F01E10BEF30037DB40 /* FirstPageViewController.m in Sources */,
 				61A09EC71E1386E200C58519 /* DataBaseService.m in Sources */,
 				6164482C1E1B4B290007E50E /* ShoppingAddressModel.m in Sources */,
+				6193199C1E1CEE5800AF63E7 /* DZMoneyRechargeViewController.m in Sources */,
 				616A09A91E11FF1600FCF886 /* RegistViewController.m in Sources */,
 				115E358D1E17706B002A9957 /* LeftCell.m in Sources */,
 				61A09ED11E13D86200C58519 /* GoodsViewController.m in Sources */,
 				615FBF411E14E9AC00F50C0D /* RefreshViewController.m in Sources */,
 				617F79821E16544800E139CF /* UpdateMemberInfoTableViewController.m in Sources */,
+				619319A01E1CF67800AF63E7 /* RechargeScanViewController.m in Sources */,
 				617288B81E10BCA40037DB40 /* bz.xcdatamodeld in Sources */,
 				617F79781E1620FF00E139CF /* FunctionListViewController.m in Sources */,
+				619319A51E1CF70A00AF63E7 /* RechargeScanCell.m in Sources */,
 				616A09AE1E1253F800FCF886 /* MeHeadView.m in Sources */,
 				115E35881E1766EE002A9957 /* CollectionSectionHeaderView.m in Sources */,
 				617288E61E10BE360037DB40 /* BaseNavigationController.m in Sources */,

@@ -10,6 +10,9 @@
 #import "MeCell.h"
 #import "UpdateMemberInfoTableViewController.h"
 #import "ShoppingAddressViewController.h"
+#import "DZMoneyViewController.h"
+#import "DZMoneyRechargeViewController.h"
+#import "RechargeScanViewController.h"
 
 @interface FunctionListViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *functionTableView;
@@ -90,6 +93,38 @@
             {
                 //会员收货地址
                 ShoppingAddressViewController *vc = [[ShoppingAddressViewController alloc] init];
+                vc.isRequireRefreshHeader = YES;
+                [self.navigationController pushViewController:vc animated:YES];
+            }
+                break;
+                
+            default:
+                break;
+        }
+    } else if (_menu == MeMenuAccountInfo) {
+        switch (indexPath.row) {
+            case 0:
+            {
+                //账户明细
+                DZMoneyViewController *vc = [[DZMoneyViewController alloc] init];
+                vc.isRequireRefreshFooter = YES;
+                vc.isRequireRefreshHeader = YES;
+                [self.navigationController pushViewController:vc animated:YES];
+            }
+                break;
+            case 1:
+            {
+                //电子钱包充值
+                UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"BZStoryboard" bundle:nil];
+                DZMoneyRechargeViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"DZMoneyRechargeViewController"];
+                [self.navigationController pushViewController:vc animated:YES];
+            }
+                break;
+            case 2:
+            {
+                //充值浏览
+                RechargeScanViewController *vc = [[RechargeScanViewController alloc] init];
+                vc.isRequireRefreshFooter = YES;
                 vc.isRequireRefreshHeader = YES;
                 [self.navigationController pushViewController:vc animated:YES];
             }

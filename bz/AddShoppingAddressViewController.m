@@ -16,7 +16,7 @@
 #import "NetService.h"
 #import "ShoppingAddressModel.h"
 
-@interface AddShoppingAddressViewController () <BMKMapViewDelegate, AddressPickerViewDelegate, BMKGeoCodeSearchDelegate, UIAlertViewDelegate>
+@interface AddShoppingAddressViewController () <BMKMapViewDelegate, AddressPickerViewDelegate, BMKGeoCodeSearchDelegate, UIAlertViewDelegate, UITableViewDelegate>
 {
     UIButton *_saveButton;
     NSString *areaString;//地区名字字符串
@@ -53,6 +53,7 @@
     self.title = Localized(@"收货地址");
     self.view.backgroundColor = QGCOLOR(237, 238, 239, 1);
     self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 10, 0);
+    
     
     [self loadAddress];
     
@@ -291,6 +292,7 @@
         _mapView.centerCoordinate = coor;
     }
     else {
+        [Utility showString:Localized(@"抱歉，未找到结果") onView:self.view];
         NSLog(@"抱歉，未找到结果");
     }
 }
@@ -321,6 +323,17 @@
 {
     NSLog(@"%@,%@,%@,%@", countryName, provinceName, cityName, countyName);
     areaString = [NSString stringWithFormat:@"%@%@%@%@", countryName, provinceName, cityName, countyName];
+}
+
+#pragma mark - UITableViewDelegate
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+        [cell setLayoutMargins:UIEdgeInsetsZero];
+    }
+    if ([cell respondsToSelector:@selector(setSeparatorInset:)]){
+        [cell setSeparatorInset:UIEdgeInsetsZero];
+    }
 }
 
 #pragma mark -

@@ -11,7 +11,7 @@
 #import "NetService.h"
 #import "UserModel.h"
 
-@interface UpdateMemberInfoTableViewController () <AddressPickerViewDelegate, UIAlertViewDelegate>
+@interface UpdateMemberInfoTableViewController () <AddressPickerViewDelegate, UIAlertViewDelegate, UITableViewDelegate>
 {
     UIButton *_updateButton;
     NSURLSessionTask *_task;
@@ -44,6 +44,7 @@
     [super viewDidLoad];
     self.title = Localized(@"会员信息修改");
     self.view.backgroundColor = QGCOLOR(237, 238, 239, 1);
+    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 5, 0);
     _areaCode.delegate = self;
     
     [self getMemberInfo];
@@ -149,6 +150,16 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+        [cell setLayoutMargins:UIEdgeInsetsZero];
+    }
+    if ([cell respondsToSelector:@selector(setSeparatorInset:)]){
+        [cell setSeparatorInset:UIEdgeInsetsZero];
+    }
 }
 
 #pragma mark -
