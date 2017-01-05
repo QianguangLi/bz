@@ -18,6 +18,7 @@
 @interface RechargeScanViewController () <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
 {
     NSURLSessionTask *_task;
+    NSURLSessionTask *_deleteTask;//删除任务
     NSString *_payStatus;//订单状态 -1全部 0未支付 1已支付
     NSString *_startMoney;
     NSString *_endMoney;
@@ -50,6 +51,7 @@
 - (void)dealloc
 {
     [_task cancel];
+    [_deleteTask cancel];
     NSLog(@"dealloc");
 }
 
@@ -212,8 +214,32 @@
     [appDelegate.window addSubview:calendar];
 }
 
-#pragma mark - UITextFieldDelegate
-
+- (void)deleteRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    RechargeModel *model = self.dataArray[indexPath.row];
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                 kLoginToken, @"Token",
+                                 model.id, @"rechargeid",
+                                 nil];
+    __weak RechargeScanViewController *weakSelf = self;
+    _deleteTask = [NetService POST:@"api/User/DelRecharge" parameters:dict complete:^(id responseObject, NSError *error) {
+        [Utility hideHUDForView:weakSelf.view];
+        if (error) {
+            NSLog(@"failure:%@", error);
+            return ;
+        }
+        NSLog(@"%@", responseObject);
+        if ([responseObject[kStatusCode] integerValue] == NetStatusSuccess) {
+            [weakSelf.dataArray removeObjectAtIndex:indexPath.row];
+            [weakSelf.mTableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+//            [weakSelf.mTableView reloadData];
+        } else {
+            [Utility showString:responseObject[kErrMsg] onView:weakSelf.view];
+        }
+        [weakSelf showTipWithNoData:IS_NULL_ARRAY(weakSelf.dataArray)];
+    }];
+    [Utility showHUDAddedTo:self.view forTask:_deleteTask];
+}
 
 #pragma mark - UITableViewDelegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -231,6 +257,18 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 60.f;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        [self deleteRowAtIndexPath:indexPath];
+    }
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath

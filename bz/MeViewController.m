@@ -223,8 +223,8 @@
 {
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:kLoginToken, @"Token", nil];
     __block MeViewController *weakSelf = self;
-    NSURLSessionTask *task = [NetService GET:kGetMemberInfoUrl parameters:dict complete:^(id responseObject, NSError *error) {
-        [Utility hideHUDForView:self.view];
+    [NetService GET:kGetMemberInfoUrl parameters:dict complete:^(id responseObject, NSError *error) {
+//        [Utility hideHUDForView:self.view];
         if (error) {
             NSLog(@"failure:%@", error);
             return ;
@@ -238,7 +238,7 @@
             [Utility showString:responseObject[kErrMsg] onView:self.view];
         }
     }];
-    [Utility showHUDAddedTo:self.view forTask:task];
+//    [Utility showHUDAddedTo:self.view forTask:task];
 }
 
 #pragma mark

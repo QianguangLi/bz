@@ -16,6 +16,12 @@
 		115E358D1E17706B002A9957 /* LeftCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 115E358B1E17706B002A9957 /* LeftCell.m */; };
 		115E358E1E17706B002A9957 /* LeftCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 115E358C1E17706B002A9957 /* LeftCell.xib */; };
 		17E122BDA9BAA762D7A46B7F /* libPods-bz.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 63277A970CC28472312B0E2A /* libPods-bz.a */; };
+		613FB9481E1E1A6B00CB2070 /* BonusTXViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 613FB9471E1E1A6B00CB2070 /* BonusTXViewController.m */; };
+		613FB94C1E1E352200CB2070 /* BonusTXScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 613FB94A1E1E352200CB2070 /* BonusTXScanViewController.m */; };
+		613FB94D1E1E352200CB2070 /* BonusTXScanViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 613FB94B1E1E352200CB2070 /* BonusTXScanViewController.xib */; };
+		613FB9511E1E355F00CB2070 /* BonusScanCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 613FB94F1E1E355F00CB2070 /* BonusScanCell.m */; };
+		613FB9521E1E355F00CB2070 /* BonusScanCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 613FB9501E1E355F00CB2070 /* BonusScanCell.xib */; };
+		613FB9551E1E388A00CB2070 /* BonusModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 613FB9541E1E388A00CB2070 /* BonusModel.m */; };
 		61581A8C1E1DD79100985112 /* RechargeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 61581A8B1E1DD79100985112 /* RechargeModel.m */; };
 		615FBF271E14B60500F50C0D /* MyOrdersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 615FBF251E14B60500F50C0D /* MyOrdersViewController.m */; };
 		615FBF281E14B60500F50C0D /* MyOrdersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 615FBF261E14B60500F50C0D /* MyOrdersViewController.xib */; };
@@ -133,6 +139,16 @@
 		115E358C1E17706B002A9957 /* LeftCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LeftCell.xib; sourceTree = "<group>"; };
 		2BBD9FECB363268F3739B789 /* libPods-bzUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-bzUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		54D4FF3445E3FD7D387B5F0E /* Pods-bz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bz.debug.xcconfig"; path = "Pods/Target Support Files/Pods-bz/Pods-bz.debug.xcconfig"; sourceTree = "<group>"; };
+		613FB9461E1E1A6B00CB2070 /* BonusTXViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BonusTXViewController.h; sourceTree = "<group>"; };
+		613FB9471E1E1A6B00CB2070 /* BonusTXViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BonusTXViewController.m; sourceTree = "<group>"; };
+		613FB9491E1E352200CB2070 /* BonusTXScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BonusTXScanViewController.h; sourceTree = "<group>"; };
+		613FB94A1E1E352200CB2070 /* BonusTXScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BonusTXScanViewController.m; sourceTree = "<group>"; };
+		613FB94B1E1E352200CB2070 /* BonusTXScanViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BonusTXScanViewController.xib; sourceTree = "<group>"; };
+		613FB94E1E1E355F00CB2070 /* BonusScanCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BonusScanCell.h; sourceTree = "<group>"; };
+		613FB94F1E1E355F00CB2070 /* BonusScanCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BonusScanCell.m; sourceTree = "<group>"; };
+		613FB9501E1E355F00CB2070 /* BonusScanCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BonusScanCell.xib; sourceTree = "<group>"; };
+		613FB9531E1E388A00CB2070 /* BonusModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BonusModel.h; sourceTree = "<group>"; };
+		613FB9541E1E388A00CB2070 /* BonusModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BonusModel.m; sourceTree = "<group>"; };
 		61581A8A1E1DD79100985112 /* RechargeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RechargeModel.h; sourceTree = "<group>"; };
 		61581A8B1E1DD79100985112 /* RechargeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RechargeModel.m; sourceTree = "<group>"; };
 		615FBF241E14B60500F50C0D /* MyOrdersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyOrdersViewController.h; sourceTree = "<group>"; };
@@ -600,6 +616,8 @@
 				619319981E1CB89800AF63E7 /* DZMoneyModel.m */,
 				61581A8A1E1DD79100985112 /* RechargeModel.h */,
 				61581A8B1E1DD79100985112 /* RechargeModel.m */,
+				613FB9531E1E388A00CB2070 /* BonusModel.h */,
+				613FB9541E1E388A00CB2070 /* BonusModel.m */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -651,6 +669,11 @@
 				6193199D1E1CF67800AF63E7 /* RechargeScanViewController.h */,
 				6193199E1E1CF67800AF63E7 /* RechargeScanViewController.m */,
 				6193199F1E1CF67800AF63E7 /* RechargeScanViewController.xib */,
+				613FB9461E1E1A6B00CB2070 /* BonusTXViewController.h */,
+				613FB9471E1E1A6B00CB2070 /* BonusTXViewController.m */,
+				613FB9491E1E352200CB2070 /* BonusTXScanViewController.h */,
+				613FB94A1E1E352200CB2070 /* BonusTXScanViewController.m */,
+				613FB94B1E1E352200CB2070 /* BonusTXScanViewController.xib */,
 			);
 			name = Account;
 			sourceTree = "<group>";
@@ -682,6 +705,9 @@
 				619319A21E1CF70A00AF63E7 /* RechargeScanCell.h */,
 				619319A31E1CF70A00AF63E7 /* RechargeScanCell.m */,
 				619319A41E1CF70A00AF63E7 /* RechargeScanCell.xib */,
+				613FB94E1E1E355F00CB2070 /* BonusScanCell.h */,
+				613FB94F1E1E355F00CB2070 /* BonusScanCell.m */,
+				613FB9501E1E355F00CB2070 /* BonusScanCell.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -838,6 +864,7 @@
 				615FBF581E15066200F50C0D /* OrderListTopCell.xib in Resources */,
 				615FBF381E14BF0400F50C0D /* GoodsCategoryViewController.xib in Resources */,
 				617288F61E10BF070037DB40 /* ShoppingCartViewController.xib in Resources */,
+				613FB9521E1E355F00CB2070 /* BonusScanCell.xib in Resources */,
 				615FBF531E15064400F50C0D /* OrderProductCell.xib in Resources */,
 				617289021E10CBEF0037DB40 /* Localizable.strings in Resources */,
 				616448231E1B39B90007E50E /* ShoppingAddressViewController.xib in Resources */,
@@ -847,6 +874,7 @@
 				615FBF3D1E14CB2200F50C0D /* OrderListViewController.xib in Resources */,
 				617288F11E10BEF30037DB40 /* FirstPageViewController.xib in Resources */,
 				619319A61E1CF70A00AF63E7 /* RechargeScanCell.xib in Resources */,
+				613FB94D1E1E352200CB2070 /* BonusTXScanViewController.xib in Resources */,
 				617F79791E1620FF00E139CF /* FunctionListViewController.xib in Resources */,
 				617288FB1E10BF110037DB40 /* MeViewController.xib in Resources */,
 				6193197F1E1CA41200AF63E7 /* DZMoneyViewController.xib in Resources */,
@@ -1031,6 +1059,7 @@
 				615FBF451E14FAB300F50C0D /* OrderModel.m in Sources */,
 				616448221E1B39B90007E50E /* ShoppingAddressViewController.m in Sources */,
 				61A09ECA1E138D8D00C58519 /* Address.m in Sources */,
+				613FB9511E1E355F00CB2070 /* BonusScanCell.m in Sources */,
 				619319951E1CB41800AF63E7 /* DZMoneyCell.m in Sources */,
 				617288F51E10BF070037DB40 /* ShoppingCartViewController.m in Sources */,
 				61F437F31E153A5000762CAF /* ProductModel.m in Sources */,
@@ -1039,6 +1068,7 @@
 				6193198D1E1CB22200AF63E7 /* GFCalendarMonth.m in Sources */,
 				6172891B1E110BCD0037DB40 /* LoginViewController.m in Sources */,
 				617F79741E15FEF800E139CF /* YLButton.m in Sources */,
+				613FB9551E1E388A00CB2070 /* BonusModel.m in Sources */,
 				1154B9A41E11736A00C8459D /* NSObject+Addition.m in Sources */,
 				617288E91E10BE470037DB40 /* BaseViewController.m in Sources */,
 				617289141E1100B90037DB40 /* Utility.m in Sources */,
@@ -1046,6 +1076,7 @@
 				115E35831E175258002A9957 /* RightCell.m in Sources */,
 				615FBF521E15064400F50C0D /* OrderProductCell.m in Sources */,
 				1154B99E1E113C3E00C8459D /* NetService.m in Sources */,
+				613FB94C1E1E352200CB2070 /* BonusTXScanViewController.m in Sources */,
 				6193197E1E1CA41200AF63E7 /* DZMoneyViewController.m in Sources */,
 				61A09ED71E13EA2C00C58519 /* GoodsCell.m in Sources */,
 				61A09ECD1E13AFFC00C58519 /* UserModel.m in Sources */,
@@ -1053,6 +1084,7 @@
 				615FBF371E14BF0400F50C0D /* GoodsCategoryViewController.m in Sources */,
 				615FBF5C1E1506AB00F50C0D /* OrderListBottomCell.m in Sources */,
 				6172891F1E1118670037DB40 /* UIView+Addition.m in Sources */,
+				613FB9481E1E1A6B00CB2070 /* BonusTXViewController.m in Sources */,
 				617288AC1E10BCA40037DB40 /* main.m in Sources */,
 				6193198E1E1CB22200AF63E7 /* GFCalendarScrollView.m in Sources */,
 				617F797C1E1633F600E139CF /* AddressPickerView.m in Sources */,

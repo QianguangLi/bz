@@ -97,6 +97,10 @@
 #define kUserRechargeUrl @"api/User/Recharge"
 //充值浏览url
 #define kUserRechargeScanUrl @"api/User/RechargeView"
+//提现申请url
+#define kBonusTXUrl @"api/User/Bonus"
+//奖金提现浏览url
+#define kBonusTXScanUrl @"api/User/BonusView"
 //用户权限
 typedef NS_ENUM(NSInteger, UserLevel) {
     UserLevelMember = 0,//会员

@@ -267,6 +267,11 @@
     }
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
 #pragma mark -
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

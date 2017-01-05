@@ -13,6 +13,8 @@
 #import "DZMoneyViewController.h"
 #import "DZMoneyRechargeViewController.h"
 #import "RechargeScanViewController.h"
+#import "BonusTXViewController.h"
+#import "BonusTXScanViewController.h"
 
 @interface FunctionListViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *functionTableView;
@@ -124,6 +126,23 @@
             {
                 //充值浏览
                 RechargeScanViewController *vc = [[RechargeScanViewController alloc] init];
+                vc.isRequireRefreshFooter = YES;
+                vc.isRequireRefreshHeader = YES;
+                [self.navigationController pushViewController:vc animated:YES];
+            }
+                break;
+            case 3:
+            {
+                //奖金提现申请
+                UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"BZStoryboard" bundle:nil];
+                BonusTXViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"BonusTXViewController"];
+                [self.navigationController pushViewController:vc animated:YES];
+            }
+                break;
+            case 4:
+            {
+                //奖金提现浏览
+                BonusTXScanViewController *vc = [[BonusTXScanViewController alloc] init];
                 vc.isRequireRefreshFooter = YES;
                 vc.isRequireRefreshHeader = YES;
                 [self.navigationController pushViewController:vc animated:YES];
