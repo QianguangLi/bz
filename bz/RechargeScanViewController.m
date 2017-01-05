@@ -9,11 +9,40 @@
 #import "RechargeScanViewController.h"
 #import "RechargeScanCell.h"
 #import "NetService.h"
+#import "RechargeModel.h"
+#import "UIView+Addition.h"
+#import "GFCalendar.h"
+#import "IQKeyboardManager.h"
+#import "YLButton.h"
 
-@interface RechargeScanViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface RechargeScanViewController () <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
 {
     NSURLSessionTask *_task;
+    NSString *_payStatus;//订单状态 -1全部 0未支付 1已支付
+    NSString *_startMoney;
+    NSString *_endMoney;
+    NSString *_startTime;
+    NSString *_endTime;
 }
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *searchViewTopLayout;
+
+@property (weak, nonatomic) IBOutlet UIView *searchView;
+
+@property (weak, nonatomic) IBOutlet UITextField *startMoneyTF;
+@property (weak, nonatomic) IBOutlet UITextField *endMoneyTF;
+
+//@property (weak, nonatomic) IBOutlet UITextField *startTimeTF;
+//@property (weak, nonatomic) IBOutlet UITextField *endTimeTF;
+@property (weak, nonatomic) IBOutlet YLButton *startTimeBtn;
+@property (weak, nonatomic) IBOutlet YLButton *endTimeBtn;
+
+@property (weak, nonatomic) IBOutlet UIButton *allButton;
+@property (weak, nonatomic) IBOutlet UIButton *notPayButton;
+@property (weak, nonatomic) IBOutlet UIButton *payedButton;
+
+@property (strong ,nonatomic) YLButton *currentBtn;
+
 @end
 
 @implementation RechargeScanViewController
@@ -35,6 +64,91 @@
     self.mTableView.dataSource = self;
     
     [self.mTableView registerNib:[UINib nibWithNibName:@"RechargeScanCell" bundle:nil] forCellReuseIdentifier:@"RechargeScanCell"];
+    
+    [self setupSearchView];
+    //默认全部订单
+    _payStatus = @"-1";
+    _allButton.selected = YES;
+    _notPayButton.selected = NO;
+    _payedButton.selected = NO;
+    _startTime = @"";
+    _endTime = @"";
+    
+    [self.view bringSubviewToFront:_searchView];
+    [self setupNavigationItem];
+}
+
+- (void)setupSearchView
+{
+    [_allButton setBackgroundImage:[UIImage imageWithColor:[UIColor clearColor]] forState:UIControlStateNormal];
+    [_allButton setBackgroundImage:[UIImage imageWithColor:kPinkColor] forState:UIControlStateSelected];
+    [_notPayButton setBackgroundImage:[UIImage imageWithColor:[UIColor clearColor]] forState:UIControlStateNormal];
+    [_notPayButton setBackgroundImage:[UIImage imageWithColor:kPinkColor] forState:UIControlStateSelected];
+    [_payedButton setBackgroundImage:[UIImage imageWithColor:[UIColor clearColor]] forState:UIControlStateNormal];
+    [_payedButton setBackgroundImage:[UIImage imageWithColor:kPinkColor] forState:UIControlStateSelected];
+//    UIImageView *rightView1 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"rili"]];
+//    _startTimeTF.rightView = rightView1;
+//    _startTimeTF.rightViewMode = UITextFieldViewModeAlways;
+//    UIImageView *rightView2 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"rili"]];
+//    _endTimeTF.rightView = rightView2;
+//    _endTimeTF.rightViewMode = UITextFieldViewModeAlways;
+    
+    _startTimeBtn.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    _startTimeBtn.layer.borderWidth = 0.5;
+    _startTimeBtn.layer.cornerRadius = 5;
+    _startTimeBtn.bounds = CGRectMake(0, 0, (kScreenWidth-62-20-10-10-8)/2, 30);
+    [_startTimeBtn setRightImage:[UIImage imageNamed:@"rili"] forState:UIControlStateNormal];
+    
+    _endTimeBtn.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    _endTimeBtn.layer.borderWidth = 0.5;
+    _endTimeBtn.layer.cornerRadius = 5;
+    _endTimeBtn.bounds = CGRectMake(0, 0, (kScreenWidth-62-20-10-10-8)/2, 30);
+    [_endTimeBtn setRightImage:[UIImage imageNamed:@"rili"] forState:UIControlStateNormal];
+    
+}
+
+- (void)setupNavigationItem
+{
+    UIBarButtonItem *searchItem = [[UIBarButtonItem alloc] initWithTitle:Localized(@"查询") style:UIBarButtonItemStylePlain target:self action:@selector(searchItemAction:)];
+    self.navigationItem.rightBarButtonItem = searchItem;
+}
+
+- (IBAction)timeBtnAction:(YLButton *)sender
+{
+    _currentBtn = sender;
+    [self setupCalendar];
+}
+
+- (IBAction)payStatusAction:(UIButton *)sender
+{
+    NSInteger payStatus = sender.tag - 300;
+    _allButton.selected = NO;
+    _notPayButton.selected = NO;
+    _payedButton.selected = NO;
+    sender.selected = YES;
+    _payStatus = StringFromNumber(payStatus);
+}
+
+
+- (void)searchItemAction:(UIBarButtonItem *)item
+{
+    __weak RechargeScanViewController *weakSelf = self;
+    if (_searchViewTopLayout.constant == 0) {
+        [UIView animateWithDuration:0.25 animations:^{
+            _searchViewTopLayout.constant = -_searchView.frame.size.height;
+            [weakSelf.view layoutIfNeeded];
+        } completion:^(BOOL finished) {
+            [weakSelf startHeardRefresh];
+            weakSelf.mTableView.userInteractionEnabled = YES;
+        }];
+    } else {
+        [UIView animateWithDuration:0.25 animations:^{
+            _searchViewTopLayout.constant = 0;
+            [weakSelf.view layoutIfNeeded];
+        } completion:^(BOOL finished) {
+            weakSelf.mTableView.userInteractionEnabled = NO;
+        }];
+    }
 }
 
 - (void)requestDataListPullDown:(BOOL)pullDown withWeakSelf:(RefreshViewController *__weak)weakSelf
@@ -43,10 +157,11 @@
                                  kLoginToken, @"Token",
                                  StringFromNumber(self.pageIndex), kPageIndex,
                                  StringFromNumber(self.pageSize), kPageSize,
-                                 @"", @"startMoney",
-                                 @"", @"endMoney",
-                                 @"", @"startDate",
-                                 @"", @"endDate",
+                                 _payStatus, @"payState",
+                                 _startMoneyTF.text, @"startMoney",
+                                 _endMoneyTF.text, @"endMoney",
+                                 _startTime, @"startDate",
+                                 _endTime, @"endDate",
                                  nil];
     _task = [NetService POST:kUserRechargeScanUrl parameters:dict complete:^(id responseObject, NSError *error) {
         [weakSelf stopRefreshing];
@@ -57,34 +172,59 @@
         NSLog(@"%@", responseObject);
         if ([responseObject[kStatusCode] integerValue] == NetStatusSuccess) {
             NSDictionary *dataDict = responseObject[kResponseData];
-            //            NSString *balance = dataDict[@"balance"];
             weakSelf.pageCount = [dataDict[kPageCount] integerValue];
             NSArray *listArray = dataDict[@"list"];
             if (pullDown) {
                 [weakSelf.dataArray removeAllObjects];
             }
             for (NSDictionary *dict in listArray) {
-//                DZMoneyModel *model = [[DZMoneyModel alloc] initWithDictionary:dict error:nil];
-//                [weakSelf.dataArray addObject:model];
+                RechargeModel *model = [[RechargeModel alloc] initWithDictionary:dict error:nil];
+                [weakSelf.dataArray addObject:model];
             }
             [weakSelf.mTableView reloadData];
-            [weakSelf showTipWithNoData:IS_NULL_ARRAY(weakSelf.dataArray)];
         } else {
             [Utility showString:responseObject[kErrMsg] onView:weakSelf.view];
         }
+        [weakSelf showTipWithNoData:IS_NULL_ARRAY(weakSelf.dataArray)];
     }];
 }
+
+- (void)setupCalendar {
+    
+    CGFloat width = kScreenWidth - 20.0;
+    CGPoint origin = CGPointMake(10.0, 64.0 + 70.0);
+    
+    GFCalendarView *calendar = [[GFCalendarView alloc] initWithFrameOrigin:origin width:width];
+    
+    // 点击某一天的回调
+    __weak GFCalendarView *weakView = calendar;
+    calendar.didSelectDayHandler = ^(NSInteger year, NSInteger month, NSInteger day) {
+        NSLog(@"%@", [NSString stringWithFormat:@"%ld-%ld-%ld", year, month, day]);
+        [_currentBtn setTitle:[NSString stringWithFormat:@"%ld-%ld-%ld", year, month, day] forState:UIControlStateNormal];
+        if (_currentBtn.tag == 200) {
+            _startTime = _currentBtn.titleLabel.text;
+        } else if (_currentBtn.tag == 201) {
+            _endTime = _currentBtn.titleLabel.text;
+        }
+        [weakView removeFromSuperview];
+    };
+    
+    [appDelegate.window addSubview:calendar];
+}
+
+#pragma mark - UITextFieldDelegate
+
 
 #pragma mark - UITableViewDelegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 20;
+    return self.dataArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     RechargeScanCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RechargeScanCell" forIndexPath:indexPath];
-    
+    [cell setContentWithRechargeModel:self.dataArray[indexPath.row]];
     return cell;
 }
 

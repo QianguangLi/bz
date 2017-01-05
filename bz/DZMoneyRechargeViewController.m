@@ -41,7 +41,7 @@
     _rechageNote.layer.borderWidth = 0.5;
     [_rechageNote setCorneRadius:5];
     
-    _usename.text = kLoginName;
+    _usename.text = kLoginUserName;
 }
 - (IBAction)submitAction:(UIButton *)sender
 {

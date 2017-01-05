@@ -223,16 +223,17 @@
                 [weakSelf.dataArray addObject:model];
             }
             [weakSelf.mTableView reloadData];
-            [weakSelf showTipWithNoData:IS_NULL_ARRAY(weakSelf.dataArray)];
         } else {
             [Utility showString:responseObject[kErrMsg] onView:weakSelf.view];
         }
+        [weakSelf showTipWithNoData:IS_NULL_ARRAY(weakSelf.dataArray)];
     }];
 }
 
 #pragma mark - UITextFieldDelegate
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
+    NSLog(@"%ld", (long)textField.tag);
     _currentTextField = textField;
     [self setupCalendar];
     return NO;

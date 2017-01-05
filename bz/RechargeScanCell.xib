@@ -66,6 +66,12 @@
                     <constraint firstItem="7gv-am-8Hj" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="yQj-S8-y2Y"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="memberid" destination="8sq-IT-6bf" id="kcH-Zy-s1l"/>
+                <outlet property="payStatus" destination="OUD-h1-bTi" id="nu7-4I-hn1"/>
+                <outlet property="rechargeMoney" destination="3yA-MC-Gdf" id="OkJ-bP-FDH"/>
+                <outlet property="rechargeTime" destination="jzp-pS-YW7" id="ZoK-6K-HZt"/>
+            </connections>
             <point key="canvasLocation" x="34" y="76"/>
         </tableViewCell>
     </objects>

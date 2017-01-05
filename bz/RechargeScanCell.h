@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "RechargeModel.h"
 /**
  充值浏览cell
  */
 @interface RechargeScanCell : UITableViewCell
+
+- (void)setContentWithRechargeModel:(RechargeModel *)model;
 
 @end
