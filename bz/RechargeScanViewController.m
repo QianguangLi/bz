@@ -127,7 +127,7 @@
 
 - (void)setupNavigationItem
 {
-    UIBarButtonItem *searchItem = [[UIBarButtonItem alloc] initWithTitle:Localized(@"查询") style:UIBarButtonItemStylePlain target:self action:@selector(searchItemAction:)];
+    UIBarButtonItem *searchItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"nav-search"] style:UIBarButtonItemStylePlain target:self action:@selector(searchItemAction:)];
     self.navigationItem.rightBarButtonItem = searchItem;
 }
 

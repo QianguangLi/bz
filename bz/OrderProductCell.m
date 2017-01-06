@@ -49,8 +49,8 @@
     [_pImage setImageWithURL:[NSURL URLWithString:productModel.pImgUrl] placeholderImage:[UIImage imageNamed:@"productpic"]];
     _pName.text = productModel.pName;
     _property.text = productModel.propertyd;
-    _price.text = [NSString stringWithFormat:@"￥%.2f", productModel.price];
-    _quantity.text = [NSString stringWithFormat:@"x%lu", (long)productModel.quantity];
+    _price.text = [NSString stringWithFormat:@"￥%.2f", productModel.price.doubleValue];
+    _quantity.text = [NSString stringWithFormat:@"x%lu", (long)productModel.quantity.boolValue];
     
 }
 

@@ -15,6 +15,7 @@
 #import "RechargeScanViewController.h"
 #import "BonusTXViewController.h"
 #import "BonusTXScanViewController.h"
+#import "AccountSafeViewController.h"
 
 @interface FunctionListViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *functionTableView;
@@ -96,6 +97,13 @@
                 //会员收货地址
                 ShoppingAddressViewController *vc = [[ShoppingAddressViewController alloc] init];
                 vc.isRequireRefreshHeader = YES;
+                [self.navigationController pushViewController:vc animated:YES];
+            }
+                break;
+            case 2:
+            {
+                //会员账号安全 修改密码
+                AccountSafeViewController *vc = [[AccountSafeViewController alloc] init];
                 [self.navigationController pushViewController:vc animated:YES];
             }
                 break;

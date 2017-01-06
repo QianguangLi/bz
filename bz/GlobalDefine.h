@@ -103,6 +103,8 @@
 #define kBonusTXUrl @"api/User/Bonus"
 //奖金提现浏览url
 #define kBonusTXScanUrl @"api/User/BonusView"
+//收藏商品URL
+#define kMyCollectionUrl @"api/User/FavoritesCommodity"
 //用户权限
 typedef NS_ENUM(NSInteger, UserLevel) {
     UserLevelMember = 0,//会员

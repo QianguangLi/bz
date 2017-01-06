@@ -1,21 +1,19 @@
 //
-//  BonusTXScanViewController.m
+//  MyCollectionViewController.m
 //  bz
 //
-//  Created by qianchuang on 2017/1/5.
+//  Created by LQG on 2017/1/6.
 //  Copyright © 2017年 ing. All rights reserved.
 //
 
-#import "BonusTXScanViewController.h"
-#import "BonusScanCell.h"
+#import "MyCollectionViewController.h"
+#import "CollectionCell.h"
+#import "ProductModel.h"
 #import "NetService.h"
-#import "BonusModel.h"
 #import "YLButton.h"
 #import "GFCalendar.h"
-#import "MMNumberKeyboard.h"
-#import "BonusScanDetailsViewController.h"
 
-@interface BonusTXScanViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface MyCollectionViewController () <UITableViewDelegate, UITableViewDataSource>
 {
     NSURLSessionTask *_task;
     NSURLSessionTask *_deleteTask;
@@ -26,16 +24,14 @@
 
 @property (weak, nonatomic) IBOutlet UIView *searchView;
 
-@property (weak, nonatomic) IBOutlet UITextField *startMoneyTF;
-@property (weak, nonatomic) IBOutlet UITextField *endMoneyTF;
-
+@property (weak, nonatomic) IBOutlet UITextField *productName;
 @property (weak, nonatomic) IBOutlet YLButton *startTimeBtn;
 @property (weak, nonatomic) IBOutlet YLButton *endTimeBtn;
 
 @property (strong, nonatomic) YLButton *currentBtn;
 @end
 
-@implementation BonusTXScanViewController
+@implementation MyCollectionViewController
 
 - (void)dealloc
 {
@@ -47,56 +43,34 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.title = Localized(@"奖金提现浏览");
+    self.title = Localized(@"收藏商品");
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.mTableView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight - 64);
     self.mTableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     self.mTableView.delegate = self;
     self.mTableView.dataSource = self;
     
-    [self.mTableView registerNib:[UINib nibWithNibName:@"BonusScanCell" bundle:nil] forCellReuseIdentifier:@"BonusScanCell"];
+    [self.mTableView registerNib:[UINib nibWithNibName:@"CollectionCell" bundle:nil] forCellReuseIdentifier:@"CollectionCell"];
+    
     [self setupSearchView];
     [self.view bringSubviewToFront:_searchView];
-    
-    //默认全部订单
+    //设置默认
     _startTime = @"";
     _endTime = @"";
     
-    MMNumberKeyboard *numberKeyboard1 = [[MMNumberKeyboard alloc] initWithFrame:CGRectZero];
-    numberKeyboard1.allowsDecimalPoint = YES;
-    _startMoneyTF.inputView = numberKeyboard1;
-    MMNumberKeyboard *numberKeyboard2 = [[MMNumberKeyboard alloc] initWithFrame:CGRectZero];
-    numberKeyboard2.allowsDecimalPoint = YES;
-    _endMoneyTF.inputView = numberKeyboard2;
-    
     [self setupNavigationItem];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:NO animated:NO];
 }
 
 - (void)setupNavigationItem
 {
     UIBarButtonItem *searchItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"nav-search"] style:UIBarButtonItemStylePlain target:self action:@selector(searchItemAction:)];
     self.navigationItem.rightBarButtonItem = searchItem;
-}
-
-- (void)searchItemAction:(UIBarButtonItem *)item
-{
-    __weak BonusTXScanViewController *weakSelf = self;
-    if (_searchViewTopLayout.constant == 0) {
-        [UIView animateWithDuration:0.25 animations:^{
-            _searchViewTopLayout.constant = -_searchView.frame.size.height;
-            [weakSelf.view layoutIfNeeded];
-        } completion:^(BOOL finished) {
-            [weakSelf startHeardRefresh];
-            weakSelf.mTableView.userInteractionEnabled = YES;
-        }];
-    } else {
-        [UIView animateWithDuration:0.25 animations:^{
-            _searchViewTopLayout.constant = 0;
-            [weakSelf.view layoutIfNeeded];
-        } completion:^(BOOL finished) {
-            weakSelf.mTableView.userInteractionEnabled = NO;
-        }];
-    }
 }
 
 - (void)setupSearchView
@@ -144,18 +118,37 @@
     [appDelegate.window addSubview:calendar];
 }
 
+- (void)searchItemAction:(UIBarButtonItem *)item
+{
+    __weak MyCollectionViewController *weakSelf = self;
+    if (_searchViewTopLayout.constant == 0) {
+        [UIView animateWithDuration:0.25 animations:^{
+            _searchViewTopLayout.constant = -_searchView.frame.size.height;
+            [weakSelf.view layoutIfNeeded];
+        } completion:^(BOOL finished) {
+            [weakSelf startHeardRefresh];
+            weakSelf.mTableView.userInteractionEnabled = YES;
+        }];
+    } else {
+        [UIView animateWithDuration:0.25 animations:^{
+            _searchViewTopLayout.constant = 0;
+            [weakSelf.view layoutIfNeeded];
+        } completion:^(BOOL finished) {
+            weakSelf.mTableView.userInteractionEnabled = NO;
+        }];
+    }
+}
+
 - (void)requestDataListPullDown:(BOOL)pullDown withWeakSelf:(RefreshViewController *__weak)weakSelf
 {
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                  kLoginToken, @"Token",
-                                 StringFromNumber(self.pageIndex), kPageIndex,
-                                 StringFromNumber(self.pageSize), kPageSize,
-                                 _startMoneyTF.text, @"startMoney",
-                                 _endMoneyTF.text, @"endMoney",
+                                 StringFromNumber(weakSelf.pageIndex), kPageIndex,
+                                 StringFromNumber(weakSelf.pageSize), kPageSize,
                                  _startTime, @"startDate",
                                  _endTime, @"endDate",
-                                 nil];
-    _task = [NetService POST:kBonusTXScanUrl parameters:dict complete:^(id responseObject, NSError *error) {
+                                 _productName.text, @"kw", nil];
+    _task = [NetService POST:kMyCollectionUrl parameters:dict complete:^(id responseObject, NSError *error) {
         [weakSelf stopRefreshing];
         if (error) {
             NSLog(@"failure:%@", error);
@@ -171,26 +164,26 @@
                 [weakSelf.dataArray removeAllObjects];
             }
             for (NSDictionary *dict in listArray) {
-                 BonusModel *model = [[BonusModel alloc] initWithDictionary:dict error:nil];
+                ProductModel *model = [[ProductModel alloc] initWithDictionary:dict error:nil];
                 [weakSelf.dataArray addObject:model];
             }
             [weakSelf.mTableView reloadData];
+            [weakSelf showTipWithNoData:IS_NULL_ARRAY(weakSelf.dataArray)];
         } else {
             [Utility showString:responseObject[kErrMsg] onView:weakSelf.view];
         }
-        [weakSelf showTipWithNoData:IS_NULL_ARRAY(weakSelf.dataArray)];
     }];
 }
 
 - (void)deleteRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    BonusModel *model = self.dataArray[indexPath.row];
+    ProductModel *model = self.dataArray[indexPath.row];
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                  kLoginToken, @"Token",
-                                 model.id, @"bonusid",
+                                 model.productId, @"favoritetid",
                                  nil];
-    __weak BonusTXScanViewController *weakSelf = self;
-    _deleteTask = [NetService POST:@"api/User/DelBonus" parameters:dict complete:^(id responseObject, NSError *error) {
+    __weak MyCollectionViewController *weakSelf = self;
+    _deleteTask = [NetService POST:@"api/User/DelFav" parameters:dict complete:^(id responseObject, NSError *error) {
         [Utility hideHUDForView:weakSelf.view];
         if (error) {
             NSLog(@"failure:%@", error);
@@ -218,22 +211,19 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    BonusScanCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BonusScanCell" forIndexPath:indexPath];
-    [cell setContextWithBonusModel:self.dataArray[indexPath.row]];
+    CollectionCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CollectionCell" forIndexPath:indexPath];
+    [cell setContentWithProductModel:self.dataArray[indexPath.row]];
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 60.f;
+    return kScreenWidth*100.0/320.0;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    BonusScanDetailsViewController *vc = [[BonusScanDetailsViewController alloc] init];
-    vc.model = self.dataArray[indexPath.row];
-    [self.navigationController pushViewController: vc animated:YES];
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
@@ -254,6 +244,7 @@
 }
 
 #pragma mark -
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

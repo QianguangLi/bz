@@ -40,7 +40,7 @@
 
 + (MBProgressHUD *)showHUDAddedTo:(UIView *)view forTask:(NSURLSessionTask *)task
 {
-    if (!task) {
+    if (!task || !view) {
         return nil;
     }
     return [self showHUDAddedTo:view];
@@ -53,6 +53,9 @@
 
 + (MBProgressHUD *)showString:(NSString *)string onView:(UIView *)view
 {
+    if (!view || !string) {
+        return nil;
+    }
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
     hud.mode = MBProgressHUDModeText;
     hud.label.text = string;

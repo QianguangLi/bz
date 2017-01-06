@@ -15,6 +15,7 @@
 #import "UserModel.h"
 #import "MyOrdersViewController.h"
 #import "FunctionListViewController.h"
+#import "MyCollectionViewController.h"
 
 @interface MeViewController () <UITableViewDelegate, UITableViewDataSource, MeHeadViewDelegate, UIAlertViewDelegate>
 
@@ -152,7 +153,11 @@
             break;
         case MeMenuCollectGoods:
         {
-            
+            MyCollectionViewController *vc = [[MyCollectionViewController alloc] init];
+            vc.isRequireRefreshFooter = YES;
+            vc.isRequireRefreshHeader = YES;
+            vc.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:vc animated:YES];
         }
             break;
         case MeMenuEmail:
