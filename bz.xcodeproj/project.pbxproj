@@ -15,6 +15,8 @@
 		115E35891E1766EE002A9957 /* CollectionSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 115E35871E1766EE002A9957 /* CollectionSectionHeaderView.xib */; };
 		115E358D1E17706B002A9957 /* LeftCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 115E358B1E17706B002A9957 /* LeftCell.m */; };
 		115E358E1E17706B002A9957 /* LeftCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 115E358C1E17706B002A9957 /* LeftCell.xib */; };
+		11C3C13E1E1FCEAA005A2403 /* AccountSafeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C3C13C1E1FCEAA005A2403 /* AccountSafeViewController.m */; };
+		11C3C13F1E1FCEAA005A2403 /* AccountSafeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11C3C13D1E1FCEAA005A2403 /* AccountSafeViewController.xib */; };
 		11FE826D1E1F79A600309719 /* MMNumberKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 11FE82651E1F79A600309719 /* MMNumberKeyboard.m */; };
 		11FE826E1E1F79A600309719 /* MMNumberKeyboardDeleteKey.png in Resources */ = {isa = PBXBuildFile; fileRef = 11FE82671E1F79A600309719 /* MMNumberKeyboardDeleteKey.png */; };
 		11FE826F1E1F79A600309719 /* MMNumberKeyboardDeleteKey@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 11FE82681E1F79A600309719 /* MMNumberKeyboardDeleteKey@2x.png */; };
@@ -150,6 +152,9 @@
 		115E358A1E17706B002A9957 /* LeftCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftCell.h; sourceTree = "<group>"; };
 		115E358B1E17706B002A9957 /* LeftCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftCell.m; sourceTree = "<group>"; };
 		115E358C1E17706B002A9957 /* LeftCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LeftCell.xib; sourceTree = "<group>"; };
+		11C3C13B1E1FCEAA005A2403 /* AccountSafeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountSafeViewController.h; sourceTree = "<group>"; };
+		11C3C13C1E1FCEAA005A2403 /* AccountSafeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountSafeViewController.m; sourceTree = "<group>"; };
+		11C3C13D1E1FCEAA005A2403 /* AccountSafeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccountSafeViewController.xib; sourceTree = "<group>"; };
 		11FE82641E1F79A600309719 /* MMNumberKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMNumberKeyboard.h; sourceTree = "<group>"; };
 		11FE82651E1F79A600309719 /* MMNumberKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMNumberKeyboard.m; sourceTree = "<group>"; };
 		11FE82671E1F79A600309719 /* MMNumberKeyboardDeleteKey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MMNumberKeyboardDeleteKey.png; sourceTree = "<group>"; };
@@ -725,6 +730,9 @@
 				616448211E1B39B90007E50E /* ShoppingAddressViewController.xib */,
 				6164482D1E1B6A030007E50E /* AddShoppingAddressViewController.h */,
 				6164482E1E1B6A030007E50E /* AddShoppingAddressViewController.m */,
+				11C3C13B1E1FCEAA005A2403 /* AccountSafeViewController.h */,
+				11C3C13C1E1FCEAA005A2403 /* AccountSafeViewController.m */,
+				11C3C13D1E1FCEAA005A2403 /* AccountSafeViewController.xib */,
 			);
 			name = MemberInfo;
 			sourceTree = "<group>";
@@ -933,6 +941,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11C3C13F1E1FCEAA005A2403 /* AccountSafeViewController.xib in Resources */,
 				11FE826E1E1F79A600309719 /* MMNumberKeyboardDeleteKey.png in Resources */,
 				619319A11E1CF67800AF63E7 /* RechargeScanViewController.xib in Resources */,
 				615FBF581E15066200F50C0D /* OrderListTopCell.xib in Resources */,
@@ -1180,6 +1189,7 @@
 				6172890D1E10E3860037DB40 /* LocationService.m in Sources */,
 				6193198F1E1CB22200AF63E7 /* GFCalendarView.m in Sources */,
 				619319991E1CB89800AF63E7 /* DZMoneyModel.m in Sources */,
+				11C3C13E1E1FCEAA005A2403 /* AccountSafeViewController.m in Sources */,
 				616A09B31E128AC600FCF886 /* MeCell.m in Sources */,
 				615FBF3C1E14CB2200F50C0D /* OrderListViewController.m in Sources */,
 				617288F01E10BEF30037DB40 /* FirstPageViewController.m in Sources */,

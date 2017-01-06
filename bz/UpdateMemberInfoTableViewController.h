@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+/**
+ 会员信息修改
+ */
 @interface UpdateMemberInfoTableViewController : UITableViewController
 
 @end
