@@ -8,6 +8,9 @@
 
 #import <JSONModel/JSONModel.h>
 
+/**
+ 电子钱包model
+ */
 @interface DZMoneyModel : JSONModel
 
 @property (copy, nonatomic) NSString *id;

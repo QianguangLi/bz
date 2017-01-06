@@ -86,6 +86,7 @@
             [Utility hideHUDForView:weakSelf.view];
             if (error) {
                 NSLog(@"failure:%@", error);
+                [Utility showString:error.localizedDescription onView:weakSelf.view];
                 return ;
             }
             NSLog(@"%@", responseObject);
@@ -251,6 +252,7 @@
         [Utility hideHUDForView:weakSelf.view];
         if (error) {
             NSLog(@"failure:%@", error);
+            [Utility showString:error.localizedDescription onView:weakSelf.view];
             return ;
         }
         NSLog(@"%@", responseObject);

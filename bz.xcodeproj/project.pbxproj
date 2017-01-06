@@ -15,6 +15,19 @@
 		115E35891E1766EE002A9957 /* CollectionSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 115E35871E1766EE002A9957 /* CollectionSectionHeaderView.xib */; };
 		115E358D1E17706B002A9957 /* LeftCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 115E358B1E17706B002A9957 /* LeftCell.m */; };
 		115E358E1E17706B002A9957 /* LeftCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 115E358C1E17706B002A9957 /* LeftCell.xib */; };
+		11FE826D1E1F79A600309719 /* MMNumberKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 11FE82651E1F79A600309719 /* MMNumberKeyboard.m */; };
+		11FE826E1E1F79A600309719 /* MMNumberKeyboardDeleteKey.png in Resources */ = {isa = PBXBuildFile; fileRef = 11FE82671E1F79A600309719 /* MMNumberKeyboardDeleteKey.png */; };
+		11FE826F1E1F79A600309719 /* MMNumberKeyboardDeleteKey@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 11FE82681E1F79A600309719 /* MMNumberKeyboardDeleteKey@2x.png */; };
+		11FE82701E1F79A600309719 /* MMNumberKeyboardDeleteKey@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 11FE82691E1F79A600309719 /* MMNumberKeyboardDeleteKey@3x.png */; };
+		11FE82711E1F79A600309719 /* MMNumberKeyboardDismissKey.png in Resources */ = {isa = PBXBuildFile; fileRef = 11FE826A1E1F79A600309719 /* MMNumberKeyboardDismissKey.png */; };
+		11FE82721E1F79A600309719 /* MMNumberKeyboardDismissKey@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 11FE826B1E1F79A600309719 /* MMNumberKeyboardDismissKey@2x.png */; };
+		11FE82731E1F79A600309719 /* MMNumberKeyboardDismissKey@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 11FE826C1E1F79A600309719 /* MMNumberKeyboardDismissKey@3x.png */; };
+		11FE82781E1F828300309719 /* DZMoneyDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11FE82761E1F828300309719 /* DZMoneyDetailsViewController.m */; };
+		11FE82791E1F828300309719 /* DZMoneyDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11FE82771E1F828300309719 /* DZMoneyDetailsViewController.xib */; };
+		11FE827D1E1F917500309719 /* RechargeDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11FE827B1E1F917500309719 /* RechargeDetailsViewController.m */; };
+		11FE827E1E1F917500309719 /* RechargeDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11FE827C1E1F917500309719 /* RechargeDetailsViewController.xib */; };
+		11FE82821E1FA00400309719 /* BonusScanDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11FE82801E1FA00400309719 /* BonusScanDetailsViewController.m */; };
+		11FE82831E1FA00400309719 /* BonusScanDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11FE82811E1FA00400309719 /* BonusScanDetailsViewController.xib */; };
 		17E122BDA9BAA762D7A46B7F /* libPods-bz.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 63277A970CC28472312B0E2A /* libPods-bz.a */; };
 		613FB9481E1E1A6B00CB2070 /* BonusTXViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 613FB9471E1E1A6B00CB2070 /* BonusTXViewController.m */; };
 		613FB94C1E1E352200CB2070 /* BonusTXScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 613FB94A1E1E352200CB2070 /* BonusTXScanViewController.m */; };
@@ -137,6 +150,23 @@
 		115E358A1E17706B002A9957 /* LeftCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftCell.h; sourceTree = "<group>"; };
 		115E358B1E17706B002A9957 /* LeftCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftCell.m; sourceTree = "<group>"; };
 		115E358C1E17706B002A9957 /* LeftCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LeftCell.xib; sourceTree = "<group>"; };
+		11FE82641E1F79A600309719 /* MMNumberKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMNumberKeyboard.h; sourceTree = "<group>"; };
+		11FE82651E1F79A600309719 /* MMNumberKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMNumberKeyboard.m; sourceTree = "<group>"; };
+		11FE82671E1F79A600309719 /* MMNumberKeyboardDeleteKey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MMNumberKeyboardDeleteKey.png; sourceTree = "<group>"; };
+		11FE82681E1F79A600309719 /* MMNumberKeyboardDeleteKey@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MMNumberKeyboardDeleteKey@2x.png"; sourceTree = "<group>"; };
+		11FE82691E1F79A600309719 /* MMNumberKeyboardDeleteKey@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MMNumberKeyboardDeleteKey@3x.png"; sourceTree = "<group>"; };
+		11FE826A1E1F79A600309719 /* MMNumberKeyboardDismissKey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MMNumberKeyboardDismissKey.png; sourceTree = "<group>"; };
+		11FE826B1E1F79A600309719 /* MMNumberKeyboardDismissKey@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MMNumberKeyboardDismissKey@2x.png"; sourceTree = "<group>"; };
+		11FE826C1E1F79A600309719 /* MMNumberKeyboardDismissKey@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MMNumberKeyboardDismissKey@3x.png"; sourceTree = "<group>"; };
+		11FE82751E1F828300309719 /* DZMoneyDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZMoneyDetailsViewController.h; sourceTree = "<group>"; };
+		11FE82761E1F828300309719 /* DZMoneyDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZMoneyDetailsViewController.m; sourceTree = "<group>"; };
+		11FE82771E1F828300309719 /* DZMoneyDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DZMoneyDetailsViewController.xib; sourceTree = "<group>"; };
+		11FE827A1E1F917500309719 /* RechargeDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RechargeDetailsViewController.h; sourceTree = "<group>"; };
+		11FE827B1E1F917500309719 /* RechargeDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RechargeDetailsViewController.m; sourceTree = "<group>"; };
+		11FE827C1E1F917500309719 /* RechargeDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RechargeDetailsViewController.xib; sourceTree = "<group>"; };
+		11FE827F1E1FA00400309719 /* BonusScanDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BonusScanDetailsViewController.h; sourceTree = "<group>"; };
+		11FE82801E1FA00400309719 /* BonusScanDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BonusScanDetailsViewController.m; sourceTree = "<group>"; };
+		11FE82811E1FA00400309719 /* BonusScanDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BonusScanDetailsViewController.xib; sourceTree = "<group>"; };
 		2BBD9FECB363268F3739B789 /* libPods-bzUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-bzUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		54D4FF3445E3FD7D387B5F0E /* Pods-bz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bz.debug.xcconfig"; path = "Pods/Target Support Files/Pods-bz/Pods-bz.debug.xcconfig"; sourceTree = "<group>"; };
 		613FB9461E1E1A6B00CB2070 /* BonusTXViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BonusTXViewController.h; sourceTree = "<group>"; };
@@ -349,6 +379,47 @@
 				115E358C1E17706B002A9957 /* LeftCell.xib */,
 			);
 			name = Cell;
+			sourceTree = "<group>";
+		};
+		11FE82631E1F79A600309719 /* MMNumberKeyboard */ = {
+			isa = PBXGroup;
+			children = (
+				11FE82661E1F79A600309719 /* Images */,
+				11FE82641E1F79A600309719 /* MMNumberKeyboard.h */,
+				11FE82651E1F79A600309719 /* MMNumberKeyboard.m */,
+			);
+			name = MMNumberKeyboard;
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		11FE82661E1F79A600309719 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				11FE82671E1F79A600309719 /* MMNumberKeyboardDeleteKey.png */,
+				11FE82681E1F79A600309719 /* MMNumberKeyboardDeleteKey@2x.png */,
+				11FE82691E1F79A600309719 /* MMNumberKeyboardDeleteKey@3x.png */,
+				11FE826A1E1F79A600309719 /* MMNumberKeyboardDismissKey.png */,
+				11FE826B1E1F79A600309719 /* MMNumberKeyboardDismissKey@2x.png */,
+				11FE826C1E1F79A600309719 /* MMNumberKeyboardDismissKey@3x.png */,
+			);
+			name = Images;
+			path = ../Images;
+			sourceTree = "<group>";
+		};
+		11FE82741E1F821A00309719 /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				11FE82751E1F828300309719 /* DZMoneyDetailsViewController.h */,
+				11FE82761E1F828300309719 /* DZMoneyDetailsViewController.m */,
+				11FE82771E1F828300309719 /* DZMoneyDetailsViewController.xib */,
+				11FE827A1E1F917500309719 /* RechargeDetailsViewController.h */,
+				11FE827B1E1F917500309719 /* RechargeDetailsViewController.m */,
+				11FE827C1E1F917500309719 /* RechargeDetailsViewController.xib */,
+				11FE827F1E1FA00400309719 /* BonusScanDetailsViewController.h */,
+				11FE82801E1FA00400309719 /* BonusScanDetailsViewController.m */,
+				11FE82811E1FA00400309719 /* BonusScanDetailsViewController.xib */,
+			);
+			name = Details;
 			sourceTree = "<group>";
 		};
 		21DECBBC2E154760A3032807 /* Pods */ = {
@@ -625,6 +696,7 @@
 		617F79701E15FEB900E139CF /* Assistent */ = {
 			isa = PBXGroup;
 			children = (
+				11FE82631E1F79A600309719 /* MMNumberKeyboard */,
 				619319801E1CB22200AF63E7 /* GFCalendar */,
 				617F79711E15FEF800E139CF /* YLButton */,
 				617F797A1E1633F600E139CF /* AddressPickerView.h */,
@@ -660,6 +732,7 @@
 		6193197A1E1CA38500AF63E7 /* Account */ = {
 			isa = PBXGroup;
 			children = (
+				11FE82741E1F821A00309719 /* Details */,
 				619319911E1CB40300AF63E7 /* Cells */,
 				6193197B1E1CA41200AF63E7 /* DZMoneyViewController.h */,
 				6193197C1E1CA41200AF63E7 /* DZMoneyViewController.m */,
@@ -860,6 +933,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11FE826E1E1F79A600309719 /* MMNumberKeyboardDeleteKey.png in Resources */,
 				619319A11E1CF67800AF63E7 /* RechargeScanViewController.xib in Resources */,
 				615FBF581E15066200F50C0D /* OrderListTopCell.xib in Resources */,
 				615FBF381E14BF0400F50C0D /* GoodsCategoryViewController.xib in Resources */,
@@ -871,10 +945,14 @@
 				615FBF421E14E9AC00F50C0D /* RefreshViewController.xib in Resources */,
 				115E358E1E17706B002A9957 /* LeftCell.xib in Resources */,
 				115E35841E175258002A9957 /* RightCell.xib in Resources */,
+				11FE82831E1FA00400309719 /* BonusScanDetailsViewController.xib in Resources */,
 				615FBF3D1E14CB2200F50C0D /* OrderListViewController.xib in Resources */,
 				617288F11E10BEF30037DB40 /* FirstPageViewController.xib in Resources */,
+				11FE82701E1F79A600309719 /* MMNumberKeyboardDeleteKey@3x.png in Resources */,
 				619319A61E1CF70A00AF63E7 /* RechargeScanCell.xib in Resources */,
+				11FE82791E1F828300309719 /* DZMoneyDetailsViewController.xib in Resources */,
 				613FB94D1E1E352200CB2070 /* BonusTXScanViewController.xib in Resources */,
+				11FE82711E1F79A600309719 /* MMNumberKeyboardDismissKey.png in Resources */,
 				617F79791E1620FF00E139CF /* FunctionListViewController.xib in Resources */,
 				617288FB1E10BF110037DB40 /* MeViewController.xib in Resources */,
 				6193197F1E1CA41200AF63E7 /* DZMoneyViewController.xib in Resources */,
@@ -883,13 +961,17 @@
 				617288BD1E10BCA40037DB40 /* LaunchScreen.storyboard in Resources */,
 				616448291E1B459E0007E50E /* AddressCell.xib in Resources */,
 				6172891C1E110BCD0037DB40 /* LoginViewController.xib in Resources */,
+				11FE827E1E1F917500309719 /* RechargeDetailsViewController.xib in Resources */,
 				616A09AA1E11FF1600FCF886 /* RegistViewController.xib in Resources */,
 				619319961E1CB41800AF63E7 /* DZMoneyCell.xib in Resources */,
 				61A09ED21E13D86200C58519 /* GoodsViewController.xib in Resources */,
 				617288BA1E10BCA40037DB40 /* Assets.xcassets in Resources */,
+				11FE826F1E1F79A600309719 /* MMNumberKeyboardDeleteKey@2x.png in Resources */,
 				61A09ED81E13EA2C00C58519 /* GoodsCell.xib in Resources */,
 				616A09B41E128AC600FCF886 /* MeCell.xib in Resources */,
+				11FE82721E1F79A600309719 /* MMNumberKeyboardDismissKey@2x.png in Resources */,
 				615FBF281E14B60500F50C0D /* MyOrdersViewController.xib in Resources */,
+				11FE82731E1F79A600309719 /* MMNumberKeyboardDismissKey@3x.png in Resources */,
 				617F797F1E1651C700E139CF /* BZStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1054,6 +1136,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				617288FA1E10BF110037DB40 /* MeViewController.m in Sources */,
+				11FE82821E1FA00400309719 /* BonusScanDetailsViewController.m in Sources */,
 				619319901E1CB22200AF63E7 /* NSDate+GFCalendar.m in Sources */,
 				617289171E11071A0037DB40 /* GlobalData.m in Sources */,
 				615FBF451E14FAB300F50C0D /* OrderModel.m in Sources */,
@@ -1076,13 +1159,16 @@
 				115E35831E175258002A9957 /* RightCell.m in Sources */,
 				615FBF521E15064400F50C0D /* OrderProductCell.m in Sources */,
 				1154B99E1E113C3E00C8459D /* NetService.m in Sources */,
+				11FE826D1E1F79A600309719 /* MMNumberKeyboard.m in Sources */,
 				613FB94C1E1E352200CB2070 /* BonusTXScanViewController.m in Sources */,
 				6193197E1E1CA41200AF63E7 /* DZMoneyViewController.m in Sources */,
 				61A09ED71E13EA2C00C58519 /* GoodsCell.m in Sources */,
 				61A09ECD1E13AFFC00C58519 /* UserModel.m in Sources */,
 				617288AF1E10BCA40037DB40 /* AppDelegate.mm in Sources */,
+				11FE82781E1F828300309719 /* DZMoneyDetailsViewController.m in Sources */,
 				615FBF371E14BF0400F50C0D /* GoodsCategoryViewController.m in Sources */,
 				615FBF5C1E1506AB00F50C0D /* OrderListBottomCell.m in Sources */,
+				11FE827D1E1F917500309719 /* RechargeDetailsViewController.m in Sources */,
 				6172891F1E1118670037DB40 /* UIView+Addition.m in Sources */,
 				613FB9481E1E1A6B00CB2070 /* BonusTXViewController.m in Sources */,
 				617288AC1E10BCA40037DB40 /* main.m in Sources */,

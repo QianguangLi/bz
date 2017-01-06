@@ -71,6 +71,8 @@
 #define kLoginSuccessNotification @"login_success_notification"
 //添加或更新收货地址成功通知
 #define kAddOrUpdateShoppingAddressSuccess @"add_or_update_shopping_address_success"
+//删除充值记录通知
+#define kDeleteRechargeSuccessNotification @"recharge_delete_success"
 
 #define kBaseUrl @"http://103.48.169.52/bzapi"
 //登录URL

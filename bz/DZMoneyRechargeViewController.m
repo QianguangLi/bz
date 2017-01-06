@@ -9,6 +9,7 @@
 #import "DZMoneyRechargeViewController.h"
 #import "UIView+Addition.h"
 #import "NetService.h"
+#import "MMNumberKeyboard.h"
 
 @interface DZMoneyRechargeViewController () <UIAlertViewDelegate>
 {
@@ -42,6 +43,10 @@
     [_rechageNote setCorneRadius:5];
     
     _usename.text = kLoginUserName;
+    
+    MMNumberKeyboard *numberKeyboard = [[MMNumberKeyboard alloc] initWithFrame:CGRectZero];
+    numberKeyboard.allowsDecimalPoint = YES;
+    _money.inputView = numberKeyboard;
 }
 - (IBAction)submitAction:(UIButton *)sender
 {
@@ -55,6 +60,7 @@
         [Utility hideHUDForView:self.view];
         if (error) {
             NSLog(@"failure:%@", error);
+            [Utility showString:error.localizedDescription onView:weakSelf.view];
             return ;
         }
         NSLog(@"%@", responseObject);

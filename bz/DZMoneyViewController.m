@@ -12,6 +12,7 @@
 #import "DZMoneyCell.h"
 #import "DZMoneyModel.h"
 #import "UIView+Addition.h"
+#import "DZMoneyDetailsViewController.h"
 
 @interface DZMoneyViewController () <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
 {
@@ -24,6 +25,7 @@
 }
 
 @property (strong, nonatomic) UITextField *currentTextField;
+@property (assign, nonatomic) double balance;
 @end
 
 @implementation DZMoneyViewController
@@ -203,16 +205,18 @@
                                  _startTime, @"startDate",
                                  _endTime, @"endDate",
                                  nil];
+    __weak DZMoneyViewController *weakself = self;
     _task = [NetService POST:kGetUserAccountUrl parameters:dict complete:^(id responseObject, NSError *error) {
         [weakSelf stopRefreshing];
         if (error) {
             NSLog(@"failure:%@", error);
+            [Utility showString:error.localizedDescription onView:weakSelf.view];
             return ;
         }
         NSLog(@"%@", responseObject);
         if ([responseObject[kStatusCode] integerValue] == NetStatusSuccess) {
             NSDictionary *dataDict = responseObject[kResponseData];
-//            NSString *balance = dataDict[@"balance"];
+            weakself.balance = [dataDict[@"balance"] doubleValue];
             weakSelf.pageCount = [dataDict[kPageCount] integerValue];
             NSArray *listArray = dataDict[@"list"];
             if (pullDown) {
@@ -270,6 +274,10 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    DZMoneyDetailsViewController *vc = [[DZMoneyDetailsViewController alloc] init];
+    vc.model = self.dataArray[indexPath.row];
+    vc.balanceMoney = self.balance;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark -

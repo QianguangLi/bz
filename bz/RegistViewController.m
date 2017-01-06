@@ -11,6 +11,9 @@
 #import "NetService.h"
 
 @interface RegistViewController ()
+{
+    NSURLSessionTask *_task;
+}
 
 @property (weak, nonatomic) IBOutlet UITextField *usernameTF;
 @property (weak, nonatomic) IBOutlet UILabel *phoneOrEmailLabel;
@@ -28,6 +31,11 @@
 @end
 
 @implementation RegistViewController
+- (void)dealloc
+{
+    [_task cancel];
+    NSLog(@"dealloc");
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -100,16 +108,18 @@
                                  [_passwordTF.text md5], @"password",
                                  phoneNumber, @"mobile",
                                  email, @"email", nil];
-    NSURLSessionTask *task = [NetService POST:kUserRegistUrl parameters:dict complete:^(id responseObject, NSError *error) {
+    __weak RegistViewController *weakSelf = self;
+    _task = [NetService POST:kUserRegistUrl parameters:dict complete:^(id responseObject, NSError *error) {
         [Utility hideHUDForView:self.view];
         if (error) {
             NSLog(@"failure:%@", error);
+            [Utility showString:error.localizedDescription onView:weakSelf.view];
             return ;
         }
         NSLog(@"%@", responseObject);
         NSLog(@"%@", responseObject[kErrMsg]);
     }];
-    [Utility showHUDAddedTo:self.view forTask:task];
+    [Utility showHUDAddedTo:self.view forTask:_task];
 }
 //是否同意
 - (IBAction)agreeAction:(UIButton *)sender

@@ -27,9 +27,9 @@
 
 - (void)setContextWithBonusModel:(BonusModel *)model
 {
-    _bankAccount.text = model.id;
+    _bankAccount.text = model.bankcard;
     _bonusDate.text = model.withdrawTime;
-    _money.text = model.withdrawMoney;
+    _money.text = [NSString stringWithFormat:@"%.2f", model.withdrawMoney];
     if ([model.isAuditing isEqualToString:@"0"]) {
         _status.text = Localized(@"未处理");
     } else if ([model.isAuditing isEqualToString:@"1"]) {
@@ -38,7 +38,7 @@
         _status.text = Localized(@"已汇款");
     } else if ([model.isAuditing isEqualToString:@"3"]) {
         _status.text = Localized(@"卡号有误");
-    } else if ([model.isAuditing isEqualToString:@"3"]) {
+    } else if ([model.isAuditing isEqualToString:@"4"]) {
         _status.text = Localized(@"待审核");
     }
     

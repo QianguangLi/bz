@@ -33,9 +33,9 @@ typedef NS_ENUM(NSInteger, RequestMethod) {
 + (NSURLSessionTask *)requestString:(NSString *)urlString useMethod:(RequestMethod)method parameters:(id)parameters complete:(Complete)complete
 {
     if (!kHasNet) {
-        [Utility showString:Localized(@"无网状况不好,请检查网络连接。") onView:appDelegate.window];
+//        [Utility showString:Localized(@"网状况不好,请检查网络连接。") onView:appDelegate.window];
         NSError *error = [NSError errorWithDomain:NSURLErrorDomain code:-1009 userInfo:@{
-                                                                                         NSLocalizedDescriptionKey:Localized(@"似乎已断开与互联网的连接。")}];
+                                                                                         NSLocalizedDescriptionKey:Localized(@"网络连接已断开,请检查网络连接。")}];
         complete(nil, error);
         return nil;
     }
@@ -49,7 +49,7 @@ typedef NS_ENUM(NSInteger, RequestMethod) {
     NSString *token = parameters[@"Token"];
     NSString *sign = token ? [[NSString stringWithFormat:@"%@%@",token, kSignKey] md5] : [kSignKey md5];
     [parameters setObject:sign forKey:@"Sign"];
-    NSLog(@"URL:%@", urlString);
+    NSLog(@"%@", urlString);
     NSLog(@"%@", parameters);
     if (method == RequestMethodGet) {
         return [manager GET:urlString parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {

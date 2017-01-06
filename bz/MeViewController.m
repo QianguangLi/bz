@@ -227,6 +227,7 @@
 //        [Utility hideHUDForView:self.view];
         if (error) {
             NSLog(@"failure:%@", error);
+            [Utility showString:error.localizedDescription onView:weakSelf.view];
             return ;
         }
         if ([responseObject[kStatusCode] integerValue] == NetStatusSuccess) {

@@ -14,6 +14,8 @@
 #import "GFCalendar.h"
 #import "IQKeyboardManager.h"
 #import "YLButton.h"
+#import "MMNumberKeyboard.h"
+#import "RechargeDetailsViewController.h"
 
 @interface RechargeScanViewController () <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
 {
@@ -52,12 +54,14 @@
 {
     [_task cancel];
     [_deleteTask cancel];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     NSLog(@"dealloc");
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshData:) name:kDeleteRechargeSuccessNotification object:nil];
     self.title = Localized(@"充值浏览");
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.mTableView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight - 64);
@@ -76,8 +80,20 @@
     _startTime = @"";
     _endTime = @"";
     
+    MMNumberKeyboard *numberKeyboard1 = [[MMNumberKeyboard alloc] initWithFrame:CGRectZero];
+    numberKeyboard1.allowsDecimalPoint = YES;
+    _startMoneyTF.inputView = numberKeyboard1;
+    MMNumberKeyboard *numberKeyboard2 = [[MMNumberKeyboard alloc] initWithFrame:CGRectZero];
+    numberKeyboard2.allowsDecimalPoint = YES;
+    _endMoneyTF.inputView = numberKeyboard2;
+    
     [self.view bringSubviewToFront:_searchView];
     [self setupNavigationItem];
+}
+
+- (void)refreshData:(NSNotification *)notify
+{
+    [self startHeardRefresh];
 }
 
 - (void)setupSearchView
@@ -169,6 +185,7 @@
         [weakSelf stopRefreshing];
         if (error) {
             NSLog(@"failure:%@", error);
+            [Utility showString:error.localizedDescription onView:weakSelf.view];
             return ;
         }
         NSLog(@"%@", responseObject);
@@ -226,6 +243,7 @@
         [Utility hideHUDForView:weakSelf.view];
         if (error) {
             NSLog(@"failure:%@", error);
+            [Utility showString:error.localizedDescription onView:weakSelf.view];
             return ;
         }
         NSLog(@"%@", responseObject);
@@ -262,6 +280,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    RechargeDetailsViewController *vc = [[RechargeDetailsViewController alloc] init];
+    vc.model = self.dataArray[indexPath.row];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath

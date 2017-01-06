@@ -8,12 +8,15 @@
 
 #import <JSONModel/JSONModel.h>
 
+/**
+ 充值model
+ */
 @interface RechargeModel : JSONModel
 
 @property (copy, nonatomic) NSString *id;//充值id
 @property (assign, nonatomic) BOOL isPay;//是否支付
 @property (copy, nonatomic) NSString *remitTime;//充值时间
-@property (copy, nonatomic) NSString *remitterSum;//充值金额
+@property (assign, nonatomic) double remitterSum;//充值金额
 @property (copy, nonatomic) NSString<Optional> *note;//充值说明
 
 @end

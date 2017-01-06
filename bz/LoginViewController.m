@@ -28,6 +28,11 @@
 
 @implementation LoginViewController
 
+- (void)dealloc
+{
+    NSLog(@"dealloc");
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
@@ -79,11 +84,13 @@
     //登录过程中关闭注册
     _registItem.enabled = NO;
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:_userNameTF.text, @"memberid", [_passwordTF.text md5], @"password", nil];
+    __weak LoginViewController *weakSelf = self;
     _task = [NetService POST:kUserLoginUrl parameters:dict complete:^(id responseObject, NSError *error) {
         _registItem.enabled = YES;
         [Utility hideHUDForView:self.view];
         if (error) {
-            NSLog(@"failure:%@", error);
+            NSLog(@"failure:%ld:%@", (long)error.code, error.localizedDescription);
+            [Utility showString:error.localizedDescription onView:weakSelf.view];
             return ;
         }
         if ([responseObject[kStatusCode] integerValue] == NetStatusSuccess) {

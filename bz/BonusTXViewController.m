@@ -9,6 +9,7 @@
 #import "BonusTXViewController.h"
 #import "NetService.h"
 #import "UIView+Addition.h"
+#import "MMNumberKeyboard.h"
 
 @interface BonusTXViewController () <UIAlertViewDelegate>
 {
@@ -48,6 +49,10 @@
     //填写默认数据
     _memberid.text = kLoginUserName;
     _accountName.text = kLoginUserName;
+    
+    MMNumberKeyboard *numberKeyBoard = [[MMNumberKeyboard alloc] initWithFrame:CGRectZero];
+    numberKeyBoard.allowsDecimalPoint = YES;
+    _money.inputView = numberKeyBoard;
 }
 
 - (void)requestData
@@ -57,6 +62,7 @@
     _getBonusTask = [NetService GET:@"api/User/GetBonusSet" parameters:dict complete:^(id responseObject, NSError *error) {
         if (error) {
             NSLog(@"failure:%@", error);
+            [Utility showString:error.localizedDescription onView:weakSelf.view];
             return ;
         }
         NSLog(@"%@", responseObject);
@@ -64,6 +70,9 @@
             NSDictionary *dataDict = responseObject[kResponseData];
             weakSelf.bonusMoney.text = [NSString stringWithFormat:@"%@", dataDict[@"jjbalance"]];
             weakSelf.remind.text = [NSString stringWithFormat:@"提醒：奖金提现费率为%@,最低提现额为%@", dataDict[@"raise"], dataDict[@"limit"]];
+            weakSelf.bankName.text = dataDict[@"bankname"];
+            weakSelf.accountName.text = dataDict[@"kaihuname"];
+            weakSelf.bankAccount.text = dataDict[@"bankcard"];
         } else {
             [Utility showString:responseObject[kErrMsg] onView:weakSelf.view];
         }
@@ -71,8 +80,29 @@
 }
 - (IBAction)submitAction:(UIButton *)sender
 {
+    if (IS_NULL_STRING(_payPwd.text)) {
+        [Utility showString:Localized(@"请输入支付密码") onView:self.view];
+        return;
+    }
+    if (IS_NULL_STRING(_money.text)) {
+        [Utility showString:Localized(@"请输入体现金额") onView:self.view];
+        return;
+    }
+    if (_money.text.doubleValue > _bonusMoney.text.doubleValue) {
+        [Utility showString:Localized(@"体现金额不能大于账户余额") onView:self.view];
+        return;
+    }
+    if (IS_NULL_STRING(_bankName.text)) {
+        [Utility showString:Localized(@"请输入开户银行") onView:self.view];
+        return;
+    }
+    if (IS_NULL_STRING(_bankAccount.text)) {
+        [Utility showString:Localized(@"请输入银行卡号") onView:self.view];
+        return;
+    }
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                  kLoginToken, @"Token",
+                                 [_payPwd.text md5], @"accountpwd",
                                  _money.text, @"withdrawmoney",
                                  _bankAccount.text, @"bankcard",
                                  _bankName.text, @"bankname",
@@ -85,6 +115,7 @@
         [Utility hideHUDForView:self.view];
         if (error) {
             NSLog(@"failure:%@", error);
+            [Utility showString:error.localizedDescription onView:weakSelf.view];
             return ;
         }
         NSLog(@"%@", responseObject);

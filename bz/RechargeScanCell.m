@@ -28,7 +28,7 @@
 {
     _memberid.text = kLoginUserName;
     _rechargeTime.text = model.remitTime;
-    _rechargeMoney.text = [NSString stringWithFormat:@"+%@", model.remitterSum];
+    _rechargeMoney.text = [NSString stringWithFormat:@"+%.2f", model.remitterSum];
     _payStatus.text = model.isPay ? Localized(@"已支付") : Localized(@"未支付");
 }
 

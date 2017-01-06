@@ -38,6 +38,7 @@
 {
     [_task cancel];
     [_updateTask cancel];
+    NSLog(@"dealloc");
 }
 
 - (void)viewDidLoad {
@@ -74,6 +75,7 @@
         [Utility hideHUDForView:self.view];
         if (error) {
             NSLog(@"failure:%@", error);
+            [Utility showString:error.localizedDescription onView:weakSelf.view];
             return ;
         }
         NSLog(@"%@", responseObject);
@@ -83,7 +85,7 @@
             UserModel *userModel = [[UserModel alloc] initWithDictionary:dataDict error:nil];
             [weakSelf reloadData:userModel With:weakSelf];
         } else {
-            [Utility showString:responseObject[kErrMsg] onView:self.view];
+            [Utility showString:responseObject[kErrMsg] onView:weakSelf.view];
         }
     }];
     [Utility showHUDAddedTo:self.view forTask:_task];
@@ -125,6 +127,7 @@
         [Utility hideHUDForView:self.view];
         if (error) {
             NSLog(@"failure:%@", error);
+            [Utility showString:error.localizedDescription onView:weakSelf.view];
             return ;
         }
         NSLog(@"%@", responseObject);
