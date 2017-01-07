@@ -73,6 +73,8 @@
 #define kAddOrUpdateShoppingAddressSuccess @"add_or_update_shopping_address_success"
 //删除充值记录通知
 #define kDeleteRechargeSuccessNotification @"recharge_delete_success"
+//重新登录通知，token验证失败的情况下
+#define kReLoginNotification @"go_re_login_notification"
 
 #define kBaseUrl @"http://103.48.169.52/bzapi"
 //登录URL
@@ -107,6 +109,8 @@
 #define kMyCollectionUrl @"api/User/FavoritesCommodity"
 //写邮件
 #define kWriteEmailUrl @"api/User/WriteMessage"
+//修改密码
+#define kModifyPasswordUrl @"api/User/ModifyPassword"
 
 //用户权限
 typedef NS_ENUM(NSInteger, UserLevel) {

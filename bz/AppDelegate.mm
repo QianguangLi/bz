@@ -22,7 +22,7 @@
 
 #import "DataBaseService.h"
 
-@interface AppDelegate () <UITabBarControllerDelegate>
+@interface AppDelegate () <UITabBarControllerDelegate, UIAlertViewDelegate>
 {
     BMKMapManager *_mapManager;
 }
@@ -34,6 +34,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     // Override point for customization after application launch.
+    //注册重新登录通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reLogon:) name:kReLoginNotification object:nil];
     [self systemSetting];
     //百度地图
     [self setBMKMap];
@@ -85,7 +87,26 @@
     _rootController = [[BaseTabBarController alloc] init];
     _rootController.delegate = self;
     _rootController.viewControllers = @[firstPageNvc, goodsCategoryNvc, shoppingCartNvc, meNvc];
+    self.window.rootViewController = nil;
     self.window.rootViewController = _rootController;
+}
+//退出
+- (void)logout
+{
+    //清空登录信息
+    kLoginUserName = nil;
+    kLoginToken = nil;
+    kIsLogin = NO;
+    //重新加载所有页面
+    [self setRootController];
+}
+
+//重新登录
+- (void)reLogon:(NSNotification *)notify
+{
+    UIAlertView *av = [[UIAlertView alloc] initWithTitle:Localized(@"提示") message:Localized(@"请重新登录") delegate:self cancelButtonTitle:Localized(@"确定") otherButtonTitles:nil, nil];
+    av.tag = 1001;
+    [av show];
 }
 
 
@@ -139,6 +160,14 @@
     //TODO:开发阶段暂时关闭定位
 //    LocationService *service = [LocationService sharedLocationService];
 //    [service startUserLocationService];
+}
+
+#pragma mark - UIAlertViewDelegate
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (alertView.tag == 1001) {
+        [self logout];
+    }
 }
 
 #pragma mark UITabBarControllerDelegate

@@ -54,12 +54,20 @@ typedef NS_ENUM(NSInteger, RequestMethod) {
     }
     if (method == RequestMethodGet) {
         return [manager GET:urlString parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            if ([responseObject[kStatusCode] integerValue] == NetStatusVerifyTokenFailed || [responseObject[kStatusCode] integerValue] == NetStatusTokenFailed) {
+                [[NSNotificationCenter defaultCenter] postNotificationName:kReLoginNotification object:nil];
+                return ;
+            }
             complete(responseObject, nil);
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             complete(nil, error);
         }];
     } else {
         return [manager POST:urlString parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            if ([responseObject[kStatusCode] integerValue] == NetStatusVerifyTokenFailed || [responseObject[kStatusCode] integerValue] == NetStatusTokenFailed) {
+                [[NSNotificationCenter defaultCenter] postNotificationName:kReLoginNotification object:nil];
+                return ;
+            }
             complete(responseObject, nil);
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             complete(nil, error);

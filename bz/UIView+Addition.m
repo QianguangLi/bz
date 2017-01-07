@@ -61,4 +61,11 @@
     self.attributedText = attrStr;
 }
 
+- (CGFloat)heightInSize:(CGSize)size
+{
+    NSDictionary *dict = @{NSFontAttributeName:self.font};
+    CGRect rect = [self.text boundingRectWithSize:size options:NSStringDrawingTruncatesLastVisibleLine|NSStringDrawingUsesFontLeading|NSStringDrawingUsesLineFragmentOrigin attributes:dict context:nil];
+    return rect.size.height;
+}
+
 @end

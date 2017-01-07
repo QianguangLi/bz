@@ -20,6 +20,8 @@
 
 - (void)saveContext;
 
+- (void)logout;
+
 
 @end
 

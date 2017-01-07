@@ -20,5 +20,5 @@
 @interface UILabel (Addition)
 
 - (void)setStrikeLineText:(NSString *)text;
-
+- (CGFloat)heightInSize:(CGSize)size;
 @end

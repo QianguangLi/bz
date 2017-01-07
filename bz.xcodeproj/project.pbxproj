@@ -15,6 +15,11 @@
 		115E35891E1766EE002A9957 /* CollectionSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 115E35871E1766EE002A9957 /* CollectionSectionHeaderView.xib */; };
 		115E358D1E17706B002A9957 /* LeftCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 115E358B1E17706B002A9957 /* LeftCell.m */; };
 		115E358E1E17706B002A9957 /* LeftCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 115E358C1E17706B002A9957 /* LeftCell.xib */; };
+		116DF0651E20BE8500484D72 /* EmailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 116DF0631E20BE8500484D72 /* EmailViewController.m */; };
+		116DF0661E20BE8500484D72 /* EmailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 116DF0641E20BE8500484D72 /* EmailViewController.xib */; };
+		116DF06B1E20BF3800484D72 /* EmailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 116DF0691E20BF3800484D72 /* EmailCell.m */; };
+		116DF06C1E20BF3800484D72 /* EmailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 116DF06A1E20BF3800484D72 /* EmailCell.xib */; };
+		116DF06F1E20C10300484D72 /* EmailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 116DF06E1E20C10300484D72 /* EmailModel.m */; };
 		1176F89B1E1FDF580057227C /* CollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1176F8991E1FDF580057227C /* CollectionCell.m */; };
 		1176F89C1E1FDF580057227C /* CollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1176F89A1E1FDF580057227C /* CollectionCell.xib */; };
 		11C3C13E1E1FCEAA005A2403 /* AccountSafeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C3C13C1E1FCEAA005A2403 /* AccountSafeViewController.m */; };
@@ -158,6 +163,14 @@
 		115E358A1E17706B002A9957 /* LeftCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftCell.h; sourceTree = "<group>"; };
 		115E358B1E17706B002A9957 /* LeftCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftCell.m; sourceTree = "<group>"; };
 		115E358C1E17706B002A9957 /* LeftCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LeftCell.xib; sourceTree = "<group>"; };
+		116DF0621E20BE8500484D72 /* EmailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmailViewController.h; sourceTree = "<group>"; };
+		116DF0631E20BE8500484D72 /* EmailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmailViewController.m; sourceTree = "<group>"; };
+		116DF0641E20BE8500484D72 /* EmailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmailViewController.xib; sourceTree = "<group>"; };
+		116DF0681E20BF3800484D72 /* EmailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmailCell.h; sourceTree = "<group>"; };
+		116DF0691E20BF3800484D72 /* EmailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmailCell.m; sourceTree = "<group>"; };
+		116DF06A1E20BF3800484D72 /* EmailCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmailCell.xib; sourceTree = "<group>"; };
+		116DF06D1E20C10300484D72 /* EmailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmailModel.h; sourceTree = "<group>"; };
+		116DF06E1E20C10300484D72 /* EmailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmailModel.m; sourceTree = "<group>"; };
 		1176F8981E1FDF580057227C /* CollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionCell.h; sourceTree = "<group>"; };
 		1176F8991E1FDF580057227C /* CollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionCell.m; sourceTree = "<group>"; };
 		1176F89A1E1FDF580057227C /* CollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollectionCell.xib; sourceTree = "<group>"; };
@@ -401,12 +414,26 @@
 			name = Cell;
 			sourceTree = "<group>";
 		};
+		116DF0671E20BF2000484D72 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				116DF0681E20BF3800484D72 /* EmailCell.h */,
+				116DF0691E20BF3800484D72 /* EmailCell.m */,
+				116DF06A1E20BF3800484D72 /* EmailCell.xib */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
 		11DC85411E20932000AE7947 /* Email */ = {
 			isa = PBXGroup;
 			children = (
+				116DF0671E20BF2000484D72 /* Cells */,
 				11DC85421E20938900AE7947 /* WriteEmailViewController.h */,
 				11DC85431E20938900AE7947 /* WriteEmailViewController.m */,
 				11DC85441E20938900AE7947 /* WriteEmailViewController.xib */,
+				116DF0621E20BE8500484D72 /* EmailViewController.h */,
+				116DF0631E20BE8500484D72 /* EmailViewController.m */,
+				116DF0641E20BE8500484D72 /* EmailViewController.xib */,
 			);
 			name = Email;
 			sourceTree = "<group>";
@@ -726,6 +753,8 @@
 				61581A8B1E1DD79100985112 /* RechargeModel.m */,
 				613FB9531E1E388A00CB2070 /* BonusModel.h */,
 				613FB9541E1E388A00CB2070 /* BonusModel.m */,
+				116DF06D1E20C10300484D72 /* EmailModel.h */,
+				116DF06E1E20C10300484D72 /* EmailModel.m */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -985,6 +1014,7 @@
 				616448231E1B39B90007E50E /* ShoppingAddressViewController.xib in Resources */,
 				615FBF421E14E9AC00F50C0D /* RefreshViewController.xib in Resources */,
 				115E358E1E17706B002A9957 /* LeftCell.xib in Resources */,
+				116DF06C1E20BF3800484D72 /* EmailCell.xib in Resources */,
 				11C3C1441E1FDE6A005A2403 /* MyCollectionViewController.xib in Resources */,
 				115E35841E175258002A9957 /* RightCell.xib in Resources */,
 				11FE82831E1FA00400309719 /* BonusScanDetailsViewController.xib in Resources */,
@@ -1006,6 +1036,7 @@
 				1176F89C1E1FDF580057227C /* CollectionCell.xib in Resources */,
 				6172891C1E110BCD0037DB40 /* LoginViewController.xib in Resources */,
 				11FE827E1E1F917500309719 /* RechargeDetailsViewController.xib in Resources */,
+				116DF0661E20BE8500484D72 /* EmailViewController.xib in Resources */,
 				616A09AA1E11FF1600FCF886 /* RegistViewController.xib in Resources */,
 				619319961E1CB41800AF63E7 /* DZMoneyCell.xib in Resources */,
 				61A09ED21E13D86200C58519 /* GoodsViewController.xib in Resources */,
@@ -1195,6 +1226,7 @@
 				6193198D1E1CB22200AF63E7 /* GFCalendarMonth.m in Sources */,
 				6172891B1E110BCD0037DB40 /* LoginViewController.m in Sources */,
 				617F79741E15FEF800E139CF /* YLButton.m in Sources */,
+				116DF06B1E20BF3800484D72 /* EmailCell.m in Sources */,
 				613FB9551E1E388A00CB2070 /* BonusModel.m in Sources */,
 				1154B9A41E11736A00C8459D /* NSObject+Addition.m in Sources */,
 				617288E91E10BE470037DB40 /* BaseViewController.m in Sources */,
@@ -1210,10 +1242,12 @@
 				1176F89B1E1FDF580057227C /* CollectionCell.m in Sources */,
 				61A09ED71E13EA2C00C58519 /* GoodsCell.m in Sources */,
 				61A09ECD1E13AFFC00C58519 /* UserModel.m in Sources */,
+				116DF06F1E20C10300484D72 /* EmailModel.m in Sources */,
 				617288AF1E10BCA40037DB40 /* AppDelegate.mm in Sources */,
 				11FE82781E1F828300309719 /* DZMoneyDetailsViewController.m in Sources */,
 				615FBF371E14BF0400F50C0D /* GoodsCategoryViewController.m in Sources */,
 				615FBF5C1E1506AB00F50C0D /* OrderListBottomCell.m in Sources */,
+				116DF0651E20BE8500484D72 /* EmailViewController.m in Sources */,
 				11FE827D1E1F917500309719 /* RechargeDetailsViewController.m in Sources */,
 				6172891F1E1118670037DB40 /* UIView+Addition.m in Sources */,
 				613FB9481E1E1A6B00CB2070 /* BonusTXViewController.m in Sources */,

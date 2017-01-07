@@ -17,6 +17,7 @@
 #import "BonusTXScanViewController.h"
 #import "AccountSafeViewController.h"
 #import "WriteEmailViewController.h"
+#import "EmailViewController.h"
 
 @interface FunctionListViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *functionTableView;
@@ -165,10 +166,44 @@
         switch (indexPath.row) {
             case 0:
             {
+                //写信
                 WriteEmailViewController *vc= [[WriteEmailViewController alloc] init];
                 //TODO:暂定会员等级
 //                vc.access = kUserLevel;
                 vc.access = UserLevelMember;
+                [self.navigationController pushViewController:vc animated:YES];
+            }
+                break;
+            case 1:
+            {
+                //收件箱
+                EmailViewController *vc = [[EmailViewController alloc] init];
+                vc.isRequireRefreshFooter = YES;
+                vc.isRequireRefreshHeader = YES;
+                vc.action = @"rec";
+                vc.title = Localized(@"收件箱");
+                [self.navigationController pushViewController:vc animated:YES];
+            }
+                break;
+            case 2:
+            {
+                //发件箱
+                EmailViewController *vc = [[EmailViewController alloc] init];
+                vc.isRequireRefreshFooter = YES;
+                vc.isRequireRefreshHeader = YES;
+                vc.action = @"send";
+                vc.title = Localized(@"发件箱");
+                [self.navigationController pushViewController:vc animated:YES];
+            }
+                break;
+            case 3:
+            {
+                //废件箱
+                EmailViewController *vc = [[EmailViewController alloc] init];
+                vc.isRequireRefreshFooter = YES;
+                vc.isRequireRefreshHeader = YES;
+                vc.action = @"drop";
+                vc.title = Localized(@"废件箱");
                 [self.navigationController pushViewController:vc animated:YES];
             }
                 break;

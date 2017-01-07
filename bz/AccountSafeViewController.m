@@ -70,12 +70,12 @@
     }
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                  kLoginToken, @"Token",
-                                 _oldPwd.text, @"oldPwd",
-                                 _password.text, @"newPwd",
+                                 [_oldPwd.text md5], @"oldPwd",
+                                 [_password.text md5], @"newPwd",
                                  _action, @"action",
                                  nil];
     __weak AccountSafeViewController *weakSelf = self;
-    _task = [NetService POST:kUserLoginUrl parameters:dict complete:^(id responseObject, NSError *error) {
+    _task = [NetService POST:kModifyPasswordUrl parameters:dict complete:^(id responseObject, NSError *error) {
         [Utility hideHUDForView:weakSelf.view];
         if (error) {
             NSLog(@"failure:%ld:%@", (long)error.code, error.localizedDescription);

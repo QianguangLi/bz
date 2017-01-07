@@ -21,6 +21,11 @@
 
 @implementation FirstPageViewController
 
+- (void)dealloc
+{
+    NSLog(@"first page dealloc");
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.

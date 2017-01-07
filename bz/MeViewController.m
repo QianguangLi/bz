@@ -33,6 +33,7 @@
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kLoginSuccessNotification object:nil];
+    NSLog(@"me dealloc");
 }
 
 - (void)viewDidLoad {
