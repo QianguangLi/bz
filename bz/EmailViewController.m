@@ -10,6 +10,7 @@
 #import "EmailCell.h"
 #import "NetService.h"
 #import "EmailModel.h"
+#import "UITableView+FDTemplateLayoutCell.h"
 
 @interface EmailViewController () <UITableViewDelegate, UITableViewDataSource>
 {
@@ -136,14 +137,9 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    EmailModel *model = self.dataArray[indexPath.row];
-    NSDictionary *dict = @{NSFontAttributeName:[UIFont systemFontOfSize:14]};
-    CGRect rect = [model.content boundingRectWithSize:CGSizeMake(kScreenWidth-16, 40)
-                                              options:NSStringDrawingUsesLineFragmentOrigin
-                                           attributes:dict
-                                              context:nil];
-    NSLog(@"%f", rect.size.height);
-    return rect.size.height + 40;
+    return [tableView fd_heightForCellWithIdentifier:@"EmailCell" cacheByIndexPath:indexPath configuration:^(EmailCell *cell) {
+        [cell setContentWithEmailModel:self.dataArray[indexPath.row]];
+    }];
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath

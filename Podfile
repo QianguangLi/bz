@@ -6,12 +6,15 @@ target 'bz' do
   # use_frameworks!
   pod 'AFNetworking', '~> 3.1.0'
   pod 'IQKeyboardManager', '~> 4.0.8'
-  pod 'BaiduMapKit' #百度地图SDK
+  pod 'BaiduMapKit', '~> 3.2' #百度地图SDK
   pod 'MBProgressHUD', '~> 1.0.0'
   pod 'FMDB', '~> 2.6.2'
-  pod 'PYSearch'
+  pod 'PYSearch', '~> 0.5.3'
   pod 'MJRefresh', '~> 3.1.12'
   pod 'JSONModel', '~> 1.7.0'
+  pod 'SKTagView', '~> 0.9.2'
+  pod 'Masonry', '~> 1.0.2'
+  pod 'UITableView+FDTemplateLayoutCell', '~> 1.4'
 
   # Pods for bz
 

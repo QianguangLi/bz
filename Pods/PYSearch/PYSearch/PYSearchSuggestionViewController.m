@@ -67,7 +67,7 @@
     [self.tableView reloadData];
     
     // 还原contentInset
-    if (!UIEdgeInsetsEqualToEdgeInsets(self.originalContentInset, UIEdgeInsetsZero) && !UIEdgeInsetsEqualToEdgeInsets(self.originalContentInset, UIEdgeInsetsMake(-30, 0, 30, 0))) { // originalContentInset非零 UIEdgeInsetsMake(-30, 0, 30, 0)是当键盘消失后自动调整的内边距
+    if (!UIEdgeInsetsEqualToEdgeInsets(self.originalContentInset, UIEdgeInsetsZero) && !UIEdgeInsetsEqualToEdgeInsets(self.originalContentInset, UIEdgeInsetsMake(-30, 0, 30 - 64, 0))) { // originalContentInset非零 UIEdgeInsetsMake(-30, 0, 30, 0)是当键盘消失后自动调整的内边距
         self.tableView.contentInset =  self.originalContentInset;
     }
     // 滚动到头部
@@ -105,7 +105,7 @@
         cell.textLabel.font = [UIFont systemFontOfSize:14];
         cell.backgroundColor = [UIColor clearColor];
         // 添加分割线
-        UIImageView *line = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"PYSearch.bundle/cell-content-line"]];
+        UIImageView *line = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"cell-content-line" inBundle:[NSBundle py_searchBundle] compatibleWithTraitCollection:nil]];
         line.py_height = 0.5;
         line.alpha = 0.7;
         line.py_x = PYSEARCH_MARGIN;
