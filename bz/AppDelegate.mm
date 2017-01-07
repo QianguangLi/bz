@@ -73,6 +73,8 @@
 
     //购物车
     ShoppingCartViewController *shoppingCart = [[ShoppingCartViewController alloc] init];
+    shoppingCart.isRequireRefreshFooter = YES;
+    shoppingCart.isRequireRefreshHeader = YES;
     UITabBarItem *shoppingCartItem = [[UITabBarItem alloc] initWithTitle:Localized(@"购物车") image:[[UIImage imageNamed:@"buttom-shopping-gray"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[[UIImage imageNamed:@"buttom-shopping-red"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
     shoppingCart.title = Localized(@"购物车");
     [shoppingCart setTabBarItem:shoppingCartItem];

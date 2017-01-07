@@ -6,12 +6,12 @@
 //  Copyright © 2016年 ing. All rights reserved.
 //
 
-#import "BaseViewController.h"
+#import "RefreshViewController.h"
 
 
 /**
  购物车
  */
-@interface ShoppingCartViewController : BaseViewController
+@interface ShoppingCartViewController : RefreshViewController
 
 @end

@@ -20,6 +20,8 @@
 		116DF06B1E20BF3800484D72 /* EmailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 116DF0691E20BF3800484D72 /* EmailCell.m */; };
 		116DF06C1E20BF3800484D72 /* EmailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 116DF06A1E20BF3800484D72 /* EmailCell.xib */; };
 		116DF06F1E20C10300484D72 /* EmailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 116DF06E1E20C10300484D72 /* EmailModel.m */; };
+		116DF0741E212B6900484D72 /* MenDianFuncViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 116DF0721E212B6900484D72 /* MenDianFuncViewController.m */; };
+		116DF0751E212B6900484D72 /* MenDianFuncViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 116DF0731E212B6900484D72 /* MenDianFuncViewController.xib */; };
 		1176F89B1E1FDF580057227C /* CollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1176F8991E1FDF580057227C /* CollectionCell.m */; };
 		1176F89C1E1FDF580057227C /* CollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1176F89A1E1FDF580057227C /* CollectionCell.xib */; };
 		11C3C13E1E1FCEAA005A2403 /* AccountSafeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C3C13C1E1FCEAA005A2403 /* AccountSafeViewController.m */; };
@@ -171,6 +173,9 @@
 		116DF06A1E20BF3800484D72 /* EmailCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmailCell.xib; sourceTree = "<group>"; };
 		116DF06D1E20C10300484D72 /* EmailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmailModel.h; sourceTree = "<group>"; };
 		116DF06E1E20C10300484D72 /* EmailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmailModel.m; sourceTree = "<group>"; };
+		116DF0711E212B6900484D72 /* MenDianFuncViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenDianFuncViewController.h; sourceTree = "<group>"; };
+		116DF0721E212B6900484D72 /* MenDianFuncViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenDianFuncViewController.m; sourceTree = "<group>"; };
+		116DF0731E212B6900484D72 /* MenDianFuncViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenDianFuncViewController.xib; sourceTree = "<group>"; };
 		1176F8981E1FDF580057227C /* CollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionCell.h; sourceTree = "<group>"; };
 		1176F8991E1FDF580057227C /* CollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionCell.m; sourceTree = "<group>"; };
 		1176F89A1E1FDF580057227C /* CollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollectionCell.xib; sourceTree = "<group>"; };
@@ -424,6 +429,16 @@
 			name = Cells;
 			sourceTree = "<group>";
 		};
+		116DF0701E212AFB00484D72 /* Mendian */ = {
+			isa = PBXGroup;
+			children = (
+				116DF0711E212B6900484D72 /* MenDianFuncViewController.h */,
+				116DF0721E212B6900484D72 /* MenDianFuncViewController.m */,
+				116DF0731E212B6900484D72 /* MenDianFuncViewController.xib */,
+			);
+			name = Mendian;
+			sourceTree = "<group>";
+		};
 		11DC85411E20932000AE7947 /* Email */ = {
 			isa = PBXGroup;
 			children = (
@@ -596,6 +611,7 @@
 				6172890E1E10F8580037DB40 /* model */,
 				6172890A1E10E3670037DB40 /* LocationManager */,
 				617288FC1E10C6F90037DB40 /* Global */,
+				116DF0701E212AFB00484D72 /* Mendian */,
 				617288EC1E10BEB00037DB40 /* Me */,
 				617288EB1E10BE8A0037DB40 /* ShoppingCart */,
 				615FBF331E14BEDD00F50C0D /* GoodsCategory */,
@@ -1024,6 +1040,7 @@
 				11FE82701E1F79A600309719 /* MMNumberKeyboardDeleteKey@3x.png in Resources */,
 				619319A61E1CF70A00AF63E7 /* RechargeScanCell.xib in Resources */,
 				11FE82791E1F828300309719 /* DZMoneyDetailsViewController.xib in Resources */,
+				116DF0751E212B6900484D72 /* MenDianFuncViewController.xib in Resources */,
 				613FB94D1E1E352200CB2070 /* BonusTXScanViewController.xib in Resources */,
 				11FE82711E1F79A600309719 /* MMNumberKeyboardDismissKey.png in Resources */,
 				617F79791E1620FF00E139CF /* FunctionListViewController.xib in Resources */,
@@ -1270,6 +1287,7 @@
 				6193199C1E1CEE5800AF63E7 /* DZMoneyRechargeViewController.m in Sources */,
 				616A09A91E11FF1600FCF886 /* RegistViewController.m in Sources */,
 				115E358D1E17706B002A9957 /* LeftCell.m in Sources */,
+				116DF0741E212B6900484D72 /* MenDianFuncViewController.m in Sources */,
 				61A09ED11E13D86200C58519 /* GoodsViewController.m in Sources */,
 				615FBF411E14E9AC00F50C0D /* RefreshViewController.m in Sources */,
 				617F79821E16544800E139CF /* UpdateMemberInfoTableViewController.m in Sources */,

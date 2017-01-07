@@ -172,7 +172,11 @@
             break;
         case MeMenuMendian:
         {
-            
+            FunctionListViewController *vc = [[FunctionListViewController alloc] init];
+            vc.menu = MeMenuMendian;
+            vc.title = Localized(@"我的门店");
+            vc.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:vc animated:YES];
         }
             break;
         case MeMenuHelpCenter:

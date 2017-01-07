@@ -18,6 +18,7 @@
 #import "AccountSafeViewController.h"
 #import "WriteEmailViewController.h"
 #import "EmailViewController.h"
+#import "MenDianFuncViewController.h"
 
 @interface FunctionListViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *functionTableView;
@@ -56,6 +57,11 @@
         case MeMenuEmail:
         {
             _functionArray = [NSArray arrayWithObjects:Localized(@"写信"), Localized(@"收件箱"), Localized(@"发件箱"), Localized(@"废件箱"), nil];
+        }
+            break;
+        case MeMenuMendian:
+        {
+            _functionArray = [NSArray arrayWithObjects:Localized(@"交易管理"), Localized(@"门店设置"), Localized(@"库存管理"), Localized(@"商品管理"), Localized(@"门店客户"), Localized(@"门店信件"), Localized(@"申请供应商"), nil];
         }
             break;
             
@@ -207,6 +213,28 @@
                 [self.navigationController pushViewController:vc animated:YES];
             }
                 break;
+                
+            default:
+                break;
+        }
+    } else if (_menu == MeMenuMendian) {
+        switch (indexPath.row) {
+            case 6:
+            {
+                NSLog(@"申请供应商");
+            }
+                break;
+            case 0:
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+            case 5:
+            {
+                MenDianFuncViewController *vc = [[MenDianFuncViewController alloc] init];
+                vc.menu = indexPath.row;
+                [self.navigationController pushViewController:vc animated:YES];
+            }
                 
             default:
                 break;
