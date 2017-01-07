@@ -16,6 +16,7 @@
 #import "BonusTXViewController.h"
 #import "BonusTXScanViewController.h"
 #import "AccountSafeViewController.h"
+#import "WriteEmailViewController.h"
 
 @interface FunctionListViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *functionTableView;
@@ -153,6 +154,21 @@
                 BonusTXScanViewController *vc = [[BonusTXScanViewController alloc] init];
                 vc.isRequireRefreshFooter = YES;
                 vc.isRequireRefreshHeader = YES;
+                [self.navigationController pushViewController:vc animated:YES];
+            }
+                break;
+                
+            default:
+                break;
+        }
+    } else if (_menu == MeMenuEmail) {
+        switch (indexPath.row) {
+            case 0:
+            {
+                WriteEmailViewController *vc= [[WriteEmailViewController alloc] init];
+                //TODO:暂定会员等级
+//                vc.access = kUserLevel;
+                vc.access = UserLevelMember;
                 [self.navigationController pushViewController:vc animated:YES];
             }
                 break;

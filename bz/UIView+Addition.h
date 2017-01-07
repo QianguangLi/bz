@@ -14,6 +14,7 @@
 
 @interface UIView (Addition)
 - (void)setCorneRadius:(CGFloat)cornerRadius;
+- (void)setBorderCorneRadius:(CGFloat)cornerRadius;
 @end
 
 @interface UILabel (Addition)

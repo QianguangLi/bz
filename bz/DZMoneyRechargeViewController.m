@@ -38,9 +38,7 @@
     self.tableView.tableFooterView = view;
     
     [_submitButton setCorneRadius:5];
-    _rechageNote.layer.borderColor = [UIColor lightGrayColor].CGColor;
-    _rechageNote.layer.borderWidth = 0.5;
-    [_rechageNote setCorneRadius:5];
+    [_rechageNote setBorderCorneRadius:5];
     
     _usename.text = kLoginUserName;
     

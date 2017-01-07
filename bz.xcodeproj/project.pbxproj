@@ -21,6 +21,8 @@
 		11C3C13F1E1FCEAA005A2403 /* AccountSafeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11C3C13D1E1FCEAA005A2403 /* AccountSafeViewController.xib */; };
 		11C3C1431E1FDE6A005A2403 /* MyCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C3C1411E1FDE6A005A2403 /* MyCollectionViewController.m */; };
 		11C3C1441E1FDE6A005A2403 /* MyCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11C3C1421E1FDE6A005A2403 /* MyCollectionViewController.xib */; };
+		11DC85451E20938900AE7947 /* WriteEmailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11DC85431E20938900AE7947 /* WriteEmailViewController.m */; };
+		11DC85461E20938900AE7947 /* WriteEmailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11DC85441E20938900AE7947 /* WriteEmailViewController.xib */; };
 		11FE826D1E1F79A600309719 /* MMNumberKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 11FE82651E1F79A600309719 /* MMNumberKeyboard.m */; };
 		11FE826E1E1F79A600309719 /* MMNumberKeyboardDeleteKey.png in Resources */ = {isa = PBXBuildFile; fileRef = 11FE82671E1F79A600309719 /* MMNumberKeyboardDeleteKey.png */; };
 		11FE826F1E1F79A600309719 /* MMNumberKeyboardDeleteKey@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 11FE82681E1F79A600309719 /* MMNumberKeyboardDeleteKey@2x.png */; };
@@ -165,6 +167,9 @@
 		11C3C1401E1FDE6A005A2403 /* MyCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCollectionViewController.h; sourceTree = "<group>"; };
 		11C3C1411E1FDE6A005A2403 /* MyCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCollectionViewController.m; sourceTree = "<group>"; };
 		11C3C1421E1FDE6A005A2403 /* MyCollectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyCollectionViewController.xib; sourceTree = "<group>"; };
+		11DC85421E20938900AE7947 /* WriteEmailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WriteEmailViewController.h; sourceTree = "<group>"; };
+		11DC85431E20938900AE7947 /* WriteEmailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WriteEmailViewController.m; sourceTree = "<group>"; };
+		11DC85441E20938900AE7947 /* WriteEmailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WriteEmailViewController.xib; sourceTree = "<group>"; };
 		11FE82641E1F79A600309719 /* MMNumberKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMNumberKeyboard.h; sourceTree = "<group>"; };
 		11FE82651E1F79A600309719 /* MMNumberKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMNumberKeyboard.m; sourceTree = "<group>"; };
 		11FE82671E1F79A600309719 /* MMNumberKeyboardDeleteKey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MMNumberKeyboardDeleteKey.png; sourceTree = "<group>"; };
@@ -394,6 +399,16 @@
 				115E358C1E17706B002A9957 /* LeftCell.xib */,
 			);
 			name = Cell;
+			sourceTree = "<group>";
+		};
+		11DC85411E20932000AE7947 /* Email */ = {
+			isa = PBXGroup;
+			children = (
+				11DC85421E20938900AE7947 /* WriteEmailViewController.h */,
+				11DC85431E20938900AE7947 /* WriteEmailViewController.m */,
+				11DC85441E20938900AE7947 /* WriteEmailViewController.xib */,
+			);
+			name = Email;
 			sourceTree = "<group>";
 		};
 		11FE82631E1F79A600309719 /* MMNumberKeyboard */ = {
@@ -642,6 +657,7 @@
 		617288EC1E10BEB00037DB40 /* Me */ = {
 			isa = PBXGroup;
 			children = (
+				11DC85411E20932000AE7947 /* Email */,
 				6193197A1E1CA38500AF63E7 /* Account */,
 				617F797D1E16511400E139CF /* MemberInfo */,
 				615FBF231E14B5DC00F50C0D /* Orders */,
@@ -972,6 +988,7 @@
 				11C3C1441E1FDE6A005A2403 /* MyCollectionViewController.xib in Resources */,
 				115E35841E175258002A9957 /* RightCell.xib in Resources */,
 				11FE82831E1FA00400309719 /* BonusScanDetailsViewController.xib in Resources */,
+				11DC85461E20938900AE7947 /* WriteEmailViewController.xib in Resources */,
 				615FBF3D1E14CB2200F50C0D /* OrderListViewController.xib in Resources */,
 				617288F11E10BEF30037DB40 /* FirstPageViewController.xib in Resources */,
 				11FE82701E1F79A600309719 /* MMNumberKeyboardDeleteKey@3x.png in Resources */,
@@ -1189,6 +1206,7 @@
 				11FE826D1E1F79A600309719 /* MMNumberKeyboard.m in Sources */,
 				613FB94C1E1E352200CB2070 /* BonusTXScanViewController.m in Sources */,
 				6193197E1E1CA41200AF63E7 /* DZMoneyViewController.m in Sources */,
+				11DC85451E20938900AE7947 /* WriteEmailViewController.m in Sources */,
 				1176F89B1E1FDF580057227C /* CollectionCell.m in Sources */,
 				61A09ED71E13EA2C00C58519 /* GoodsCell.m in Sources */,
 				61A09ECD1E13AFFC00C58519 /* UserModel.m in Sources */,

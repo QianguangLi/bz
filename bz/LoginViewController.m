@@ -87,12 +87,13 @@
     __weak LoginViewController *weakSelf = self;
     _task = [NetService POST:kUserLoginUrl parameters:dict complete:^(id responseObject, NSError *error) {
         _registItem.enabled = YES;
-        [Utility hideHUDForView:self.view];
+        [Utility hideHUDForView:weakSelf.view];
         if (error) {
             NSLog(@"failure:%ld:%@", (long)error.code, error.localizedDescription);
             [Utility showString:error.localizedDescription onView:weakSelf.view];
             return ;
         }
+        NSLog(@"%@", responseObject);
         if ([responseObject[kStatusCode] integerValue] == NetStatusSuccess) {
             //储存登陆数据token
             NSDictionary *dataDict = responseObject[kResponseData];
@@ -109,7 +110,7 @@
                 
             }];
         } else {
-            [Utility showString:responseObject[kErrMsg] onView:self.view];
+            [Utility showString:responseObject[kErrMsg] onView:weakSelf.view];
         }
     }];
     [Utility showHUDAddedTo:self.view forTask:_task];

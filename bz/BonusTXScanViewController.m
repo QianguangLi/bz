@@ -14,6 +14,7 @@
 #import "GFCalendar.h"
 #import "MMNumberKeyboard.h"
 #import "BonusScanDetailsViewController.h"
+#import "UIView+Addition.h"
 
 @interface BonusTXScanViewController () <UITableViewDelegate, UITableViewDataSource>
 {
@@ -101,15 +102,11 @@
 
 - (void)setupSearchView
 {
-    _startTimeBtn.layer.borderColor = [UIColor lightGrayColor].CGColor;
-    _startTimeBtn.layer.borderWidth = 0.5;
-    _startTimeBtn.layer.cornerRadius = 5;
+    [_startTimeBtn setBorderCorneRadius:5];
     _startTimeBtn.bounds = CGRectMake(0, 0, (kScreenWidth-62-20-10-10-8)/2, 30);
     [_startTimeBtn setRightImage:[UIImage imageNamed:@"rili"] forState:UIControlStateNormal];
     
-    _endTimeBtn.layer.borderColor = [UIColor lightGrayColor].CGColor;
-    _endTimeBtn.layer.borderWidth = 0.5;
-    _endTimeBtn.layer.cornerRadius = 5;
+    [_endTimeBtn setBorderCorneRadius:5];
     _endTimeBtn.bounds = CGRectMake(0, 0, (kScreenWidth-62-20-10-10-8)/2, 30);
     [_endTimeBtn setRightImage:[UIImage imageNamed:@"rili"] forState:UIControlStateNormal];
     

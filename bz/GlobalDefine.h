@@ -105,6 +105,9 @@
 #define kBonusTXScanUrl @"api/User/BonusView"
 //收藏商品URL
 #define kMyCollectionUrl @"api/User/FavoritesCommodity"
+//写邮件
+#define kWriteEmailUrl @"api/User/WriteMessage"
+
 //用户权限
 typedef NS_ENUM(NSInteger, UserLevel) {
     UserLevelMember = 0,//会员

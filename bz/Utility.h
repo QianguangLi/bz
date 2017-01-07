@@ -43,7 +43,7 @@
 + (BOOL)hideHUDForView:(UIView *)view;
 
 /**
- 在也没上显示文字2秒钟
+ 在页面上显示文字2秒钟
  */
 + (MBProgressHUD *)showString:(NSString *)string onView:(UIView *)view;
 

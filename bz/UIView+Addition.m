@@ -36,6 +36,14 @@
     layer.masksToBounds = YES;
 }
 
+- (void)setBorderCorneRadius:(CGFloat)cornerRadius
+{
+    CALayer *layer = self.layer;
+    layer.borderColor = [UIColor lightGrayColor].CGColor;
+    layer.borderWidth = 0.5;
+    [self setCorneRadius:cornerRadius];
+}
+
 @end
 
 @implementation UILabel (Addition)

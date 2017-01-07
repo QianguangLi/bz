@@ -45,12 +45,13 @@ typedef NS_ENUM(NSInteger, RequestMethod) {
     //添加签名 签名：token+key, token没有传空，key=kSignKey ,用MD5加密
 //    NSMutableDictionary *dict = (NSMutableDictionary *)parameters;
 //    NSArray *arr = dict.allKeys;
-    
-    NSString *token = parameters[@"Token"];
-    NSString *sign = token ? [[NSString stringWithFormat:@"%@%@",token, kSignKey] md5] : [kSignKey md5];
-    [parameters setObject:sign forKey:@"Sign"];
     NSLog(@"%@", urlString);
-    NSLog(@"%@", parameters);
+    if (parameters) {
+        NSString *token = parameters[@"Token"];
+        NSString *sign = token ? [[NSString stringWithFormat:@"%@%@",token, kSignKey] md5] : [kSignKey md5];
+        [parameters setObject:sign forKey:@"Sign"];
+        NSLog(@"%@", parameters);
+    }
     if (method == RequestMethodGet) {
         return [manager GET:urlString parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             complete(responseObject, nil);
