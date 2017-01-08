@@ -9,5 +9,8 @@
 #import "ProductModel.h"
 
 @implementation ProductModel
-
++ (BOOL)propertyIsOptional:(NSString *)propertyName
+{
+    return YES;
+}
 @end

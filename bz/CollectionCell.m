@@ -28,7 +28,7 @@
 {
     _pName.text = model.pName;
     [_pImg setImageWithURL:[NSURL URLWithString:model.pImgUrl] placeholderImage:[UIImage imageNamed:@"productpic"]];
-    _price.text = [NSString stringWithFormat:@"￥%.2f", model.price.doubleValue];
+    _price.text = [NSString stringWithFormat:@"￥%.2f", model.price];
     _time.text = model.favTime;
     
 }
