@@ -29,7 +29,7 @@
     if (model.isRead) {
         [_sender setImage:nil forState:UIControlStateNormal];
     } else {
-        [_sender setImage:[UIImage imageNamed:@"more-red"] forState:UIControlStateNormal];
+        [_sender setImage:[[UIImage imageNamed:@"dot"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
     }
     [_sender setTitle:model.sender forState:UIControlStateNormal];
     _sendDate.text = model.sendDate;
