@@ -9,7 +9,9 @@
 #import "OrderListTopCell.h"
 
 @interface OrderListTopCell ()
-
+{
+    NSInteger _section;
+}
 @property (weak, nonatomic) IBOutlet UILabel *orderid;
 @property (weak, nonatomic) IBOutlet UILabel *orderStatus;
 
@@ -23,8 +25,10 @@
     // Initialization code
 }
 
-- (void)setContentWithOrderModel:(OrderModel *)orderModel
+- (void)setContentWithOrderModel:(OrderModel *)orderModel andSection:(NSInteger)section
 {
+    _section = section;
+    
     _orderid.text = orderModel.storename;
     switch (orderModel.payStatus) {
         case OrderTypeWaitPay:

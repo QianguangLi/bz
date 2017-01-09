@@ -9,5 +9,8 @@
 #import "OrderModel.h"
 
 @implementation OrderModel
-
++ (BOOL)propertyIsOptional:(NSString *)propertyName
+{
+    return YES;
+}
 @end

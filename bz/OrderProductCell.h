@@ -11,6 +11,6 @@
 
 @interface OrderProductCell : UITableViewCell
 
-- (void)setContentWithProductModel:(ProductModel *)productModel;
+- (void)setContentWithProductModel:(ProductModel *)productModel andIndexPath:(NSIndexPath *)indexPath;
 
 @end

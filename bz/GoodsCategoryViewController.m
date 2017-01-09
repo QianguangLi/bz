@@ -25,6 +25,7 @@
 #define kColunm 3 //3列
 #define kInterSpace 0.5 //列间距
 #define kLeftSpace 10.0 //左右缩进
+#define kLineSpace 0.5 //行间距
 
 @implementation GoodsCategoryViewController
 
@@ -163,7 +164,7 @@
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
 {
     //行间距
-    return 0.5;
+    return kLineSpace;
 }
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
 {

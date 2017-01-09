@@ -10,7 +10,9 @@
 #import "UIImageView+AFNetworking.h"
 
 @interface OrderProductCell ()
-
+{
+    NSIndexPath *_indexPath;
+}
 @property (weak, nonatomic) IBOutlet UIImageView *pImage;
 @property (weak, nonatomic) IBOutlet UILabel *pName;
 @property (weak, nonatomic) IBOutlet UILabel *price;
@@ -43,8 +45,9 @@
 //    }
 }
 
-- (void)setContentWithProductModel:(ProductModel *)productModel
+- (void)setContentWithProductModel:(ProductModel *)productModel andIndexPath:(NSIndexPath *)indexPath
 {
+    _indexPath = indexPath;
     //TODO:等待防止占位图片
     [_pImage setImageWithURL:[NSURL URLWithString:productModel.pImgUrl] placeholderImage:[UIImage imageNamed:@"productpic"]];
     _pName.text = productModel.pName;

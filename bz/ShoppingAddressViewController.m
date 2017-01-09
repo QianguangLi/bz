@@ -70,6 +70,7 @@
                 [weakSelf.dataArray addObject:model];
             }
             [weakSelf.mTableView reloadData];
+            [weakSelf showTipWithNoData:IS_NULL_ARRAY(weakSelf.dataArray)];
         } else {
             [Utility showString:responseObject[kErrMsg] onView:weakSelf.view];
         }

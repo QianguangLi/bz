@@ -18,9 +18,9 @@
 @property (assign, nonatomic) double price;//价格
 @property (copy, nonatomic) NSString *pImgUrl;//图片
 @property (assign, nonatomic) double pv;//积分
-@property (assign, nonatomic) NSUInteger quantity;//数量
+@property (assign, nonatomic) NSUInteger quantity;//数量 在常购清单里代表购买次数
 @property (copy, nonatomic) NSString<Optional> *propertyd;//尺寸
-
+@property (copy, nonatomic) NSString<Optional> *pdetailId;//商品详细id 
 @property (copy, nonatomic) NSString<Optional> *favTime;//收藏时间
 
 @end

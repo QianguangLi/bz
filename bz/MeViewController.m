@@ -16,6 +16,8 @@
 #import "MyOrdersViewController.h"
 #import "FunctionListViewController.h"
 #import "MyCollectionViewController.h"
+#import "PaymentViewController.h"
+#import "AlwaysBuyViewController.h"
 
 @interface MeViewController () <UITableViewDelegate, UITableViewDataSource, MeHeadViewDelegate, UIAlertViewDelegate>
 
@@ -56,11 +58,11 @@
     self.navigationController.navigationBarHidden = YES;
 }
 
-- (void)viewDidDisappear:(BOOL)animated
-{
-    [super viewDidDisappear:animated];
-    self.navigationController.navigationBarHidden = NO;
-}
+//- (void)viewDidDisappear:(BOOL)animated
+//{
+//    [super viewDidDisappear:animated];
+//    self.navigationController.navigationBarHidden = NO;
+//}
 
 - (void)customView
 {
@@ -217,7 +219,20 @@
         MyOrdersViewController *myOrderVC = [[MyOrdersViewController alloc] init];
         //从我进去默认全部订单
         myOrderVC.orderType = OrderTypeAll;
+        myOrderVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:myOrderVC animated:YES];
+    } else if (type == 1) {
+        PaymentViewController *vc = [[PaymentViewController alloc] init];
+        vc.isRequireRefreshFooter = YES;
+        vc.isRequireRefreshHeader = YES;
+        vc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:vc animated:YES];
+    } else if (type == 2) {
+        AlwaysBuyViewController *vc = [[AlwaysBuyViewController alloc] init];
+        vc.isRequireRefreshHeader = YES;
+        vc.isRequireRefreshFooter = YES;
+        vc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:vc animated:YES];
     }
 }
 
@@ -240,6 +255,7 @@
             [Utility showString:error.localizedDescription onView:weakSelf.view];
             return ;
         }
+        NSLog(@"%@", responseObject);
         if ([responseObject[kStatusCode] integerValue] == NetStatusSuccess) {
             NSDictionary *dataDict = responseObject[kResponseData];
 //            UserModel *userModel = [[UserModel alloc] initWithDict:dataDict];

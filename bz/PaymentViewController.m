@@ -1,44 +1,50 @@
 //
-//  OrderListViewController.m
+//  PaymentViewController.m
 //  bz
 //
-//  Created by qianchuang on 2016/12/29.
-//  Copyright © 2016年 ing. All rights reserved.
+//  Created by qianchuang on 2017/1/9.
+//  Copyright © 2017年 ing. All rights reserved.
 //
 
-#import "OrderListViewController.h"
-#import "MJRefresh.h"
+#import "PaymentViewController.h"
 #import "NetService.h"
 #import "OrderModel.h"
 #import "OrderListTopCell.h"
 #import "OrderProductCell.h"
-#import "OrderListBottomCell.h"
+#import "PaymentBottomCell.h"
+#import "UITableView+FDTemplateLayoutCell.h"
+#import "QGAlertView.h"
 
-@interface OrderListViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface PaymentViewController () <UITableViewDelegate, UITableViewDataSource, PaymentBottomCellDelegate>
 {
     NSURLSessionTask *_task;
+    NSURLSessionTask *_rejectTask;
 }
+
 @end
 
-@implementation OrderListViewController
+@implementation PaymentViewController
 
 - (void)dealloc
 {
     [_task cancel];
+    [_rejectTask cancel];
     NSLog(@"dealloc");
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.mTableView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight-64-44);
+    self.title = Localized(@"代付订单");
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+    self.mTableView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight - 64);
+    self.mTableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     self.mTableView.delegate = self;
     self.mTableView.dataSource = self;
-    self.mTableView.contentInset = UIEdgeInsetsMake(5, 0, 0, 0);
     
     [self.mTableView registerNib:[UINib nibWithNibName:@"OrderListTopCell" bundle:nil] forCellReuseIdentifier:@"OrderListTopCell"];
     [self.mTableView registerNib:[UINib nibWithNibName:@"OrderProductCell" bundle:nil] forCellReuseIdentifier:@"OrderProductCell"];
-    [self.mTableView registerNib:[UINib nibWithNibName:@"OrderListBottomCell" bundle:nil] forCellReuseIdentifier:@"OrderListBottomCell"];
+    [self.mTableView registerNib:[UINib nibWithNibName:@"PaymentBottomCell" bundle:nil] forCellReuseIdentifier:@"PaymentBottomCell"];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -48,14 +54,12 @@
 
 - (void)requestDataListPullDown:(BOOL)pullDown withWeakSelf:(RefreshViewController *__weak)weakSelf
 {
-//    NSLog(@"%@ %@ %@ %@ ", kLoginToken, StringFromNumber(self.pageIndex), StringFromNumber(self.pageSize))
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                  kLoginToken, @"Token",
                                  StringFromNumber(weakSelf.pageIndex), kPageIndex,
                                  StringFromNumber(weakSelf.pageSize), kPageSize,
-                                 StringFromNumber(_orderType), @"payStatus",
                                  @"", @"orderid", nil];
-    _task = [NetService POST:kGetMyOrders parameters:dict complete:^(id responseObject, NSError *error) {
+    _task = [NetService POST:@"api/User/AnotherOrders" parameters:dict complete:^(id responseObject, NSError *error) {
         [weakSelf stopRefreshing];
         if (error) {
             NSLog(@"failure:%@", error);
@@ -80,6 +84,42 @@
             [Utility showString:responseObject[kErrMsg] onView:weakSelf.view];
         }
     }];
+    
+}
+
+#pragma mark - PaymentBottomCellDelegate
+//残忍拒绝代付
+- (void)rejectPaySection:(NSInteger)section
+{
+    QGAlertView *av = [[QGAlertView alloc] initWithTitle:Localized(@"提示") message:Localized(@"确认要拒绝代付?") delegate:self cancelButtonTitle:Localized(@"取消") otherButtonTitles:Localized(@"确认"), nil];
+    __weak PaymentViewController *weakSelf = self;
+    [av showWithBlock:^(QGAlertView *alertView, NSInteger buttonIndex) {
+        if (buttonIndex == 1) {
+            OrderModel *model = weakSelf.dataArray[section];
+            NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                         kLoginToken, @"Token",
+                                         model.orderId, @"orderid", nil];
+            _rejectTask = [NetService POST:@"api/User/DelAnotherOrders" parameters:dict complete:^(id responseObject, NSError *error) {
+                [Utility hideHUDForView:weakSelf.view];
+                if (error) {
+                    NSLog(@"failure:%@", error);
+                    [Utility showString:error.localizedDescription onView:weakSelf.view];
+                    return ;
+                }
+                NSLog(@"%@", responseObject);
+                if ([responseObject[kStatusCode] integerValue] == NetStatusSuccess) {
+                    [weakSelf startHeardRefresh];
+                } else {
+                    [Utility showString:responseObject[kErrMsg] onView:weakSelf.view];
+                }
+            }];
+            [Utility showHUDAddedTo:weakSelf.view forTask:_rejectTask];
+        }
+    }];
+}
+//立即去代付
+- (void)paySection:(NSInteger)section
+{
     
 }
 
@@ -118,8 +158,9 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
 {
-    OrderListBottomCell *cell = [tableView dequeueReusableCellWithIdentifier:@"OrderListBottomCell"];
-//    [cell setContentWithOrderModel:self.dataArray[section]];
+    PaymentBottomCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PaymentBottomCell"];
+    cell.delegate = self;
+    [cell setContentWithOrderModel:self.dataArray[section] andSection:section];
     return cell;
 }
 
@@ -130,6 +171,9 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
+    return [tableView fd_heightForCellWithIdentifier:@"PaymentBottomCell" configuration:^(PaymentBottomCell *cell) {
+        [cell setContentWithOrderModel:self.dataArray[section] andSection:section];
+    }];
     return 49;
 }
 

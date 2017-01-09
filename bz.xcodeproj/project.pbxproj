@@ -129,6 +129,15 @@
 		61A09ED21E13D86200C58519 /* GoodsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61A09ED01E13D86200C58519 /* GoodsViewController.xib */; };
 		61A09ED71E13EA2C00C58519 /* GoodsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 61A09ED51E13EA2C00C58519 /* GoodsCell.m */; };
 		61A09ED81E13EA2C00C58519 /* GoodsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61A09ED61E13EA2C00C58519 /* GoodsCell.xib */; };
+		61DFD3CD1E232FCA00D9C2D7 /* PaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61DFD3CB1E232FCA00D9C2D7 /* PaymentViewController.m */; };
+		61DFD3CE1E232FCA00D9C2D7 /* PaymentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61DFD3CC1E232FCA00D9C2D7 /* PaymentViewController.xib */; };
+		61DFD3D21E23385F00D9C2D7 /* AlwaysBuyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61DFD3D01E23385F00D9C2D7 /* AlwaysBuyViewController.m */; };
+		61DFD3D31E23385F00D9C2D7 /* AlwaysBuyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61DFD3D11E23385F00D9C2D7 /* AlwaysBuyViewController.xib */; };
+		61DFD3D71E23408700D9C2D7 /* AlwaysBuyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 61DFD3D51E23408600D9C2D7 /* AlwaysBuyCell.m */; };
+		61DFD3D81E23408700D9C2D7 /* AlwaysBuyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61DFD3D61E23408600D9C2D7 /* AlwaysBuyCell.xib */; };
+		61DFD3DC1E2351E900D9C2D7 /* PaymentBottomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 61DFD3DA1E2351E900D9C2D7 /* PaymentBottomCell.m */; };
+		61DFD3DD1E2351E900D9C2D7 /* PaymentBottomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61DFD3DB1E2351E900D9C2D7 /* PaymentBottomCell.xib */; };
+		61DFD3E01E235F3600D9C2D7 /* QGAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 61DFD3DF1E235F3600D9C2D7 /* QGAlertView.m */; };
 		61F437F31E153A5000762CAF /* ProductModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 61F437F21E153A5000762CAF /* ProductModel.m */; };
 		C7AE5725228759A1D4099EE2 /* libPods-bzTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C819CC4F9EC579CD896525DC /* libPods-bzTests.a */; };
 		CB60EDAD8A812E83A6DC6A46 /* libPods-bzUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BBD9FECB363268F3739B789 /* libPods-bzUITests.a */; };
@@ -355,6 +364,20 @@
 		61A09ED41E13EA2C00C58519 /* GoodsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsCell.h; sourceTree = "<group>"; };
 		61A09ED51E13EA2C00C58519 /* GoodsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsCell.m; sourceTree = "<group>"; };
 		61A09ED61E13EA2C00C58519 /* GoodsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoodsCell.xib; sourceTree = "<group>"; };
+		61DFD3CA1E232FCA00D9C2D7 /* PaymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentViewController.h; sourceTree = "<group>"; };
+		61DFD3CB1E232FCA00D9C2D7 /* PaymentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentViewController.m; sourceTree = "<group>"; };
+		61DFD3CC1E232FCA00D9C2D7 /* PaymentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PaymentViewController.xib; sourceTree = "<group>"; };
+		61DFD3CF1E23385F00D9C2D7 /* AlwaysBuyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlwaysBuyViewController.h; sourceTree = "<group>"; };
+		61DFD3D01E23385F00D9C2D7 /* AlwaysBuyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlwaysBuyViewController.m; sourceTree = "<group>"; };
+		61DFD3D11E23385F00D9C2D7 /* AlwaysBuyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlwaysBuyViewController.xib; sourceTree = "<group>"; };
+		61DFD3D41E23408600D9C2D7 /* AlwaysBuyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlwaysBuyCell.h; sourceTree = "<group>"; };
+		61DFD3D51E23408600D9C2D7 /* AlwaysBuyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlwaysBuyCell.m; sourceTree = "<group>"; };
+		61DFD3D61E23408600D9C2D7 /* AlwaysBuyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlwaysBuyCell.xib; sourceTree = "<group>"; };
+		61DFD3D91E2351E900D9C2D7 /* PaymentBottomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentBottomCell.h; sourceTree = "<group>"; };
+		61DFD3DA1E2351E900D9C2D7 /* PaymentBottomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentBottomCell.m; sourceTree = "<group>"; };
+		61DFD3DB1E2351E900D9C2D7 /* PaymentBottomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PaymentBottomCell.xib; sourceTree = "<group>"; };
+		61DFD3DE1E235F3600D9C2D7 /* QGAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QGAlertView.h; sourceTree = "<group>"; };
+		61DFD3DF1E235F3600D9C2D7 /* QGAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QGAlertView.m; sourceTree = "<group>"; };
 		61F437F11E153A5000762CAF /* ProductModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductModel.h; sourceTree = "<group>"; };
 		61F437F21E153A5000762CAF /* ProductModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductModel.m; sourceTree = "<group>"; };
 		63277A970CC28472312B0E2A /* libPods-bz.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-bz.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -517,6 +540,12 @@
 				615FBF391E14CB2200F50C0D /* OrderListViewController.h */,
 				615FBF3A1E14CB2200F50C0D /* OrderListViewController.m */,
 				615FBF3B1E14CB2200F50C0D /* OrderListViewController.xib */,
+				61DFD3CA1E232FCA00D9C2D7 /* PaymentViewController.h */,
+				61DFD3CB1E232FCA00D9C2D7 /* PaymentViewController.m */,
+				61DFD3CC1E232FCA00D9C2D7 /* PaymentViewController.xib */,
+				61DFD3CF1E23385F00D9C2D7 /* AlwaysBuyViewController.h */,
+				61DFD3D01E23385F00D9C2D7 /* AlwaysBuyViewController.m */,
+				61DFD3D11E23385F00D9C2D7 /* AlwaysBuyViewController.xib */,
 			);
 			name = Orders;
 			sourceTree = "<group>";
@@ -535,6 +564,9 @@
 		615FBF491E15056800F50C0D /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				61DFD3D41E23408600D9C2D7 /* AlwaysBuyCell.h */,
+				61DFD3D51E23408600D9C2D7 /* AlwaysBuyCell.m */,
+				61DFD3D61E23408600D9C2D7 /* AlwaysBuyCell.xib */,
 				615FBF4F1E15064400F50C0D /* OrderProductCell.h */,
 				615FBF501E15064400F50C0D /* OrderProductCell.m */,
 				615FBF511E15064400F50C0D /* OrderProductCell.xib */,
@@ -544,6 +576,9 @@
 				615FBF591E1506AB00F50C0D /* OrderListBottomCell.h */,
 				615FBF5A1E1506AB00F50C0D /* OrderListBottomCell.m */,
 				615FBF5B1E1506AB00F50C0D /* OrderListBottomCell.xib */,
+				61DFD3D91E2351E900D9C2D7 /* PaymentBottomCell.h */,
+				61DFD3DA1E2351E900D9C2D7 /* PaymentBottomCell.m */,
+				61DFD3DB1E2351E900D9C2D7 /* PaymentBottomCell.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -778,6 +813,8 @@
 		617F79701E15FEB900E139CF /* Assistent */ = {
 			isa = PBXGroup;
 			children = (
+				61DFD3DE1E235F3600D9C2D7 /* QGAlertView.h */,
+				61DFD3DF1E235F3600D9C2D7 /* QGAlertView.m */,
 				11FE82631E1F79A600309719 /* MMNumberKeyboard */,
 				619319801E1CB22200AF63E7 /* GFCalendar */,
 				617F79711E15FEF800E139CF /* YLButton */,
@@ -1040,7 +1077,9 @@
 				11FE82701E1F79A600309719 /* MMNumberKeyboardDeleteKey@3x.png in Resources */,
 				619319A61E1CF70A00AF63E7 /* RechargeScanCell.xib in Resources */,
 				11FE82791E1F828300309719 /* DZMoneyDetailsViewController.xib in Resources */,
+				61DFD3DD1E2351E900D9C2D7 /* PaymentBottomCell.xib in Resources */,
 				116DF0751E212B6900484D72 /* MenDianFuncViewController.xib in Resources */,
+				61DFD3CE1E232FCA00D9C2D7 /* PaymentViewController.xib in Resources */,
 				613FB94D1E1E352200CB2070 /* BonusTXScanViewController.xib in Resources */,
 				11FE82711E1F79A600309719 /* MMNumberKeyboardDismissKey.png in Resources */,
 				617F79791E1620FF00E139CF /* FunctionListViewController.xib in Resources */,
@@ -1051,7 +1090,9 @@
 				617288BD1E10BCA40037DB40 /* LaunchScreen.storyboard in Resources */,
 				616448291E1B459E0007E50E /* AddressCell.xib in Resources */,
 				1176F89C1E1FDF580057227C /* CollectionCell.xib in Resources */,
+				61DFD3D31E23385F00D9C2D7 /* AlwaysBuyViewController.xib in Resources */,
 				6172891C1E110BCD0037DB40 /* LoginViewController.xib in Resources */,
+				61DFD3D81E23408700D9C2D7 /* AlwaysBuyCell.xib in Resources */,
 				11FE827E1E1F917500309719 /* RechargeDetailsViewController.xib in Resources */,
 				116DF0661E20BE8500484D72 /* EmailViewController.xib in Resources */,
 				616A09AA1E11FF1600FCF886 /* RegistViewController.xib in Resources */,
@@ -1231,6 +1272,7 @@
 				11FE82821E1FA00400309719 /* BonusScanDetailsViewController.m in Sources */,
 				619319901E1CB22200AF63E7 /* NSDate+GFCalendar.m in Sources */,
 				617289171E11071A0037DB40 /* GlobalData.m in Sources */,
+				61DFD3DC1E2351E900D9C2D7 /* PaymentBottomCell.m in Sources */,
 				615FBF451E14FAB300F50C0D /* OrderModel.m in Sources */,
 				616448221E1B39B90007E50E /* ShoppingAddressViewController.m in Sources */,
 				61A09ECA1E138D8D00C58519 /* Address.m in Sources */,
@@ -1240,6 +1282,7 @@
 				61F437F31E153A5000762CAF /* ProductModel.m in Sources */,
 				617288E31E10BE110037DB40 /* BaseTabBarController.m in Sources */,
 				6193198C1E1CB22200AF63E7 /* GFCalendarCell.m in Sources */,
+				61DFD3CD1E232FCA00D9C2D7 /* PaymentViewController.m in Sources */,
 				6193198D1E1CB22200AF63E7 /* GFCalendarMonth.m in Sources */,
 				6172891B1E110BCD0037DB40 /* LoginViewController.m in Sources */,
 				617F79741E15FEF800E139CF /* YLButton.m in Sources */,
@@ -1267,6 +1310,8 @@
 				116DF0651E20BE8500484D72 /* EmailViewController.m in Sources */,
 				11FE827D1E1F917500309719 /* RechargeDetailsViewController.m in Sources */,
 				6172891F1E1118670037DB40 /* UIView+Addition.m in Sources */,
+				61DFD3D21E23385F00D9C2D7 /* AlwaysBuyViewController.m in Sources */,
+				61DFD3D71E23408700D9C2D7 /* AlwaysBuyCell.m in Sources */,
 				613FB9481E1E1A6B00CB2070 /* BonusTXViewController.m in Sources */,
 				617288AC1E10BCA40037DB40 /* main.m in Sources */,
 				6193198E1E1CB22200AF63E7 /* GFCalendarScrollView.m in Sources */,
@@ -1294,6 +1339,7 @@
 				619319A01E1CF67800AF63E7 /* RechargeScanViewController.m in Sources */,
 				617288B81E10BCA40037DB40 /* bz.xcdatamodeld in Sources */,
 				617F79781E1620FF00E139CF /* FunctionListViewController.m in Sources */,
+				61DFD3E01E235F3600D9C2D7 /* QGAlertView.m in Sources */,
 				619319A51E1CF70A00AF63E7 /* RechargeScanCell.m in Sources */,
 				616A09AE1E1253F800FCF886 /* MeHeadView.m in Sources */,
 				115E35881E1766EE002A9957 /* CollectionSectionHeaderView.m in Sources */,

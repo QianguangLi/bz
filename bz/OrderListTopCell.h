@@ -11,6 +11,6 @@
 
 @interface OrderListTopCell : UITableViewCell
 
-- (void)setContentWithOrderModel:(OrderModel *)orderModel;
+- (void)setContentWithOrderModel:(OrderModel *)orderModel andSection:(NSInteger)section;
 
 @end

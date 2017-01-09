@@ -27,7 +27,11 @@
         _dataArray = [[NSMutableArray alloc] init];
     }
     
-    _mTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight-49-64) style:UITableViewStylePlain];
+    _mTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight-49-64) style:UITableViewStyleGrouped];
+    _mTableView.sectionFooterHeight = 0;
+    _mTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, CGFLOAT_MIN)];
+    _mTableView.sectionHeaderHeight = 0;
+    _mTableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, CGFLOAT_MIN)];
     
     _mTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _mTableView.backgroundColor = QGCOLOR(238, 238, 239, 1);
@@ -50,8 +54,8 @@
 }
 - (void)setRefreshControl
 {
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 0)];
-    _mTableView.tableFooterView = view;
+//    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 0)];
+//    _mTableView.tableFooterView = view;
     if (_isRequireRefreshHeader) {
         __weak RefreshViewController *vc = self;
         self.mTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{

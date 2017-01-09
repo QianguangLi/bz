@@ -45,6 +45,7 @@
     //处理地址 数据库
     BOOL addressCached = [[NSUserDefaults standardUserDefaults] boolForKey:@"address_cached"];
     DataBaseService *service = [DataBaseService sharedService];
+    
     if (!addressCached) {
         [service requestAddress];
     } else {
