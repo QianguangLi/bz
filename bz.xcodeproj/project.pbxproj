@@ -138,6 +138,7 @@
 		61DFD3DC1E2351E900D9C2D7 /* PaymentBottomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 61DFD3DA1E2351E900D9C2D7 /* PaymentBottomCell.m */; };
 		61DFD3DD1E2351E900D9C2D7 /* PaymentBottomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61DFD3DB1E2351E900D9C2D7 /* PaymentBottomCell.xib */; };
 		61DFD3E01E235F3600D9C2D7 /* QGAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 61DFD3DF1E235F3600D9C2D7 /* QGAlertView.m */; };
+		61DFD3E31E23802900D9C2D7 /* RegistStoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61DFD3E21E23802900D9C2D7 /* RegistStoreViewController.m */; };
 		61F437F31E153A5000762CAF /* ProductModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 61F437F21E153A5000762CAF /* ProductModel.m */; };
 		C7AE5725228759A1D4099EE2 /* libPods-bzTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C819CC4F9EC579CD896525DC /* libPods-bzTests.a */; };
 		CB60EDAD8A812E83A6DC6A46 /* libPods-bzUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BBD9FECB363268F3739B789 /* libPods-bzUITests.a */; };
@@ -378,6 +379,8 @@
 		61DFD3DB1E2351E900D9C2D7 /* PaymentBottomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PaymentBottomCell.xib; sourceTree = "<group>"; };
 		61DFD3DE1E235F3600D9C2D7 /* QGAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QGAlertView.h; sourceTree = "<group>"; };
 		61DFD3DF1E235F3600D9C2D7 /* QGAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QGAlertView.m; sourceTree = "<group>"; };
+		61DFD3E11E23802900D9C2D7 /* RegistStoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistStoreViewController.h; sourceTree = "<group>"; };
+		61DFD3E21E23802900D9C2D7 /* RegistStoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistStoreViewController.m; sourceTree = "<group>"; };
 		61F437F11E153A5000762CAF /* ProductModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductModel.h; sourceTree = "<group>"; };
 		61F437F21E153A5000762CAF /* ProductModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductModel.m; sourceTree = "<group>"; };
 		63277A970CC28472312B0E2A /* libPods-bz.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-bz.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -458,6 +461,8 @@
 				116DF0711E212B6900484D72 /* MenDianFuncViewController.h */,
 				116DF0721E212B6900484D72 /* MenDianFuncViewController.m */,
 				116DF0731E212B6900484D72 /* MenDianFuncViewController.xib */,
+				61DFD3E11E23802900D9C2D7 /* RegistStoreViewController.h */,
+				61DFD3E21E23802900D9C2D7 /* RegistStoreViewController.m */,
 			);
 			name = Mendian;
 			sourceTree = "<group>";
@@ -1281,6 +1286,7 @@
 				617288F51E10BF070037DB40 /* ShoppingCartViewController.m in Sources */,
 				61F437F31E153A5000762CAF /* ProductModel.m in Sources */,
 				617288E31E10BE110037DB40 /* BaseTabBarController.m in Sources */,
+				61DFD3E31E23802900D9C2D7 /* RegistStoreViewController.m in Sources */,
 				6193198C1E1CB22200AF63E7 /* GFCalendarCell.m in Sources */,
 				61DFD3CD1E232FCA00D9C2D7 /* PaymentViewController.m in Sources */,
 				6193198D1E1CB22200AF63E7 /* GFCalendarMonth.m in Sources */,

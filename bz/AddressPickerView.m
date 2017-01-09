@@ -61,16 +61,24 @@
 
 - (void)setDefaultAddressWithAreaIDString:(NSString *)string
 {
+    if (IS_NULL_STRING(string)) {
+        return;
+    }
     NSArray *arr = [string componentsSeparatedByString:@","];
     for (int i = 0; i < arr.count; i++) {
+        if (i == 0) {
+            _countryid = arr[0];
+        } else if (i == 1) {
+            _provinceid = arr[1];
+        } else if (i == 2) {
+            _cityid = arr[2];
+        } else {
+            _countyid = arr[3];
+        }
         Address *address = [service getAddressWithAreaID:arr[i]];
         UITextField *tf = (UITextField *)[self viewWithTag:100 + i];
         tf.text = address.areaName ? address.areaName : Localized(@"请选择");
     }
-    _countryid = arr[0];
-    _provinceid = arr[1];
-    _cityid = arr[2];
-    _countyid = arr[3];
 }
 
 - (void)initTextFields

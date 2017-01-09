@@ -18,6 +18,7 @@
 #import "MyCollectionViewController.h"
 #import "PaymentViewController.h"
 #import "AlwaysBuyViewController.h"
+#import "RegistStoreViewController.h"
 
 @interface MeViewController () <UITableViewDelegate, UITableViewDataSource, MeHeadViewDelegate, UIAlertViewDelegate>
 
@@ -93,13 +94,33 @@
 - (void)initData
 {
     _dataArray = [NSMutableArray array];
-    _dataArray = @[@{@"title":Localized(@"我的购物车"), @"subTitle":@""},
-                   @{@"title":Localized(@"会员信息"), @"subTitle":Localized(@"会员信息修改等")},
-                   @{@"title":Localized(@"账户信息"), @"subTitle":Localized(@"账户明细")},
-                   @{@"title":Localized(@"收藏商品"), @"subTitle":@""},
-                   @{@"title":Localized(@"我的信件"), @"subTitle":@""},
-                   @{@"title":Localized(@"进入我的门店"), @"subTitle":@""},
-                   @{@"title":Localized(@"帮助中心"), @"subTitle":@""}].mutableCopy;
+    if (kIsLogin) {
+        if (kUserLevel == UserLevelStore) {
+            _dataArray = @[@{@"title":Localized(@"我的购物车"), @"subTitle":@""},
+                           @{@"title":Localized(@"会员信息"), @"subTitle":Localized(@"会员信息修改等")},
+                           @{@"title":Localized(@"账户信息"), @"subTitle":Localized(@"账户明细")},
+                           @{@"title":Localized(@"收藏商品"), @"subTitle":@""},
+                           @{@"title":Localized(@"我的信件"), @"subTitle":@""},
+                           @{@"title":Localized(@"进入我的门店"), @"subTitle":@""},
+                           @{@"title":Localized(@"帮助中心"), @"subTitle":@""}].mutableCopy;
+        } else if (kUserLevel == UserLevelMember) {
+            _dataArray = @[@{@"title":Localized(@"我的购物车"), @"subTitle":@""},
+                           @{@"title":Localized(@"会员信息"), @"subTitle":Localized(@"会员信息修改等")},
+                           @{@"title":Localized(@"账户信息"), @"subTitle":Localized(@"账户明细")},
+                           @{@"title":Localized(@"收藏商品"), @"subTitle":@""},
+                           @{@"title":Localized(@"我的信件"), @"subTitle":@""},
+                           @{@"title":Localized(@"申请门店"), @"subTitle":@""},
+                           @{@"title":Localized(@"帮助中心"), @"subTitle":@""}].mutableCopy;
+        }
+    } else {
+        _dataArray = @[@{@"title":Localized(@"我的购物车"), @"subTitle":@""},
+                       @{@"title":Localized(@"会员信息"), @"subTitle":Localized(@"会员信息修改等")},
+                       @{@"title":Localized(@"账户信息"), @"subTitle":Localized(@"账户明细")},
+                       @{@"title":Localized(@"收藏商品"), @"subTitle":@""},
+                       @{@"title":Localized(@"我的信件"), @"subTitle":@""},
+                       @{@"title":Localized(@"申请门店"), @"subTitle":@""},
+                       @{@"title":Localized(@"帮助中心"), @"subTitle":@""}].mutableCopy;
+    }
 }
 
 #pragma mark UITableViewDelegate
@@ -124,6 +145,13 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    if (indexPath.row == MeMenuHelpCenter) {
+        //TODO:帮助中心
+        NSLog(@"帮助中心");
+        return;
+    }
+    
     if (!kIsLogin) {
         UIAlertView *av = [[UIAlertView alloc] initWithTitle:Localized(@"温馨提示") message:Localized(@"登陆后才可进行操作,是否去登陆") delegate:self  cancelButtonTitle:Localized(@"再看看") otherButtonTitles:Localized(@"去登陆"), nil];
         [av show];
@@ -174,16 +202,19 @@
             break;
         case MeMenuMendian:
         {
-            FunctionListViewController *vc = [[FunctionListViewController alloc] init];
-            vc.menu = MeMenuMendian;
-            vc.title = Localized(@"我的门店");
-            vc.hidesBottomBarWhenPushed = YES;
-            [self.navigationController pushViewController:vc animated:YES];
-        }
-            break;
-        case MeMenuHelpCenter:
-        {
-            
+            if (kUserLevel == UserLevelStore) {
+                FunctionListViewController *vc = [[FunctionListViewController alloc] init];
+                vc.menu = MeMenuMendian;
+                vc.title = Localized(@"我的门店");
+                vc.hidesBottomBarWhenPushed = YES;
+                [self.navigationController pushViewController:vc animated:YES];
+            } else if (kUserLevel == UserLevelMember) {
+                //会员等级申请门店
+                UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"BZStoryboard" bundle:nil];
+                RegistStoreViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"RegistStoreViewController"];
+                vc.hidesBottomBarWhenPushed = YES;
+                [self.navigationController pushViewController:vc animated:YES];
+            }
         }
             break;
             

@@ -174,7 +174,7 @@
             {
                 //写信
                 WriteEmailViewController *vc= [[WriteEmailViewController alloc] init];
-                //TODO:暂定会员等级
+                //TODO:会员部分暂定使用会员等级
 //                vc.access = kUserLevel;
                 vc.access = UserLevelMember;
                 [self.navigationController pushViewController:vc animated:YES];

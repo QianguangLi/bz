@@ -16,7 +16,7 @@
     UIButton *_updateButton;
     NSURLSessionTask *_task;
     NSURLSessionTask *_updateTask;
-    NSString *_areaid;//国家地区
+    
 }
 
 @property (weak, nonatomic) IBOutlet UITextField *memberName;//会员姓名
@@ -29,6 +29,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *bankName;//开户行名称
 @property (weak, nonatomic) IBOutlet UITextField *accountName;//开户名
 @property (weak, nonatomic) IBOutlet UITextField *bankAccount;//开户行账号
+
+@property (copy, nonatomic) NSString *areaid;//国家地区
 
 @end
 
@@ -102,6 +104,8 @@
     weakSelf.bankName.text = userModel.bankName;
     weakSelf.accountName.text = userModel.accountName;
     weakSelf.bankAccount.text = userModel.bankAccount;
+    
+    weakSelf.areaid = userModel.addrcode;
     
     [weakSelf.areaCode setDefaultAddressWithAreaIDString:userModel.addrcode];
 }
