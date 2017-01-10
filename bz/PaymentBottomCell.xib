@@ -40,10 +40,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0sH-gj-ofI">
-                                <rect key="frame" x="252" y="46" width="60" height="30"/>
+                                <rect key="frame" x="258" y="46" width="54" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="5yu-f6-uPL"/>
-                                    <constraint firstAttribute="width" constant="60" id="mOZ-Tz-4C6"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <state key="normal" title="立即付款">
@@ -54,10 +53,9 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DX3-Ur-Pkw">
-                                <rect key="frame" x="172" y="46" width="60" height="30"/>
+                                <rect key="frame" x="184" y="46" width="54" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="KvK-e0-AG9"/>
-                                    <constraint firstAttribute="width" constant="60" id="XFE-mN-Xcy"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <state key="normal" title="残忍拒绝">

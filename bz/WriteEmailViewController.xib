@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -31,9 +31,6 @@
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="收件人员" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qKR-Vc-whl">
                                     <rect key="frame" x="8" y="20" width="62" height="18"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="62" id="Vte-Hx-BpF"/>
-                                    </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
@@ -132,16 +129,13 @@
                                 <constraint firstItem="4rh-TC-TLa" firstAttribute="top" secondItem="qKR-Vc-whl" secondAttribute="bottom" constant="20" id="CGB-QX-4bg"/>
                                 <constraint firstAttribute="trailing" secondItem="gMn-IE-3Ip" secondAttribute="trailing" id="CUF-dJ-7MB"/>
                                 <constraint firstItem="4rh-TC-TLa" firstAttribute="leading" secondItem="PNA-57-vLm" secondAttribute="leading" id="G2u-iU-Bdq"/>
-                                <constraint firstItem="MWy-bT-h8F" firstAttribute="width" secondItem="qKR-Vc-whl" secondAttribute="width" id="GIA-TJ-3Z7"/>
                                 <constraint firstItem="gMn-IE-3Ip" firstAttribute="leading" secondItem="PNA-57-vLm" secondAttribute="leading" id="GfT-Wa-D0O"/>
                                 <constraint firstItem="7L3-h7-3O8" firstAttribute="leading" secondItem="PNA-57-vLm" secondAttribute="leading" constant="8" id="GzK-HQ-soE"/>
                                 <constraint firstAttribute="trailing" secondItem="0Xf-dr-rWf" secondAttribute="trailing" constant="8" id="L2A-1H-kL4"/>
-                                <constraint firstItem="ENj-4s-bL4" firstAttribute="width" secondItem="qKR-Vc-whl" secondAttribute="width" id="O56-2i-Z6W"/>
                                 <constraint firstItem="NHz-vi-cuA" firstAttribute="top" secondItem="ENj-4s-bL4" secondAttribute="top" id="SKV-s6-1T6"/>
                                 <constraint firstItem="0Xf-dr-rWf" firstAttribute="centerY" secondItem="qKR-Vc-whl" secondAttribute="centerY" id="ThF-0Z-JYB"/>
                                 <constraint firstItem="ENj-4s-bL4" firstAttribute="leading" secondItem="PNA-57-vLm" secondAttribute="leading" constant="8" id="Y45-by-XQ0"/>
                                 <constraint firstItem="qKR-Vc-whl" firstAttribute="leading" secondItem="PNA-57-vLm" secondAttribute="leading" constant="8" id="Z76-fK-06I"/>
-                                <constraint firstItem="7L3-h7-3O8" firstAttribute="width" secondItem="qKR-Vc-whl" secondAttribute="width" id="aE7-H2-k0S"/>
                                 <constraint firstAttribute="trailing" secondItem="uNZ-dk-tMZ" secondAttribute="trailing" constant="8" id="bes-Ta-eCa"/>
                                 <constraint firstItem="0Xf-dr-rWf" firstAttribute="leading" secondItem="qKR-Vc-whl" secondAttribute="trailing" constant="8" id="biB-Sn-ma4"/>
                                 <constraint firstItem="uNZ-dk-tMZ" firstAttribute="leading" secondItem="7L3-h7-3O8" secondAttribute="trailing" constant="8" id="btH-UT-Fcj"/>

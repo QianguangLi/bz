@@ -140,6 +140,7 @@
 		61DFD3E01E235F3600D9C2D7 /* QGAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 61DFD3DF1E235F3600D9C2D7 /* QGAlertView.m */; };
 		61DFD3E31E23802900D9C2D7 /* RegistStoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61DFD3E21E23802900D9C2D7 /* RegistStoreViewController.m */; };
 		61F437F31E153A5000762CAF /* ProductModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 61F437F21E153A5000762CAF /* ProductModel.m */; };
+		61F9ADAA1E24734B00649D80 /* UIView+MyFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 61F9ADA91E24734B00649D80 /* UIView+MyFont.m */; };
 		C7AE5725228759A1D4099EE2 /* libPods-bzTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C819CC4F9EC579CD896525DC /* libPods-bzTests.a */; };
 		CB60EDAD8A812E83A6DC6A46 /* libPods-bzUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BBD9FECB363268F3739B789 /* libPods-bzUITests.a */; };
 /* End PBXBuildFile section */
@@ -383,6 +384,8 @@
 		61DFD3E21E23802900D9C2D7 /* RegistStoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistStoreViewController.m; sourceTree = "<group>"; };
 		61F437F11E153A5000762CAF /* ProductModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductModel.h; sourceTree = "<group>"; };
 		61F437F21E153A5000762CAF /* ProductModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductModel.m; sourceTree = "<group>"; };
+		61F9ADA81E24734B00649D80 /* UIView+MyFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MyFont.h"; sourceTree = "<group>"; };
+		61F9ADA91E24734B00649D80 /* UIView+MyFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MyFont.m"; sourceTree = "<group>"; };
 		63277A970CC28472312B0E2A /* libPods-bz.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-bz.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9531E3B048B237F24D71B746 /* Pods-bzUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bzUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-bzUITests/Pods-bzUITests.release.xcconfig"; sourceTree = "<group>"; };
 		C5657D440376AF6D55313C1A /* Pods-bzTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bzTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-bzTests/Pods-bzTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -777,6 +780,8 @@
 				6172891E1E1118670037DB40 /* UIView+Addition.m */,
 				1154B9A21E11736A00C8459D /* NSObject+Addition.h */,
 				1154B9A31E11736A00C8459D /* NSObject+Addition.m */,
+				61F9ADA81E24734B00649D80 /* UIView+MyFont.h */,
+				61F9ADA91E24734B00649D80 /* UIView+MyFont.m */,
 			);
 			name = Global;
 			sourceTree = "<group>";
@@ -1284,6 +1289,7 @@
 				613FB9511E1E355F00CB2070 /* BonusScanCell.m in Sources */,
 				619319951E1CB41800AF63E7 /* DZMoneyCell.m in Sources */,
 				617288F51E10BF070037DB40 /* ShoppingCartViewController.m in Sources */,
+				61F9ADAA1E24734B00649D80 /* UIView+MyFont.m in Sources */,
 				61F437F31E153A5000762CAF /* ProductModel.m in Sources */,
 				617288E31E10BE110037DB40 /* BaseTabBarController.m in Sources */,
 				61DFD3E31E23802900D9C2D7 /* RegistStoreViewController.m in Sources */,

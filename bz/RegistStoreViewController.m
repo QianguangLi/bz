@@ -189,6 +189,7 @@
 - (IBAction)scanProtocal:(UIButton *)sender
 {
     //TODO:门店注入协议
+    
 }
 
 #pragma mark - AddressPickerViewDelegate

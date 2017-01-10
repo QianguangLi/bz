@@ -41,12 +41,13 @@
     [_loginButton setImage:[UIImage imageWithColor:kPinkColor] forState:UIControlStateNormal];
     [_loginButton setCorneRadius:5];
     
+#if DEBUG
     //TODO:开发模式预设账户密码
-//    _userNameTF.text = @"lisilisi";
-//    _passwordTF.text = @"000000";
-    _userNameTF.text = @"liqianguan";
+    _userNameTF.text = @"lisilisi";
     _passwordTF.text = @"000000";
-    
+//    _userNameTF.text = @"liqianguan";
+//    _passwordTF.text = @"000000";
+#endif
 }
 
 - (void)initNavigationItem

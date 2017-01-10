@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -36,17 +36,16 @@
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="用户名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eDK-Og-a77">
-                    <rect key="frame" x="20" y="84" width="75" height="21"/>
+                    <rect key="frame" x="20" y="84" width="73.5" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="f2i-fU-6aU"/>
-                        <constraint firstAttribute="width" constant="75" id="hDh-my-iOQ"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="手机号" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GZf-vy-t8d">
-                    <rect key="frame" x="20" y="145" width="75" height="21"/>
+                    <rect key="frame" x="20" y="145" width="73.5" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="gCi-KI-cu4"/>
                     </constraints>
@@ -55,7 +54,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请设置用户名称" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uhI-Wp-vmn">
-                    <rect key="frame" x="115" y="75" width="240" height="40"/>
+                    <rect key="frame" x="113.5" y="75" width="241.5" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="IYA-T8-RMU"/>
                     </constraints>
@@ -64,7 +63,7 @@
                     <textInputTraits key="textInputTraits" keyboardType="alphabet"/>
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入手机号" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gzG-Li-aSa">
-                    <rect key="frame" x="115" y="135" width="240" height="40"/>
+                    <rect key="frame" x="113.5" y="135" width="241.5" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="nZx-TJ-3HD"/>
                     </constraints>
@@ -93,7 +92,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="验证码" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v9p-Ka-kLD">
-                    <rect key="frame" x="20" y="207" width="75" height="21"/>
+                    <rect key="frame" x="20" y="207" width="73.5" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="H92-oY-jTH"/>
                     </constraints>
@@ -102,7 +101,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="密码" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qZU-V9-nDz">
-                    <rect key="frame" x="20" y="269" width="75" height="21"/>
+                    <rect key="frame" x="20" y="269" width="73.5" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="hSL-hm-4q4"/>
                     </constraints>
@@ -111,7 +110,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入验证码" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="u8S-uU-mfS">
-                    <rect key="frame" x="115" y="197" width="140" height="40"/>
+                    <rect key="frame" x="113.5" y="197" width="141.5" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="vrb-CW-cuV"/>
                     </constraints>
@@ -120,7 +119,7 @@
                     <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请设置6-20位登陆密码" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aEB-WA-CqU">
-                    <rect key="frame" x="115" y="260" width="240" height="40"/>
+                    <rect key="frame" x="113.5" y="260" width="241.5" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="KKr-xX-1d8"/>
                     </constraints>
@@ -149,7 +148,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="确认密码" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Omw-pG-MOC">
-                    <rect key="frame" x="20" y="331" width="75" height="21"/>
+                    <rect key="frame" x="20" y="331" width="73.5" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="4Bv-ah-ccw"/>
                     </constraints>
@@ -158,7 +157,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请确认密码" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="u2T-od-prF">
-                    <rect key="frame" x="115" y="321" width="240" height="40"/>
+                    <rect key="frame" x="113.5" y="321" width="241.5" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="14c-nd-Dp0"/>
                     </constraints>
