@@ -10,13 +10,16 @@
 #import "AddressPickerView.h"
 #import "NetService.h"
 #import "UserModel.h"
+#import "UIImageView+AFNetworking.h"
+#import "GTMBase64.h"
+#import "AFNetworking.h"
 
-@interface UpdateMemberInfoTableViewController () <AddressPickerViewDelegate, UIAlertViewDelegate, UITableViewDelegate>
+@interface UpdateMemberInfoTableViewController () <AddressPickerViewDelegate, UIAlertViewDelegate, UITableViewDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 {
     UIButton *_updateButton;
     NSURLSessionTask *_task;
-    NSURLSessionTask *_updateTask;
-    
+    NSURLSessionTask *_updateTask;//更新任务
+    NSURLSessionTask *_uploadTask;//上传头像
 }
 
 @property (weak, nonatomic) IBOutlet UITextField *memberName;//会员姓名
@@ -29,6 +32,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *bankName;//开户行名称
 @property (weak, nonatomic) IBOutlet UITextField *accountName;//开户名
 @property (weak, nonatomic) IBOutlet UITextField *bankAccount;//开户行账号
+@property (weak, nonatomic) IBOutlet UIImageView *headImageView;
 
 @property (copy, nonatomic) NSString *areaid;//国家地区
 
@@ -40,6 +44,7 @@
 {
     [_task cancel];
     [_updateTask cancel];
+    [_uploadTask cancel];
     NSLog(@"dealloc");
 }
 
@@ -69,6 +74,12 @@
     }
 }
 
+- (IBAction)selectHeadAction:(UIButton *)sender
+{
+    UIActionSheet *as = [[UIActionSheet alloc] initWithTitle:Localized(@"请选择") delegate:self cancelButtonTitle:Localized(@"取消") destructiveButtonTitle:nil otherButtonTitles:Localized(@"相机"), Localized(@"相册"), nil];
+    [as showInView:self.view];
+}
+
 - (void)getMemberInfo
 {
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:kLoginToken, @"Token", nil];
@@ -95,6 +106,8 @@
 
 - (void)reloadData:(UserModel *)userModel With:(UpdateMemberInfoTableViewController * __weak)weakSelf
 {
+    [weakSelf.headImageView setImageWithURL:[NSURL URLWithString:userModel.faceUrl] placeholderImage:[UIImage imageNamed:@"member-head"]];
+    
     weakSelf.memberName.text = userModel.loginName;
     weakSelf.phoneNumber.text = userModel.mobile;
     weakSelf.email.text = userModel.email;
@@ -144,6 +157,100 @@
         }
     }];
     [Utility showHUDAddedTo:weakSelf.view forTask:_updateTask];
+}
+
+#pragma mark - UIActionSheetDelegate
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 0) {
+        //相机
+        if( [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera] ) {
+            [self invokeImagePiker:UIImagePickerControllerSourceTypeCamera];
+        } else {
+            [Utility showString:Localized(@"相机不可用") onView:self.view];
+        }
+    } else if (buttonIndex == 1) {
+        //相册
+        if( [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary] ) {
+            [self invokeImagePiker:UIImagePickerControllerSourceTypePhotoLibrary];
+        } else {
+            [Utility showString:Localized(@"相册不可用") onView:self.view];
+        }
+    }
+}
+
+- (void)invokeImagePiker:(UIImagePickerControllerSourceType)type
+{
+    UIImagePickerController *imgPicker = [[UIImagePickerController alloc] init];
+    imgPicker.delegate = self;
+    imgPicker.sourceType = type;
+    [self presentViewController:imgPicker animated:YES completion:^{
+        
+    }];
+}
+//data:image/jpeg;base64,
+#pragma mark - UIImagePickerControllerDelegate
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
+{
+    UIImage *image = info[UIImagePickerControllerOriginalImage];
+    NSData *data = UIImageJPEGRepresentation(image, 0.7);
+    self.headImageView.image = [UIImage imageWithData:data];
+    NSString *str = [NSString stringWithFormat:@"data:image/jpeg;base64,%@", [data base64EncodedStringWithOptions:0]];
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                 kLoginToken, @"Token",
+                                 @"memberface", @"action",
+                                 str, @"faceBase64",
+                                 nil];
+//    [self uploadImageWithImage:image];
+//    NSLog(@"%@", str);
+    WS(weakSelf);
+    _uploadTask = [NetService POST:@"api/User/Upload" parameters:dict complete:^(id responseObject, NSError *error) {
+        [Utility hideHUDForView:self.view];
+        if (error) {
+            NSLog(@"failure:%@", error);
+            [Utility showString:error.localizedDescription onView:weakSelf.view];
+            return ;
+        }
+        NSLog(@"%@", responseObject);
+        if ([responseObject[kStatusCode] integerValue] == NetStatusSuccess) {
+            UIAlertView *av = [[UIAlertView alloc] initWithTitle:Localized(@"提示") message:Localized(@"头像上传成功") delegate:self cancelButtonTitle:Localized(@"确定") otherButtonTitles:nil, nil];
+            [av show];
+        } else {
+            [Utility showString:responseObject[kErrMsg] onView:weakSelf.view];
+        }
+    }];
+    [Utility showHUDAddedTo:self.view forTask:_uploadTask];
+    
+    [picker dismissViewControllerAnimated:YES completion:^{
+        
+    }];
+}
+
+- (void)uploadImageWithImage:(UIImage *)image {
+    //截取图片
+    NSData *imageData = UIImageJPEGRepresentation(image, 0.001);
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+//    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html",@"text/plain", nil];
+    // 参数
+    NSString *sign = [[NSString stringWithFormat:@"%@%@",kLoginToken, kSignKey] md5];
+    NSDictionary *parameter       = @{@"Token":kLoginToken,@"Sign":sign};
+//    };
+// 访问路径
+NSString *stringURL = @"http://103.48.169.52/bzapi/api/User/Upload";
+
+[manager POST:stringURL parameters:parameter constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+    
+    [formData appendPartWithFileData:imageData name:@"faceBase64" fileName:@"head.jpg" mimeType:@"image/jpg"];
+    
+} progress:^(NSProgress * _Nonnull uploadProgress) {
+    
+} success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    NSLog(@"%@", responseObject);
+    NSLog(@"上传陈宫");
+} failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    NSLog(@"上传失败:%@", error);
+}];
 }
 
 #pragma mark - AddressPickerViewDelegate

@@ -53,7 +53,7 @@
 
 + (MBProgressHUD *)showString:(NSString *)string onView:(UIView *)view
 {
-    if (!view || !string) {
+    if (!view || !string || string.length == 0) {
         return nil;
     }
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view animated:YES];

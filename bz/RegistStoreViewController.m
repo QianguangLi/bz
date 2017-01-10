@@ -160,7 +160,7 @@
                                  _bankName.text, @"bankName",
                                  _bankAccount.text, @"bankAccount",
                                  nil];
-    __weak RegistStoreViewController *weakSelf = self;
+    WS(weakSelf);
     _registTask = [NetService POST:@"/api/User/ApplyStore" parameters:dict complete:^(id responseObject, NSError *error) {
         [Utility hideHUDForView:self.view];
         if (error) {
@@ -171,6 +171,7 @@
         NSLog(@"%@", responseObject);
         if ([responseObject[kStatusCode] integerValue] == NetStatusSuccess) {
             //            NSDictionary *dataDict = responseObject[kResponseData];
+            [[NSNotificationCenter defaultCenter] postNotificationName:kRegistStoreNotification object:nil];
             UIAlertView *av = [[UIAlertView alloc] initWithTitle:Localized(@"提示") message:Localized(@"成功") delegate:self cancelButtonTitle:Localized(@"确定") otherButtonTitles:nil, nil];
             [av show];
         } else {

@@ -77,6 +77,8 @@
 #define kDeleteRechargeSuccessNotification @"recharge_delete_success"
 //重新登录通知，token验证失败的情况下
 #define kReLoginNotification @"go_re_login_notification"
+//会员申请过门店后的通知
+#define kRegistStoreNotification @"after_regist_store_notification"
 
 #define kBaseUrl @"http://103.48.169.52/bzapi"
 //登录URL

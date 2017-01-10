@@ -60,11 +60,7 @@ typedef NS_ENUM(NSInteger, RequestMethod) {
             }
             complete(responseObject, nil);
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-            if (error.code == -1004) {
-                error = [NSError errorWithDomain:NSURLErrorDomain code:-1004 userInfo:@{
-                                                                                        NSLocalizedDescriptionKey:Localized(@"无法连接到服务器,请检查网络连接")}];
-            }
-            complete(nil, error);
+            complete(nil, [self processError:error]);
         }];
     } else {
         return [manager POST:urlString parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -74,13 +70,22 @@ typedef NS_ENUM(NSInteger, RequestMethod) {
             }
             complete(responseObject, nil);
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-            if (error.code == -1004) {
-                error = [NSError errorWithDomain:NSURLErrorDomain code:-1004 userInfo:@{
-                                                                                        NSLocalizedDescriptionKey:Localized(@"无法连接到服务器,请检查网络连接")}];
-            }
-            complete(nil, error);
+            complete(nil, [self processError:error]);
         }];
     }
+}
+
++ (NSError *)processError:(NSError *)error
+{
+    if (error.code == -1004) {
+        error = [NSError errorWithDomain:NSURLErrorDomain code:-1004 userInfo:@{
+                                                                                NSLocalizedDescriptionKey:Localized(@"无法连接到服务器,请检查网络连接")}];
+    }
+    if (error.code == -999) {
+        error = [NSError errorWithDomain:NSURLErrorDomain code:-999 userInfo:@{
+                                                                               NSLocalizedDescriptionKey:@""}];
+    }
+    return error;
 }
 
 @end

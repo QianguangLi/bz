@@ -21,7 +21,10 @@
 #import "RegistStoreViewController.h"
 
 @interface MeViewController () <UITableViewDelegate, UITableViewDataSource, MeHeadViewDelegate, UIAlertViewDelegate>
-
+{
+    NSURLSessionTask *_task;
+    NSURLSessionTask *_registStoreTask;
+}
 //@property (weak, nonatomic) IBOutlet UITableView *mTableView;
 @property (strong, nonatomic) UITableView *mTableView;
 
@@ -29,12 +32,17 @@
 
 @property (strong, nonatomic) MeHeadView *headView;
 
+@property (assign, nonatomic) NSInteger storeState;//0 申请门店1 审核门店中 2 进入我的门店
+
+
 @end
 
 @implementation MeViewController
 
 - (void)dealloc
 {
+    [_task cancel];
+    [_registStoreTask cancel];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kLoginSuccessNotification object:nil];
     NSLog(@"me dealloc");
 }
@@ -44,6 +52,7 @@
     // Do any additional setup after loading the view from its nib.
     //观察登陆成功后通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginSuccess:) name:kLoginSuccessNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(registStore:) name:kRegistStoreNotification object:nil];
 //    self.navigationController.navigationBarHidden = YES;
     [self initData];
     [self customView];
@@ -57,6 +66,9 @@
 {
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = YES;
+    if (kIsLogin) {
+        [self loginSuccess:nil];
+    }
 }
 
 //- (void)viewDidDisappear:(BOOL)animated
@@ -120,6 +132,15 @@
                        @{@"title":Localized(@"我的信件"), @"subTitle":@""},
                        @{@"title":Localized(@"申请门店"), @"subTitle":@""},
                        @{@"title":Localized(@"帮助中心"), @"subTitle":@""}].mutableCopy;
+    }
+}
+
+#pragma mark - UIScrollViewDelegate
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+//    NSLog(@"%f", scrollView.contentOffset.y);
+    if (scrollView.contentOffset.y <= -80) {
+        [self loginSuccess:nil];
     }
 }
 
@@ -209,11 +230,15 @@
                 vc.hidesBottomBarWhenPushed = YES;
                 [self.navigationController pushViewController:vc animated:YES];
             } else if (kUserLevel == UserLevelMember) {
-                //会员等级申请门店
-                UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"BZStoryboard" bundle:nil];
-                RegistStoreViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"RegistStoreViewController"];
-                vc.hidesBottomBarWhenPushed = YES;
-                [self.navigationController pushViewController:vc animated:YES];
+                if (_storeState == 0) {
+                    //会员等级申请门店
+                    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"BZStoryboard" bundle:nil];
+                    RegistStoreViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"RegistStoreViewController"];
+                    vc.hidesBottomBarWhenPushed = YES;
+                    [self.navigationController pushViewController:vc animated:YES];
+                } else {
+                    [Utility showString:Localized(@"门店申请正在审核中") onView:self.view];
+                }
             }
         }
             break;
@@ -277,10 +302,10 @@
 
 - (void)loginSuccess:(NSNotification *)notify
 {
+    [_task cancel];
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:kLoginToken, @"Token", nil];
     WS(weakSelf);
-    [NetService GET:kGetMemberInfoUrl parameters:dict complete:^(id responseObject, NSError *error) {
-//        [Utility hideHUDForView:self.view];
+    _task = [NetService GET:kGetMemberInfoUrl parameters:dict complete:^(id responseObject, NSError *error) {
         if (error) {
             NSLog(@"failure:%@", error);
             [Utility showString:error.localizedDescription onView:weakSelf.view];
@@ -289,14 +314,35 @@
         NSLog(@"%@", responseObject);
         if ([responseObject[kStatusCode] integerValue] == NetStatusSuccess) {
             NSDictionary *dataDict = responseObject[kResponseData];
-//            UserModel *userModel = [[UserModel alloc] initWithDict:dataDict];
             UserModel *userModel = [[UserModel alloc] initWithDictionary:dataDict error:nil];
             [weakSelf.headView setUserModel:userModel];
         } else {
             [Utility showString:responseObject[kErrMsg] onView:self.view];
         }
     }];
-//    [Utility showHUDAddedTo:self.view forTask:task];
+    
+    [self registStore:nil];
+}
+
+- (void)registStore:(NSNotification *)notify
+{
+    [_registStoreTask cancel];
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:kLoginToken, @"Token", nil];
+    WS(weakSelf);
+    _registStoreTask = [NetService GET:@"api/User/GetIsStore" parameters:dict complete:^(id responseObject, NSError *error) {
+        if (error) {
+            NSLog(@"failure:%@", error);
+            [Utility showString:error.localizedDescription onView:weakSelf.view];
+            return ;
+        }
+        NSLog(@"%@", responseObject);
+        if ([responseObject[kStatusCode] integerValue] == NetStatusSuccess) {
+            NSDictionary *dataDict = responseObject[kResponseData];
+            weakSelf.storeState = [dataDict[@"storestate"] integerValue];
+        } else {
+            [Utility showString:responseObject[kErrMsg] onView:self.view];
+        }
+    }];
 }
 
 #pragma mark

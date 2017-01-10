@@ -14,7 +14,7 @@
 		</dict>
 		<dict>
 			<key>FooterText</key>
-			<string>Copyright (c) 2011–2016 Alamofire Software Foundation (http://alamofire.org/)
+			<string>Copyright (c) 2011&#8211;2016 Alamofire Software Foundation (http://alamofire.org/)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -34,8 +34,6 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 </string>
-			<key>License</key>
-			<string>MIT</string>
 			<key>Title</key>
 			<string>AFNetworking</string>
 			<key>Type</key>
@@ -66,8 +64,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 </string>
-			<key>License</key>
-			<string>MIT</string>
 			<key>Title</key>
 			<string>BaiduMapKit</string>
 			<key>Type</key>
@@ -103,8 +99,6 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.</string>
-			<key>License</key>
-			<string>MIT</string>
 			<key>Title</key>
 			<string>FMDB</string>
 			<key>Type</key>
@@ -137,8 +131,6 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 </string>
-			<key>License</key>
-			<string>MIT</string>
 			<key>Title</key>
 			<string>IQKeyboardManager</string>
 			<key>Type</key>
@@ -165,8 +157,6 @@ COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
 IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 </string>
-			<key>License</key>
-			<string>MIT</string>
 			<key>Title</key>
 			<string>JSONModel</string>
 			<key>Type</key>
@@ -174,7 +164,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 		</dict>
 		<dict>
 			<key>FooterText</key>
-			<string>Copyright © 2009-2016 Matej Bukovinski
+			<string>Copyright &#169; 2009-2016 Matej Bukovinski
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -193,8 +183,6 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.</string>
-			<key>License</key>
-			<string>MIT</string>
 			<key>Title</key>
 			<string>MBProgressHUD</string>
 			<key>Type</key>
@@ -222,8 +210,6 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 </string>
-			<key>License</key>
-			<string>MIT</string>
 			<key>Title</key>
 			<string>MJRefresh</string>
 			<key>Type</key>
@@ -250,8 +236,6 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.</string>
-			<key>License</key>
-			<string>MIT</string>
 			<key>Title</key>
 			<string>Masonry</string>
 			<key>Type</key>
@@ -281,8 +265,6 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 </string>
-			<key>License</key>
-			<string>MIT</string>
 			<key>Title</key>
 			<string>PYSearch</string>
 			<key>Type</key>
@@ -300,8 +282,6 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 </string>
-			<key>License</key>
-			<string>MIT</string>
 			<key>Title</key>
 			<string>SKTagView</string>
 			<key>Type</key>
@@ -332,8 +312,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 </string>
-			<key>License</key>
-			<string>MIT</string>
 			<key>Title</key>
 			<string>UITableView+FDTemplateLayoutCell</string>
 			<key>Type</key>

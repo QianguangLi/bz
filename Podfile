@@ -9,7 +9,7 @@ target 'bz' do
   pod 'BaiduMapKit', '~> 3.2' #百度地图SDK
   pod 'MBProgressHUD', '~> 1.0.0'
   pod 'FMDB', '~> 2.6.2'
-  pod 'PYSearch', '~> 0.5.3'
+  pod 'PYSearch'
   pod 'MJRefresh', '~> 3.1.12'
   pod 'JSONModel', '~> 1.7.0'
   pod 'SKTagView', '~> 0.9.2'

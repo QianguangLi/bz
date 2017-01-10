@@ -141,6 +141,7 @@
 		61DFD3E31E23802900D9C2D7 /* RegistStoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61DFD3E21E23802900D9C2D7 /* RegistStoreViewController.m */; };
 		61F437F31E153A5000762CAF /* ProductModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 61F437F21E153A5000762CAF /* ProductModel.m */; };
 		61F9ADAA1E24734B00649D80 /* UIView+MyFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 61F9ADA91E24734B00649D80 /* UIView+MyFont.m */; };
+		61F9ADAF1E24E63D00649D80 /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 61F9ADAD1E24E63D00649D80 /* GTMBase64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C7AE5725228759A1D4099EE2 /* libPods-bzTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C819CC4F9EC579CD896525DC /* libPods-bzTests.a */; };
 		CB60EDAD8A812E83A6DC6A46 /* libPods-bzUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BBD9FECB363268F3739B789 /* libPods-bzUITests.a */; };
 /* End PBXBuildFile section */
@@ -386,6 +387,9 @@
 		61F437F21E153A5000762CAF /* ProductModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductModel.m; sourceTree = "<group>"; };
 		61F9ADA81E24734B00649D80 /* UIView+MyFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MyFont.h"; sourceTree = "<group>"; };
 		61F9ADA91E24734B00649D80 /* UIView+MyFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MyFont.m"; sourceTree = "<group>"; };
+		61F9ADAC1E24E63D00649D80 /* GTMBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMBase64.h; sourceTree = "<group>"; };
+		61F9ADAD1E24E63D00649D80 /* GTMBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMBase64.m; sourceTree = "<group>"; };
+		61F9ADAE1E24E63D00649D80 /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
 		63277A970CC28472312B0E2A /* libPods-bz.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-bz.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9531E3B048B237F24D71B746 /* Pods-bzUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bzUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-bzUITests/Pods-bzUITests.release.xcconfig"; sourceTree = "<group>"; };
 		C5657D440376AF6D55313C1A /* Pods-bzTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bzTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-bzTests/Pods-bzTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -823,6 +827,7 @@
 		617F79701E15FEB900E139CF /* Assistent */ = {
 			isa = PBXGroup;
 			children = (
+				61F9ADAB1E24E63D00649D80 /* GTMBase64 */,
 				61DFD3DE1E235F3600D9C2D7 /* QGAlertView.h */,
 				61DFD3DF1E235F3600D9C2D7 /* QGAlertView.m */,
 				11FE82631E1F79A600309719 /* MMNumberKeyboard */,
@@ -936,6 +941,16 @@
 				61A09ED61E13EA2C00C58519 /* GoodsCell.xib */,
 			);
 			name = Cells;
+			sourceTree = "<group>";
+		};
+		61F9ADAB1E24E63D00649D80 /* GTMBase64 */ = {
+			isa = PBXGroup;
+			children = (
+				61F9ADAC1E24E63D00649D80 /* GTMBase64.h */,
+				61F9ADAD1E24E63D00649D80 /* GTMBase64.m */,
+				61F9ADAE1E24E63D00649D80 /* GTMDefines.h */,
+			);
+			path = GTMBase64;
 			sourceTree = "<group>";
 		};
 		B0E55AF93A2A71BE17D3BAE1 /* Frameworks */ = {
@@ -1223,7 +1238,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		CDC8CABD196EA6FC244B5624 /* [CP] Embed Pods Frameworks */ = {
@@ -1253,7 +1268,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		F6DCE8DD935EFE2C49D66137 /* [CP] Check Pods Manifest.lock */ = {
@@ -1268,7 +1283,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1303,6 +1318,7 @@
 				1154B9A41E11736A00C8459D /* NSObject+Addition.m in Sources */,
 				617288E91E10BE470037DB40 /* BaseViewController.m in Sources */,
 				617289141E1100B90037DB40 /* Utility.m in Sources */,
+				61F9ADAF1E24E63D00649D80 /* GTMBase64.m in Sources */,
 				616448281E1B459E0007E50E /* AddressCell.m in Sources */,
 				115E35831E175258002A9957 /* RightCell.m in Sources */,
 				615FBF521E15064400F50C0D /* OrderProductCell.m in Sources */,
