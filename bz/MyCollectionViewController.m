@@ -117,7 +117,7 @@
 
 - (void)searchItemAction:(UIBarButtonItem *)item
 {
-    __weak MyCollectionViewController *weakSelf = self;
+    WS(weakSelf);
     if (_searchViewTopLayout.constant == 0) {
         [UIView animateWithDuration:0.25 animations:^{
             _searchViewTopLayout.constant = -_searchView.frame.size.height;
@@ -136,8 +136,9 @@
     }
 }
 
-- (void)requestDataListPullDown:(BOOL)pullDown withWeakSelf:(RefreshViewController *__weak)weakSelf
+- (void)requestDataListPullDown:(BOOL)pullDown andEndRefreshing:(EndRefreshing)endRefreshing
 {
+    WS(weakSelf);
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                  kLoginToken, @"Token",
                                  StringFromNumber(weakSelf.pageIndex), kPageIndex,
@@ -146,7 +147,7 @@
                                  _endTime, @"endDate",
                                  _productName.text, @"kw", nil];
     _task = [NetService POST:kMyCollectionUrl parameters:dict complete:^(id responseObject, NSError *error) {
-        [weakSelf stopRefreshing];
+        endRefreshing(error);
         if (error) {
             NSLog(@"failure:%@", error);
             [Utility showString:error.localizedDescription onView:weakSelf.view];
@@ -179,7 +180,7 @@
                                  kLoginToken, @"Token",
                                  model.productId, @"favoritetid",
                                  nil];
-    __weak MyCollectionViewController *weakSelf = self;
+    WS(weakSelf);
     _deleteTask = [NetService POST:@"api/User/DelFav" parameters:dict complete:^(id responseObject, NSError *error) {
         [Utility hideHUDForView:weakSelf.view];
         if (error) {
@@ -228,6 +229,11 @@
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         [self deleteRowAtIndexPath:indexPath];
     }
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return Localized(@"取消收藏");
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath

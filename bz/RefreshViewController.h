@@ -7,7 +7,7 @@
 //
 
 #import "BaseViewController.h"
-
+typedef void(^EndRefreshing)(NSError *error);
 @interface RefreshViewController : BaseViewController
 
 @property (strong, nonatomic) UITableView *mTableView;
@@ -20,7 +20,7 @@
 @property (assign, nonatomic) BOOL isRequireRefreshFooter;//是否需要上拉加载
 @property (assign, nonatomic) BOOL isRequireRefreshHeader;//是否需要下拉刷新
 
-- (void)requestDataListPullDown:(BOOL)pullDown withWeakSelf:(RefreshViewController * __weak)weakSelf;
+- (void)requestDataListPullDown:(BOOL)pullDown andEndRefreshing:(EndRefreshing)endRefreshing;
 
 -(void)startHeardRefresh;
 

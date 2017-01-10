@@ -46,9 +46,10 @@
     [self.navigationController setNavigationBarHidden:NO animated:NO];
 }
 
-- (void)requestDataListPullDown:(BOOL)pullDown withWeakSelf:(RefreshViewController *__weak)weakSelf
+- (void)requestDataListPullDown:(BOOL)pullDown andEndRefreshing:(EndRefreshing)endRefreshing
 {
 //    NSLog(@"%@ %@ %@ %@ ", kLoginToken, StringFromNumber(self.pageIndex), StringFromNumber(self.pageSize))
+    WS(weakSelf);
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                  kLoginToken, @"Token",
                                  StringFromNumber(weakSelf.pageIndex), kPageIndex,
@@ -56,7 +57,7 @@
                                  StringFromNumber(_orderType), @"payStatus",
                                  @"", @"orderid", nil];
     _task = [NetService POST:kGetMyOrders parameters:dict complete:^(id responseObject, NSError *error) {
-        [weakSelf stopRefreshing];
+        endRefreshing(error);
         if (error) {
             NSLog(@"failure:%@", error);
             [Utility showString:error.localizedDescription onView:weakSelf.view];

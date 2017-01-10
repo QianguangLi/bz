@@ -36,13 +36,14 @@
     [self.mTableView registerNib:[UINib nibWithNibName:@"CollectionCell" bundle:nil] forCellReuseIdentifier:@"CollectionCell"];
 }
 
-- (void)requestDataListPullDown:(BOOL)pullDown withWeakSelf:(RefreshViewController *__weak)weakSelf
+- (void)requestDataListPullDown:(BOOL)pullDown andEndRefreshing:(EndRefreshing)endRefreshing
 {
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                  kLoginToken, @"Token",
                                  nil];
+    WS(weakSelf);
     _task = [NetService POST:@"api/User/ShoppingCart" parameters:dict complete:^(id responseObject, NSError *error) {
-        [weakSelf stopRefreshing];
+        endRefreshing(error);
         if (error) {
             NSLog(@"failure:%@", error);
             [Utility showString:error.localizedDescription onView:weakSelf.view];

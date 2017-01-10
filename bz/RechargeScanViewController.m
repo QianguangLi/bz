@@ -146,7 +146,7 @@
 
 - (void)searchItemAction:(UIBarButtonItem *)item
 {
-    __weak RechargeScanViewController *weakSelf = self;
+    WS(weakSelf);
     if (_searchViewTopLayout.constant == 0) {
         [UIView animateWithDuration:0.25 animations:^{
             _searchViewTopLayout.constant = -_searchView.frame.size.height;
@@ -165,7 +165,7 @@
     }
 }
 
-- (void)requestDataListPullDown:(BOOL)pullDown withWeakSelf:(RefreshViewController *__weak)weakSelf
+- (void)requestDataListPullDown:(BOOL)pullDown andEndRefreshing:(EndRefreshing)endRefreshing
 {
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                  kLoginToken, @"Token",
@@ -177,8 +177,9 @@
                                  _startTime, @"startDate",
                                  _endTime, @"endDate",
                                  nil];
+    WS(weakSelf);
     _task = [NetService POST:kUserRechargeScanUrl parameters:dict complete:^(id responseObject, NSError *error) {
-        [weakSelf stopRefreshing];
+        endRefreshing(error);
         if (error) {
             NSLog(@"failure:%@", error);
             [Utility showString:error.localizedDescription onView:weakSelf.view];
@@ -234,7 +235,7 @@
                                  kLoginToken, @"Token",
                                  model.id, @"rechargeid",
                                  nil];
-    __weak RechargeScanViewController *weakSelf = self;
+    WS(weakSelf);
     _deleteTask = [NetService POST:@"api/User/DelRecharge" parameters:dict complete:^(id responseObject, NSError *error) {
         [Utility hideHUDForView:weakSelf.view];
         if (error) {

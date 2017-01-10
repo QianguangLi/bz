@@ -39,7 +39,7 @@
     [self.mTableView registerNib:[UINib nibWithNibName:@"EmailCell" bundle:nil] forCellReuseIdentifier:@"EmailCell"];
 }
 
-- (void)requestDataListPullDown:(BOOL)pullDown withWeakSelf:(RefreshViewController *__weak)weakSelf
+- (void)requestDataListPullDown:(BOOL)pullDown andEndRefreshing:(EndRefreshing)endRefreshing
 {
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                  kLoginToken, @"Token",
@@ -47,8 +47,9 @@
                                  StringFromNumber(self.pageSize), kPageSize,
                                  _action, @"action",
                                  nil];
+    WS(weakSelf);
     _task = [NetService POST:@"api/User/Messages" parameters:dict complete:^(id responseObject, NSError *error) {
-        [weakSelf stopRefreshing];
+        endRefreshing(error);
         if (error) {
             NSLog(@"failure:%@", error);
             [Utility showString:error.localizedDescription onView:weakSelf.view];

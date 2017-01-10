@@ -58,7 +58,7 @@
 - (void)requestData
 {
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:kLoginToken, @"Token", nil];
-    __weak BonusTXViewController *weakSelf = self;
+    WS(weakSelf);
     _getBonusTask = [NetService GET:@"api/User/GetBonusSet" parameters:dict complete:^(id responseObject, NSError *error) {
         if (error) {
             NSLog(@"failure:%@", error);
@@ -110,7 +110,7 @@
                                  @"", @"sxf",
                                  _remark.text, @"remark",
                                  nil];
-    __weak BonusTXViewController *weakSelf = self;
+    WS(weakSelf);
     _task = [NetService POST:kBonusTXUrl parameters:dict complete:^(id responseObject, NSError *error) {
         [Utility hideHUDForView:self.view];
         if (error) {

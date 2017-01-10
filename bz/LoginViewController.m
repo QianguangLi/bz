@@ -87,7 +87,7 @@
     //登录过程中关闭注册
     _registItem.enabled = NO;
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:_userNameTF.text, @"memberid", [_passwordTF.text md5], @"password", nil];
-    __weak LoginViewController *weakSelf = self;
+    WS(weakSelf);
     _task = [NetService POST:kUserLoginUrl parameters:dict complete:^(id responseObject, NSError *error) {
         _registItem.enabled = YES;
         [Utility hideHUDForView:weakSelf.view];

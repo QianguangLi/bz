@@ -50,7 +50,7 @@
 
 - (void)requestData
 {
-    __weak WriteEmailViewController *weakSelf = self;
+    WS(weakSelf);
     _requestTask = [NetService GET:@"api/User/GetMsgClass" parameters:nil complete:^(id responseObject, NSError *error) {
         [Utility hideHUDForView:weakSelf.view];
         if (error) {
@@ -100,7 +100,7 @@
                                  _typeId, @"type",
                                  StringFromNumber(_access), @"access",
                                  nil];
-    __weak WriteEmailViewController *weakSelf = self;
+    WS(weakSelf);
     _sendTask = [NetService POST:kWriteEmailUrl parameters:dict complete:^(id responseObject, NSError *error) {
         [Utility hideHUDForView:weakSelf.view];
         if (error) {

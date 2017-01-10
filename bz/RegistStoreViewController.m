@@ -84,7 +84,7 @@
 - (void)getMemberInfo
 {
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:kLoginToken, @"Token", nil];
-    __block RegistStoreViewController *weakSelf = self;
+    WS(weakSelf);
     _task = [NetService GET:kGetMemberInfoUrl parameters:dict complete:^(id responseObject, NSError *error) {
         if (error) {
             NSLog(@"failure:%@", error);

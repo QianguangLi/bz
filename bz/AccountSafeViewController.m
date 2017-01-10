@@ -74,7 +74,7 @@
                                  [_password.text md5], @"newPwd",
                                  _action, @"action",
                                  nil];
-    __weak AccountSafeViewController *weakSelf = self;
+    WS(weakSelf);
     _task = [NetService POST:kModifyPasswordUrl parameters:dict complete:^(id responseObject, NSError *error) {
         [Utility hideHUDForView:weakSelf.view];
         if (error) {

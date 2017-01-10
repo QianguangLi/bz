@@ -131,7 +131,7 @@
 //        offSet += 50;
         _searchView.frame = CGRectMake(0, -offSet, kScreenWidth, offSet);
     }
-    __weak DZMoneyViewController *weakSelf = self;
+    WS(weakSelf);
     if (_searchView.frame.origin.y == 0) {
         [UIView animateWithDuration:0.25 animations:^{
             _searchView.frame = CGRectMake(0, -_searchView.frame.size.height, kScreenWidth, _searchView.frame.size.height);
@@ -194,7 +194,7 @@
     
 }
 
-- (void)requestDataListPullDown:(BOOL)pullDown withWeakSelf:(RefreshViewController *__weak)weakSelf
+- (void)requestDataListPullDown:(BOOL)pullDown andEndRefreshing:(EndRefreshing)endRefreshing
 {
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                  kLoginToken, @"Token",
@@ -205,9 +205,9 @@
                                  _startTime, @"startDate",
                                  _endTime, @"endDate",
                                  nil];
-    __weak DZMoneyViewController *weakself = self;
+    WS(weakSelf);
     _task = [NetService POST:kGetUserAccountUrl parameters:dict complete:^(id responseObject, NSError *error) {
-        [weakSelf stopRefreshing];
+        endRefreshing(error);
         if (error) {
             NSLog(@"failure:%@", error);
             [Utility showString:error.localizedDescription onView:weakSelf.view];
@@ -216,7 +216,7 @@
         NSLog(@"%@", responseObject);
         if ([responseObject[kStatusCode] integerValue] == NetStatusSuccess) {
             NSDictionary *dataDict = responseObject[kResponseData];
-            weakself.balance = [dataDict[@"balance"] doubleValue];
+            weakSelf.balance = [dataDict[@"balance"] doubleValue];
             weakSelf.pageCount = [dataDict[kPageCount] integerValue];
             NSArray *listArray = dataDict[@"list"];
             if (pullDown) {

@@ -10,8 +10,11 @@
 #import "MJRefresh.h"
 
 @interface RefreshViewController ()
-
+{
+    
+}
 @property (strong, nonatomic) UILabel *tipView;
+@property (assign, nonatomic) BOOL isRefreshing;//是否正在刷新
 
 @end
 
@@ -22,7 +25,6 @@
     // Do any additional setup after loading the view from its nib.
     _pageIndex = 0;
     _pageSize = 20;
-    
     if (!_dataArray) {
         _dataArray = [[NSMutableArray alloc] init];
     }
@@ -39,12 +41,22 @@
     [self.view addSubview:_mTableView];
     
     _tipView = [[UILabel alloc] initWithFrame:CGRectMake(0, 60, kScreenWidth, 30)];
-    _tipView.text = Localized(@"无数据");
+    _tipView.text = Localized(@"努力加载中...");
     _tipView.textColor = [UIColor lightGrayColor];
     _tipView.textAlignment = NSTextAlignmentCenter;
-    _tipView.hidden = YES;
+    _tipView.hidden = NO;
     [_mTableView addSubview:_tipView];
     
+    self.isRefreshing = YES;
+    WS(weakSelf);
+    [self requestDataListPullDown:YES andEndRefreshing:^(NSError *error) {
+        if (error && IS_NULL_ARRAY(weakSelf.dataArray)) {
+            weakSelf.tipView.text = Localized(@"数据加载失败,请重新加载");
+            weakSelf.tipView.hidden = NO;
+        }
+        weakSelf.isRefreshing = NO;
+        [weakSelf stopRefreshing];
+    }];
     [self setRefreshControl];
 }
 
@@ -57,40 +69,71 @@
 //    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 0)];
 //    _mTableView.tableFooterView = view;
     if (_isRequireRefreshHeader) {
-        __weak RefreshViewController *vc = self;
-        self.mTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-            [vc showTipWithNoData:NO];
-            vc.pageIndex = 0;
-            //            [vc.dataArray removeAllObjects];
-            //            [vc.mTableView reloadData];
-            [vc requestDataListPullDown:YES withWeakSelf:vc];
+        __weak RefreshViewController *weakSelf = self;
+        MJRefreshNormalHeader *mjHeader = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+            if (weakSelf.isRefreshing) {
+                [weakSelf stopRefreshing];
+                return ;
+            }
+            [weakSelf showTipWithNoData:NO];
+            weakSelf.pageIndex = 0;
+            
+            weakSelf.isRefreshing = YES;
+            [weakSelf requestDataListPullDown:YES andEndRefreshing:^(NSError *error) {
+                if (error && IS_NULL_ARRAY(weakSelf.dataArray)) {
+                    //如果出错并且数组为空，显示错误
+                    weakSelf.tipView.text = Localized(@"数据加载失败,请重新加载");
+                    weakSelf.tipView.hidden = NO;
+                }
+
+                weakSelf.isRefreshing = NO;
+                [weakSelf stopRefreshing];
+            }];
         }];
+
+        self.mTableView.mj_header = mjHeader;
         
-        [self startHeardRefresh];
+//        [self startHeardRefresh];
     }
     if (_isRequireRefreshFooter) {
-        __weak RefreshViewController *vc = self;
-        self.mTableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
-            if (vc.pageIndex >= vc.pageCount-1) {
-                [Utility showString:Localized(@"已经是最后一页了！") onView:vc.view];
-                [vc.mTableView.mj_footer endRefreshingWithNoMoreData];
+        __weak RefreshViewController *weakSelf = self;
+        MJRefreshBackNormalFooter *mjFooter = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+            if (weakSelf.isRefreshing) {
+                [weakSelf stopRefreshing];
+                return ;
+            }
+            if (weakSelf.pageIndex >= weakSelf.pageCount-1) {
+                [Utility showString:Localized(@"已经是最后一页了！") onView:weakSelf.view];
+                [weakSelf.mTableView.mj_footer endRefreshingWithNoMoreData];
                 return;
             }
-            [vc showTipWithNoData:NO];
-            vc.pageIndex++;
-            [vc requestDataListPullDown:NO withWeakSelf:vc];
+            [weakSelf showTipWithNoData:NO];
+            weakSelf.pageIndex++;
+            
+            weakSelf.isRefreshing = YES;
+            [weakSelf requestDataListPullDown:NO andEndRefreshing:^(NSError *error) {
+                if (error && IS_NULL_ARRAY(weakSelf.dataArray)) {
+                    //如果出错并且数组为空，显示错误
+                    weakSelf.tipView.text = Localized(@"数据加载失败,请重新加载");
+                    weakSelf.tipView.hidden = NO;
+                }
+                weakSelf.isRefreshing = NO;
+                [weakSelf stopRefreshing];
+            }];
         }];
+
+        self.mTableView.mj_footer = mjFooter;
     }
 }
 
-- (void)requestDataListPullDown:(BOOL)pullDown withWeakSelf:(RefreshViewController *__weak)weakSelf
+- (void)requestDataListPullDown:(BOOL)pullDown andEndRefreshing:(EndRefreshing)endRefreshing
 {
-    
+    endRefreshing(nil);
 }
 
 - (void)stopRefreshing
 {
-    __weak RefreshViewController *weakSelf = self;
+    WS(weakSelf);
     if (_isRequireRefreshHeader) {
         [weakSelf.mTableView.mj_header endRefreshing];
     }
@@ -101,7 +144,8 @@
 
 - (void)showTipWithNoData:(BOOL)show
 {
-    __weak RefreshViewController *weakSelf = self;
+    WS(weakSelf);
+    weakSelf.tipView.text = Localized(@"无数据");
     weakSelf.tipView.hidden = !show;
 }
 

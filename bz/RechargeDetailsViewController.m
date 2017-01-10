@@ -78,7 +78,7 @@
                                  kLoginToken, @"Token",
                                  _model.id, @"rechargeid",
                                  nil];
-    __weak RechargeDetailsViewController *weakSelf = self;
+    WS(weakSelf);
     _deleteTask = [NetService POST:@"api/User/DelRecharge" parameters:dict complete:^(id responseObject, NSError *error) {
         [Utility hideHUDForView:weakSelf.view];
         if (error) {

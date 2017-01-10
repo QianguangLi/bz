@@ -60,6 +60,10 @@ typedef NS_ENUM(NSInteger, RequestMethod) {
             }
             complete(responseObject, nil);
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            if (error.code == -1004) {
+                error = [NSError errorWithDomain:NSURLErrorDomain code:-1004 userInfo:@{
+                                                                                        NSLocalizedDescriptionKey:Localized(@"无法连接到服务器,请检查网络连接")}];
+            }
             complete(nil, error);
         }];
     } else {
@@ -70,6 +74,10 @@ typedef NS_ENUM(NSInteger, RequestMethod) {
             }
             complete(responseObject, nil);
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            if (error.code == -1004) {
+                error = [NSError errorWithDomain:NSURLErrorDomain code:-1004 userInfo:@{
+                                                                                        NSLocalizedDescriptionKey:Localized(@"无法连接到服务器,请检查网络连接")}];
+            }
             complete(nil, error);
         }];
     }

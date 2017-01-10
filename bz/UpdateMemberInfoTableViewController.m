@@ -72,7 +72,7 @@
 - (void)getMemberInfo
 {
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:kLoginToken, @"Token", nil];
-    __block UpdateMemberInfoTableViewController *weakSelf = self;
+    WS(weakSelf);
     _task = [NetService GET:kGetMemberInfoUrl parameters:dict complete:^(id responseObject, NSError *error) {
         [Utility hideHUDForView:self.view];
         if (error) {
@@ -126,7 +126,7 @@
                                  _areaid, @"Areacode",
                                  nil];
     NSLog(@"%@", dict);
-    __weak UpdateMemberInfoTableViewController *weakSelf = self;
+    WS(weakSelf);
     _updateTask = [NetService POST:kUpdateMember parameters:dict complete:^(id responseObject, NSError *error) {
         [Utility hideHUDForView:self.view];
         if (error) {

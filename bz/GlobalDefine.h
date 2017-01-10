@@ -31,6 +31,8 @@
 #define QGCOLOR(r,g,b,a) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:a]
 #define kPinkColor QGCOLOR(227, 28, 118, 1)
 
+#define WS(weakSelf)  __weak __typeof(self)weakSelf = self
+
 #define kLoginUserName [GlobalData sharedGlobalData].userName
 #define kIsLogin [GlobalData sharedGlobalData].isLogin
 #define kLoginToken [GlobalData sharedGlobalData].token

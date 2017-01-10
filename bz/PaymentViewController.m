@@ -52,15 +52,16 @@
     [self.navigationController setNavigationBarHidden:NO animated:NO];
 }
 
-- (void)requestDataListPullDown:(BOOL)pullDown withWeakSelf:(RefreshViewController *__weak)weakSelf
+- (void)requestDataListPullDown:(BOOL)pullDown andEndRefreshing:(EndRefreshing)endRefreshing
 {
+    WS(weakSelf);
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                  kLoginToken, @"Token",
                                  StringFromNumber(weakSelf.pageIndex), kPageIndex,
                                  StringFromNumber(weakSelf.pageSize), kPageSize,
                                  @"", @"orderid", nil];
     _task = [NetService POST:@"api/User/AnotherOrders" parameters:dict complete:^(id responseObject, NSError *error) {
-        [weakSelf stopRefreshing];
+        endRefreshing(error);
         if (error) {
             NSLog(@"failure:%@", error);
             [Utility showString:error.localizedDescription onView:weakSelf.view];
@@ -92,7 +93,7 @@
 - (void)rejectPaySection:(NSInteger)section
 {
     QGAlertView *av = [[QGAlertView alloc] initWithTitle:Localized(@"提示") message:Localized(@"确认要拒绝代付?") delegate:self cancelButtonTitle:Localized(@"取消") otherButtonTitles:Localized(@"确认"), nil];
-    __weak PaymentViewController *weakSelf = self;
+    WS(weakSelf);
     [av showWithBlock:^(QGAlertView *alertView, NSInteger buttonIndex) {
         if (buttonIndex == 1) {
             OrderModel *model = weakSelf.dataArray[section];

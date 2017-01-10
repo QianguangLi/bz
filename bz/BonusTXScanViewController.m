@@ -81,7 +81,7 @@
 
 - (void)searchItemAction:(UIBarButtonItem *)item
 {
-    __weak BonusTXScanViewController *weakSelf = self;
+    WS(weakSelf);
     if (_searchViewTopLayout.constant == 0) {
         [UIView animateWithDuration:0.25 animations:^{
             _searchViewTopLayout.constant = -_searchView.frame.size.height;
@@ -141,7 +141,7 @@
     [appDelegate.window addSubview:calendar];
 }
 
-- (void)requestDataListPullDown:(BOOL)pullDown withWeakSelf:(RefreshViewController *__weak)weakSelf
+- (void)requestDataListPullDown:(BOOL)pullDown andEndRefreshing:(EndRefreshing)endRefreshing
 {
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                  kLoginToken, @"Token",
@@ -152,8 +152,9 @@
                                  _startTime, @"startDate",
                                  _endTime, @"endDate",
                                  nil];
+    WS(weakSelf);
     _task = [NetService POST:kBonusTXScanUrl parameters:dict complete:^(id responseObject, NSError *error) {
-        [weakSelf stopRefreshing];
+        endRefreshing(error);
         if (error) {
             NSLog(@"failure:%@", error);
             [Utility showString:error.localizedDescription onView:weakSelf.view];
@@ -186,7 +187,7 @@
                                  kLoginToken, @"Token",
                                  model.id, @"bonusid",
                                  nil];
-    __weak BonusTXScanViewController *weakSelf = self;
+    WS(weakSelf);
     _deleteTask = [NetService POST:@"api/User/DelBonus" parameters:dict complete:^(id responseObject, NSError *error) {
         [Utility hideHUDForView:weakSelf.view];
         if (error) {

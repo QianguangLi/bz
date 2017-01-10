@@ -53,7 +53,7 @@
                                  _money.text, @"rechargemoney",
                                  _rechageNote.text, @"note",
                                  nil];
-    __weak DZMoneyRechargeViewController *weakSelf = self;
+    WS(weakSelf);
     _task = [NetService POST:kUserRechargeUrl parameters:dict complete:^(id responseObject, NSError *error) {
         [Utility hideHUDForView:self.view];
         if (error) {

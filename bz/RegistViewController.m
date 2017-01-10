@@ -108,7 +108,7 @@
                                  [_passwordTF.text md5], @"password",
                                  phoneNumber, @"mobile",
                                  email, @"email", nil];
-    __weak RegistViewController *weakSelf = self;
+    WS(weakSelf);
     _task = [NetService POST:kUserRegistUrl parameters:dict complete:^(id responseObject, NSError *error) {
         [Utility hideHUDForView:self.view];
         if (error) {

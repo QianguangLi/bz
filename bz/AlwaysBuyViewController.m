@@ -104,6 +104,7 @@
     }
 }
 
+
 - (void)requestDataListPullDown:(BOOL)pullDown withWeakSelf:(AlwaysBuyViewController *__weak)weakSelf
 {
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:

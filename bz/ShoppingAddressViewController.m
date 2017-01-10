@@ -47,13 +47,14 @@
     [self startHeardRefresh];
 }
 
-- (void)requestDataListPullDown:(BOOL)pullDown withWeakSelf:(RefreshViewController *__weak)weakSelf
+- (void)requestDataListPullDown:(BOOL)pullDown andEndRefreshing:(EndRefreshing)endRefreshing
 {
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                  kLoginToken, @"Token",
                                  nil];
+    WS(weakSelf);
     _task = [NetService GET:kGetShoppingAddressUrl parameters:dict complete:^(id responseObject, NSError *error) {
-        [weakSelf stopRefreshing];
+        endRefreshing(error);
         if (error) {
             NSLog(@"failure:%@", error);
             [Utility showString:error.localizedDescription onView:weakSelf.view];
@@ -129,7 +130,7 @@
                                  _setDefODelId, @"conaddressid",
                                  setDefOrDel, @"action",
                                  nil];
-    __weak ShoppingAddressViewController *weakSelf = self;
+    WS(weakSelf);
     _delTask = [NetService POST:kSetDefOrDelUrl parameters:dict complete:^(id responseObject, NSError *error) {
         [Utility hideHUDForView:weakSelf.view];
         if (error) {

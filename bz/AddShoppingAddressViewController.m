@@ -81,7 +81,7 @@
                                      kLoginToken, @"Token",
                                      _conId, @"conaddid",
                                      nil];
-        __weak AddShoppingAddressViewController *weakSelf = self;
+        WS(weakSelf);
         _getTask = [NetService GET:kGetAddressByIdUrl parameters:dict complete:^(id responseObject, NSError *error) {
             [Utility hideHUDForView:weakSelf.view];
             if (error) {
@@ -247,7 +247,7 @@
                                  action, @"action",//添加使用add 修改使用地址id
                                  _postCode.text, @"postcode",
                                  nil];
-    __weak AddShoppingAddressViewController *weakSelf = self;
+    WS(weakSelf);
     _task = [NetService POST:kAddOrUpdateShoppingAddressUrl parameters:dict complete:^(id responseObject, NSError *error) {
         [Utility hideHUDForView:weakSelf.view];
         if (error) {

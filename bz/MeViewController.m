@@ -278,7 +278,7 @@
 - (void)loginSuccess:(NSNotification *)notify
 {
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:kLoginToken, @"Token", nil];
-    __block MeViewController *weakSelf = self;
+    WS(weakSelf);
     [NetService GET:kGetMemberInfoUrl parameters:dict complete:^(id responseObject, NSError *error) {
 //        [Utility hideHUDForView:self.view];
         if (error) {
