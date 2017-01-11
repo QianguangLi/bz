@@ -7,10 +7,15 @@
 //
 
 #import "RefreshViewController.h"
+#import "GoodsCategoryModel.h"
 
 /**
  商品页面
  */
 @interface GoodsViewController : RefreshViewController
+
+@property (strong, nonatomic) GoodsCategoryModel *model;
+
+@property (copy, nonatomic) NSString *kw;
 
 @end

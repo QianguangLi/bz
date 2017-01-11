@@ -132,17 +132,20 @@
 #pragma mark - UISearchBarDelegate
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar
 {
-    [self pushToSearchVCWithCategoryModel:nil];
+    [self pushToSearchVCWithCategoryModel:nil andKeyWords:nil];
     return NO;
 }
 
-- (void)pushToSearchVCWithCategoryModel:(GoodsCategoryModel *)model
+- (void)pushToSearchVCWithCategoryModel:(GoodsCategoryModel *)model andKeyWords:(NSString *)kw;
 {
     // 1. 创建热门搜索数组
     NSArray *hotSeaches = @[@"Java", @"Python", @"Objective-C", @"Swift", @"C", @"C++", @"PHP", @"C#", @"Perl", @"Go", @"JavaScript", @"R", @"Ruby", @"MATLAB"];
     GoodsViewController *_goodsVC = [[GoodsViewController alloc] init];
     _goodsVC.isRequireRefreshHeader = YES;
     _goodsVC.isRequireRefreshFooter = YES;
+    _goodsVC.delay = model?NO:YES;//延迟加载数据
+    _goodsVC.model = model;
+    _goodsVC.kw = kw;
     // 2. 创建搜索控制器
     PYSearchViewController *searchViewController = [PYSearchViewController searchViewControllerWithHotSearches:hotSeaches searchBarPlaceholder:@"搜索全部商品" toToResult:model?YES:NO andSearchResultController:_goodsVC andSearchBarText:model.categoryName];
     
@@ -164,18 +167,20 @@
 
 - (void)searchViewController:(PYSearchViewController *)searchViewController didSelectHotSearchAtIndex:(NSInteger)index searchText:(NSString *)searchText
 {
-    NSLog(@"%@", searchViewController.searchResultController);
-    NSLog(@"%@ 热门", searchText);
+    GoodsViewController *vc = (GoodsViewController *)searchViewController.searchResultController;
+    vc.kw = searchText;
 }
 
 - (void)searchViewController:(PYSearchViewController *)searchViewController didSearchWithsearchBar:(UISearchBar *)searchBar searchText:(NSString *)searchText
 {
-    NSLog(@"%@ 搜索按钮", searchText);
+    GoodsViewController *vc = (GoodsViewController *)searchViewController.searchResultController;
+    vc.kw = searchText;
 }
 
 - (void)searchViewController:(PYSearchViewController *)searchViewController didSelectSearchHistoryAtIndex:(NSInteger)index searchText:(NSString *)searchText
 {
-    NSLog(@"%@ 历史", searchText);
+    GoodsViewController *vc = (GoodsViewController *)searchViewController.searchResultController;
+    vc.kw = searchText;
 }
 
 #pragma mark - UITableViewDelegate
@@ -262,7 +267,7 @@
 {
     GoodsCategoryModel *model = self.subCategories[indexPath.row];
     
-    [self pushToSearchVCWithCategoryModel:model];
+    [self pushToSearchVCWithCategoryModel:model andKeyWords:nil];
 }
 
 #pragma mark -

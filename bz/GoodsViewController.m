@@ -43,17 +43,35 @@ static CGFloat previousOffsetY = 0.f;
     self.mTableView.dataSource = self;
     
     [self.mTableView registerNib:[UINib nibWithNibName:@"GoodsCell" bundle:nil] forCellReuseIdentifier:@"GoodsCell"];
-    
+}
+
+- (void)setKw:(NSString *)kw
+{
+    _kw = kw;
+    if (!IS_NULL_STRING(_kw)) {
+        [self startRequest];
+    }
+}
+
+- (void)setModel:(GoodsCategoryModel *)model
+{
+    _model = model;
 }
 
 - (void)requestDataListPullDown:(BOOL)pullDown andEndRefreshing:(EndRefreshing)endRefreshing
 {
+    [_task cancel];
     WS(weakSelf);
+    if (IS_NULL_STRING(_kw)) {
+        _kw = @"";
+    }
+    NSString *categoryId = IS_NULL_STRING(_model.categoryId) ? @"" : _model.categoryId;
+    
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                  StringFromNumber(weakSelf.pageIndex), kPageIndex,
                                  StringFromNumber(weakSelf.pageSize), kPageSize,
-                                 @"", @"categoryId",
-                                 @"", @"kw",
+                                 categoryId, @"categoryId",
+                                 _kw, @"kw",
                                  nil];
     _task = [NetService POST:@"/api/Home/CategoryList" parameters:dict complete:^(id responseObject, NSError *error) {
         endRefreshing(error);

@@ -83,27 +83,55 @@
 #pragma mark - UISearchBarDelegate
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar
 {
+    [self pushToSearchVCWithCategoryModel:nil andKeyWords:nil];
+    return NO;
+}
+
+- (void)pushToSearchVCWithCategoryModel:(GoodsCategoryModel *)model andKeyWords:(NSString *)kw;
+{
     // 1. 创建热门搜索数组
     NSArray *hotSeaches = @[@"Java", @"Python", @"Objective-C", @"Swift", @"C", @"C++", @"PHP", @"C#", @"Perl", @"Go", @"JavaScript", @"R", @"Ruby", @"MATLAB"];
-    GoodsViewController *goodsVC = [[GoodsViewController alloc] init];
+    GoodsViewController *_goodsVC = [[GoodsViewController alloc] init];
+    _goodsVC.isRequireRefreshHeader = YES;
+    _goodsVC.isRequireRefreshFooter = YES;
+    _goodsVC.delay = model?NO:YES;//延迟加载数据
+    _goodsVC.model = model;
+    _goodsVC.kw = kw;
     // 2. 创建搜索控制器
-    PYSearchViewController *searchViewController = [PYSearchViewController searchViewControllerWithHotSearches:hotSeaches searchBarPlaceholder:@"搜索全部商品" toToResult:NO andSearchResultController:goodsVC andSearchBarText:nil];
+    PYSearchViewController *searchViewController = [PYSearchViewController searchViewControllerWithHotSearches:hotSeaches searchBarPlaceholder:@"搜索全部商品" toToResult:model?YES:NO andSearchResultController:_goodsVC andSearchBarText:model.categoryName];
     
     searchViewController.delegate = self;
     searchViewController.searchResultShowMode = PYSearchResultShowModeEmbed;
-//    searchViewController.goToSearchResult = YES;
-    // 3. 跳转到搜索控制器
+    //    searchViewController.goToSearchResult = YES;
+    
     searchViewController.hidesBottomBarWhenPushed = YES;
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     self.navigationItem.backBarButtonItem = item;
     [self.navigationController pushViewController:searchViewController animated:YES];
-    return NO;
 }
 
 #pragma mark - PYSearchViewControllerDelegate
 - (void)didClickCancel:(PYSearchViewController *)searchViewController
 {
     [searchViewController.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)searchViewController:(PYSearchViewController *)searchViewController didSelectHotSearchAtIndex:(NSInteger)index searchText:(NSString *)searchText
+{
+    GoodsViewController *vc = (GoodsViewController *)searchViewController.searchResultController;
+    vc.kw = searchText;
+}
+
+- (void)searchViewController:(PYSearchViewController *)searchViewController didSearchWithsearchBar:(UISearchBar *)searchBar searchText:(NSString *)searchText
+{
+    GoodsViewController *vc = (GoodsViewController *)searchViewController.searchResultController;
+    vc.kw = searchText;
+}
+
+- (void)searchViewController:(PYSearchViewController *)searchViewController didSelectSearchHistoryAtIndex:(NSInteger)index searchText:(NSString *)searchText
+{
+    GoodsViewController *vc = (GoodsViewController *)searchViewController.searchResultController;
+    vc.kw = searchText;
 }
 
 #pragma mark

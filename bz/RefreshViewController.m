@@ -47,6 +47,14 @@
     _tipView.hidden = NO;
     [_mTableView addSubview:_tipView];
     
+    [self setRefreshControl];
+    if (!_delay) {//如果不延迟加载，就直接加载
+        [self startRequest];
+    }
+}
+
+- (void)startRequest
+{
     self.isRefreshing = YES;
     WS(weakSelf);
     [self requestDataListPullDown:YES andEndRefreshing:^(NSError *error) {
@@ -57,7 +65,6 @@
         weakSelf.isRefreshing = NO;
         [weakSelf stopRefreshing];
     }];
-    [self setRefreshControl];
 }
 
 - (void)startHeardRefresh
