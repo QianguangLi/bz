@@ -13,13 +13,19 @@
 #import "RightCell.h"
 #import "CollectionSectionHeaderView.h"
 #import "LeftCell.h"
+#import "NetService.h"
+#import "GoodsCategoryModel.h"
 
 @interface GoodsCategoryViewController () <UISearchBarDelegate, PYSearchViewControllerDelegate, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
-
+{
+    NSURLSessionTask *_task;
+}
 @property (strong, nonatomic) UISearchBar *topSearchBar;
 @property (weak, nonatomic) IBOutlet UITableView *leftTableView;
 @property (weak, nonatomic) IBOutlet UICollectionView *rightCollectionView;
 
+@property (strong, nonatomic) NSMutableArray *categories;
+@property (strong, nonatomic) NSArray *subCategories;
 @end
 
 #define kColunm 3 //3列
@@ -29,10 +35,17 @@
 
 @implementation GoodsCategoryViewController
 
+- (void)dealloc
+{
+    [_task cancel];
+    NSLog(@"Goods category dealloc");
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
+    _categories = [NSMutableArray array];
+//    _collectionArray = [NSMutableArray array];
     [self initNavigationItem];
     
     [_leftTableView registerNib:[UINib nibWithNibName:@"LeftCell" bundle:nil] forCellReuseIdentifier:@"LeftCell"];
@@ -46,6 +59,42 @@
     [_rightCollectionView registerNib:[UINib nibWithNibName:@"CollectionSectionHeaderView" bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"CollectionSectionHeaderView"];
     //导航栏透明，方式覆盖下方view
     self.edgesForExtendedLayout = UIRectEdgeNone;
+    
+    [self getAllCategory];
+}
+
+- (void)getAllCategory
+{
+    WS(weakSelf);
+    _task = [NetService GET:@"api/Home/GetAllCategory" parameters:nil complete:^(id responseObject, NSError *error) {
+        if (error) {
+            NSLog(@"failure:%ld:%@", (long)error.code, error.localizedDescription);
+            [Utility showString:error.localizedDescription onView:weakSelf.view];
+            return ;
+        }
+        NSLog(@"%@", responseObject);
+        if ([responseObject[kStatusCode] integerValue] == NetStatusSuccess) {
+            NSArray *dataArray = responseObject[kResponseData];
+            [weakSelf.categories removeAllObjects];
+            for (NSDictionary *dict in dataArray) {
+                GoodsCategoryModel *model = [[GoodsCategoryModel alloc] initWithDictionary:dict error:nil];
+                [weakSelf.categories addObject:model];
+            }
+            [weakSelf.leftTableView reloadData];
+            if (!IS_NULL_ARRAY(weakSelf.categories)) {
+                [weakSelf.leftTableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionTop];
+                GoodsCategoryModel *model = weakSelf.categories[0];
+                if (model.hasChild) {
+//                    [weakSelf.collectionArray removeAllObjects];
+                    weakSelf.subCategories = model.subCategories;
+                    [weakSelf.rightCollectionView reloadData];
+                }
+            }
+        } else {
+            [Utility showString:responseObject[kErrMsg] onView:weakSelf.view];
+        }
+
+    }];
 }
 
 - (void)initNavigationItem
@@ -83,38 +132,52 @@
 {
     // 1. 创建热门搜索数组
     NSArray *hotSeaches = @[@"Java", @"Python", @"Objective-C", @"Swift", @"C", @"C++", @"PHP", @"C#", @"Perl", @"Go", @"JavaScript", @"R", @"Ruby", @"MATLAB"];
+    GoodsViewController *goodsVC = [[GoodsViewController alloc] init];
     // 2. 创建搜索控制器
-    PYSearchViewController *searchViewController = [PYSearchViewController searchViewControllerWithHotSearches:hotSeaches searchBarPlaceholder:@"搜索全部商品" didSearchBlock:^(PYSearchViewController *searchViewController, UISearchBar *searchBar, NSString *searchText) {
-        // 开始(点击)搜索时执行以下代码
-        // 如：跳转到指定控制器
-        //        [searchViewController.navigationController pushViewController:[[UIViewController alloc] init] animated:YES];
-    }];
+    PYSearchViewController *searchViewController = [PYSearchViewController searchViewControllerWithHotSearches:hotSeaches searchBarPlaceholder:@"搜索全部商品" toToResult:NO andSearchResultController:goodsVC andSearchBarText:nil];
+    
     searchViewController.delegate = self;
     searchViewController.searchResultShowMode = PYSearchResultShowModeEmbed;
-    GoodsViewController *goodsVC = [[GoodsViewController alloc] init];
-    searchViewController.searchResultController = goodsVC;
-    // 3. 跳转到搜索控制器
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:searchViewController];
-    [self presentViewController:nav animated:NO completion:nil];
+//    searchViewController.goToSearchResult = YES;
+    
+    searchViewController.hidesBottomBarWhenPushed = YES;
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+    self.navigationItem.backBarButtonItem = item;
+    [self.navigationController pushViewController:searchViewController animated:YES];
     return NO;
 }
 
 #pragma mark - PYSearchViewControllerDelegate
 - (void)didClickCancel:(PYSearchViewController *)searchViewController
 {
-    [searchViewController dismissViewControllerAnimated:NO completion:nil];
+    [searchViewController.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)searchViewController:(PYSearchViewController *)searchViewController didSelectHotSearchAtIndex:(NSInteger)index searchText:(NSString *)searchText
+{
+    NSLog(@"%@ 热门", searchText);
+}
+
+- (void)searchViewController:(PYSearchViewController *)searchViewController didSearchWithsearchBar:(UISearchBar *)searchBar searchText:(NSString *)searchText
+{
+    NSLog(@"%@ 搜索按钮", searchText);
+}
+
+- (void)searchViewController:(PYSearchViewController *)searchViewController didSelectSearchHistoryAtIndex:(NSInteger)index searchText:(NSString *)searchText
+{
+    NSLog(@"%@ 历史", searchText);
 }
 
 #pragma mark - UITableViewDelegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 30;
+    return self.categories.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     LeftCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LeftCell" forIndexPath:indexPath];
-    
+    [cell setContentWithGoodsCategoryModel:self.categories[indexPath.row] andIndexPath:indexPath];
     return cell;
 }
 
@@ -123,21 +186,30 @@
     return 49;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    GoodsCategoryModel *model = self.categories[indexPath.row];
+    if (model.hasChild) {
+        self.subCategories = model.subCategories;
+        [self.rightCollectionView reloadData];
+    }
+}
+
 #pragma mark - UICollectionViewDelegate
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 9;
+    return self.subCategories.count;
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-    return 5;
+    return 1;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     RightCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"RightCell" forIndexPath:indexPath];
-    
+    [cell setContentWithGoodsCategoryModel:self.subCategories[indexPath.row] andIndexPath:indexPath];
     return cell;
 }
 
@@ -174,6 +246,26 @@
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
 {
     return CGSizeMake(collectionView.frame.size.width, 40);
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    GoodsCategoryModel *model = self.subCategories[indexPath.row];
+    // 1. 创建热门搜索数组
+    NSArray *hotSeaches = @[@"Java", @"Python", @"Objective-C", @"Swift", @"C", @"C++", @"PHP", @"C#", @"Perl", @"Go", @"JavaScript", @"R", @"Ruby", @"MATLAB"];
+    GoodsViewController *goodsVC = [[GoodsViewController alloc] init];
+    // 2. 创建搜索控制器
+    PYSearchViewController *searchViewController = [PYSearchViewController searchViewControllerWithHotSearches:hotSeaches searchBarPlaceholder:@"搜索全部商品" toToResult:YES andSearchResultController:goodsVC andSearchBarText:model.categoryName];
+    
+    searchViewController.delegate = self;
+    searchViewController.searchResultShowMode = PYSearchResultShowModeEmbed;
+    searchViewController.goToSearchResult = YES;
+    
+    searchViewController.hidesBottomBarWhenPushed = YES;
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+    self.navigationItem.backBarButtonItem = item;
+    [self.navigationController pushViewController:searchViewController animated:YES];
+    
 }
 
 #pragma mark -

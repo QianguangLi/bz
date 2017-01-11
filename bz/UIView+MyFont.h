@@ -20,3 +20,10 @@
 
 @interface UILabel (MyFont)
 @end
+
+@interface UITextField (MyFont)
+@end
+
+@interface UITextView (MyFont)
+
+@end

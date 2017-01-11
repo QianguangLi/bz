@@ -54,7 +54,7 @@
     [self myInitWithCoder:aDecode];
     if (self) {
         //部分不像改变字体的 把tag值设置成333跳过
-        if(self.titleLabel.tag != 333){
+        if(self.tag != 666){
             CGFloat fontSize = self.titleLabel.font.pointSize;
             self.titleLabel.font = [UIFont systemFontOfSize:fontSize];
         }
@@ -65,6 +65,50 @@
 @end
 
 @implementation UILabel (MyFont)
+
++ (void)load{
+    Method imp = class_getInstanceMethod([self class], @selector(initWithCoder:));
+    Method myImp = class_getInstanceMethod([self class], @selector(myInitWithCoder:));
+    method_exchangeImplementations(imp, myImp);
+}
+
+- (id)myInitWithCoder:(NSCoder*)aDecode{
+    [self myInitWithCoder:aDecode];
+    if (self) {
+        //部分不像改变字体的 把tag值设置成333跳过
+        if(self.tag != 666){
+            CGFloat fontSize = self.font.pointSize;
+            self.font = [UIFont systemFontOfSize:fontSize];
+        }
+    }
+    return self;
+}
+
+@end
+
+@implementation UITextField (MyFont)
+
++ (void)load{
+    Method imp = class_getInstanceMethod([self class], @selector(initWithCoder:));
+    Method myImp = class_getInstanceMethod([self class], @selector(myInitWithCoder:));
+    method_exchangeImplementations(imp, myImp);
+}
+
+- (id)myInitWithCoder:(NSCoder*)aDecode{
+    [self myInitWithCoder:aDecode];
+    if (self) {
+        //部分不像改变字体的 把tag值设置成333跳过
+        if(self.tag != 666){
+            CGFloat fontSize = self.font.pointSize;
+            self.font = [UIFont systemFontOfSize:fontSize];
+        }
+    }
+    return self;
+}
+
+@end
+
+@implementation UITextView (MyFont)
 
 + (void)load{
     Method imp = class_getInstanceMethod([self class], @selector(initWithCoder:));

@@ -41,13 +41,14 @@
 
 /** 搜索历史标签容器，只有在PYSearchHistoryStyle值为PYSearchHistoryStyleTag才有值 */
 @property (nonatomic, weak) UIView *searchHistoryTagsContentView;
-/** 搜索历史标签的清空按钮 */
-@property (nonatomic, weak) UIButton *emptyButton;
 
 /** 基本搜索TableView(显示历史搜索和搜索记录) */
 @property (nonatomic, strong) UITableView *baseSearchTableView;
 /** 记录是否点击搜索建议 */
 @property (nonatomic, assign) BOOL didClickSuggestionCell;
+
+@property (strong, nonatomic) UIBarButtonItem *cancleButtonItem;
+@property (strong, nonatomic) UIBarButtonItem *rightButtonItem;
 
 @end
 
@@ -56,7 +57,15 @@
 - (instancetype)init
 {
     if (self = [super init]) {
-        [self setup];
+        [self setup:NO andResultController:nil andSearchBarText:nil];
+    }
+    return self;
+}
+
+- (instancetype)initWithGoToResult:(BOOL)goToResult andResultController:(UIViewController *)searchResultController andSearchBarText:(NSString *)text
+{
+    if (self = [super init]) {
+        [self setup:goToResult andResultController:searchResultController andSearchBarText:text];
     }
     return self;
 }
@@ -64,7 +73,7 @@
 - (instancetype)initWithCoder:(NSCoder *)aDecoder
 {
     if (self = [super initWithCoder:aDecoder]) {
-        [self setup];
+        [self setup:NO andResultController:nil andSearchBarText:nil];
     }
     return self;
 }
@@ -72,6 +81,14 @@
 + (PYSearchViewController *)searchViewControllerWithHotSearches:(NSArray<NSString *> *)hotSearches searchBarPlaceholder:(NSString *)placeholder
 {
     PYSearchViewController *searchVC = [[PYSearchViewController alloc] init];
+    searchVC.hotSearches = hotSearches;
+    searchVC.searchBar.placeholder = placeholder;
+    return searchVC;
+}
+
++ (PYSearchViewController *)searchViewControllerWithHotSearches:(NSArray<NSString *> *)hotSearches searchBarPlaceholder:(NSString *)placeholder toToResult:(BOOL)goToResult andSearchResultController:(UIViewController *)searchResultController andSearchBarText:(NSString *)searchBarText
+{
+    PYSearchViewController *searchVC = [[PYSearchViewController alloc] initWithGoToResult:goToResult andResultController:searchResultController andSearchBarText:searchBarText];
     searchVC.hotSearches = hotSearches;
     searchVC.searchBar.placeholder = placeholder;
     return searchVC;
@@ -109,11 +126,11 @@
             
             // 如果实现搜索建议代理方法则searchBarSearchButtonClicked失效
             if ([_weakSelf.delegate respondsToSelector:@selector(searchViewController:didSelectSearchSuggestionAtIndex:searchText:)]) {
-                // 缓存数据并且刷新界面
-                [_weakSelf saveSearchCacheAndRefreshView];
                 // 获取下标
                 NSIndexPath *indexPath = [_weakSelf.searchSuggestionVC.tableView indexPathForCell:didSelectCell];
                 [_weakSelf.delegate searchViewController:_weakSelf didSelectSearchSuggestionAtIndex:indexPath.row searchText:_weakSelf.searchBar.text];
+                // 缓存数据并且刷新界面
+                [_weakSelf saveSearchCacheAndRefreshView];
             } else {
                 // 点击搜索
                 [_weakSelf searchBarSearchButtonClicked:_weakSelf.searchBar];
@@ -138,8 +155,8 @@
         UIButton *emptyButton = [[UIButton alloc] init];
         emptyButton.titleLabel.font = self.searchHistoryHeader.font;
         [emptyButton setTitleColor:PYTextColor forState:UIControlStateNormal];
-        [emptyButton setTitle:[PYSearchEmptyButtonText py_localizedString] forState:UIControlStateNormal];
-        [emptyButton setImage:[UIImage imageNamed:@"PYSearch.bundle/empty"] forState:UIControlStateNormal];
+        [emptyButton setTitle:[NSBundle py_localizedStringForKey:PYSearchEmptyButtonText] forState:UIControlStateNormal];
+        [emptyButton setImage:[UIImage imageNamed:@"empty" inBundle:[NSBundle py_searchBundle] compatibleWithTraitCollection:nil] forState:UIControlStateNormal];
         [emptyButton addTarget:self action:@selector(emptySearchHistoryDidClick) forControlEvents:UIControlEventTouchUpInside];
         [emptyButton sizeToFit];
         emptyButton.py_width += PYSEARCH_MARGIN;
@@ -167,7 +184,7 @@
 - (UILabel *)searchHistoryHeader
 {
     if (!_searchHistoryHeader) {
-        UILabel *titleLabel = [self setupTitleLabel:[PYSearchSearchHistoryText py_localizedString]];
+        UILabel *titleLabel = [self setupTitleLabel:[NSBundle py_localizedStringForKey:PYSearchSearchHistoryText]];
         [self.headerContentView addSubview:titleLabel];
         _searchHistoryHeader = titleLabel;
     }
@@ -201,14 +218,17 @@
 {
     return self.navigationItem.rightBarButtonItem;
 }
-
 /** 视图完全显示 */
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
     
     // 弹出键盘
-    [self.searchBar becomeFirstResponder];
+    if (_goToSearchResult) {
+        
+    } else {
+        [self.searchBar becomeFirstResponder];
+    }
 }
 
 /** 视图即将消失 */
@@ -220,6 +240,7 @@
     [self.searchBar resignFirstResponder];
 }
 
+
 /** 控制器销毁 */
 - (void)dealloc
 {
@@ -227,13 +248,17 @@
 }
 
 /** 初始化 */
-- (void)setup
+- (void)setup:(BOOL)goToResult andResultController:(UIViewController *)searchResultController andSearchBarText:(NSString *)text
 {
     // 设置背景颜色为白色
     self.view.backgroundColor = [UIColor whiteColor];
     self.baseSearchTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:[PYSearchCancelButtonText py_localizedString] style:UIBarButtonItemStyleDone target:self action:@selector(cancelDidClick)];
+    
+    _cancleButtonItem = [[UIBarButtonItem alloc] initWithTitle:[NSBundle py_localizedStringForKey:PYSearchCancelButtonText] style:UIBarButtonItemStyleDone target:self action:@selector(cancelDidClick)];
+    self.navigationItem.rightBarButtonItem = _cancleButtonItem;
+    
+    _rightButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"首页" style:UIBarButtonItemStyleDone target:self action:@selector(rightItemAction)];
     
     /**
      * 设置一些默认设置
@@ -243,7 +268,11 @@
     // 设置搜索历史风格
     self.searchHistoryStyle = PYHotSearchStyleDefault;
     // 设置搜索结果显示模式
-    self.searchResultShowMode = PYSearchResultShowModeDefault;
+    if (goToResult) {
+        self.searchResultShowMode = PYSearchResultShowModeEmbed;
+    } else {
+        self.searchResultShowMode = PYSearchResultShowModeDefault;
+    }
     // 显示搜索建议
     self.searchSuggestionHidden = NO;
     // 搜索历史缓存路径
@@ -254,6 +283,10 @@
     self.showSearchHistory = YES;
     // 显示热门搜索
     self.showHotSearch = YES;
+    // 当搜索文本改变时，隐藏搜索结果视图
+    self.showSearchResultWhenSearchTextChanged = NO;
+    // 当搜索框聚焦时，隐藏搜索结果视图
+    self.showSearchResultWhenSearchBarRefocused = NO;
     
     // 创建搜索框
     UIView *titleView = [[UIView alloc] init];
@@ -262,13 +295,23 @@
     titleView.py_width = self.view.py_width - 64 - titleView.py_x * 2;
     titleView.py_height = 30;
     UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:titleView.bounds];
-    searchBar.py_width -= PYSEARCH_MARGIN * 1.5;
-    searchBar.placeholder = [PYSearchSearchPlaceholderText py_localizedString];
-    searchBar.backgroundImage = [UIImage imageNamed:@"PYSearch.bundle/clearImage"];
-    searchBar.delegate = self;
     [titleView addSubview:searchBar];
-    self.searchBar = searchBar;
     self.navigationItem.titleView = titleView;
+    // 关闭自动调整
+    searchBar.translatesAutoresizingMaskIntoConstraints = NO;
+    // 为titleView添加约束来调整搜索框
+    NSLayoutConstraint *widthCons = [NSLayoutConstraint constraintWithItem:searchBar attribute:NSLayoutAttributeWidth  relatedBy:NSLayoutRelationEqual toItem:titleView attribute:NSLayoutAttributeWidth multiplier:1.0 constant:0];
+    NSLayoutConstraint *heightCons = [NSLayoutConstraint constraintWithItem:searchBar attribute:NSLayoutAttributeHeight  relatedBy:NSLayoutRelationEqual toItem:titleView attribute:NSLayoutAttributeHeight multiplier:1.0 constant:0];
+    NSLayoutConstraint *xCons = [NSLayoutConstraint constraintWithItem:searchBar attribute:NSLayoutAttributeTop  relatedBy:NSLayoutRelationEqual toItem:titleView attribute:NSLayoutAttributeTop multiplier:1.0 constant:0];
+    NSLayoutConstraint *yCons = [NSLayoutConstraint constraintWithItem:searchBar attribute:NSLayoutAttributeLeft  relatedBy:NSLayoutRelationEqual toItem:titleView attribute:NSLayoutAttributeLeft multiplier:1.0 constant:0];
+    [titleView addConstraint:widthCons];
+    [titleView addConstraint:heightCons];
+    [titleView addConstraint:xCons];
+    [titleView addConstraint:yCons];
+    searchBar.placeholder = [NSBundle py_localizedStringForKey:PYSearchSearchPlaceholderText];
+    searchBar.backgroundImage = [UIImage imageNamed:@"clearImage" inBundle:[NSBundle py_searchBundle] compatibleWithTraitCollection:nil];
+    searchBar.delegate = self;
+    self.searchBar = searchBar;
     
     // 设置头部（热门搜索）
     UIView *headerView = [[UIView alloc] init];
@@ -277,7 +320,7 @@
     contentView.py_x = PYSEARCH_MARGIN * 1.5;
     contentView.py_width = PYScreenW - contentView.py_x * 2;
     [headerView addSubview:contentView];
-    UILabel *titleLabel = [self setupTitleLabel:[PYSearchHotSearchText py_localizedString]];
+    UILabel *titleLabel = [self setupTitleLabel:[NSBundle py_localizedStringForKey:PYSearchHotSearchText]];
     self.hotSearchHeader = titleLabel;
     [contentView addSubview:titleLabel];
     // 创建热门搜索标签容器
@@ -296,17 +339,24 @@
     emptySearchHistoryLabel.textColor = [UIColor darkGrayColor];
     emptySearchHistoryLabel.font = [UIFont systemFontOfSize:13];
     emptySearchHistoryLabel.userInteractionEnabled = YES;
-    emptySearchHistoryLabel.text = [PYSearchEmptySearchHistoryText py_localizedString];
+    emptySearchHistoryLabel.text = [NSBundle py_localizedStringForKey:PYSearchEmptySearchHistoryText];
     emptySearchHistoryLabel.textAlignment = NSTextAlignmentCenter;
     emptySearchHistoryLabel.py_height = 30;
     [emptySearchHistoryLabel addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(emptySearchHistoryDidClick)]];
     emptySearchHistoryLabel.py_width = PYScreenW;
+    self.emptySearchHistoryLabel = emptySearchHistoryLabel;
     [footerView addSubview:emptySearchHistoryLabel];
     footerView.py_height = 30;
     self.baseSearchTableView.tableFooterView = footerView;
     
     // 默认没有热门搜索
     self.hotSearches = nil;
+    
+    self.searchResultController = searchResultController;
+    if (goToResult) {
+        self.searchBar.text = text;
+        [self saveSearchCacheAndRefreshView];
+    }
 }
 
 /** 创建并设置标题 */
@@ -365,7 +415,7 @@
     self.baseSearchTableView.tableHeaderView.py_height  = self.headerContentView.py_height = CGRectGetMaxY(contentView.frame) + PYSEARCH_MARGIN * 2;
     // 添加分割线
     for (int i = 0; i < PYRectangleTagMaxCol - 1; i++) { // 添加垂直分割线
-        UIImageView *verticalLine = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"PYSearch.bundle/cell-content-line-vertical"]];
+        UIImageView *verticalLine = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"cell-content-line-vertical" inBundle:[NSBundle py_searchBundle] compatibleWithTraitCollection:nil]];
         verticalLine.py_height = contentView.py_height;
         verticalLine.alpha = 0.7;
         verticalLine.py_x = contentView.py_width / PYRectangleTagMaxCol * (i + 1);
@@ -373,7 +423,7 @@
         [contentView addSubview:verticalLine];
     }
     for (int i = 0; i < ceil(((double)self.hotSearches.count / PYRectangleTagMaxCol)) - 1; i++) { // 添加水平分割线, ceil():向上取整函数
-        UIImageView *verticalLine = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"PYSearch.bundle/cell-content-line"]];
+        UIImageView *verticalLine = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"cell-content-line" inBundle:[NSBundle py_searchBundle] compatibleWithTraitCollection:nil]];
         verticalLine.py_height = 0.5;
         verticalLine.alpha = 0.7;
         verticalLine.py_y = rectangleTagH * (i + 1);
@@ -428,7 +478,7 @@
         [rankTextLabelsM addObject:rankTextLabel];
         [rankView addSubview:rankTextLabel];
         // 添加分割线
-        UIImageView *line = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"PYSearch.bundle/cell-content-line"]];
+        UIImageView *line = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"cell-content-line" inBundle:[NSBundle py_searchBundle] compatibleWithTraitCollection:nil]];
         line.py_height = 0.5;
         line.alpha = 0.7;
         line.py_x = -PYScreenW * 0.5;
@@ -552,6 +602,36 @@
 }
 
 #pragma mark - setter
+- (void)setHotSearchTitle:(NSString *)hotSearchTitle
+{
+    _hotSearchTitle = [hotSearchTitle copy];
+    
+    // 设置热门标题
+    self.hotSearchHeader.text = _hotSearchTitle;
+}
+
+- (void)setSearchHistoryTitle:(NSString *)searchHistoryTitle
+{
+    _searchHistoryTitle = [searchHistoryTitle copy];
+    
+    if (self.searchHistoryStyle == PYSearchHistoryStyleCell) { // cell样式
+        // 刷新
+        [self.baseSearchTableView reloadData];
+    } else { // 其他
+        self.searchHistoryHeader.text = _searchHistoryTitle;
+    }
+}
+
+- (void)setShowSearchResultWhenSearchTextChanged:(BOOL)showSearchResultWhenSearchTextChanged
+{
+    _showSearchResultWhenSearchTextChanged = showSearchResultWhenSearchTextChanged;
+    
+    // 当文本改变时动态改变搜索结果即自动隐藏搜索建议
+    if (_showSearchResultWhenSearchTextChanged == YES) {
+        self.searchSuggestionHidden = YES;
+    }
+}
+
 - (void)setShowHotSearch:(BOOL)showHotSearch
 {
     _showHotSearch = showHotSearch;
@@ -673,10 +753,8 @@
 {
     _searchHistoryStyle = searchHistoryStyle;
     
-    // 默认cell或者隐藏搜索历史，直接返回
-    if (searchHistoryStyle == UISearchBarStyleDefault) return;
-    // 没有搜索历史或者隐藏搜索历史，隐藏相关控件，直接返回
-    if (!self.searchHistories.count || !self.showSearchHistory) {
+    // 默认cell或者没有搜索历史或者隐藏搜索历史，隐藏相关控件，直接返回
+    if (!self.searchHistories.count || !self.showSearchHistory || searchHistoryStyle == UISearchBarStyleDefault) {
         self.searchHistoryHeader.hidden = YES;
         self.searchHistoryTagsContentView.hidden = YES;
         self.emptyButton.hidden = YES;
@@ -781,7 +859,19 @@
 - (void)cancelDidClick
 {
     [self.searchBar resignFirstResponder];
-    
+    if (self.searchResultShowMode == PYSearchResultShowModeEmbed) {
+        if (_hasSearchResult) {
+            // 添加搜索结果的视图
+            self.searchResultController.view.hidden = NO;
+            self.searchResultController.view.py_y = 64;
+            self.searchResultController.view.py_height = self.view.py_height - self.searchResultController.view.py_y;
+            self.searchSuggestionVC.view.hidden = YES;
+            //有了搜索结果
+            self.hasSearchResult = YES;
+            self.navigationItem.rightBarButtonItem = _rightButtonItem;
+            return;
+        }
+    }
     // 调用代理方法
     if ([self.delegate respondsToSelector:@selector(didClickCancel:)]) {
         [self.delegate didClickCancel:self];
@@ -789,6 +879,11 @@
     }
     // 如果用户没有实现代理方法 默认为：dismiss ViewController
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)rightItemAction
+{
+    NSLog(@"右边item点击");
 }
 
 /** 键盘显示完成（弹出） */
@@ -816,7 +911,7 @@
         // 更新
         self.searchHistoryStyle = self.searchHistoryStyle;
     }
-    PYSEARCH_LOG(@"%@", [PYSearchEmptySearchHistoryLogText py_localizedString]);
+    PYSEARCH_LOG(@"%@", [NSBundle py_localizedStringForKey:PYSearchEmptySearchHistoryLogText]);
 }
 
 /** 选中标签 */
@@ -828,19 +923,19 @@
     if (label.tag == 1) { // 热门搜索标签
         // 取出下标
         if ([self.delegate respondsToSelector:@selector(searchViewController:didSelectHotSearchAtIndex:searchText:)]) {
-            // 缓存数据并且刷新界面
-            [self saveSearchCacheAndRefreshView];
             // 调用代理方法
             [self.delegate searchViewController:self didSelectHotSearchAtIndex:[self.hotSearchTags indexOfObject:label] searchText:label.text];
+            // 缓存数据并且刷新界面
+            [self saveSearchCacheAndRefreshView];
         } else {
             [self searchBarSearchButtonClicked:self.searchBar];
         }
     } else { // 搜索历史标签
         if ([self.delegate respondsToSelector:@selector(searchViewController:didSelectSearchHistoryAtIndex:searchText:)]) {
-            // 缓存数据并且刷新界面
-            [self saveSearchCacheAndRefreshView];
             // 调用代理方法
             [self.delegate searchViewController:self didSelectSearchHistoryAtIndex:[self.searchHistoryTags indexOfObject:label] searchText:label.text];
+            // 缓存数据并且刷新界面
+            [self saveSearchCacheAndRefreshView];
         } else {
             [self searchBarSearchButtonClicked:self.searchBar];
         }
@@ -895,6 +990,12 @@
     }
     
     // 处理搜索结果
+    [self handleSearchResultShow];
+}
+
+/** 处理搜索结果显示 */
+- (void)handleSearchResultShow
+{
     switch (self.searchResultShowMode) {
         case PYSearchResultShowModePush: // Push
             self.searchResultController.view.hidden = NO;
@@ -906,9 +1007,11 @@
             [self addChildViewController:self.searchResultController];
             self.searchResultController.view.hidden = NO;
             self.searchResultController.view.py_y = 64;
+            self.searchResultController.view.py_height = self.view.py_height - self.searchResultController.view.py_y;
             self.searchSuggestionVC.view.hidden = YES;
-            // 清空搜索建议
-            self.searchSuggestions = nil;
+            //有了搜索结果
+            self.hasSearchResult = YES;
+            self.navigationItem.rightBarButtonItem = _rightButtonItem;
             break;
         case PYSearchResultShowModeCustom: // 自定义
             
@@ -954,20 +1057,30 @@
 #pragma mark - UISearchBarDelegate
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
-    // 缓存数据并且刷新界面
-    [self saveSearchCacheAndRefreshView];
-    
     // 如果代理实现了代理方法则调用代理方法
     if ([self.delegate respondsToSelector:@selector(searchViewController:didSearchWithsearchBar:searchText:)]) {
         [self.delegate searchViewController:self didSearchWithsearchBar:searchBar searchText:searchBar.text];
+        // 缓存数据并且刷新界面
+        [self saveSearchCacheAndRefreshView];
         return;
     }
     // 如果有block则调用
     if (self.didSearchBlock) self.didSearchBlock(self, searchBar, searchBar.text);
+    
+    // 缓存数据并且刷新界面
+    [self saveSearchCacheAndRefreshView];
 }
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
+    // 处理搜索结果(可用于动态修改搜索结果)
+    if (self.searchResultShowMode == PYSearchResultShowModeEmbed && self.showSearchResultWhenSearchTextChanged) { // 当搜索结果显示模式为内嵌显示并且设置当搜索文本改变时显示搜索结果才显示
+        [self handleSearchResultShow];
+        // 搜索结果显示/隐藏(如果没有搜索文本就隐藏)
+        self.searchResultController.view.hidden = searchText.length == 0;
+    } else if (self.searchResultController) { // 存在搜索控制器
+        self.searchResultController.view.hidden = YES;
+    }
     // 如果有搜索文本且显示搜索建议，则隐藏
     self.baseSearchTableView.hidden = searchText.length && !self.searchSuggestionHidden;
     // 根据输入文本显示建议搜索条件
@@ -987,8 +1100,10 @@
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar
 {
     if (self.searchResultShowMode == PYSearchResultShowModeEmbed) { // 搜索结果为内嵌时
-        // 搜索结果隐藏
-        self.searchResultController.view.hidden = YES;
+        //搜索框为第一响应者时替换右边item
+        self.navigationItem.rightBarButtonItem = _cancleButtonItem;
+        // 搜索结果隐藏(如果没有搜索文本就隐藏)
+        self.searchResultController.view.hidden = searchBar.text.length == 0 || !self.showSearchResultWhenSearchBarRefocused;
         // 根据输入文本显示建议搜索条件
         self.searchSuggestionVC.view.hidden = self.searchSuggestionHidden || !searchBar.text.length;    // 如果有搜索文本且显示搜索建议，则隐藏
         if (self.searchSuggestionVC.view.hidden) { // 搜索建议隐藏
@@ -1038,13 +1153,13 @@
         UIButton *closetButton = [[UIButton alloc] init];
         // 设置图片容器大小、图片原图居中
         closetButton.py_size = CGSizeMake(cell.py_height, cell.py_height);
-        [closetButton setImage:[UIImage imageNamed:@"PYSearch.bundle/close"] forState:UIControlStateNormal];
-        UIImageView *closeView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"PYSearch.bundle/close"]];
+        [closetButton setImage:[UIImage imageNamed:@"close" inBundle:[NSBundle py_searchBundle] compatibleWithTraitCollection:nil] forState:UIControlStateNormal];
+        UIImageView *closeView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"close" inBundle:[NSBundle py_searchBundle] compatibleWithTraitCollection:nil]];
         [closetButton addTarget:self action:@selector(closeDidClick:) forControlEvents:UIControlEventTouchUpInside];
         closeView.contentMode = UIViewContentModeCenter;
         cell.accessoryView = closetButton;
         // 添加分割线
-        UIImageView *line = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"PYSearch.bundle/cell-content-line"]];
+        UIImageView *line = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"cell-content-line" inBundle:[NSBundle py_searchBundle] compatibleWithTraitCollection:nil]];
         line.py_height = 0.5;
         line.alpha = 0.7;
         line.py_x = PYSEARCH_MARGIN;
@@ -1062,7 +1177,7 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    return self.showSearchHistory && self.searchHistories.count && self.searchHistoryStyle == PYSearchHistoryStyleCell ? [PYSearchSearchHistoryText py_localizedString] : nil;
+    return self.showSearchHistory && self.searchHistories.count && self.searchHistoryStyle == PYSearchHistoryStyleCell ? (self.searchHistoryTitle.length ? self.searchHistoryTitle : [NSBundle py_localizedStringForKey:PYSearchSearchHistoryText]) : nil;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -1079,10 +1194,10 @@
     self.searchBar.text = cell.textLabel.text;
     
     if ([self.delegate respondsToSelector:@selector(searchViewController:didSelectSearchHistoryAtIndex:searchText:)]) { // 实现代理方法则调用，则搜索历史时searchViewController:didSearchWithsearchBar:searchText:失效
-        // 缓存数据并且刷新界面
-        [self saveSearchCacheAndRefreshView];
         // 调用代理方法
         [self.delegate searchViewController:self didSelectSearchHistoryAtIndex:indexPath.row searchText:cell.textLabel.text];
+        // 缓存数据并且刷新界面
+        [self saveSearchCacheAndRefreshView];
     } else {
         [self searchBarSearchButtonClicked:self.searchBar];
     }

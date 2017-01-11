@@ -48,7 +48,7 @@ static CGFloat previousOffsetY = 0.f;
         NSLog(@"footer refresh");
     }];
     
-    [_goodsTableView.mj_header beginRefreshing];
+//    [_goodsTableView.mj_header beginRefreshing];
 }
 
 #pragma mark - UITableViewDelegate

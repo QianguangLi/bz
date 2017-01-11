@@ -30,12 +30,17 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshUserLocation) name:kLocateUserSuccessNotification object:nil];
-    self.navigationController.navigationBar.barTintColor = kPinkColor;
-    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    
     [self initNavigationItem];
     [self refreshUserLocation];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBar.barTintColor = kPinkColor;
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor whiteColor], NSFontAttributeName:[UIFont boldSystemFontOfSize:17]};
-    
 }
 
 - (void)initNavigationItem
@@ -46,7 +51,7 @@
     UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithTitle:Localized(@"定位中") style:UIBarButtonItemStylePlain target:self action:@selector(rightItemAction:)];;
     self.navigationItem.rightBarButtonItem = rightItem;
     
-    _topSearchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth - 100, 30)];
+    _topSearchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth - 100, 44)];
     _topSearchBar.delegate = self;
     _topSearchBar.placeholder = Localized(@"搜索商品、店铺");
     UIImage *searchBackGround = [[UIImage imageNamed:@"searchbackground"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 20, 0, 20) resizingMode:UIImageResizingModeStretch];
@@ -80,26 +85,25 @@
 {
     // 1. 创建热门搜索数组
     NSArray *hotSeaches = @[@"Java", @"Python", @"Objective-C", @"Swift", @"C", @"C++", @"PHP", @"C#", @"Perl", @"Go", @"JavaScript", @"R", @"Ruby", @"MATLAB"];
+    GoodsViewController *goodsVC = [[GoodsViewController alloc] init];
     // 2. 创建搜索控制器
-    PYSearchViewController *searchViewController = [PYSearchViewController searchViewControllerWithHotSearches:hotSeaches searchBarPlaceholder:@"搜索全部商品" didSearchBlock:^(PYSearchViewController *searchViewController, UISearchBar *searchBar, NSString *searchText) {
-        // 开始(点击)搜索时执行以下代码
-        // 如：跳转到指定控制器
-//        [searchViewController.navigationController pushViewController:[[UIViewController alloc] init] animated:YES];
-    }];
+    PYSearchViewController *searchViewController = [PYSearchViewController searchViewControllerWithHotSearches:hotSeaches searchBarPlaceholder:@"搜索全部商品" toToResult:NO andSearchResultController:goodsVC andSearchBarText:nil];
+    
     searchViewController.delegate = self;
     searchViewController.searchResultShowMode = PYSearchResultShowModeEmbed;
-    GoodsViewController *goodsVC = [[GoodsViewController alloc] init];
-    searchViewController.searchResultController = goodsVC;
+//    searchViewController.goToSearchResult = YES;
     // 3. 跳转到搜索控制器
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:searchViewController];
-    [self presentViewController:nav animated:NO completion:nil];
+    searchViewController.hidesBottomBarWhenPushed = YES;
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+    self.navigationItem.backBarButtonItem = item;
+    [self.navigationController pushViewController:searchViewController animated:YES];
     return NO;
 }
 
 #pragma mark - PYSearchViewControllerDelegate
 - (void)didClickCancel:(PYSearchViewController *)searchViewController
 {
-    [searchViewController dismissViewControllerAnimated:NO completion:nil];
+    [searchViewController.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark

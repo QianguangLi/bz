@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GoodsCategoryModel.h"
 
 /**
  分类页面tableview cell 
  */
 @interface LeftCell : UITableViewCell
+
+- (void)setContentWithGoodsCategoryModel:(GoodsCategoryModel *)model andIndexPath:(NSIndexPath *)indexPath;
 
 @end

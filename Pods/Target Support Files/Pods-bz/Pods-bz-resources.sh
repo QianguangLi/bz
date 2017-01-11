@@ -83,13 +83,11 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "BaiduMapKit/BaiduMapKit/BaiduMapAPI_Map.framework/Resources/mapapi.bundle"
   install_resource "IQKeyboardManager/IQKeyboardManager/Resources/IQKeyboardManager.bundle"
   install_resource "MJRefresh/MJRefresh/MJRefresh.bundle"
-  install_resource "PYSearch/PYSearch/PYSearch.bundle"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "BaiduMapKit/BaiduMapKit/BaiduMapAPI_Map.framework/Resources/mapapi.bundle"
   install_resource "IQKeyboardManager/IQKeyboardManager/Resources/IQKeyboardManager.bundle"
   install_resource "MJRefresh/MJRefresh/MJRefresh.bundle"
-  install_resource "PYSearch/PYSearch/PYSearch.bundle"
 fi
 
 mkdir -p "${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"

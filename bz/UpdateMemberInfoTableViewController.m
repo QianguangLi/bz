@@ -195,18 +195,13 @@
     UIImage *image = info[UIImagePickerControllerOriginalImage];
     NSData *data = UIImageJPEGRepresentation(image, 0.7);
     self.headImageView.image = [UIImage imageWithData:data];
-    NSString *str = [NSString stringWithFormat:@"%@", [data base64EncodedStringWithOptions:0]];
+    NSString *str = [data base64EncodedStringWithOptions:0];
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                  kLoginToken, @"Token",
                                  @"memberface", @"action",
                                  str.urlEncode, @"faceBase64",
                                  nil];
-//    [self uploadImageWithImage:self.headImageView.image];
-//    [picker dismissViewControllerAnimated:YES completion:^{
-//        
-//    }];
-//    return;
-//    NSLog(@"%@", str);
+
     WS(weakSelf);
     _uploadTask = [NetService POST:@"api/User/Upload" parameters:dict complete:^(id responseObject, NSError *error) {
         [Utility hideHUDForView:self.view];
@@ -228,46 +223,6 @@
     [picker dismissViewControllerAnimated:YES completion:^{
         
     }];
-}
-
-- (void)uploadImageWithImage:(UIImage *)image {
-    //截取图片
-    NSData *imageData = UIImageJPEGRepresentation(image, 0.7);
-    
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    manager.responseSerializer = [AFJSONResponseSerializer serializer];
-//    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Accept"];
-//    [manager.requestSerializer setValue:@"application/json; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
-//    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
-    // 参数
-    NSString *sign = [[NSString stringWithFormat:@"%@%@",kLoginToken, kSignKey] md5];
-    
-    NSMutableDictionary *parameter = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                 kLoginToken, @"Token",
-                                 @"memberface", @"action",
-                                      sign,@"Sign",
-                                 nil];
-
-//    };
-// 访问路径
-NSString *stringURL = @"http://103.48.169.52/bzapi/api/User/Upload";
-
-[manager POST:stringURL parameters:parameter constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    formatter.dateFormat = @"yyyyMMddHHmmss";
-    NSString *str = [formatter stringFromDate:[NSDate date]];
-    NSString *fileName = [NSString stringWithFormat:@"%@.jpg", str];
-    [formData appendPartWithFileData:imageData name:@"faceBase64" fileName:fileName mimeType:@"image/jpg"];
-    
-} progress:^(NSProgress * _Nonnull uploadProgress) {
-    
-} success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-    NSLog(@"%@", responseObject);
-    NSLog(@"上传陈宫");
-} failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-    NSLog(@"上传失败:%@", error);
-}];
 }
 
 #pragma mark - AddressPickerViewDelegate

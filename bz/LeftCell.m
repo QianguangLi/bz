@@ -8,11 +8,23 @@
 
 #import "LeftCell.h"
 
+@interface LeftCell ()
+@property (weak, nonatomic) IBOutlet UILabel *categoryName;
+@property (strong, nonatomic) NSIndexPath *indexPath;
+
+@end
+
 @implementation LeftCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+}
+
+- (void)setContentWithGoodsCategoryModel:(GoodsCategoryModel *)model andIndexPath:(NSIndexPath *)indexPath
+{
+    _indexPath = indexPath;
+    _categoryName.text = model.categoryName;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
