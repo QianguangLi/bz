@@ -47,6 +47,9 @@
 /** 记录是否点击搜索建议 */
 @property (nonatomic, assign) BOOL didClickSuggestionCell;
 
+//直接去搜索结果页面 该属性只要当searchResultShowMode == PYSearchResultShowModeEmbed时，才会生效
+@property (assign, nonatomic) BOOL goToSearchResult;
+
 @property (strong, nonatomic) UIBarButtonItem *cancleButtonItem;
 @property (strong, nonatomic) UIBarButtonItem *rightButtonItem;
 
@@ -353,6 +356,12 @@
     self.hotSearches = nil;
     
     self.searchResultController = searchResultController;
+    //只加一次
+    [self.view addSubview:self.searchResultController.view];
+    [self addChildViewController:self.searchResultController];
+    self.searchResultController.view.hidden = YES;
+
+    self.goToSearchResult = goToResult;
     if (goToResult) {
         self.searchBar.text = text;
         [self saveSearchCacheAndRefreshView];
@@ -1003,8 +1012,6 @@
             break;
         case PYSearchResultShowModeEmbed: // 内嵌
             // 添加搜索结果的视图
-            [self.view addSubview:self.searchResultController.view];
-            [self addChildViewController:self.searchResultController];
             self.searchResultController.view.hidden = NO;
             self.searchResultController.view.py_y = 64;
             self.searchResultController.view.py_height = self.view.py_height - self.searchResultController.view.py_y;

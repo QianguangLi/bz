@@ -8,11 +8,13 @@
 
 #import "GoodsViewController.h"
 #import "GoodsCell.h"
-#import "MJRefresh.h"
+#import "NetService.h"
+#import "ProductModel.h"
 
 @interface GoodsViewController () <UITableViewDelegate, UITableViewDataSource>
-
-@property (strong, nonatomic) UITableView *goodsTableView;
+{
+    NSURLSessionTask *_task;
+}
 @property (assign, nonatomic) BOOL isUp;
 
 @end
@@ -20,6 +22,12 @@
 static CGFloat previousOffsetY = 0.f;
 
 @implementation GoodsViewController
+
+- (void)dealloc
+{
+    [_task cancel];
+    NSLog(@"GoodsViewController dealloc");
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -29,32 +37,55 @@ static CGFloat previousOffsetY = 0.f;
 
 - (void)initView
 {
-    _goodsTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - 64) style:UITableViewStylePlain];
+    self.view.backgroundColor = [UIColor redColor];
+    self.mTableView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight-64);
+    self.mTableView.delegate = self;
+    self.mTableView.dataSource = self;
     
-    _goodsTableView.backgroundColor = [UIColor clearColor];
-//    _goodsTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-//    _goodsTableView.showsVerticalScrollIndicator = NO;
-    _goodsTableView.delegate = self;
-    _goodsTableView.dataSource = self;
-//    _goodsTableView.contentInset = UIEdgeInsetsMake(2.5, 0, 2.5, 0);
+    [self.mTableView registerNib:[UINib nibWithNibName:@"GoodsCell" bundle:nil] forCellReuseIdentifier:@"GoodsCell"];
     
-    [self.view addSubview:_goodsTableView];
-    [_goodsTableView registerNib:[UINib nibWithNibName:@"GoodsCell" bundle:nil] forCellReuseIdentifier:@"GoodsCell"];
-    
-    _goodsTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        NSLog(@"header refresh");
+}
+
+- (void)requestDataListPullDown:(BOOL)pullDown andEndRefreshing:(EndRefreshing)endRefreshing
+{
+    WS(weakSelf);
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                 StringFromNumber(weakSelf.pageIndex), kPageIndex,
+                                 StringFromNumber(weakSelf.pageSize), kPageSize,
+                                 @"", @"categoryId",
+                                 @"", @"kw",
+                                 nil];
+    _task = [NetService POST:@"/api/Home/CategoryList" parameters:dict complete:^(id responseObject, NSError *error) {
+        endRefreshing(error);
+        if (error) {
+            NSLog(@"failure:%@", error);
+            [Utility showString:error.localizedDescription onView:weakSelf.view];
+            return ;
+        }
+        NSLog(@"%@", responseObject);
+        if ([responseObject[kStatusCode] integerValue] == NetStatusSuccess) {
+            NSDictionary *dataDict = responseObject[kResponseData];
+            weakSelf.pageCount = [dataDict[kPageCount] integerValue];
+            NSArray *listArray = dataDict[@"list"];
+            if (pullDown) {
+                [weakSelf.dataArray removeAllObjects];
+            }
+            for (NSDictionary *dict in listArray) {
+                ProductModel *model = [[ProductModel alloc] initWithDictionary:dict error:nil];
+                [weakSelf.dataArray addObject:model];
+            }
+            [weakSelf.mTableView reloadData];
+            [weakSelf showTipWithNoData:IS_NULL_ARRAY(weakSelf.dataArray)];
+        } else {
+            [Utility showString:responseObject[kErrMsg] onView:weakSelf.view];
+        }
     }];
-    _goodsTableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
-        NSLog(@"footer refresh");
-    }];
-    
-//    [_goodsTableView.mj_header beginRefreshing];
 }
 
 #pragma mark - UITableViewDelegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 30;
+    return self.dataArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -77,17 +108,18 @@ static CGFloat previousOffsetY = 0.f;
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     int currentPostion = scrollView.contentOffset.y;
+    WS(weakSelf);
     if (currentPostion - previousOffsetY > 20  && currentPostion > 0) {        //这个地方加上 currentPostion > 0 即可）
         previousOffsetY = currentPostion;
         [UIView animateWithDuration:0.25 animations:^{
-            _goodsTableView.frame = CGRectMake(0, -64, kScreenWidth, kScreenHeight);
+            weakSelf.mTableView.frame = CGRectMake(0, -64, kScreenWidth, kScreenHeight);
         }];
         [self.navigationController setNavigationBarHidden:YES animated:YES];
     } else if ((previousOffsetY - currentPostion > 20) && (currentPostion  <= scrollView.contentSize.height-scrollView.bounds.size.height-20) ) //这个地方加上后边那个即可，也不知道为什么，再减20才行
     {
         previousOffsetY = currentPostion;
         [UIView animateWithDuration:0.25 animations:^{
-            _goodsTableView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight - 64);
+            weakSelf.mTableView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight - 64);
         }];
         [self.navigationController setNavigationBarHidden:NO animated:YES];
     }

@@ -182,8 +182,6 @@ typedef NS_ENUM(NSInteger, PYSearchResultShowMode) { // 搜索结果显示方式
  */
 + (PYSearchViewController *)searchViewControllerWithHotSearches:(NSArray<NSString *> *)hotSearches searchBarPlaceholder:(NSString *)placeholder didSearchBlock:(PYDidSearchBlock)block;
 
-//直接去搜索结果页面 该属性只要当searchResultShowMode == PYSearchResultShowModeEmbed时，才会生效
-@property (assign, nonatomic) BOOL goToSearchResult;
 //是否已经有搜索结果 该属性只要当searchResultShowMode == PYSearchResultShowModeEmbed时，才会生效
 @property (assign, nonatomic) BOOL hasSearchResult;
 

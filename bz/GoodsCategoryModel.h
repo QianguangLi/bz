@@ -16,6 +16,6 @@
 @property (copy, nonatomic) NSString *categoryName;//类别名
 @property (copy, nonatomic) NSString *categoryPID;//类别父id
 @property (assign, nonatomic) BOOL hasChild;//是否有子类
-@property (strong, nonatomic) NSArray<GoodsCategoryModel> *subCategories;//
+@property (strong, nonatomic) NSArray<GoodsCategoryModel> *subCategories;//子类别
 
 @end

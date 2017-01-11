@@ -13,4 +13,6 @@
  */
 @interface GoodsCategoryViewController : BaseViewController
 
+
+
 @end

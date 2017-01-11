@@ -6,11 +6,11 @@
 //  Copyright © 2016年 ing. All rights reserved.
 //
 
-#import "BaseViewController.h"
+#import "RefreshViewController.h"
 
 /**
  商品页面
  */
-@interface GoodsViewController : BaseViewController
+@interface GoodsViewController : RefreshViewController
 
 @end

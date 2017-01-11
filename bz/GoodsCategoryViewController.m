@@ -26,6 +26,8 @@
 
 @property (strong, nonatomic) NSMutableArray *categories;
 @property (strong, nonatomic) NSArray *subCategories;
+
+//@property (weak, nonatomic) GoodsViewController *goodsVC;
 @end
 
 #define kColunm 3 //3列
@@ -130,21 +132,28 @@
 #pragma mark - UISearchBarDelegate
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar
 {
+    [self pushToSearchVCWithCategoryModel:nil];
+    return NO;
+}
+
+- (void)pushToSearchVCWithCategoryModel:(GoodsCategoryModel *)model
+{
     // 1. 创建热门搜索数组
     NSArray *hotSeaches = @[@"Java", @"Python", @"Objective-C", @"Swift", @"C", @"C++", @"PHP", @"C#", @"Perl", @"Go", @"JavaScript", @"R", @"Ruby", @"MATLAB"];
-    GoodsViewController *goodsVC = [[GoodsViewController alloc] init];
+    GoodsViewController *_goodsVC = [[GoodsViewController alloc] init];
+    _goodsVC.isRequireRefreshHeader = YES;
+    _goodsVC.isRequireRefreshFooter = YES;
     // 2. 创建搜索控制器
-    PYSearchViewController *searchViewController = [PYSearchViewController searchViewControllerWithHotSearches:hotSeaches searchBarPlaceholder:@"搜索全部商品" toToResult:NO andSearchResultController:goodsVC andSearchBarText:nil];
+    PYSearchViewController *searchViewController = [PYSearchViewController searchViewControllerWithHotSearches:hotSeaches searchBarPlaceholder:@"搜索全部商品" toToResult:model?YES:NO andSearchResultController:_goodsVC andSearchBarText:model.categoryName];
     
     searchViewController.delegate = self;
     searchViewController.searchResultShowMode = PYSearchResultShowModeEmbed;
-//    searchViewController.goToSearchResult = YES;
+    //    searchViewController.goToSearchResult = YES;
     
     searchViewController.hidesBottomBarWhenPushed = YES;
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     self.navigationItem.backBarButtonItem = item;
     [self.navigationController pushViewController:searchViewController animated:YES];
-    return NO;
 }
 
 #pragma mark - PYSearchViewControllerDelegate
@@ -155,6 +164,7 @@
 
 - (void)searchViewController:(PYSearchViewController *)searchViewController didSelectHotSearchAtIndex:(NSInteger)index searchText:(NSString *)searchText
 {
+    NSLog(@"%@", searchViewController.searchResultController);
     NSLog(@"%@ 热门", searchText);
 }
 
@@ -251,21 +261,8 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     GoodsCategoryModel *model = self.subCategories[indexPath.row];
-    // 1. 创建热门搜索数组
-    NSArray *hotSeaches = @[@"Java", @"Python", @"Objective-C", @"Swift", @"C", @"C++", @"PHP", @"C#", @"Perl", @"Go", @"JavaScript", @"R", @"Ruby", @"MATLAB"];
-    GoodsViewController *goodsVC = [[GoodsViewController alloc] init];
-    // 2. 创建搜索控制器
-    PYSearchViewController *searchViewController = [PYSearchViewController searchViewControllerWithHotSearches:hotSeaches searchBarPlaceholder:@"搜索全部商品" toToResult:YES andSearchResultController:goodsVC andSearchBarText:model.categoryName];
     
-    searchViewController.delegate = self;
-    searchViewController.searchResultShowMode = PYSearchResultShowModeEmbed;
-    searchViewController.goToSearchResult = YES;
-    
-    searchViewController.hidesBottomBarWhenPushed = YES;
-    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
-    self.navigationItem.backBarButtonItem = item;
-    [self.navigationController pushViewController:searchViewController animated:YES];
-    
+    [self pushToSearchVCWithCategoryModel:model];
 }
 
 #pragma mark -
