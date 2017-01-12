@@ -8,6 +8,7 @@
 
 #import <JSONModel/JSONModel.h>
 
+@protocol ModelDeatail;
 /**
  商品模型
  */
@@ -22,5 +23,16 @@
 @property (copy, nonatomic) NSString<Optional> *propertyd;//尺寸
 @property (copy, nonatomic) NSString<Optional> *pdetailId;//商品详细id 
 @property (copy, nonatomic) NSString<Optional> *favTime;//收藏时间
+
+@property (strong, nonatomic) NSArray<ModelDeatail> *model_detail;
+// 商品左侧按钮是否选中
+@property (nonatomic,assign) BOOL productIsChoosed;
+@end
+
+@interface ModelDeatail : JSONModel
+
+@property (nonatomic,copy) NSString *key;
+@property (nonatomic,copy) NSString *type_name;
+@property (nonatomic,copy) NSString *value;
 
 @end

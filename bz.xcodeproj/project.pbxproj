@@ -44,6 +44,10 @@
 		11FE82821E1FA00400309719 /* BonusScanDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11FE82801E1FA00400309719 /* BonusScanDetailsViewController.m */; };
 		11FE82831E1FA00400309719 /* BonusScanDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11FE82811E1FA00400309719 /* BonusScanDetailsViewController.xib */; };
 		17E122BDA9BAA762D7A46B7F /* libPods-bz.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 63277A970CC28472312B0E2A /* libPods-bz.a */; };
+		611AF9C21E2713D200F10C49 /* ShoppingCartModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 611AF9C11E2713D200F10C49 /* ShoppingCartModel.m */; };
+		611AF9C81E27197600F10C49 /* BuyerHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 611AF9C41E27197600F10C49 /* BuyerHeaderCell.xib */; };
+		611AF9C91E27197600F10C49 /* ShoppingCartCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 611AF9C61E27197600F10C49 /* ShoppingCartCell.m */; };
+		611AF9CA1E27197600F10C49 /* ShoppingCartCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 611AF9C71E27197600F10C49 /* ShoppingCartCell.xib */; };
 		613FB9481E1E1A6B00CB2070 /* BonusTXViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 613FB9471E1E1A6B00CB2070 /* BonusTXViewController.m */; };
 		613FB94C1E1E352200CB2070 /* BonusTXScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 613FB94A1E1E352200CB2070 /* BonusTXScanViewController.m */; };
 		613FB94D1E1E352200CB2070 /* BonusTXScanViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 613FB94B1E1E352200CB2070 /* BonusTXScanViewController.xib */; };
@@ -227,6 +231,12 @@
 		11FE82811E1FA00400309719 /* BonusScanDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BonusScanDetailsViewController.xib; sourceTree = "<group>"; };
 		2BBD9FECB363268F3739B789 /* libPods-bzUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-bzUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		54D4FF3445E3FD7D387B5F0E /* Pods-bz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bz.debug.xcconfig"; path = "Pods/Target Support Files/Pods-bz/Pods-bz.debug.xcconfig"; sourceTree = "<group>"; };
+		611AF9C01E2713D200F10C49 /* ShoppingCartModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingCartModel.h; sourceTree = "<group>"; };
+		611AF9C11E2713D200F10C49 /* ShoppingCartModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingCartModel.m; sourceTree = "<group>"; };
+		611AF9C41E27197600F10C49 /* BuyerHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BuyerHeaderCell.xib; sourceTree = "<group>"; };
+		611AF9C51E27197600F10C49 /* ShoppingCartCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingCartCell.h; sourceTree = "<group>"; };
+		611AF9C61E27197600F10C49 /* ShoppingCartCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingCartCell.m; sourceTree = "<group>"; };
+		611AF9C71E27197600F10C49 /* ShoppingCartCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShoppingCartCell.xib; sourceTree = "<group>"; };
 		613FB9461E1E1A6B00CB2070 /* BonusTXViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BonusTXViewController.h; sourceTree = "<group>"; };
 		613FB9471E1E1A6B00CB2070 /* BonusTXViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BonusTXViewController.m; sourceTree = "<group>"; };
 		613FB9491E1E352200CB2070 /* BonusTXScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BonusTXScanViewController.h; sourceTree = "<group>"; };
@@ -566,6 +576,17 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		611AF9C31E27196B00F10C49 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				611AF9C51E27197600F10C49 /* ShoppingCartCell.h */,
+				611AF9C61E27197600F10C49 /* ShoppingCartCell.m */,
+				611AF9C71E27197600F10C49 /* ShoppingCartCell.xib */,
+				611AF9C41E27197600F10C49 /* BuyerHeaderCell.xib */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
 		615FBF231E14B5DC00F50C0D /* Orders */ = {
 			isa = PBXGroup;
 			children = (
@@ -761,6 +782,7 @@
 		617288EB1E10BE8A0037DB40 /* ShoppingCart */ = {
 			isa = PBXGroup;
 			children = (
+				611AF9C31E27196B00F10C49 /* Cells */,
 				617288F21E10BF070037DB40 /* ShoppingCartViewController.h */,
 				617288F31E10BF070037DB40 /* ShoppingCartViewController.m */,
 				617288F41E10BF070037DB40 /* ShoppingCartViewController.xib */,
@@ -846,6 +868,8 @@
 				116DF06E1E20C10300484D72 /* EmailModel.m */,
 				61E2F9051E25C2DD00CC61C1 /* GoodsCategoryModel.h */,
 				61E2F9061E25C2DD00CC61C1 /* GoodsCategoryModel.m */,
+				611AF9C01E2713D200F10C49 /* ShoppingCartModel.h */,
+				611AF9C11E2713D200F10C49 /* ShoppingCartModel.m */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -1170,12 +1194,14 @@
 				116DF0661E20BE8500484D72 /* EmailViewController.xib in Resources */,
 				616A09AA1E11FF1600FCF886 /* RegistViewController.xib in Resources */,
 				619319961E1CB41800AF63E7 /* DZMoneyCell.xib in Resources */,
+				611AF9C81E27197600F10C49 /* BuyerHeaderCell.xib in Resources */,
 				61A09ED21E13D86200C58519 /* GoodsViewController.xib in Resources */,
 				617288BA1E10BCA40037DB40 /* Assets.xcassets in Resources */,
 				11FE826F1E1F79A600309719 /* MMNumberKeyboardDeleteKey@2x.png in Resources */,
 				61A09ED81E13EA2C00C58519 /* GoodsCell.xib in Resources */,
 				61B1EA911E26030B006F8276 /* PYSearch.bundle in Resources */,
 				616A09B41E128AC600FCF886 /* MeCell.xib in Resources */,
+				611AF9CA1E27197600F10C49 /* ShoppingCartCell.xib in Resources */,
 				11FE82721E1F79A600309719 /* MMNumberKeyboardDismissKey@2x.png in Resources */,
 				615FBF281E14B60500F50C0D /* MyOrdersViewController.xib in Resources */,
 				11FE82731E1F79A600309719 /* MMNumberKeyboardDismissKey@3x.png in Resources */,
@@ -1371,6 +1397,7 @@
 				617288E91E10BE470037DB40 /* BaseViewController.m in Sources */,
 				617289141E1100B90037DB40 /* Utility.m in Sources */,
 				61F9ADAF1E24E63D00649D80 /* GTMBase64.m in Sources */,
+				611AF9C91E27197600F10C49 /* ShoppingCartCell.m in Sources */,
 				616448281E1B459E0007E50E /* AddressCell.m in Sources */,
 				61B1EA931E26030B006F8276 /* PYSearchSuggestionViewController.m in Sources */,
 				61B1EA901E26030B006F8276 /* NSBundle+PYSearchExtension.m in Sources */,
@@ -1387,6 +1414,7 @@
 				116DF06F1E20C10300484D72 /* EmailModel.m in Sources */,
 				617288AF1E10BCA40037DB40 /* AppDelegate.mm in Sources */,
 				11FE82781E1F828300309719 /* DZMoneyDetailsViewController.m in Sources */,
+				611AF9C21E2713D200F10C49 /* ShoppingCartModel.m in Sources */,
 				615FBF371E14BF0400F50C0D /* GoodsCategoryViewController.m in Sources */,
 				615FBF5C1E1506AB00F50C0D /* OrderListBottomCell.m in Sources */,
 				116DF0651E20BE8500484D72 /* EmailViewController.m in Sources */,

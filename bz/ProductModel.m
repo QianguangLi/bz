@@ -14,3 +14,12 @@
     return YES;
 }
 @end
+
+@implementation ModelDeatail
+
++ (BOOL)propertyIsOptional:(NSString *)propertyName
+{
+    return YES;
+}
+
+@end

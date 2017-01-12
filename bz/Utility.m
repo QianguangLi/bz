@@ -96,5 +96,15 @@
     return [emailTest evaluateWithObject:email];
 }
 
++ (NSAttributedString *)recombinePrice:(CGFloat)CNPrice orderPrice:(CGFloat)unitPrice
+{
+    NSMutableAttributedString *mutableAttributeStr = [[NSMutableAttributedString alloc] init];
+    NSAttributedString *string1 = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"￥%.f",unitPrice] attributes:@{NSForegroundColorAttributeName : [UIColor redColor],NSFontAttributeName : [UIFont boldSystemFontOfSize:12]}];
+    NSAttributedString *string2 = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"￥%.f",CNPrice] attributes:@{NSForegroundColorAttributeName : [UIColor lightGrayColor],NSFontAttributeName : [UIFont boldSystemFontOfSize:11],NSStrikethroughStyleAttributeName :@(NSUnderlineStyleSingle),NSStrikethroughColorAttributeName : [UIColor lightGrayColor]}];
+    [mutableAttributeStr appendAttributedString:string1];
+    [mutableAttributeStr appendAttributedString:string2];
+    return mutableAttributeStr;
+}
+
 
 @end

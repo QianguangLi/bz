@@ -261,8 +261,7 @@
     _cancleButtonItem = [[UIBarButtonItem alloc] initWithTitle:[NSBundle py_localizedStringForKey:PYSearchCancelButtonText] style:UIBarButtonItemStyleDone target:self action:@selector(cancelDidClick)];
     self.navigationItem.rightBarButtonItem = _cancleButtonItem;
     
-    _rightButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"首页" style:UIBarButtonItemStyleDone target:self action:@selector(rightItemAction)];
-    
+    _rightButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"home"] style:UIBarButtonItemStylePlain target:self action:@selector(rightItemAction)];
     /**
      * 设置一些默认设置
      */

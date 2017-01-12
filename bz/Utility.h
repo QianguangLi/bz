@@ -53,4 +53,6 @@
 + (BOOL)isLegalIDCardNumber:(NSString *)idCardNumber;
 //email验证
 + (BOOL)isLegalEmail:(NSString *)email;
+
++ (NSAttributedString *)recombinePrice:(CGFloat)CNPrice orderPrice:(CGFloat)unitPrice;
 @end
