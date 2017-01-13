@@ -31,7 +31,7 @@
 @end
 
 #define kColunm 3 //3列
-#define kInterSpace 0.5 //列间距
+#define kInterSpace 0.0 //列间距
 #define kLeftSpace 10.0 //左右缩进
 #define kLineSpace 0.5 //行间距
 
@@ -173,6 +173,10 @@
 
 - (void)searchViewController:(PYSearchViewController *)searchViewController didSearchWithsearchBar:(UISearchBar *)searchBar searchText:(NSString *)searchText
 {
+    if (IS_NULL_STRING(searchText)) {
+        [Utility showString:Localized(@"请输入搜索内容") onView:appDelegate.window];
+        return;
+    }
     GoodsViewController *vc = (GoodsViewController *)searchViewController.searchResultController;
     vc.kw = searchText;
 }
@@ -204,27 +208,37 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     GoodsCategoryModel *model = self.categories[indexPath.row];
-    if (model.hasChild) {
-        self.subCategories = model.subCategories;
-        [self.rightCollectionView reloadData];
-    }
+    //    if (model.hasChild) {
+    //    }
+    self.subCategories = model.subCategories;
+    [self.rightCollectionView reloadData];
 }
 
 #pragma mark - UICollectionViewDelegate
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return self.subCategories.count;
+    GoodsCategoryModel *model = self.subCategories[section];
+    if (model.subCategories.count%kColunm != 0) {
+        return model.subCategories.count + kColunm - model.subCategories.count%kColunm;
+    }
+    return model.subCategories.count;
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-    return 1;
+    return self.subCategories.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     RightCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"RightCell" forIndexPath:indexPath];
-    [cell setContentWithGoodsCategoryModel:self.subCategories[indexPath.row] andIndexPath:indexPath];
+    GoodsCategoryModel *headModel = self.subCategories[indexPath.section];
+    NSArray *subArr = headModel.subCategories;
+    if (indexPath.row >= subArr.count) {
+        [cell setContentWithGoodsCategoryModel:nil andIndexPath:indexPath];
+    } else {
+        [cell setContentWithGoodsCategoryModel:subArr[indexPath.row] andIndexPath:indexPath];
+    }
     return cell;
 }
 
@@ -232,6 +246,8 @@
 {
     if ([kind isEqualToString:UICollectionElementKindSectionHeader]) {
         CollectionSectionHeaderView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"CollectionSectionHeaderView" forIndexPath:indexPath];
+        GoodsCategoryModel *model = self.subCategories[indexPath.section];
+        [headerView setContentWithGoodsCategoryModel:model andIndexPath:indexPath];
         return headerView;
     }
     return nil;
@@ -240,7 +256,7 @@
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     CGFloat width = (collectionView.frame.size.width - kInterSpace*(kColunm-1) - kLeftSpace * 2)/kColunm;
-    return CGSizeMake(width, width/7*4 + 3 + 17);
+    return CGSizeMake(width, 3 + (width-6) + 3 + 17 + 3);
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
@@ -265,9 +281,10 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    GoodsCategoryModel *model = self.subCategories[indexPath.row];
-    
-    [self pushToSearchVCWithCategoryModel:model andKeyWords:nil];
+    GoodsCategoryModel *model = self.subCategories[indexPath.section];
+    NSArray *subArr = model.subCategories;
+    GoodsCategoryModel *subModel = subArr[indexPath.row];
+    [self pushToSearchVCWithCategoryModel:subModel andKeyWords:nil];
 }
 
 #pragma mark -

@@ -25,8 +25,13 @@
 - (void)setContentWithGoodsCategoryModel:(GoodsCategoryModel *)model andIndexPath:(NSIndexPath *)indexPath
 {
     _indexPath = indexPath;
-    _classLabel.text = model.categoryName;
-    [_classImageView setImageWithURL:[NSURL URLWithString:@""] placeholderImage:[UIImage imageNamed:@"fenlei_women-dress"]];
+    if (model) {
+        _classLabel.text = model.categoryName;
+        [_classImageView setImageWithURL:[NSURL URLWithString:@""] placeholderImage:[UIImage imageNamed:@"fenlei_women-dress"]];
+    } else {
+        _classLabel.text = @"";
+        _classImageView.image = nil;
+    }
 }
 
 @end

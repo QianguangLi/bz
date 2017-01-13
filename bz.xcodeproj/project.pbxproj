@@ -89,6 +89,8 @@
 		6171115B1E28707B001B6BA5 /* ShoppingCartBottom.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6171115A1E28707B001B6BA5 /* ShoppingCartBottom.xib */; };
 		6171115F1E2874E8001B6BA5 /* EmailDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6171115D1E2874E8001B6BA5 /* EmailDetailsViewController.m */; };
 		617111601E2874E8001B6BA5 /* EmailDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6171115E1E2874E8001B6BA5 /* EmailDetailsViewController.xib */; };
+		617111681E28CC80001B6BA5 /* SelectLocationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 617111671E28CC80001B6BA5 /* SelectLocationView.m */; };
+		6171116A1E28CCA1001B6BA5 /* SelectLocationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 617111691E28CCA1001B6BA5 /* SelectLocationView.xib */; };
 		617288AC1E10BCA40037DB40 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 617288AB1E10BCA40037DB40 /* main.m */; };
 		617288AF1E10BCA40037DB40 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 617288AE1E10BCA40037DB40 /* AppDelegate.mm */; };
 		617288B81E10BCA40037DB40 /* bz.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 617288B61E10BCA40037DB40 /* bz.xcdatamodeld */; };
@@ -314,6 +316,9 @@
 		6171115C1E2874E8001B6BA5 /* EmailDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmailDetailsViewController.h; sourceTree = "<group>"; };
 		6171115D1E2874E8001B6BA5 /* EmailDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmailDetailsViewController.m; sourceTree = "<group>"; };
 		6171115E1E2874E8001B6BA5 /* EmailDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmailDetailsViewController.xib; sourceTree = "<group>"; };
+		617111661E28CC80001B6BA5 /* SelectLocationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectLocationView.h; sourceTree = "<group>"; };
+		617111671E28CC80001B6BA5 /* SelectLocationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectLocationView.m; sourceTree = "<group>"; };
+		617111691E28CCA1001B6BA5 /* SelectLocationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectLocationView.xib; sourceTree = "<group>"; };
 		617288A71E10BCA40037DB40 /* bz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		617288AB1E10BCA40037DB40 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		617288AD1E10BCA40037DB40 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -861,6 +866,9 @@
 				61A09ECE1E13D86200C58519 /* GoodsViewController.h */,
 				61A09ECF1E13D86200C58519 /* GoodsViewController.m */,
 				61A09ED01E13D86200C58519 /* GoodsViewController.xib */,
+				617111661E28CC80001B6BA5 /* SelectLocationView.h */,
+				617111671E28CC80001B6BA5 /* SelectLocationView.m */,
+				617111691E28CCA1001B6BA5 /* SelectLocationView.xib */,
 			);
 			name = FirstPage;
 			sourceTree = "<group>";
@@ -1270,6 +1278,7 @@
 				11FE82711E1F79A600309719 /* MMNumberKeyboardDismissKey.png in Resources */,
 				617F79791E1620FF00E139CF /* FunctionListViewController.xib in Resources */,
 				617288FB1E10BF110037DB40 /* MeViewController.xib in Resources */,
+				6171116A1E28CCA1001B6BA5 /* SelectLocationView.xib in Resources */,
 				6193197F1E1CA41200AF63E7 /* DZMoneyViewController.xib in Resources */,
 				115E35891E1766EE002A9957 /* CollectionSectionHeaderView.xib in Resources */,
 				615FBF5D1E1506AB00F50C0D /* OrderListBottomCell.xib in Resources */,
@@ -1512,6 +1521,7 @@
 				11FE827D1E1F917500309719 /* RechargeDetailsViewController.m in Sources */,
 				6172891F1E1118670037DB40 /* UIView+Addition.m in Sources */,
 				61DFD3D21E23385F00D9C2D7 /* AlwaysBuyViewController.m in Sources */,
+				617111681E28CC80001B6BA5 /* SelectLocationView.m in Sources */,
 				61DFD3D71E23408700D9C2D7 /* AlwaysBuyCell.m in Sources */,
 				617111561E286104001B6BA5 /* UIBarButtonItem+WZLBadge.m in Sources */,
 				617111551E286104001B6BA5 /* UIViewController+KNSemiModal.m in Sources */,

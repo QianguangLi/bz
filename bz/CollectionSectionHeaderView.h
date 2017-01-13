@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+@class GoodsCategoryModel;
 
 /**
  分类页面 collection section header
  */
 @interface CollectionSectionHeaderView : UICollectionReusableView
+
+- (void)setContentWithGoodsCategoryModel:(GoodsCategoryModel *)model andIndexPath:(NSIndexPath *)indexPath;
 
 @end

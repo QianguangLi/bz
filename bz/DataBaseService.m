@@ -171,6 +171,29 @@ static DataBaseService *sharedService = nil;
     return addressArray;
 }
 
+- (NSArray<Address *> *)getAllCity
+{
+    if (![self openDataBase]) {
+        return nil;
+    }
+    //410200 开封
+    FMResultSet *set = nil;
+    set = [_db executeQuery:@"select * from address where level = ?", [NSNumber numberWithInt:1]];
+
+    NSMutableArray *addressArray = [NSMutableArray array];
+    while ([set next]) {
+        Address *address = [[Address alloc] init];
+        address.ID =[set intForColumn:@"ID"];
+        address.areaId =  [set stringForColumn:@"areaId"];
+        address.areaName = [set stringForColumn:@"areaName"];
+        address.level =[set intForColumn:@"level"];
+        address.areaPid = [set stringForColumn:@"areaPid"];
+        [addressArray addObject:address];
+    }
+    [self closeDataBase];
+    return addressArray;
+}
+
 - (Address *)getAddressWithAreaID:(NSString *)areaId
 {
     if (![self openDataBase]) {

@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+@class ProductModel;
 
 @interface GoodsCell : UITableViewCell
+
+- (void)setContentWithProductModel:(ProductModel *)model;
 
 @end

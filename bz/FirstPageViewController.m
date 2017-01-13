@@ -12,10 +12,11 @@
 #import "PYSearch.h"
 #import "LoginViewController.h"
 #import "GoodsViewController.h"
+#import "SelectLocationView.h"
 
-@interface FirstPageViewController () <UISearchBarDelegate, PYSearchViewControllerDelegate>
+@interface FirstPageViewController () <UISearchBarDelegate, PYSearchViewControllerDelegate, UITextFieldDelegate>
 
-@property (strong, nonatomic) UISearchBar *topSearchBar;
+@property (strong, nonatomic) UITextField *topSearchBar;
 
 @end
 
@@ -51,13 +52,22 @@
     UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithTitle:Localized(@"定位中") style:UIBarButtonItemStylePlain target:self action:@selector(rightItemAction:)];;
     self.navigationItem.rightBarButtonItem = rightItem;
     
-    _topSearchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth - 100, 44)];
+    _topSearchBar = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth - 100, 30)];
     _topSearchBar.delegate = self;
+    _topSearchBar.font = [UIFont systemFontOfSize:14];
     _topSearchBar.placeholder = Localized(@"搜索商品、店铺");
+    _topSearchBar.borderStyle = UITextBorderStyleNone;
     UIImage *searchBackGround = [[UIImage imageNamed:@"searchbackground"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 20, 0, 20) resizingMode:UIImageResizingModeStretch];
-    [_topSearchBar setBackgroundImage:searchBackGround];
+    _topSearchBar.backgroundColor = [UIColor whiteColor];
+    [_topSearchBar setBackground:searchBackGround];
+//    [_topSearchBar setBackgroundImage:searchBackGround];
+    UIImageView *leftView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"nav-search"]];
+    leftView.backgroundColor = [UIColor whiteColor];
+    _topSearchBar.leftViewMode = UITextFieldViewModeAlways;
+    _topSearchBar.leftView = leftView;
     
     self.navigationItem.titleView = _topSearchBar;
+    self.navigationItem.titleView.backgroundColor = [UIColor clearColor];
 }
 
 - (void)leftItemAction:(UIBarButtonItem *)item
@@ -70,6 +80,10 @@
 {
     //TODO: right item touched
     NSLog(@"right item touched");
+//    SelectLocationView *view = [[SelectLocationView alloc] initWithFrame:CGRectZero];
+    SelectLocationView *view = [[[NSBundle mainBundle] loadNibNamed:@"SelectLocationView" owner:nil options:nil] firstObject];
+    [appDelegate.window addSubview:view];
+    
 }
 
 - (void)refreshUserLocation
@@ -82,6 +96,12 @@
 
 #pragma mark - UISearchBarDelegate
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar
+{
+    [self pushToSearchVCWithCategoryModel:nil andKeyWords:nil];
+    return NO;
+}
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
     [self pushToSearchVCWithCategoryModel:nil andKeyWords:nil];
     return NO;
@@ -124,6 +144,10 @@
 
 - (void)searchViewController:(PYSearchViewController *)searchViewController didSearchWithsearchBar:(UISearchBar *)searchBar searchText:(NSString *)searchText
 {
+    if (IS_NULL_STRING(searchText)) {
+        [Utility showString:Localized(@"请输入搜索内容") onView:appDelegate.window];
+        return;
+    }
     GoodsViewController *vc = (GoodsViewController *)searchViewController.searchResultController;
     vc.kw = searchText;
 }

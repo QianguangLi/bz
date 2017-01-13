@@ -24,6 +24,7 @@
 @property (copy, nonatomic) NSString<Optional> *propertyd;//尺寸
 @property (copy, nonatomic) NSString<Optional> *pdetailId;//商品详细id 
 @property (copy, nonatomic) NSString<Optional> *favTime;//收藏时间
+@property (copy, nonatomic) NSString *shipping;//配送方式 “次日达”
 
 @property (strong, nonatomic) NSArray<ModelDeatail> *model_detail;
 // 商品左侧按钮是否选中

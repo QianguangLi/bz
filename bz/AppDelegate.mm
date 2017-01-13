@@ -162,8 +162,8 @@
     
     //开启定位
     //TODO:开发阶段暂时关闭定位
-//    LocationService *service = [LocationService sharedLocationService];
-//    [service startUserLocationService];
+    LocationService *service = [LocationService sharedLocationService];
+    [service startUserLocationService];
 }
 
 #pragma mark - UIAlertViewDelegate

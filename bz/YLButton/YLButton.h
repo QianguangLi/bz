@@ -13,4 +13,6 @@
 @property (nonatomic,assign) CGRect imageRect;
 
 - (void)setRightImage:(UIImage *)image forState:(UIControlState)state;
+- (void)setTextRightImage:(UIImage *)image forState:(UIControlState)state;
+
 @end

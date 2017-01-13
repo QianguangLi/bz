@@ -1014,6 +1014,7 @@
             self.searchResultController.view.hidden = NO;
             self.searchResultController.view.py_y = 64;
             self.searchResultController.view.py_height = self.view.py_height - self.searchResultController.view.py_y;
+            self.searchResultController.view.py_width = self.view.py_width;
             self.searchSuggestionVC.view.hidden = YES;
             //有了搜索结果
             self.hasSearchResult = YES;
@@ -1066,6 +1067,9 @@
     // 如果代理实现了代理方法则调用代理方法
     if ([self.delegate respondsToSelector:@selector(searchViewController:didSearchWithsearchBar:searchText:)]) {
         [self.delegate searchViewController:self didSearchWithsearchBar:searchBar searchText:searchBar.text];
+        if (IS_NULL_STRING(searchBar.text)) {
+            return;
+        }
         // 缓存数据并且刷新界面
         [self saveSearchCacheAndRefreshView];
         return;

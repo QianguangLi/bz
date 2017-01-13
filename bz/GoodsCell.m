@@ -8,6 +8,9 @@
 
 #import "GoodsCell.h"
 #import "UIView+Addition.h"
+#import "ProductModel.h"
+#import "UIImageView+AFNetworking.h"
+#import "UIView+Addition.h"
 
 @interface GoodsCell ()
 
@@ -27,6 +30,16 @@
     [super awakeFromNib];
     // Initialization code
     [_marketPrice setStrikeLineText:_marketPrice.text];
+}
+
+- (void)setContentWithProductModel:(ProductModel *)model
+{
+    _goodsName.text = model.pName;
+    [_goodsImage setImageWithURL:[NSURL URLWithString:model.pImgUrl] placeholderImage:[UIImage imageNamed:@"productpic"]];
+    _goodsPrice.text = [NSString stringWithFormat:@"￥%.2f", model.price];
+    [_marketPrice setStrikeLineText:[NSString stringWithFormat:@"￥%.2f  ", model.markprice]];
+    _pv.text = [NSString stringWithFormat:@"积分:%.2f", model.pv];
+    _distriWay.text = model.shipping;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
