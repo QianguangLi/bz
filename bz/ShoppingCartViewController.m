@@ -13,6 +13,7 @@
 #import "ShoppingCartCell.h"
 #import "UIImageView+AFNetworking.h"
 #import "UITableView+FDTemplateLayoutCell.h"
+#import "UIView+Addition.h"
 
 @interface ShoppingCartViewController () <UITableViewDataSource, UITableViewDelegate, ShoppingCartCellDelegate>
 {
@@ -66,12 +67,11 @@ static NSString *shoppingHeaderID = @"BuyerHeaderCell";
     // Do any additional setup after loading the view from its nib.
     
 //    self.edgesForExtendedLayout = UIRectEdgeNone;
-    self.mTableView.frame = CGRectMake(0, 64, kScreenWidth, kScreenHeight - 64 - 44 - 50);
+    self.mTableView.frame = CGRectMake(0, 64, kScreenWidth, kScreenHeight - 64 - 49 - 50);
     self.mTableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     self.mTableView.delegate = self;
     self.mTableView.dataSource = self;
-    self.mTableView.sectionFooterHeight = 5;
-    self.mTableView.contentInset = UIEdgeInsetsMake(5, 0, 5, 0);
+    self.mTableView.contentInset = UIEdgeInsetsMake(5, 0, 0, 0);
     self.automaticallyAdjustsScrollViewInsets = NO;
     
     // 设置底部按钮
@@ -105,6 +105,7 @@ static NSString *shoppingHeaderID = @"BuyerHeaderCell";
     
     [self.mTableView registerNib:[UINib nibWithNibName:shoppongID bundle:nil] forCellReuseIdentifier:shoppongID];
     [self.mTableView registerNib:[UINib nibWithNibName:shoppingHeaderID bundle:nil] forCellReuseIdentifier:shoppingHeaderID];
+    [self.mTableView registerNib:[UINib nibWithNibName:@"ShoppingCartBottom" bundle:nil] forCellReuseIdentifier:@"ShoppingCartBottom"];
     
 }
 
@@ -188,22 +189,24 @@ static NSString *shoppingHeaderID = @"BuyerHeaderCell";
     [cell.productImageView setImageWithURL:[NSURL URLWithString:product.pImgUrl] placeholderImage:[UIImage imageNamed:@"productpic"]];
     
     cell.titleLabel.text = product.pName;
-//    if (IS_NULL_ARRAY(product.model_detail))
-//    {
-//        cell.sizeDetailLabel.text = @"";
-//        cell.editDetailView.hidden = YES;
-//    }
-//    else
-//    {
-//        cell.editDetailView.hidden = NO;
-//        cell.sizeDetailLabel.text = @"这里测试规格数据这里测试规格数据这里测试规格数据这里测试规格数据这里测试规格数据这里测试规格数据这里测试规格数据";
-//        cell.editDetailTitleLabel.text = @"点击我修改规格";
-//    }
-    cell.editDetailView.hidden = NO;
-    cell.sizeDetailLabel.text = product.propertyd;
-    cell.editDetailTitleLabel.text = @"点击我修改规格";
+    if (IS_NULL_STRING(product.propertyd))
+    {
+        cell.sizeDetailLabel.text = @"";
+        cell.editDetailView.hidden = YES;
+    }
+    else
+    {
+        cell.editDetailView.hidden = NO;
+        cell.sizeDetailLabel.text = product.propertyd;
+        cell.editDetailTitleLabel.text = @"点击我修改规格";
+    }
+//    cell.editDetailView.hidden = NO;
+//    cell.sizeDetailLabel.text = product.propertyd;
+//    cell.editDetailTitleLabel.text = @"点击我修改规格";
     
-    cell.priceLabel.attributedText = [Utility recombinePrice:product.price orderPrice:product.pv];
+//    cell.priceLabel.attributedText = [Utility recombinePrice:product.markprice orderPrice:product.price];
+    cell.priceLabel.text = [NSString stringWithFormat:@"￥%.2f", product.price];
+    [cell.marketPrice setStrikeLineText:[NSString stringWithFormat:@"￥%.2f", product.markprice]];
     
     cell.countLabel.text = [NSString stringWithFormat:@"x%ld",product.quantity];
     
@@ -248,7 +251,7 @@ static NSString *shoppingHeaderID = @"BuyerHeaderCell";
     ShoppingCartModel *buyer = self.dataArray[section];
     ShoppingCartCell *cell = [tableView dequeueReusableCellWithIdentifier:shoppingHeaderID];
     cell.headerSelectedButton.selected = buyer.buyerIsChoosed; //!< 买手是否需要勾选的字段
-    [cell.buyerImageView setImageWithURL:[NSURL URLWithString:@""] placeholderImage:[UIImage imageNamed:@"member-head"]];
+    [cell.buyerImageView setImageWithURL:buyer.storelogo placeholderImage:[UIImage imageNamed:@"member-head"]];
     cell.buyerNameLabel.text = buyer.storename;
     cell.sectionIndex = section;
     cell.editSectionHeaderButton.selected = buyer.buyerIsEditing;
@@ -267,6 +270,17 @@ static NSString *shoppingHeaderID = @"BuyerHeaderCell";
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     return 50;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+{
+    ShoppingCartCell *view = [tableView dequeueReusableCellWithIdentifier:@"ShoppingCartBottom"];
+    return view;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return 25;
 }
 
 

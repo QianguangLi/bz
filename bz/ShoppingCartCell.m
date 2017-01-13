@@ -7,6 +7,7 @@
 //
 
 #import "ShoppingCartCell.h"
+#import "UIView+Addition.h"
 
 @implementation ShoppingCartCell
 
@@ -19,8 +20,7 @@
     self.buyerImageView.layer.cornerRadius = 20;
     self.buyerImageView.layer.masksToBounds = YES;
     self.buyerImageView.clipsToBounds = YES;
-    
-    
+        
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickEdit:)];
     [self.editDetailView addGestureRecognizer:tap];
     self.editDetailView.userInteractionEnabled = YES;

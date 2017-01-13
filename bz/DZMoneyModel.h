@@ -13,11 +13,11 @@
  */
 @interface DZMoneyModel : JSONModel
 
-@property (copy, nonatomic) NSString *id;
-@property (copy, nonatomic) NSString *direction;
-@property (copy, nonatomic) NSString *kmType;
-@property (copy, nonatomic) NSString *time;
-@property (assign, nonatomic) double money;
-@property (copy, nonatomic) NSString<Optional> *note;
+@property (copy, nonatomic) NSString *id;//对账单id
+@property (copy, nonatomic) NSString *direction;//转入0  转出1
+@property (copy, nonatomic) NSString *kmType;//科目类型
+@property (copy, nonatomic) NSString *time;//发生时间
+@property (assign, nonatomic) double money;//发生余额
+@property (copy, nonatomic) NSString<Optional> *note;//备注
 
 @end

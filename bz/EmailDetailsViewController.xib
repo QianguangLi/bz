@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EmailDetailsViewController">
+            <connections>
+                <outlet property="emailContent" destination="Yw4-Hx-tg1" id="sEc-tL-tGL"/>
+                <outlet property="emailTitle" destination="hhQ-6C-0m2" id="V9X-g3-tZ0"/>
+                <outlet property="sendDate" destination="afP-bT-k3Z" id="pfb-um-tss"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Aav-fX-J6P">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bSg-ZV-kKa">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="98"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" tag="666" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="邮件标题" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hhQ-6C-0m2">
+                                    <rect key="frame" x="8" y="10" width="359" height="21.5"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="时间" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="afP-bT-k3Z">
+                                    <rect key="frame" x="8" y="36.5" width="25" height="14.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="内容" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yw4-Hx-tg1">
+                                    <rect key="frame" x="8" y="70" width="359" height="18"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Azm-Qd-Csd">
+                                    <rect key="frame" x="0.0" y="61" width="375" height="0.5"/>
+                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="0.5" id="mkE-qN-7xM"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="hhQ-6C-0m2" secondAttribute="trailing" constant="8" id="9fv-mc-Wj2"/>
+                                <constraint firstAttribute="trailing" secondItem="Azm-Qd-Csd" secondAttribute="trailing" id="9y9-7m-1I8"/>
+                                <constraint firstAttribute="trailing" secondItem="Yw4-Hx-tg1" secondAttribute="trailing" constant="8" id="GA4-W8-fUb"/>
+                                <constraint firstItem="afP-bT-k3Z" firstAttribute="leading" secondItem="bSg-ZV-kKa" secondAttribute="leading" constant="8" id="I4U-Nc-WO7"/>
+                                <constraint firstItem="hhQ-6C-0m2" firstAttribute="leading" secondItem="bSg-ZV-kKa" secondAttribute="leading" constant="8" id="JYe-Jg-fTl"/>
+                                <constraint firstItem="afP-bT-k3Z" firstAttribute="top" secondItem="hhQ-6C-0m2" secondAttribute="bottom" constant="5" id="KrK-G2-CcR"/>
+                                <constraint firstItem="Azm-Qd-Csd" firstAttribute="top" secondItem="afP-bT-k3Z" secondAttribute="bottom" constant="10" id="RvE-H3-rdH"/>
+                                <constraint firstItem="Azm-Qd-Csd" firstAttribute="leading" secondItem="bSg-ZV-kKa" secondAttribute="leading" id="Y1U-7R-Nz9"/>
+                                <constraint firstItem="hhQ-6C-0m2" firstAttribute="top" secondItem="bSg-ZV-kKa" secondAttribute="top" constant="10" id="ju4-1g-4vc"/>
+                                <constraint firstItem="Yw4-Hx-tg1" firstAttribute="leading" secondItem="bSg-ZV-kKa" secondAttribute="leading" constant="8" id="kyy-af-83y"/>
+                                <constraint firstAttribute="bottom" secondItem="Yw4-Hx-tg1" secondAttribute="bottom" constant="10" id="lvX-KY-I94"/>
+                                <constraint firstItem="Yw4-Hx-tg1" firstAttribute="top" secondItem="Azm-Qd-Csd" secondAttribute="bottom" constant="8.5" id="x2p-Nb-eQi"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="bSg-ZV-kKa" secondAttribute="bottom" constant="128" id="5mj-sW-74g"/>
+                        <constraint firstItem="bSg-ZV-kKa" firstAttribute="top" secondItem="Aav-fX-J6P" secondAttribute="top" id="JXW-KT-Ec0"/>
+                        <constraint firstAttribute="trailing" secondItem="bSg-ZV-kKa" secondAttribute="trailing" id="Wdd-Ty-Nv7"/>
+                        <constraint firstItem="bSg-ZV-kKa" firstAttribute="leading" secondItem="Aav-fX-J6P" secondAttribute="leading" id="ezL-mM-mJk"/>
+                        <constraint firstItem="bSg-ZV-kKa" firstAttribute="width" secondItem="Aav-fX-J6P" secondAttribute="width" id="sqy-ZS-kDf"/>
+                    </constraints>
+                </scrollView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="Aav-fX-J6P" secondAttribute="trailing" id="DO7-Pa-SzP"/>
+                <constraint firstItem="Aav-fX-J6P" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="MGg-08-uvC"/>
+                <constraint firstAttribute="bottom" secondItem="Aav-fX-J6P" secondAttribute="bottom" id="YS9-Ki-vNa"/>
+                <constraint firstItem="Aav-fX-J6P" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="ybm-fy-bq0"/>
+            </constraints>
+            <point key="canvasLocation" x="33.5" y="75.5"/>
+        </view>
+    </objects>
+</document>

@@ -26,25 +26,6 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
-    if (IS_IPHONE_5) {
-        _goodsName.font = [UIFont systemFontOfSize:15];
-        _goodsPrice.font = [UIFont systemFontOfSize:15];
-        _marketPrice.font = [UIFont systemFontOfSize:11];
-        _pv.font = [UIFont systemFontOfSize:11];
-        _distriWay.font = [UIFont systemFontOfSize:11];
-    } else if (IS_IPHONE_6) {
-        _goodsName.font = [UIFont systemFontOfSize:16];
-        _goodsPrice.font = [UIFont systemFontOfSize:16];
-        _marketPrice.font = [UIFont systemFontOfSize:12];
-        _pv.font = [UIFont systemFontOfSize:12];
-        _distriWay.font = [UIFont systemFontOfSize:12];
-    } else if (IS_IPHONE_6P) {
-        _goodsName.font = [UIFont systemFontOfSize:17];
-        _goodsPrice.font = [UIFont systemFontOfSize:17];
-        _marketPrice.font = [UIFont systemFontOfSize:13];
-        _pv.font = [UIFont systemFontOfSize:13];
-        _distriWay.font = [UIFont systemFontOfSize:13];
-    }
     [_marketPrice setStrikeLineText:_marketPrice.text];
 }
 

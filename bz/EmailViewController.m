@@ -11,6 +11,7 @@
 #import "NetService.h"
 #import "EmailModel.h"
 #import "UITableView+FDTemplateLayoutCell.h"
+#import "EmailDetailsViewController.h"
 
 @interface EmailViewController () <UITableViewDelegate, UITableViewDataSource>
 {
@@ -158,6 +159,10 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     //TODO:设置已读状态
 //    [self readedRowAtIndexPath:indexPath];
+    EmailModel *model = self.dataArray[indexPath.row];
+    EmailDetailsViewController *vc = [[EmailDetailsViewController alloc] init];
+    vc.model = model;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath

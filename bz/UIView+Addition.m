@@ -55,7 +55,7 @@
                                   attributes:
     @{NSFontAttributeName:self.font,
     NSForegroundColorAttributeName:self.textColor,
-    NSStrikethroughStyleAttributeName:@(NSUnderlineStyleSingle|NSUnderlinePatternSolid),
+    NSStrikethroughStyleAttributeName:@(NSUnderlineStyleThick|NSUnderlinePatternSolid),
     NSStrikethroughColorAttributeName:[UIColor redColor]}];
     self.text = nil;
     self.attributedText = attrStr;

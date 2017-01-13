@@ -81,6 +81,14 @@
 		616A09AE1E1253F800FCF886 /* MeHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 616A09AD1E1253F800FCF886 /* MeHeadView.m */; };
 		616A09B31E128AC600FCF886 /* MeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 616A09B11E128AC600FCF886 /* MeCell.m */; };
 		616A09B41E128AC600FCF886 /* MeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 616A09B21E128AC600FCF886 /* MeCell.xib */; };
+		617111551E286104001B6BA5 /* UIViewController+KNSemiModal.m in Sources */ = {isa = PBXBuildFile; fileRef = 617111451E286104001B6BA5 /* UIViewController+KNSemiModal.m */; };
+		617111561E286104001B6BA5 /* UIBarButtonItem+WZLBadge.m in Sources */ = {isa = PBXBuildFile; fileRef = 617111491E286104001B6BA5 /* UIBarButtonItem+WZLBadge.m */; };
+		617111571E286104001B6BA5 /* UITabBarItem+WZLBadge.m in Sources */ = {isa = PBXBuildFile; fileRef = 6171114B1E286104001B6BA5 /* UITabBarItem+WZLBadge.m */; };
+		617111581E286104001B6BA5 /* CAAnimation+WAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6171114E1E286104001B6BA5 /* CAAnimation+WAnimation.m */; };
+		617111591E286104001B6BA5 /* UIView+WZLBadge.m in Sources */ = {isa = PBXBuildFile; fileRef = 617111531E286104001B6BA5 /* UIView+WZLBadge.m */; };
+		6171115B1E28707B001B6BA5 /* ShoppingCartBottom.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6171115A1E28707B001B6BA5 /* ShoppingCartBottom.xib */; };
+		6171115F1E2874E8001B6BA5 /* EmailDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6171115D1E2874E8001B6BA5 /* EmailDetailsViewController.m */; };
+		617111601E2874E8001B6BA5 /* EmailDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6171115E1E2874E8001B6BA5 /* EmailDetailsViewController.xib */; };
 		617288AC1E10BCA40037DB40 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 617288AB1E10BCA40037DB40 /* main.m */; };
 		617288AF1E10BCA40037DB40 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 617288AE1E10BCA40037DB40 /* AppDelegate.mm */; };
 		617288B81E10BCA40037DB40 /* bz.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 617288B61E10BCA40037DB40 /* bz.xcdatamodeld */; };
@@ -290,6 +298,22 @@
 		616A09B01E128AC600FCF886 /* MeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeCell.h; sourceTree = "<group>"; };
 		616A09B11E128AC600FCF886 /* MeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeCell.m; sourceTree = "<group>"; };
 		616A09B21E128AC600FCF886 /* MeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MeCell.xib; sourceTree = "<group>"; };
+		617111441E286104001B6BA5 /* UIViewController+KNSemiModal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+KNSemiModal.h"; sourceTree = "<group>"; };
+		617111451E286104001B6BA5 /* UIViewController+KNSemiModal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+KNSemiModal.m"; sourceTree = "<group>"; };
+		617111481E286104001B6BA5 /* UIBarButtonItem+WZLBadge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+WZLBadge.h"; sourceTree = "<group>"; };
+		617111491E286104001B6BA5 /* UIBarButtonItem+WZLBadge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+WZLBadge.m"; sourceTree = "<group>"; };
+		6171114A1E286104001B6BA5 /* UITabBarItem+WZLBadge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITabBarItem+WZLBadge.h"; sourceTree = "<group>"; };
+		6171114B1E286104001B6BA5 /* UITabBarItem+WZLBadge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITabBarItem+WZLBadge.m"; sourceTree = "<group>"; };
+		6171114D1E286104001B6BA5 /* CAAnimation+WAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CAAnimation+WAnimation.h"; sourceTree = "<group>"; };
+		6171114E1E286104001B6BA5 /* CAAnimation+WAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CAAnimation+WAnimation.m"; sourceTree = "<group>"; };
+		617111501E286104001B6BA5 /* WZLBadgeProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WZLBadgeProtocol.h; sourceTree = "<group>"; };
+		617111521E286104001B6BA5 /* UIView+WZLBadge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WZLBadge.h"; sourceTree = "<group>"; };
+		617111531E286104001B6BA5 /* UIView+WZLBadge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WZLBadge.m"; sourceTree = "<group>"; };
+		617111541E286104001B6BA5 /* WZLBadgeImport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WZLBadgeImport.h; sourceTree = "<group>"; };
+		6171115A1E28707B001B6BA5 /* ShoppingCartBottom.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShoppingCartBottom.xib; sourceTree = "<group>"; };
+		6171115C1E2874E8001B6BA5 /* EmailDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmailDetailsViewController.h; sourceTree = "<group>"; };
+		6171115D1E2874E8001B6BA5 /* EmailDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmailDetailsViewController.m; sourceTree = "<group>"; };
+		6171115E1E2874E8001B6BA5 /* EmailDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmailDetailsViewController.xib; sourceTree = "<group>"; };
 		617288A71E10BCA40037DB40 /* bz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		617288AB1E10BCA40037DB40 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		617288AD1E10BCA40037DB40 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -518,6 +542,9 @@
 				116DF0621E20BE8500484D72 /* EmailViewController.h */,
 				116DF0631E20BE8500484D72 /* EmailViewController.m */,
 				116DF0641E20BE8500484D72 /* EmailViewController.xib */,
+				6171115C1E2874E8001B6BA5 /* EmailDetailsViewController.h */,
+				6171115D1E2874E8001B6BA5 /* EmailDetailsViewController.m */,
+				6171115E1E2874E8001B6BA5 /* EmailDetailsViewController.xib */,
 			);
 			name = Email;
 			sourceTree = "<group>";
@@ -583,6 +610,7 @@
 				611AF9C61E27197600F10C49 /* ShoppingCartCell.m */,
 				611AF9C71E27197600F10C49 /* ShoppingCartCell.xib */,
 				611AF9C41E27197600F10C49 /* BuyerHeaderCell.xib */,
+				6171115A1E28707B001B6BA5 /* ShoppingCartBottom.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -670,6 +698,64 @@
 				1176F89A1E1FDF580057227C /* CollectionCell.xib */,
 			);
 			name = Cells;
+			sourceTree = "<group>";
+		};
+		617111431E286104001B6BA5 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				617111441E286104001B6BA5 /* UIViewController+KNSemiModal.h */,
+				617111451E286104001B6BA5 /* UIViewController+KNSemiModal.m */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		617111461E286104001B6BA5 /* WZLBadge */ = {
+			isa = PBXGroup;
+			children = (
+				617111471E286104001B6BA5 /* BarItem */,
+				6171114C1E286104001B6BA5 /* CategorySupport */,
+				6171114F1E286104001B6BA5 /* Protocol */,
+				617111511E286104001B6BA5 /* View */,
+				617111541E286104001B6BA5 /* WZLBadgeImport.h */,
+			);
+			path = WZLBadge;
+			sourceTree = "<group>";
+		};
+		617111471E286104001B6BA5 /* BarItem */ = {
+			isa = PBXGroup;
+			children = (
+				617111481E286104001B6BA5 /* UIBarButtonItem+WZLBadge.h */,
+				617111491E286104001B6BA5 /* UIBarButtonItem+WZLBadge.m */,
+				6171114A1E286104001B6BA5 /* UITabBarItem+WZLBadge.h */,
+				6171114B1E286104001B6BA5 /* UITabBarItem+WZLBadge.m */,
+			);
+			path = BarItem;
+			sourceTree = "<group>";
+		};
+		6171114C1E286104001B6BA5 /* CategorySupport */ = {
+			isa = PBXGroup;
+			children = (
+				6171114D1E286104001B6BA5 /* CAAnimation+WAnimation.h */,
+				6171114E1E286104001B6BA5 /* CAAnimation+WAnimation.m */,
+			);
+			path = CategorySupport;
+			sourceTree = "<group>";
+		};
+		6171114F1E286104001B6BA5 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				617111501E286104001B6BA5 /* WZLBadgeProtocol.h */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		617111511E286104001B6BA5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				617111521E286104001B6BA5 /* UIView+WZLBadge.h */,
+				617111531E286104001B6BA5 /* UIView+WZLBadge.m */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		6172889E1E10BCA40037DB40 = {
@@ -877,6 +963,8 @@
 		617F79701E15FEB900E139CF /* Assistent */ = {
 			isa = PBXGroup;
 			children = (
+				617111431E286104001B6BA5 /* Source */,
+				617111461E286104001B6BA5 /* WZLBadge */,
 				61B1EA811E26030B006F8276 /* PYSearch */,
 				61F9ADAB1E24E63D00649D80 /* GTMBase64 */,
 				61DFD3DE1E235F3600D9C2D7 /* QGAlertView.h */,
@@ -1167,6 +1255,7 @@
 				116DF06C1E20BF3800484D72 /* EmailCell.xib in Resources */,
 				11C3C1441E1FDE6A005A2403 /* MyCollectionViewController.xib in Resources */,
 				115E35841E175258002A9957 /* RightCell.xib in Resources */,
+				6171115B1E28707B001B6BA5 /* ShoppingCartBottom.xib in Resources */,
 				11FE82831E1FA00400309719 /* BonusScanDetailsViewController.xib in Resources */,
 				11DC85461E20938900AE7947 /* WriteEmailViewController.xib in Resources */,
 				615FBF3D1E14CB2200F50C0D /* OrderListViewController.xib in Resources */,
@@ -1203,6 +1292,7 @@
 				616A09B41E128AC600FCF886 /* MeCell.xib in Resources */,
 				611AF9CA1E27197600F10C49 /* ShoppingCartCell.xib in Resources */,
 				11FE82721E1F79A600309719 /* MMNumberKeyboardDismissKey@2x.png in Resources */,
+				617111601E2874E8001B6BA5 /* EmailDetailsViewController.xib in Resources */,
 				615FBF281E14B60500F50C0D /* MyOrdersViewController.xib in Resources */,
 				11FE82731E1F79A600309719 /* MMNumberKeyboardDismissKey@3x.png in Resources */,
 				617F797F1E1651C700E139CF /* BZStoryboard.storyboard in Resources */,
@@ -1372,6 +1462,7 @@
 				617288FA1E10BF110037DB40 /* MeViewController.m in Sources */,
 				11FE82821E1FA00400309719 /* BonusScanDetailsViewController.m in Sources */,
 				619319901E1CB22200AF63E7 /* NSDate+GFCalendar.m in Sources */,
+				6171115F1E2874E8001B6BA5 /* EmailDetailsViewController.m in Sources */,
 				617289171E11071A0037DB40 /* GlobalData.m in Sources */,
 				61DFD3DC1E2351E900D9C2D7 /* PaymentBottomCell.m in Sources */,
 				615FBF451E14FAB300F50C0D /* OrderModel.m in Sources */,
@@ -1422,6 +1513,8 @@
 				6172891F1E1118670037DB40 /* UIView+Addition.m in Sources */,
 				61DFD3D21E23385F00D9C2D7 /* AlwaysBuyViewController.m in Sources */,
 				61DFD3D71E23408700D9C2D7 /* AlwaysBuyCell.m in Sources */,
+				617111561E286104001B6BA5 /* UIBarButtonItem+WZLBadge.m in Sources */,
+				617111551E286104001B6BA5 /* UIViewController+KNSemiModal.m in Sources */,
 				613FB9481E1E1A6B00CB2070 /* BonusTXViewController.m in Sources */,
 				617288AC1E10BCA40037DB40 /* main.m in Sources */,
 				6193198E1E1CB22200AF63E7 /* GFCalendarScrollView.m in Sources */,
@@ -1433,6 +1526,7 @@
 				6193198F1E1CB22200AF63E7 /* GFCalendarView.m in Sources */,
 				619319991E1CB89800AF63E7 /* DZMoneyModel.m in Sources */,
 				11C3C13E1E1FCEAA005A2403 /* AccountSafeViewController.m in Sources */,
+				617111581E286104001B6BA5 /* CAAnimation+WAnimation.m in Sources */,
 				616A09B31E128AC600FCF886 /* MeCell.m in Sources */,
 				61B1EA921E26030B006F8276 /* PYSearchConst.m in Sources */,
 				615FBF3C1E14CB2200F50C0D /* OrderListViewController.m in Sources */,
@@ -1450,12 +1544,14 @@
 				619319A01E1CF67800AF63E7 /* RechargeScanViewController.m in Sources */,
 				617288B81E10BCA40037DB40 /* bz.xcdatamodeld in Sources */,
 				617F79781E1620FF00E139CF /* FunctionListViewController.m in Sources */,
+				617111591E286104001B6BA5 /* UIView+WZLBadge.m in Sources */,
 				61DFD3E01E235F3600D9C2D7 /* QGAlertView.m in Sources */,
 				619319A51E1CF70A00AF63E7 /* RechargeScanCell.m in Sources */,
 				616A09AE1E1253F800FCF886 /* MeHeadView.m in Sources */,
 				115E35881E1766EE002A9957 /* CollectionSectionHeaderView.m in Sources */,
 				617288E61E10BE360037DB40 /* BaseNavigationController.m in Sources */,
 				617289111E10F8750037DB40 /* UserLocationModel.m in Sources */,
+				617111571E286104001B6BA5 /* UITabBarItem+WZLBadge.m in Sources */,
 				61E2F9071E25C2DD00CC61C1 /* GoodsCategoryModel.m in Sources */,
 				11C3C1431E1FDE6A005A2403 /* MyCollectionViewController.m in Sources */,
 			);

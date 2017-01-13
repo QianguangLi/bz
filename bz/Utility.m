@@ -96,11 +96,11 @@
     return [emailTest evaluateWithObject:email];
 }
 
-+ (NSAttributedString *)recombinePrice:(CGFloat)CNPrice orderPrice:(CGFloat)unitPrice
++ (NSAttributedString *)recombinePrice:(CGFloat)marketPrice orderPrice:(CGFloat)price
 {
     NSMutableAttributedString *mutableAttributeStr = [[NSMutableAttributedString alloc] init];
-    NSAttributedString *string1 = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"￥%.f",unitPrice] attributes:@{NSForegroundColorAttributeName : [UIColor redColor],NSFontAttributeName : [UIFont boldSystemFontOfSize:12]}];
-    NSAttributedString *string2 = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"￥%.f",CNPrice] attributes:@{NSForegroundColorAttributeName : [UIColor lightGrayColor],NSFontAttributeName : [UIFont boldSystemFontOfSize:11],NSStrikethroughStyleAttributeName :@(NSUnderlineStyleSingle),NSStrikethroughColorAttributeName : [UIColor lightGrayColor]}];
+    NSAttributedString *string1 = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"￥%.2f",price] attributes:@{NSForegroundColorAttributeName : [UIColor redColor],NSFontAttributeName : [UIFont boldSystemFontOfSize:12]}];
+    NSAttributedString *string2 = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"  ￥%.2f  ",marketPrice] attributes:@{NSForegroundColorAttributeName : [UIColor lightGrayColor],NSFontAttributeName : [UIFont boldSystemFontOfSize:12],NSStrikethroughStyleAttributeName :@(NSUnderlineStyleThick|NSUnderlinePatternSolid),NSStrikethroughColorAttributeName : [UIColor redColor]}];
     [mutableAttributeStr appendAttributedString:string1];
     [mutableAttributeStr appendAttributedString:string2];
     return mutableAttributeStr;

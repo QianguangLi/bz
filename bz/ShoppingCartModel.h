@@ -18,6 +18,7 @@
 
 @property (copy, nonatomic) NSString *storename;//卖家名字
 @property (assign, nonatomic) double totalMoney;//总价格
+@property (strong, nonatomic) NSURL *storelogo;//卖家头像
 
 @property (strong, nonatomic) NSMutableArray<ProductModel> *products;//包含的商品
 
