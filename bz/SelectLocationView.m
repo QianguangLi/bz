@@ -125,8 +125,10 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
-    
+    if (_delegate && [_delegate respondsToSelector:@selector(selectLocation:)]) {
+        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        [_delegate selectLocation:cell.textLabel.text];
+    }
     [self removeFromSuperview];
 }
 

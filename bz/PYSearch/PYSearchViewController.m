@@ -297,6 +297,10 @@
     titleView.py_width = self.view.py_width - 64 - titleView.py_x * 2;
     titleView.py_height = 30;
     UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:titleView.bounds];
+    searchBar.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    searchBar.layer.borderWidth = 0.5;
+    searchBar.layer.cornerRadius = 5;
+    searchBar.clipsToBounds = YES;
     [titleView addSubview:searchBar];
     self.navigationItem.titleView = titleView;
     // 关闭自动调整

@@ -54,8 +54,8 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginSuccess:) name:kLoginSuccessNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(registStore:) name:kRegistStoreNotification object:nil];
 //    self.navigationController.navigationBarHidden = YES;
-    [self initData];
     [self customView];
+    [self initData];
     //判断是否登陆
     if (kIsLogin) {
         [self loginSuccess:nil];
@@ -105,7 +105,8 @@
 
 - (void)initData
 {
-    _dataArray = [NSMutableArray array];
+//    _dataArray = [NSMutableArray array];
+    self.dataArray = nil;
     if (kIsLogin) {
         if (kUserLevel == UserLevelStore) {
             _dataArray = @[@{@"title":Localized(@"我的购物车"), @"subTitle":@""},
@@ -116,13 +117,31 @@
                            @{@"title":Localized(@"进入我的门店"), @"subTitle":@""},
                            @{@"title":Localized(@"帮助中心"), @"subTitle":@""}].mutableCopy;
         } else if (kUserLevel == UserLevelMember) {
-            _dataArray = @[@{@"title":Localized(@"我的购物车"), @"subTitle":@""},
-                           @{@"title":Localized(@"会员信息"), @"subTitle":Localized(@"会员信息修改等")},
-                           @{@"title":Localized(@"账户信息"), @"subTitle":Localized(@"账户明细")},
-                           @{@"title":Localized(@"收藏商品"), @"subTitle":@""},
-                           @{@"title":Localized(@"我的信件"), @"subTitle":@""},
-                           @{@"title":Localized(@"申请门店"), @"subTitle":@""},
-                           @{@"title":Localized(@"帮助中心"), @"subTitle":@""}].mutableCopy;
+            if (_storeState == 0) {
+                _dataArray = @[@{@"title":Localized(@"我的购物车"), @"subTitle":@""},
+                               @{@"title":Localized(@"会员信息"), @"subTitle":Localized(@"会员信息修改等")},
+                               @{@"title":Localized(@"账户信息"), @"subTitle":Localized(@"账户明细")},
+                               @{@"title":Localized(@"收藏商品"), @"subTitle":@""},
+                               @{@"title":Localized(@"我的信件"), @"subTitle":@""},
+                               @{@"title":Localized(@"申请门店"), @"subTitle":@""},
+                               @{@"title":Localized(@"帮助中心"), @"subTitle":@""}].mutableCopy;
+            } else if (_storeState == 1) {
+                _dataArray = @[@{@"title":Localized(@"我的购物车"), @"subTitle":@""},
+                               @{@"title":Localized(@"会员信息"), @"subTitle":Localized(@"会员信息修改等")},
+                               @{@"title":Localized(@"账户信息"), @"subTitle":Localized(@"账户明细")},
+                               @{@"title":Localized(@"收藏商品"), @"subTitle":@""},
+                               @{@"title":Localized(@"我的信件"), @"subTitle":@""},
+                               @{@"title":Localized(@"正在审核"), @"subTitle":@""},
+                               @{@"title":Localized(@"帮助中心"), @"subTitle":@""}].mutableCopy;
+            } else if (_storeState == 2) {
+                _dataArray = @[@{@"title":Localized(@"我的购物车"), @"subTitle":@""},
+                               @{@"title":Localized(@"会员信息"), @"subTitle":Localized(@"会员信息修改等")},
+                               @{@"title":Localized(@"账户信息"), @"subTitle":Localized(@"账户明细")},
+                               @{@"title":Localized(@"收藏商品"), @"subTitle":@""},
+                               @{@"title":Localized(@"我的信件"), @"subTitle":@""},
+                               @{@"title":Localized(@"进入我的门店"), @"subTitle":@""},
+                               @{@"title":Localized(@"帮助中心"), @"subTitle":@""}].mutableCopy;
+            }
         }
     } else {
         _dataArray = @[@{@"title":Localized(@"我的购物车"), @"subTitle":@""},
@@ -133,6 +152,7 @@
                        @{@"title":Localized(@"申请门店"), @"subTitle":@""},
                        @{@"title":Localized(@"帮助中心"), @"subTitle":@""}].mutableCopy;
     }
+    [self.mTableView reloadData];
 }
 
 #pragma mark - UIScrollViewDelegate
@@ -339,6 +359,7 @@
         if ([responseObject[kStatusCode] integerValue] == NetStatusSuccess) {
             NSDictionary *dataDict = responseObject[kResponseData];
             weakSelf.storeState = [dataDict[@"storestate"] integerValue];
+            [weakSelf initData];
         } else {
             [Utility showString:responseObject[kErrMsg] onView:self.view];
         }

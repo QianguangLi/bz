@@ -76,6 +76,22 @@
 		616448291E1B459E0007E50E /* AddressCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 616448271E1B459E0007E50E /* AddressCell.xib */; };
 		6164482C1E1B4B290007E50E /* ShoppingAddressModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6164482B1E1B4B290007E50E /* ShoppingAddressModel.m */; };
 		6164482F1E1B6A030007E50E /* AddShoppingAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6164482E1E1B6A030007E50E /* AddShoppingAddressViewController.m */; };
+		61661C1B1E29F1200022A1FC /* OrderSendDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61661C191E29F1200022A1FC /* OrderSendDetailViewController.m */; };
+		61661C1C1E29F1200022A1FC /* OrderSendDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61661C1A1E29F1200022A1FC /* OrderSendDetailViewController.xib */; };
+		61661C211E29F4DC0022A1FC /* OrderInfoDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 61661C1F1E29F4DC0022A1FC /* OrderInfoDetailCell.m */; };
+		61661C221E29F4DC0022A1FC /* OrderInfoDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61661C201E29F4DC0022A1FC /* OrderInfoDetailCell.xib */; };
+		61661C261E29F5040022A1FC /* OrderInfoSendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 61661C241E29F5040022A1FC /* OrderInfoSendCell.m */; };
+		61661C271E29F5040022A1FC /* OrderInfoSendCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61661C251E29F5040022A1FC /* OrderInfoSendCell.xib */; };
+		61661C2B1E29FD630022A1FC /* BuyerInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 61661C291E29FD630022A1FC /* BuyerInfoCell.m */; };
+		61661C2C1E29FD630022A1FC /* BuyerInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61661C2A1E29FD630022A1FC /* BuyerInfoCell.xib */; };
+		61661C301E29FF990022A1FC /* ExpressInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 61661C2E1E29FF990022A1FC /* ExpressInfoCell.m */; };
+		61661C311E29FF990022A1FC /* ExpressInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61661C2F1E29FF990022A1FC /* ExpressInfoCell.xib */; };
+		61661C351E2A015C0022A1FC /* ReceiptInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 61661C331E2A015C0022A1FC /* ReceiptInfoCell.m */; };
+		61661C361E2A015C0022A1FC /* ReceiptInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61661C341E2A015C0022A1FC /* ReceiptInfoCell.xib */; };
+		61661C3A1E2A021D0022A1FC /* ProductInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 61661C381E2A021D0022A1FC /* ProductInfoCell.m */; };
+		61661C3B1E2A021E0022A1FC /* ProductInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61661C391E2A021D0022A1FC /* ProductInfoCell.xib */; };
+		61661C3F1E2A216B0022A1FC /* OrderSendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61661C3D1E2A216B0022A1FC /* OrderSendViewController.m */; };
+		61661C401E2A216B0022A1FC /* OrderSendViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61661C3E1E2A216B0022A1FC /* OrderSendViewController.xib */; };
 		616A09A91E11FF1600FCF886 /* RegistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 616A09A71E11FF1600FCF886 /* RegistViewController.m */; };
 		616A09AA1E11FF1600FCF886 /* RegistViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 616A09A81E11FF1600FCF886 /* RegistViewController.xib */; };
 		616A09AE1E1253F800FCF886 /* MeHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 616A09AD1E1253F800FCF886 /* MeHeadView.m */; };
@@ -292,6 +308,30 @@
 		6164482B1E1B4B290007E50E /* ShoppingAddressModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingAddressModel.m; sourceTree = "<group>"; };
 		6164482D1E1B6A030007E50E /* AddShoppingAddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddShoppingAddressViewController.h; sourceTree = "<group>"; };
 		6164482E1E1B6A030007E50E /* AddShoppingAddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddShoppingAddressViewController.m; sourceTree = "<group>"; };
+		61661C181E29F1200022A1FC /* OrderSendDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderSendDetailViewController.h; sourceTree = "<group>"; };
+		61661C191E29F1200022A1FC /* OrderSendDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderSendDetailViewController.m; sourceTree = "<group>"; };
+		61661C1A1E29F1200022A1FC /* OrderSendDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderSendDetailViewController.xib; sourceTree = "<group>"; };
+		61661C1E1E29F4DC0022A1FC /* OrderInfoDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderInfoDetailCell.h; sourceTree = "<group>"; };
+		61661C1F1E29F4DC0022A1FC /* OrderInfoDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderInfoDetailCell.m; sourceTree = "<group>"; };
+		61661C201E29F4DC0022A1FC /* OrderInfoDetailCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderInfoDetailCell.xib; sourceTree = "<group>"; };
+		61661C231E29F5040022A1FC /* OrderInfoSendCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderInfoSendCell.h; sourceTree = "<group>"; };
+		61661C241E29F5040022A1FC /* OrderInfoSendCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderInfoSendCell.m; sourceTree = "<group>"; };
+		61661C251E29F5040022A1FC /* OrderInfoSendCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderInfoSendCell.xib; sourceTree = "<group>"; };
+		61661C281E29FD630022A1FC /* BuyerInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyerInfoCell.h; sourceTree = "<group>"; };
+		61661C291E29FD630022A1FC /* BuyerInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyerInfoCell.m; sourceTree = "<group>"; };
+		61661C2A1E29FD630022A1FC /* BuyerInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BuyerInfoCell.xib; sourceTree = "<group>"; };
+		61661C2D1E29FF990022A1FC /* ExpressInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpressInfoCell.h; sourceTree = "<group>"; };
+		61661C2E1E29FF990022A1FC /* ExpressInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExpressInfoCell.m; sourceTree = "<group>"; };
+		61661C2F1E29FF990022A1FC /* ExpressInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExpressInfoCell.xib; sourceTree = "<group>"; };
+		61661C321E2A015C0022A1FC /* ReceiptInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiptInfoCell.h; sourceTree = "<group>"; };
+		61661C331E2A015C0022A1FC /* ReceiptInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiptInfoCell.m; sourceTree = "<group>"; };
+		61661C341E2A015C0022A1FC /* ReceiptInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReceiptInfoCell.xib; sourceTree = "<group>"; };
+		61661C371E2A021D0022A1FC /* ProductInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductInfoCell.h; sourceTree = "<group>"; };
+		61661C381E2A021D0022A1FC /* ProductInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductInfoCell.m; sourceTree = "<group>"; };
+		61661C391E2A021D0022A1FC /* ProductInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductInfoCell.xib; sourceTree = "<group>"; };
+		61661C3C1E2A216B0022A1FC /* OrderSendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderSendViewController.h; sourceTree = "<group>"; };
+		61661C3D1E2A216B0022A1FC /* OrderSendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderSendViewController.m; sourceTree = "<group>"; };
+		61661C3E1E2A216B0022A1FC /* OrderSendViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderSendViewController.xib; sourceTree = "<group>"; };
 		616A09A61E11FF1600FCF886 /* RegistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistViewController.h; sourceTree = "<group>"; };
 		616A09A71E11FF1600FCF886 /* RegistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistViewController.m; sourceTree = "<group>"; };
 		616A09A81E11FF1600FCF886 /* RegistViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegistViewController.xib; sourceTree = "<group>"; };
@@ -528,6 +568,7 @@
 		116DF0701E212AFB00484D72 /* Mendian */ = {
 			isa = PBXGroup;
 			children = (
+				61661C171E29C9070022A1FC /* DealManger */,
 				116DF0711E212B6900484D72 /* MenDianFuncViewController.h */,
 				116DF0721E212B6900484D72 /* MenDianFuncViewController.m */,
 				116DF0731E212B6900484D72 /* MenDianFuncViewController.xib */,
@@ -679,6 +720,45 @@
 				616448251E1B459E0007E50E /* AddressCell.h */,
 				616448261E1B459E0007E50E /* AddressCell.m */,
 				616448271E1B459E0007E50E /* AddressCell.xib */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		61661C171E29C9070022A1FC /* DealManger */ = {
+			isa = PBXGroup;
+			children = (
+				61661C1D1E29F4B00022A1FC /* Cells */,
+				61661C181E29F1200022A1FC /* OrderSendDetailViewController.h */,
+				61661C191E29F1200022A1FC /* OrderSendDetailViewController.m */,
+				61661C1A1E29F1200022A1FC /* OrderSendDetailViewController.xib */,
+				61661C3C1E2A216B0022A1FC /* OrderSendViewController.h */,
+				61661C3D1E2A216B0022A1FC /* OrderSendViewController.m */,
+				61661C3E1E2A216B0022A1FC /* OrderSendViewController.xib */,
+			);
+			name = DealManger;
+			sourceTree = "<group>";
+		};
+		61661C1D1E29F4B00022A1FC /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				61661C1E1E29F4DC0022A1FC /* OrderInfoDetailCell.h */,
+				61661C1F1E29F4DC0022A1FC /* OrderInfoDetailCell.m */,
+				61661C201E29F4DC0022A1FC /* OrderInfoDetailCell.xib */,
+				61661C231E29F5040022A1FC /* OrderInfoSendCell.h */,
+				61661C241E29F5040022A1FC /* OrderInfoSendCell.m */,
+				61661C251E29F5040022A1FC /* OrderInfoSendCell.xib */,
+				61661C281E29FD630022A1FC /* BuyerInfoCell.h */,
+				61661C291E29FD630022A1FC /* BuyerInfoCell.m */,
+				61661C2A1E29FD630022A1FC /* BuyerInfoCell.xib */,
+				61661C2D1E29FF990022A1FC /* ExpressInfoCell.h */,
+				61661C2E1E29FF990022A1FC /* ExpressInfoCell.m */,
+				61661C2F1E29FF990022A1FC /* ExpressInfoCell.xib */,
+				61661C321E2A015C0022A1FC /* ReceiptInfoCell.h */,
+				61661C331E2A015C0022A1FC /* ReceiptInfoCell.m */,
+				61661C341E2A015C0022A1FC /* ReceiptInfoCell.xib */,
+				61661C371E2A021D0022A1FC /* ProductInfoCell.h */,
+				61661C381E2A021D0022A1FC /* ProductInfoCell.m */,
+				61661C391E2A021D0022A1FC /* ProductInfoCell.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -1256,14 +1336,17 @@
 				617288F61E10BF070037DB40 /* ShoppingCartViewController.xib in Resources */,
 				613FB9521E1E355F00CB2070 /* BonusScanCell.xib in Resources */,
 				615FBF531E15064400F50C0D /* OrderProductCell.xib in Resources */,
+				61661C271E29F5040022A1FC /* OrderInfoSendCell.xib in Resources */,
 				617289021E10CBEF0037DB40 /* Localizable.strings in Resources */,
 				616448231E1B39B90007E50E /* ShoppingAddressViewController.xib in Resources */,
 				615FBF421E14E9AC00F50C0D /* RefreshViewController.xib in Resources */,
 				115E358E1E17706B002A9957 /* LeftCell.xib in Resources */,
 				116DF06C1E20BF3800484D72 /* EmailCell.xib in Resources */,
+				61661C401E2A216B0022A1FC /* OrderSendViewController.xib in Resources */,
 				11C3C1441E1FDE6A005A2403 /* MyCollectionViewController.xib in Resources */,
 				115E35841E175258002A9957 /* RightCell.xib in Resources */,
 				6171115B1E28707B001B6BA5 /* ShoppingCartBottom.xib in Resources */,
+				61661C2C1E29FD630022A1FC /* BuyerInfoCell.xib in Resources */,
 				11FE82831E1FA00400309719 /* BonusScanDetailsViewController.xib in Resources */,
 				11DC85461E20938900AE7947 /* WriteEmailViewController.xib in Resources */,
 				615FBF3D1E14CB2200F50C0D /* OrderListViewController.xib in Resources */,
@@ -1272,6 +1355,7 @@
 				619319A61E1CF70A00AF63E7 /* RechargeScanCell.xib in Resources */,
 				11FE82791E1F828300309719 /* DZMoneyDetailsViewController.xib in Resources */,
 				61DFD3DD1E2351E900D9C2D7 /* PaymentBottomCell.xib in Resources */,
+				61661C221E29F4DC0022A1FC /* OrderInfoDetailCell.xib in Resources */,
 				116DF0751E212B6900484D72 /* MenDianFuncViewController.xib in Resources */,
 				61DFD3CE1E232FCA00D9C2D7 /* PaymentViewController.xib in Resources */,
 				613FB94D1E1E352200CB2070 /* BonusTXScanViewController.xib in Resources */,
@@ -1294,10 +1378,12 @@
 				619319961E1CB41800AF63E7 /* DZMoneyCell.xib in Resources */,
 				611AF9C81E27197600F10C49 /* BuyerHeaderCell.xib in Resources */,
 				61A09ED21E13D86200C58519 /* GoodsViewController.xib in Resources */,
+				61661C3B1E2A021E0022A1FC /* ProductInfoCell.xib in Resources */,
 				617288BA1E10BCA40037DB40 /* Assets.xcassets in Resources */,
 				11FE826F1E1F79A600309719 /* MMNumberKeyboardDeleteKey@2x.png in Resources */,
 				61A09ED81E13EA2C00C58519 /* GoodsCell.xib in Resources */,
 				61B1EA911E26030B006F8276 /* PYSearch.bundle in Resources */,
+				61661C361E2A015C0022A1FC /* ReceiptInfoCell.xib in Resources */,
 				616A09B41E128AC600FCF886 /* MeCell.xib in Resources */,
 				611AF9CA1E27197600F10C49 /* ShoppingCartCell.xib in Resources */,
 				11FE82721E1F79A600309719 /* MMNumberKeyboardDismissKey@2x.png in Resources */,
@@ -1305,6 +1391,8 @@
 				615FBF281E14B60500F50C0D /* MyOrdersViewController.xib in Resources */,
 				11FE82731E1F79A600309719 /* MMNumberKeyboardDismissKey@3x.png in Resources */,
 				617F797F1E1651C700E139CF /* BZStoryboard.storyboard in Resources */,
+				61661C311E29FF990022A1FC /* ExpressInfoCell.xib in Resources */,
+				61661C1C1E29F1200022A1FC /* OrderSendDetailViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1469,12 +1557,14 @@
 			files = (
 				61B1EA951E26030B006F8276 /* UIColor+PYSearchExtension.m in Sources */,
 				617288FA1E10BF110037DB40 /* MeViewController.m in Sources */,
+				61661C211E29F4DC0022A1FC /* OrderInfoDetailCell.m in Sources */,
 				11FE82821E1FA00400309719 /* BonusScanDetailsViewController.m in Sources */,
 				619319901E1CB22200AF63E7 /* NSDate+GFCalendar.m in Sources */,
 				6171115F1E2874E8001B6BA5 /* EmailDetailsViewController.m in Sources */,
 				617289171E11071A0037DB40 /* GlobalData.m in Sources */,
 				61DFD3DC1E2351E900D9C2D7 /* PaymentBottomCell.m in Sources */,
 				615FBF451E14FAB300F50C0D /* OrderModel.m in Sources */,
+				61661C3A1E2A021D0022A1FC /* ProductInfoCell.m in Sources */,
 				616448221E1B39B90007E50E /* ShoppingAddressViewController.m in Sources */,
 				61A09ECA1E138D8D00C58519 /* Address.m in Sources */,
 				613FB9511E1E355F00CB2070 /* BonusScanCell.m in Sources */,
@@ -1484,6 +1574,7 @@
 				61B1EA961E26030B006F8276 /* UIView+PYSearchExtension.m in Sources */,
 				61F9ADAA1E24734B00649D80 /* UIView+MyFont.m in Sources */,
 				61F437F31E153A5000762CAF /* ProductModel.m in Sources */,
+				61661C301E29FF990022A1FC /* ExpressInfoCell.m in Sources */,
 				617288E31E10BE110037DB40 /* BaseTabBarController.m in Sources */,
 				61DFD3E31E23802900D9C2D7 /* RegistStoreViewController.m in Sources */,
 				6193198C1E1CB22200AF63E7 /* GFCalendarCell.m in Sources */,
@@ -1502,9 +1593,11 @@
 				61B1EA931E26030B006F8276 /* PYSearchSuggestionViewController.m in Sources */,
 				61B1EA901E26030B006F8276 /* NSBundle+PYSearchExtension.m in Sources */,
 				115E35831E175258002A9957 /* RightCell.m in Sources */,
+				61661C351E2A015C0022A1FC /* ReceiptInfoCell.m in Sources */,
 				615FBF521E15064400F50C0D /* OrderProductCell.m in Sources */,
 				1154B99E1E113C3E00C8459D /* NetService.m in Sources */,
 				11FE826D1E1F79A600309719 /* MMNumberKeyboard.m in Sources */,
+				61661C3F1E2A216B0022A1FC /* OrderSendViewController.m in Sources */,
 				613FB94C1E1E352200CB2070 /* BonusTXScanViewController.m in Sources */,
 				6193197E1E1CA41200AF63E7 /* DZMoneyViewController.m in Sources */,
 				11DC85451E20938900AE7947 /* WriteEmailViewController.m in Sources */,
@@ -1516,6 +1609,7 @@
 				11FE82781E1F828300309719 /* DZMoneyDetailsViewController.m in Sources */,
 				611AF9C21E2713D200F10C49 /* ShoppingCartModel.m in Sources */,
 				615FBF371E14BF0400F50C0D /* GoodsCategoryViewController.m in Sources */,
+				61661C1B1E29F1200022A1FC /* OrderSendDetailViewController.m in Sources */,
 				615FBF5C1E1506AB00F50C0D /* OrderListBottomCell.m in Sources */,
 				116DF0651E20BE8500484D72 /* EmailViewController.m in Sources */,
 				11FE827D1E1F917500309719 /* RechargeDetailsViewController.m in Sources */,
@@ -1525,6 +1619,7 @@
 				61DFD3D71E23408700D9C2D7 /* AlwaysBuyCell.m in Sources */,
 				617111561E286104001B6BA5 /* UIBarButtonItem+WZLBadge.m in Sources */,
 				617111551E286104001B6BA5 /* UIViewController+KNSemiModal.m in Sources */,
+				61661C261E29F5040022A1FC /* OrderInfoSendCell.m in Sources */,
 				613FB9481E1E1A6B00CB2070 /* BonusTXViewController.m in Sources */,
 				617288AC1E10BCA40037DB40 /* main.m in Sources */,
 				6193198E1E1CB22200AF63E7 /* GFCalendarScrollView.m in Sources */,
@@ -1542,6 +1637,7 @@
 				615FBF3C1E14CB2200F50C0D /* OrderListViewController.m in Sources */,
 				617288F01E10BEF30037DB40 /* FirstPageViewController.m in Sources */,
 				61581A8C1E1DD79100985112 /* RechargeModel.m in Sources */,
+				61661C2B1E29FD630022A1FC /* BuyerInfoCell.m in Sources */,
 				61A09EC71E1386E200C58519 /* DataBaseService.m in Sources */,
 				6164482C1E1B4B290007E50E /* ShoppingAddressModel.m in Sources */,
 				6193199C1E1CEE5800AF63E7 /* DZMoneyRechargeViewController.m in Sources */,

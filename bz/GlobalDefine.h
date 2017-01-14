@@ -143,6 +143,17 @@ typedef NS_ENUM(NSInteger, MeMenu) {
     MeMenuHelpCenter,//帮助中心
 };
 
+//我页面功能菜单
+typedef NS_ENUM(NSInteger, StoreMenu) {
+    StoreMenuDealManager = 0,//交易管理
+    StoreMenuSetting,//门店设置
+    StoreMenuStockManager,//库存管理
+    StoreMenuGoodsManager,//商品管理
+    StoreMenuCustomer,//门店客户
+    StoreMenuEmail,//门店信件
+    StoreMenuApply,//申请供应商
+};
+
 //网络状态码
 typedef NS_ENUM(NSInteger, NetStatus) {
     NetStatusSuccess = 00000,//请求成功

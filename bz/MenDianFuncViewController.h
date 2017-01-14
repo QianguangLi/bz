@@ -13,6 +13,6 @@
  */
 @interface MenDianFuncViewController : BaseViewController
 
-@property (assign, nonatomic) NSInteger menu;//菜单
+@property (assign, nonatomic) StoreMenu menu;//菜单
 
 @end

@@ -283,6 +283,9 @@
 {
     GoodsCategoryModel *model = self.subCategories[indexPath.section];
     NSArray *subArr = model.subCategories;
+    if (indexPath.row >= subArr.count) {
+        return;
+    }
     GoodsCategoryModel *subModel = subArr[indexPath.row];
     [self pushToSearchVCWithCategoryModel:subModel andKeyWords:nil];
 }

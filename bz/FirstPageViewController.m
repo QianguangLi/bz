@@ -14,7 +14,7 @@
 #import "GoodsViewController.h"
 #import "SelectLocationView.h"
 
-@interface FirstPageViewController () <UISearchBarDelegate, PYSearchViewControllerDelegate, UITextFieldDelegate>
+@interface FirstPageViewController () <UISearchBarDelegate, PYSearchViewControllerDelegate, UITextFieldDelegate, SelectLocationViewDelegate>
 
 @property (strong, nonatomic) UITextField *topSearchBar;
 
@@ -79,9 +79,8 @@
 - (void)rightItemAction:(UIBarButtonItem *)item
 {
     //TODO: right item touched
-    NSLog(@"right item touched");
-//    SelectLocationView *view = [[SelectLocationView alloc] initWithFrame:CGRectZero];
     SelectLocationView *view = [[[NSBundle mainBundle] loadNibNamed:@"SelectLocationView" owner:nil options:nil] firstObject];
+    view.delegate = self;
     [appDelegate.window addSubview:view];
     
 }
@@ -92,6 +91,13 @@
     if (model) {
         [self.navigationItem.rightBarButtonItem setTitle:model.city];
     }
+}
+
+#pragma mark - SelectLocationViewDelegate
+- (void)selectLocation:(NSString *)areaName
+{
+    //TODO:选择地理位置后操作
+    [self.navigationItem.rightBarButtonItem setTitle:areaName];
 }
 
 #pragma mark - UISearchBarDelegate

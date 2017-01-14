@@ -8,6 +8,7 @@
 
 #import "MenDianFuncViewController.h"
 #import "MeCell.h"
+#import "OrderSendViewController.h"
 
 @interface MenDianFuncViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *functionTableView;
@@ -20,6 +21,31 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    switch (_menu) {
+        case StoreMenuDealManager:
+            self.title = Localized(@"交易管理");
+            break;
+        case StoreMenuSetting:
+            self.title = Localized(@"门店设置");
+            break;
+        case StoreMenuStockManager:
+            self.title = Localized(@"库存管理");
+            break;
+        case StoreMenuGoodsManager:
+            self.title = Localized(@"商品管理");
+            break;
+        case StoreMenuCustomer:
+            self.title = Localized(@"门店客户");
+            break;
+        case StoreMenuEmail:
+            self.title = Localized(@"门店信件");
+            break;
+        case StoreMenuApply:
+            self.title = Localized(@"申请供应商");
+            break;
+        default:
+            break;
+    }
     [self initFunctionArray];
     _functionTableView.contentInset = UIEdgeInsetsMake(5, 0, 0, 0);
     [_functionTableView registerNib:[UINib nibWithNibName:@"MeCell" bundle:nil] forCellReuseIdentifier:@"MeCell"];
@@ -28,34 +54,39 @@
 - (void)initFunctionArray
 {
     switch (_menu) {
-        case 0:
+        case StoreMenuDealManager:
         {
             _functionArray = [NSArray arrayWithObjects:Localized(@"抢单/附近订单"), Localized(@"订单发货"), Localized(@"送达订单"), Localized(@"交易订单"), Localized(@"交易评价"), Localized(@"审核退货单"), nil];
         }
             break;
-        case 1:
+        case StoreMenuSetting:
         {
             _functionArray = [NSArray arrayWithObjects:Localized(@"送达时间折扣"), Localized(@"我的门店"), Localized(@"门店装修"), Localized(@"域名设置"), Localized(@"门店信息修改"), Localized(@"门店位置设置"), nil];
         }
             break;
-        case 2:
+        case StoreMenuStockManager:
         {
             _functionArray = [NSArray arrayWithObjects:Localized(@"商品上下架"), Localized(@"库存查询"), Localized(@"仓库管理"), Localized(@"申请入库"), Localized(@"入库查询"), nil];
         }
             break;
-        case 3:
+        case StoreMenuGoodsManager:
         {
             _functionArray = [NSArray arrayWithObjects:Localized(@"商品发布"), Localized(@"商品查询"), Localized(@"在线订货"), Localized(@"在线订货订单"), nil];
         }
             break;
-        case 4:
+        case StoreMenuCustomer:
         {
             _functionArray = [NSArray arrayWithObjects:Localized(@"门店级别设置"), Localized(@"添加客户"), Localized(@"查询客户"), nil];
         }
             break;
-        case 5:
+        case StoreMenuEmail:
         {
             _functionArray = [NSArray arrayWithObjects:Localized(@"写信件"), Localized(@"收件箱"), Localized(@"发件箱"), Localized(@"废件箱"), nil];
+        }
+            break;
+        case StoreMenuApply:
+        {
+            NSLog(@"申请供应商");
         }
             break;
         default:
@@ -83,7 +114,52 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    switch (_menu) {
+        case StoreMenuDealManager:
+            [self dealManger:indexPath];
+            break;
+        case StoreMenuSetting:
+            
+            break;
+        case StoreMenuStockManager:
+            
+            break;
+        case StoreMenuGoodsManager:
+            
+            break;
+        case StoreMenuCustomer:
+            
+            break;
+        case StoreMenuEmail:
+            
+            break;
+        case StoreMenuApply:
+            
+            break;
+            
+        default:
+            break;
+    }
+}
 
+- (void)dealManger:(NSIndexPath *)indexPath
+{
+    switch (indexPath.row) {
+        case 0:
+            
+            break;
+        case 1:
+        {
+             OrderSendViewController *vc = [[OrderSendViewController alloc] init];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+            
+            break;
+            
+        default:
+            break;
+    }
 }
 
 - (void)didReceiveMemoryWarning {
