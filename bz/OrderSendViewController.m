@@ -8,6 +8,7 @@
 
 #import "OrderSendViewController.h"
 #import "OrderSendDetailViewController.h"
+#import "MeCell.h"
 
 @interface OrderSendViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -19,7 +20,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.title = Localized(@"订单发货");
-    [self.mTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"OrderSendCell"];
+    self.mTableView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight);
+    [self.mTableView registerNib:[UINib nibWithNibName:@"MeCell" bundle:nil] forCellReuseIdentifier:@"MeCell"];
     self.mTableView.delegate = self;
     self.mTableView.dataSource = self;
 }
@@ -32,15 +34,20 @@
 #pragma mark - UITableViewDelegate 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 10;
+    return 30;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"OrderSendCell" forIndexPath:indexPath];
-    cell.textLabel.text = @"订单号:123456789";
-    cell.detailTextLabel.text = @"查看更多";
+    MeCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MeCell" forIndexPath:indexPath];
+    cell.titleLabel.text = @"订单号:123456789";
+    cell.subTitleLabel.text = @"查看更多";
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 60;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

@@ -9,8 +9,7 @@
 #import "MeCell.h"
 
 @interface MeCell ()
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-@property (weak, nonatomic) IBOutlet UILabel *subTitleLabel;
+
 
 @end
 

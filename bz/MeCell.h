@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface MeCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *subTitleLabel;
 
 - (void)setContentWithDict:(NSDictionary *)dict;
 

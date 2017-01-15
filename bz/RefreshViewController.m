@@ -53,17 +53,24 @@
     }
 }
 
+- (void)endRefresh:(NSError *)error
+{
+    if (error && IS_NULL_ARRAY(self.dataArray)) {
+        self.tipView.text = Localized(@"数据加载失败,请重新加载");
+        self.tipView.hidden = NO;
+    } else {
+        self.tipView.hidden = YES;
+    }
+    self.isRefreshing = NO;
+    [self stopRefreshing];
+}
+
 - (void)startRequest
 {
     self.isRefreshing = YES;
     WS(weakSelf);
     [self requestDataListPullDown:YES andEndRefreshing:^(NSError *error) {
-        if (error && IS_NULL_ARRAY(weakSelf.dataArray)) {
-            weakSelf.tipView.text = Localized(@"数据加载失败,请重新加载");
-            weakSelf.tipView.hidden = NO;
-        }
-        weakSelf.isRefreshing = NO;
-        [weakSelf stopRefreshing];
+        [weakSelf endRefresh:error];
     }];
 }
 
@@ -87,14 +94,7 @@
             
             weakSelf.isRefreshing = YES;
             [weakSelf requestDataListPullDown:YES andEndRefreshing:^(NSError *error) {
-                if (error && IS_NULL_ARRAY(weakSelf.dataArray)) {
-                    //如果出错并且数组为空，显示错误
-                    weakSelf.tipView.text = Localized(@"数据加载失败,请重新加载");
-                    weakSelf.tipView.hidden = NO;
-                }
-
-                weakSelf.isRefreshing = NO;
-                [weakSelf stopRefreshing];
+                [weakSelf endRefresh:error];
             }];
         }];
 
@@ -119,13 +119,7 @@
             
             weakSelf.isRefreshing = YES;
             [weakSelf requestDataListPullDown:NO andEndRefreshing:^(NSError *error) {
-                if (error && IS_NULL_ARRAY(weakSelf.dataArray)) {
-                    //如果出错并且数组为空，显示错误
-                    weakSelf.tipView.text = Localized(@"数据加载失败,请重新加载");
-                    weakSelf.tipView.hidden = NO;
-                }
-                weakSelf.isRefreshing = NO;
-                [weakSelf stopRefreshing];
+                [weakSelf endRefresh:error];
             }];
         }];
 
@@ -151,9 +145,9 @@
 
 - (void)showTipWithNoData:(BOOL)show
 {
-    WS(weakSelf);
-    weakSelf.tipView.text = Localized(@"无数据");
-    weakSelf.tipView.hidden = !show;
+//    WS(weakSelf);
+    self.tipView.text = Localized(@"无数据");
+    self.tipView.hidden = !show;
 }
 
 - (void)didReceiveMemoryWarning {

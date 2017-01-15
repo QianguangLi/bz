@@ -152,6 +152,8 @@
         case 1:
         {
              OrderSendViewController *vc = [[OrderSendViewController alloc] init];
+            vc.isRequireRefreshFooter = YES;
+            vc.isRequireRefreshHeader = YES;
             [self.navigationController pushViewController:vc animated:YES];
         }
             
