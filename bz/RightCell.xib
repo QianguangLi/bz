@@ -19,6 +19,10 @@
                 <rect key="frame" x="0.0" y="0.0" width="80" height="102"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GfB-wY-YRd">
+                        <rect key="frame" x="0.0" y="0.0" width="80" height="102"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="D5F-9t-jAs">
                         <rect key="frame" x="3" y="3" width="74" height="74"/>
                         <constraints>
@@ -39,8 +43,12 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="8tL-0X-WEd" secondAttribute="trailing" constant="5" id="9on-nO-d1g"/>
+                <constraint firstAttribute="trailing" secondItem="GfB-wY-YRd" secondAttribute="trailing" id="Bkf-Is-aZY"/>
                 <constraint firstItem="8tL-0X-WEd" firstAttribute="top" secondItem="D5F-9t-jAs" secondAttribute="bottom" constant="3" id="QWX-yw-jWP"/>
+                <constraint firstAttribute="bottom" secondItem="GfB-wY-YRd" secondAttribute="bottom" id="Qd6-d4-MMD"/>
+                <constraint firstItem="GfB-wY-YRd" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="VuC-m1-GWO"/>
                 <constraint firstItem="D5F-9t-jAs" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="3" id="bJ2-I1-rOm"/>
+                <constraint firstItem="GfB-wY-YRd" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="kKQ-9O-oRV"/>
                 <constraint firstAttribute="trailing" secondItem="D5F-9t-jAs" secondAttribute="trailing" constant="3" id="n4a-HE-K2o"/>
                 <constraint firstItem="8tL-0X-WEd" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="rJL-7Z-sRG"/>
                 <constraint firstItem="D5F-9t-jAs" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="3" id="wDH-Oe-rVF"/>

@@ -37,6 +37,11 @@
 }
 
 - (void)viewDidLoad {
+    //默认电子账户 全部 日期为空
+    _filterString = @"-1";
+    _actionString = @"0";
+    _startTime = @"";
+    _endTime = @"";
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.title = Localized(@"账户明细");
@@ -45,11 +50,7 @@
     self.mTableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     self.mTableView.delegate = self;
     self.mTableView.dataSource = self;
-    //默认电子账户 全部 日期为空
-    _filterString = @"-1";
-    _actionString = @"0";
-    _startTime = @"";
-    _endTime = @"";
+    
     
     [self.mTableView registerNib:[UINib nibWithNibName:@"DZMoneyCell" bundle:nil] forCellReuseIdentifier:@"DZMoneyCell"];
     

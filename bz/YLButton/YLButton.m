@@ -9,6 +9,13 @@
 
 #import "YLButton.h"
 
+@interface YLButton ()
+{
+    BOOL isRightImage;
+}
+
+@end
+
 @implementation YLButton
 
 - (CGRect)titleRectForContentRect:(CGRect)contentRect{
@@ -37,26 +44,42 @@
 
 - (void)setRightImage:(UIImage *)image forState:(UIControlState)state
 {
+    isRightImage = YES;
     [self setImage:[image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:state];
     NSDictionary *dict = @{NSFontAttributeName:self.titleLabel.font};
     CGRect rect = [self.titleLabel.text boundingRectWithSize:CGSizeMake(INTMAX_MAX, 30) options:NSStringDrawingTruncatesLastVisibleLine|NSStringDrawingUsesFontLeading|NSStringDrawingUsesLineFragmentOrigin attributes:dict context:nil];
     self.titleRect = CGRectMake(self.frame.size.width/2 - rect.size.width/2, self.frame.size.height/2 - rect.size.height/2, rect.size.width, rect.size.height);
-//    今天文字靠右
-//    self.imageRect = CGRectMake(rect.size.width + self.frame.size.width/2 - rect.size.width/2, self.frame.size.height/2 - image.size.height/2, image.size.width, image.size.height);
     //button 最右边图片
     self.imageRect = CGRectMake(self.frame.size.width-image.size.width-5, self.frame.size.height/2 - image.size.height/2, image.size.width, image.size.height);
 }
 
 - (void)setTextRightImage:(UIImage *)image forState:(UIControlState)state
 {
+    isRightImage = NO;
     [self setImage:[image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:state];
     NSDictionary *dict = @{NSFontAttributeName:self.titleLabel.font};
     CGRect rect = [self.titleLabel.text boundingRectWithSize:CGSizeMake(INTMAX_MAX, 30) options:NSStringDrawingTruncatesLastVisibleLine|NSStringDrawingUsesFontLeading|NSStringDrawingUsesLineFragmentOrigin attributes:dict context:nil];
     self.titleRect = CGRectMake(self.frame.size.width/2 - rect.size.width/2, self.frame.size.height/2 - rect.size.height/2, rect.size.width, rect.size.height);
     //    今天文字靠右
     self.imageRect = CGRectMake(rect.size.width + self.frame.size.width/2 - rect.size.width/2, self.frame.size.height/2 - image.size.height/2, image.size.width, image.size.height);
-    //button 最右边图片
-//    self.imageRect = CGRectMake(self.frame.size.width-image.size.width-5, self.frame.size.height/2 - image.size.height/2, image.size.width, image.size.height);
+}
+
+- (void)setTitle:(NSString *)title forState:(UIControlState)state
+{
+    [super setTitle:title forState:state];
+    if (isRightImage) {
+        NSDictionary *dict = @{NSFontAttributeName:self.titleLabel.font};
+        CGRect rect = [self.titleLabel.text boundingRectWithSize:CGSizeMake(INTMAX_MAX, 30) options:NSStringDrawingTruncatesLastVisibleLine|NSStringDrawingUsesFontLeading|NSStringDrawingUsesLineFragmentOrigin attributes:dict context:nil];
+        self.titleRect = CGRectMake(self.frame.size.width/2 - rect.size.width/2, self.frame.size.height/2 - rect.size.height/2, rect.size.width, rect.size.height);
+        //button 最右边图片
+        self.imageRect = CGRectMake(self.frame.size.width-self.currentImage.size.width-5, self.frame.size.height/2 - self.currentImage.size.height/2, self.currentImage.size.width, self.currentImage.size.height);
+    } else {
+        NSDictionary *dict = @{NSFontAttributeName:self.titleLabel.font};
+        CGRect rect = [self.titleLabel.text boundingRectWithSize:CGSizeMake(INTMAX_MAX, 30) options:NSStringDrawingTruncatesLastVisibleLine|NSStringDrawingUsesFontLeading|NSStringDrawingUsesLineFragmentOrigin attributes:dict context:nil];
+        self.titleRect = CGRectMake(self.frame.size.width/2 - rect.size.width/2, self.frame.size.height/2 - rect.size.height/2, rect.size.width, rect.size.height);
+        //    今天文字靠右
+        self.imageRect = CGRectMake(rect.size.width + self.frame.size.width/2 - rect.size.width/2, self.frame.size.height/2 - self.currentImage.size.height/2, self.currentImage.size.width, self.currentImage.size.height);
+    }
 }
 
 @end

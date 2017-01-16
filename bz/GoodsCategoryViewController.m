@@ -144,6 +144,7 @@
     _goodsVC.isRequireRefreshHeader = YES;
     _goodsVC.isRequireRefreshFooter = YES;
     _goodsVC.delay = model?NO:YES;//延迟加载数据
+    _goodsVC.isFirstEntry = YES;
     _goodsVC.model = model;
     _goodsVC.kw = kw;
     // 2. 创建搜索控制器

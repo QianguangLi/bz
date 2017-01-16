@@ -59,6 +59,15 @@
 }
 
 - (void)viewDidLoad {
+    
+    //默认全部订单
+    _payStatus = @"-1";
+    _allButton.selected = YES;
+    _notPayButton.selected = NO;
+    _payedButton.selected = NO;
+    _startTime = @"";
+    _endTime = @"";
+    
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshData:) name:kDeleteRechargeSuccessNotification object:nil];
@@ -72,13 +81,6 @@
     [self.mTableView registerNib:[UINib nibWithNibName:@"RechargeScanCell" bundle:nil] forCellReuseIdentifier:@"RechargeScanCell"];
     
     [self setupSearchView];
-    //默认全部订单
-    _payStatus = @"-1";
-    _allButton.selected = YES;
-    _notPayButton.selected = NO;
-    _payedButton.selected = NO;
-    _startTime = @"";
-    _endTime = @"";
     
     MMNumberKeyboard *numberKeyboard1 = [[MMNumberKeyboard alloc] initWithFrame:CGRectZero];
     numberKeyboard1.allowsDecimalPoint = YES;

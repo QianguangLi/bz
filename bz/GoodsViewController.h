@@ -18,4 +18,6 @@
 
 @property (copy, nonatomic) NSString *kw;
 
+@property (assign, nonatomic) BOOL isFirstEntry;//第一次进入
+
 @end

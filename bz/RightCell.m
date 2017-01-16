@@ -27,7 +27,7 @@
     _indexPath = indexPath;
     if (model) {
         _classLabel.text = model.categoryName;
-        [_classImageView setImageWithURL:[NSURL URLWithString:@""] placeholderImage:[UIImage imageNamed:@"fenlei_women-dress"]];
+        [_classImageView setImageWithURL:[NSURL URLWithString:model.imgUrl] placeholderImage:[UIImage imageNamed:@"fenlei_women-dress"]];
     } else {
         _classLabel.text = @"";
         _classImageView.image = nil;

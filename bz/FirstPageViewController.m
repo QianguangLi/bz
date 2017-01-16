@@ -79,9 +79,9 @@
 - (void)rightItemAction:(UIBarButtonItem *)item
 {
     //TODO: right item touched
-    SelectLocationView *view = [[[NSBundle mainBundle] loadNibNamed:@"SelectLocationView" owner:nil options:nil] firstObject];
-    view.delegate = self;
-    [appDelegate.window addSubview:view];
+    SelectLocationView *selectLocationView = [[[NSBundle mainBundle] loadNibNamed:@"SelectLocationView" owner:nil options:nil] firstObject];
+    selectLocationView.delegate = self;
+    [appDelegate.window addSubview:selectLocationView];
     
 }
 
@@ -121,6 +121,7 @@
     _goodsVC.isRequireRefreshHeader = YES;
     _goodsVC.isRequireRefreshFooter = YES;
     _goodsVC.delay = model?NO:YES;//延迟加载数据
+    _goodsVC.isFirstEntry = YES;
     _goodsVC.model = model;
     _goodsVC.kw = kw;
     // 2. 创建搜索控制器

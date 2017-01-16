@@ -34,7 +34,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="摘要" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BU2-uA-7eH">
-                                <rect key="frame" x="57" y="53.5" width="255" height="17"/>
+                                <rect key="frame" x="57" y="53.5" width="29" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -57,8 +57,7 @@
                             <constraint firstItem="pxt-iM-kbZ" firstAttribute="centerX" secondItem="yrQ-h3-RZ0" secondAttribute="centerX" id="03h-jF-HJN"/>
                             <constraint firstItem="5JQ-jN-oPW" firstAttribute="leading" secondItem="dPM-rB-Dym" secondAttribute="leading" id="9v0-MC-9vj"/>
                             <constraint firstItem="dPM-rB-Dym" firstAttribute="centerY" secondItem="ccR-eO-Rdc" secondAttribute="centerY" id="CZ6-zn-xBk"/>
-                            <constraint firstItem="yrQ-h3-RZ0" firstAttribute="leading" secondItem="ccR-eO-Rdc" secondAttribute="leading" constant="8" id="G3X-1d-5Ht"/>
-                            <constraint firstAttribute="trailing" secondItem="BU2-uA-7eH" secondAttribute="trailing" constant="8" id="NZ3-a0-U1f"/>
+                            <constraint firstItem="pxt-iM-kbZ" firstAttribute="width" secondItem="yrQ-h3-RZ0" secondAttribute="width" id="HD1-BS-zfj"/>
                             <constraint firstItem="yrQ-h3-RZ0" firstAttribute="centerY" secondItem="ccR-eO-Rdc" secondAttribute="centerY" constant="-9" id="PaA-5i-9EO"/>
                             <constraint firstItem="BU2-uA-7eH" firstAttribute="leading" secondItem="dPM-rB-Dym" secondAttribute="leading" id="YWD-WS-Voq"/>
                             <constraint firstItem="pxt-iM-kbZ" firstAttribute="centerY" secondItem="ccR-eO-Rdc" secondAttribute="centerY" constant="9" id="ZDA-2e-3kB"/>
