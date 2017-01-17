@@ -32,6 +32,7 @@
 #define kPinkColor QGCOLOR(227, 28, 118, 1)
 
 #define WS(weakSelf)  __weak __typeof(self)weakSelf = self
+#define UserDefaults [NSUserDefaults standardUserDefaults]
 
 #define kLoginUserName [GlobalData sharedGlobalData].userName
 #define kIsLogin [GlobalData sharedGlobalData].isLogin

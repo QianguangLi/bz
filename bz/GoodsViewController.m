@@ -12,6 +12,7 @@
 #import "ProductModel.h"
 #import "YLButton.h"
 #import "QGDropDownMenu.h"
+#import "GoodsDetailViewController.h"
 
 @interface GoodsViewController () <UITableViewDelegate, UITableViewDataSource, QGDropDownMenuDateSource, QGDropDownMenuDelegate>
 {
@@ -29,6 +30,7 @@
 
 @property (copy, nonatomic) NSString *order;//排序依据(default:默认sales:销量price:价格ontime:上架时间)
 @property (copy, nonatomic) NSString *action;//排序动作(asc:升序desc:降序)
+@property (copy, nonatomic) NSString *pinpaiCode;//品牌code
 
 
 @property (strong, nonatomic) NSArray *priceArray;//价格排行数组
@@ -50,6 +52,8 @@
 
 - (void)viewDidLoad {
     _pinpaiArray = [NSMutableArray array];
+    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:@"-1", @"pinpaicode", @"商品品牌", @"pinpainame", nil];
+    [self.pinpaiArray addObject:dict];
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self initSecondNavigation];
@@ -181,9 +185,7 @@
     if (_isFirstEntry) {
         [_task cancel];
         WS(weakSelf);
-        if (IS_NULL_STRING(_kw)) {
-            _kw = @"";
-        }
+        _kw = IS_NULL_STRING(_kw)?@"":_kw;
         NSString *categoryId = IS_NULL_STRING(_model.categoryId) ? @"" : _model.categoryId;
         
         NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
@@ -206,8 +208,8 @@
                 //品牌数组
                 NSArray *pArray = dataDict[@"pingpaiList"];
                 if (!IS_NULL_ARRAY(pArray)) {
-                    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:@"-1", @"pinpaicode", @"商品品牌", @"pinpainame", nil];
-                    [weakSelf.pinpaiArray addObject:dict];
+//                    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:@"-1", @"pinpaicode", @"商品品牌", @"pinpainame", nil];
+//                    [weakSelf.pinpaiArray addObject:dict];
                     [weakSelf.pinpaiArray addObjectsFromArray:pArray];
                 }
                 //商品字典
@@ -230,17 +232,19 @@
     } else {
         [_otherTask cancel];
         WS(weakSelf);
-        if (IS_NULL_STRING(_kw)) {
-            _kw = @"";
-        }
+        //如果参数为空设置默认值
+        _kw = IS_NULL_STRING(_kw)?@"":_kw;
+        _order = IS_NULL_STRING(_order)?@"default":_order;
+        _action = IS_NULL_STRING(_action)?@"":_action;
+        _pinpaiCode = IS_NULL_STRING(_pinpaiCode)?@"-1":_pinpaiCode;
         NSString *categoryId = IS_NULL_STRING(_model.categoryId) ? @"" : _model.categoryId;
         
         NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                      StringFromNumber(weakSelf.pageIndex), kPageIndex,
                                      StringFromNumber(weakSelf.pageSize), kPageSize,
-                                     @"default", @"order",
-                                     @"", @"action",
-                                     @"-1", @"ppcode",
+                                     _order, @"order",
+                                     _action, @"action",
+                                     _pinpaiCode, @"ppcode",
                                      categoryId, @"categoryId",
                                      _kw, @"kw",
                                      @"", @"startMoney",
@@ -317,7 +321,6 @@
                 return i;
             }
         }
-        return 0;
     }
     return 0;
 }
@@ -384,7 +387,11 @@
     } else if (menu == _pinpaiMenu) {
         YLButton *btn = [self.secondNavigation viewWithTag:101];
         [btn setTitle:_pinpaiArray[row][@"pinpainame"] forState:UIControlStateNormal];
+        _pinpaiCode = _pinpaiArray[row][@"pinpaicode"];
     }
+    //重新刷新 清空数据
+    [self.dataArray removeAllObjects];
+    [self.mTableView reloadData];
     [self startRequest];
 }
 
@@ -408,6 +415,10 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    ProductModel *model = self.dataArray[indexPath.row];
+    GoodsDetailViewController *vc = [[GoodsDetailViewController alloc] init];
+    vc.productId = model.productId;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath

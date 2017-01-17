@@ -16,6 +16,8 @@
 #import "NetService.h"
 #import "GoodsCategoryModel.h"
 
+static NSString *goodsCategoryCache = @"goodCategoryCache";
+
 @interface GoodsCategoryViewController () <UISearchBarDelegate, PYSearchViewControllerDelegate, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 {
     NSURLSessionTask *_task;
@@ -62,11 +64,48 @@
     //导航栏透明，方式覆盖下方view
     self.edgesForExtendedLayout = UIRectEdgeNone;
     
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
     [self getAllCategory];
+}
+
+- (void)setGoodsCategoryCache:(id)responseObject
+{
+    [UserDefaults setObject:responseObject forKey:goodsCategoryCache];
+}
+
+- (void)getGoodsCategoryCacheAndShow
+{
+    id responseObject = [UserDefaults objectForKey:goodsCategoryCache];
+    if (!responseObject) {
+        return;
+    }
+    NSArray *dataArray = responseObject[kResponseData];
+    [self.categories removeAllObjects];
+    for (NSDictionary *dict in dataArray) {
+        GoodsCategoryModel *model = [[GoodsCategoryModel alloc] initWithDictionary:dict error:nil];
+        [self.categories addObject:model];
+    }
+    [self.leftTableView reloadData];
+    if (!IS_NULL_ARRAY(self.categories)) {
+        [self.leftTableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionTop];
+        GoodsCategoryModel *model = self.categories[0];
+        if (model.hasChild) {
+            //                    [weakSelf.collectionArray removeAllObjects];
+            self.subCategories = model.subCategories;
+            [self.rightCollectionView reloadData];
+        }
+    }
 }
 
 - (void)getAllCategory
 {
+    [_task cancel];
+    //每次请求先从缓存读取数据并显示
+    [self getGoodsCategoryCacheAndShow];
     WS(weakSelf);
     _task = [NetService GET:@"api/Home/GetAllCategory" parameters:nil complete:^(id responseObject, NSError *error) {
         if (error) {
@@ -76,6 +115,8 @@
         }
         NSLog(@"%@", responseObject);
         if ([responseObject[kStatusCode] integerValue] == NetStatusSuccess) {
+            //数据加载成功设置缓存
+            [weakSelf setGoodsCategoryCache:responseObject];
             NSArray *dataArray = responseObject[kResponseData];
             [weakSelf.categories removeAllObjects];
             for (NSDictionary *dict in dataArray) {

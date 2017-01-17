@@ -41,7 +41,7 @@ typedef NS_ENUM(NSInteger, RequestMethod) {
     }
     urlString = [NSString stringWithFormat:@"%@/%@", kBaseUrl, urlString];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.requestSerializer.timeoutInterval = 30;
+    manager.requestSerializer.timeoutInterval = 15;
     //添加签名 签名：token+key, token没有传空，key=kSignKey ,用MD5加密
 //    NSMutableDictionary *dict = (NSMutableDictionary *)parameters;
 //    NSArray *arr = dict.allKeys;
@@ -84,6 +84,10 @@ typedef NS_ENUM(NSInteger, RequestMethod) {
     if (error.code == -999) {
         error = [NSError errorWithDomain:NSURLErrorDomain code:-999 userInfo:@{
                                                                                NSLocalizedDescriptionKey:@""}];
+    }
+    if (error.code == -1001) {
+        error = [NSError errorWithDomain:NSURLErrorDomain code:-1001 userInfo:@{
+                                                                               NSLocalizedDescriptionKey:@"服务器出错,请联系管理员"}];
     }
     return error;
 }

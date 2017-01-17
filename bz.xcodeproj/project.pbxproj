@@ -48,6 +48,8 @@
 		611AF9C81E27197600F10C49 /* BuyerHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 611AF9C41E27197600F10C49 /* BuyerHeaderCell.xib */; };
 		611AF9C91E27197600F10C49 /* ShoppingCartCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 611AF9C61E27197600F10C49 /* ShoppingCartCell.m */; };
 		611AF9CA1E27197600F10C49 /* ShoppingCartCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 611AF9C71E27197600F10C49 /* ShoppingCartCell.xib */; };
+		613B47AC1E2DC5A000D0EB12 /* GoodsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 613B47AA1E2DC5A000D0EB12 /* GoodsDetailViewController.m */; };
+		613B47AD1E2DC5A000D0EB12 /* GoodsDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 613B47AB1E2DC5A000D0EB12 /* GoodsDetailViewController.xib */; };
 		613FB9481E1E1A6B00CB2070 /* BonusTXViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 613FB9471E1E1A6B00CB2070 /* BonusTXViewController.m */; };
 		613FB94C1E1E352200CB2070 /* BonusTXScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 613FB94A1E1E352200CB2070 /* BonusTXScanViewController.m */; };
 		613FB94D1E1E352200CB2070 /* BonusTXScanViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 613FB94B1E1E352200CB2070 /* BonusTXScanViewController.xib */; };
@@ -266,6 +268,9 @@
 		611AF9C51E27197600F10C49 /* ShoppingCartCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingCartCell.h; sourceTree = "<group>"; };
 		611AF9C61E27197600F10C49 /* ShoppingCartCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingCartCell.m; sourceTree = "<group>"; };
 		611AF9C71E27197600F10C49 /* ShoppingCartCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShoppingCartCell.xib; sourceTree = "<group>"; };
+		613B47A91E2DC5A000D0EB12 /* GoodsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsDetailViewController.h; sourceTree = "<group>"; };
+		613B47AA1E2DC5A000D0EB12 /* GoodsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsDetailViewController.m; sourceTree = "<group>"; };
+		613B47AB1E2DC5A000D0EB12 /* GoodsDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoodsDetailViewController.xib; sourceTree = "<group>"; };
 		613FB9461E1E1A6B00CB2070 /* BonusTXViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BonusTXViewController.h; sourceTree = "<group>"; };
 		613FB9471E1E1A6B00CB2070 /* BonusTXViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BonusTXViewController.m; sourceTree = "<group>"; };
 		613FB9491E1E352200CB2070 /* BonusTXScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BonusTXScanViewController.h; sourceTree = "<group>"; };
@@ -696,6 +701,12 @@
 				615FBF341E14BF0400F50C0D /* GoodsCategoryViewController.h */,
 				615FBF351E14BF0400F50C0D /* GoodsCategoryViewController.m */,
 				615FBF361E14BF0400F50C0D /* GoodsCategoryViewController.xib */,
+				61A09ECE1E13D86200C58519 /* GoodsViewController.h */,
+				61A09ECF1E13D86200C58519 /* GoodsViewController.m */,
+				61A09ED01E13D86200C58519 /* GoodsViewController.xib */,
+				613B47A91E2DC5A000D0EB12 /* GoodsDetailViewController.h */,
+				613B47AA1E2DC5A000D0EB12 /* GoodsDetailViewController.m */,
+				613B47AB1E2DC5A000D0EB12 /* GoodsDetailViewController.xib */,
 			);
 			name = GoodsCategory;
 			sourceTree = "<group>";
@@ -951,9 +962,6 @@
 				617288ED1E10BEF30037DB40 /* FirstPageViewController.h */,
 				617288EE1E10BEF30037DB40 /* FirstPageViewController.m */,
 				617288EF1E10BEF30037DB40 /* FirstPageViewController.xib */,
-				61A09ECE1E13D86200C58519 /* GoodsViewController.h */,
-				61A09ECF1E13D86200C58519 /* GoodsViewController.m */,
-				61A09ED01E13D86200C58519 /* GoodsViewController.xib */,
 				617111661E28CC80001B6BA5 /* SelectLocationView.h */,
 				617111671E28CC80001B6BA5 /* SelectLocationView.m */,
 				617111691E28CCA1001B6BA5 /* SelectLocationView.xib */,
@@ -1367,6 +1375,7 @@
 				61661C401E2A216B0022A1FC /* OrderSendViewController.xib in Resources */,
 				11C3C1441E1FDE6A005A2403 /* MyCollectionViewController.xib in Resources */,
 				115E35841E175258002A9957 /* RightCell.xib in Resources */,
+				613B47AD1E2DC5A000D0EB12 /* GoodsDetailViewController.xib in Resources */,
 				6171115B1E28707B001B6BA5 /* ShoppingCartBottom.xib in Resources */,
 				61661C2C1E29FD630022A1FC /* BuyerInfoCell.xib in Resources */,
 				11FE82831E1FA00400309719 /* BonusScanDetailsViewController.xib in Resources */,
@@ -1601,6 +1610,7 @@
 				61DFD3E31E23802900D9C2D7 /* RegistStoreViewController.m in Sources */,
 				6193198C1E1CB22200AF63E7 /* GFCalendarCell.m in Sources */,
 				61DFD3CD1E232FCA00D9C2D7 /* PaymentViewController.m in Sources */,
+				613B47AC1E2DC5A000D0EB12 /* GoodsDetailViewController.m in Sources */,
 				6193198D1E1CB22200AF63E7 /* GFCalendarMonth.m in Sources */,
 				6172891B1E110BCD0037DB40 /* LoginViewController.m in Sources */,
 				617F79741E15FEF800E139CF /* YLButton.m in Sources */,

@@ -68,6 +68,8 @@
 - (void)startRequest
 {
     self.isRefreshing = YES;
+    _tipView.text = Localized(@"努力加载中...");
+    _tipView.hidden = NO;
     WS(weakSelf);
     [self requestDataListPullDown:YES andEndRefreshing:^(NSError *error) {
         [weakSelf endRefresh:error];

@@ -110,8 +110,11 @@
 - (void)reloadData
 {
 //    [_leftTableView reloadData];
+    CGSize screenSize = [UIScreen mainScreen].bounds.size;
     CGRect frame = _leftTableView.frame;
-    frame.size.height = _leftTableView.contentSize.height;
+    //如果size过大，按小的算
+    frame.size.height = _leftTableView.contentSize.height>screenSize.height-64-self.frame.origin.y-80?screenSize.height-64-self.frame.origin.y-80:_leftTableView.contentSize.height;
+//    frame.size.height = _leftTableView.contentSize.height;
     _leftTableView.frame = frame;
     
     [_leftTableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:[_dateSource selectRowDropDownMenu:self] inSection:0] animated:NO scrollPosition:UITableViewScrollPositionNone];
