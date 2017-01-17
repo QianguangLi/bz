@@ -22,6 +22,8 @@
 
 #import "DataBaseService.h"
 
+#import "UIView+Addition.h"
+
 @interface AppDelegate () <UITabBarControllerDelegate, UIAlertViewDelegate>
 {
     BMKMapManager *_mapManager;
@@ -123,7 +125,9 @@
 //    [UINavigationBar appearance].translucent = NO;
     [UITabBar appearance].translucent = NO;
     //导航栏颜色
-    [UINavigationBar appearance].barTintColor = [UIColor whiteColor];
+//    [UINavigationBar appearance].barTintColor = [UIColor whiteColor];
+    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageWithColor:[UIColor whiteColor]] forBarMetrics:UIBarMetricsDefault];
+    [UINavigationBar appearance].translucent = YES;
     [UINavigationBar appearance].tintColor = [UIColor darkGrayColor];
     [UINavigationBar appearance].titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor darkGrayColor], NSFontAttributeName:[UIFont systemFontOfSize:20]};
     //tabbar 字体颜色

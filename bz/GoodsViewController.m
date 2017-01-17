@@ -417,7 +417,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     ProductModel *model = self.dataArray[indexPath.row];
     GoodsDetailViewController *vc = [[GoodsDetailViewController alloc] init];
-    vc.productId = model.productId;
+    vc.productModel = model;
     [self.navigationController pushViewController:vc animated:YES];
 }
 

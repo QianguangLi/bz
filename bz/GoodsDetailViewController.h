@@ -7,12 +7,13 @@
 //
 
 #import "BaseViewController.h"
+@class ProductModel;
 
 /**
  商品详情页面
  */
 @interface GoodsDetailViewController : BaseViewController
 
-@property (copy, nonatomic) NSString *productId;//商品id
+@property (strong, nonatomic) ProductModel *productModel;//商品id
 
 @end

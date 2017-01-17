@@ -137,10 +137,12 @@
         [UIView animateWithDuration:0.25 animations:^{
             _searchView.frame = CGRectMake(0, -_searchView.frame.size.height, kScreenWidth, _searchView.frame.size.height);
         } completion:^(BOOL finished) {
+            _searchView.hidden = YES;
             [weakSelf startHeardRefresh];
             weakSelf.mTableView.userInteractionEnabled = YES;
         }];
     } else {
+        _searchView.hidden = NO;
         [UIView animateWithDuration:0.25 animations:^{
             _searchView.frame = CGRectMake(0, 0, kScreenWidth, _searchView.frame.size.height);
         } completion:^(BOOL finished) {

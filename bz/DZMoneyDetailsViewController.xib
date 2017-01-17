@@ -139,7 +139,7 @@
                     <constraints>
                         <constraint firstItem="dpx-Dd-nGP" firstAttribute="leading" secondItem="zen-et-Uqm" secondAttribute="leading" id="01r-lU-gP9"/>
                         <constraint firstItem="dpx-Dd-nGP" firstAttribute="width" secondItem="zen-et-Uqm" secondAttribute="width" id="Moc-Ly-60J"/>
-                        <constraint firstAttribute="bottom" secondItem="dpx-Dd-nGP" secondAttribute="bottom" constant="128" id="jTa-4I-Wdg"/>
+                        <constraint firstAttribute="bottom" secondItem="dpx-Dd-nGP" secondAttribute="bottom" id="jTa-4I-Wdg"/>
                         <constraint firstItem="dpx-Dd-nGP" firstAttribute="top" secondItem="zen-et-Uqm" secondAttribute="top" id="mhU-Tn-Vcb"/>
                         <constraint firstAttribute="trailing" secondItem="dpx-Dd-nGP" secondAttribute="trailing" id="shS-IN-WIb"/>
                     </constraints>

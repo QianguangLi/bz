@@ -8,7 +8,7 @@
 
 #import <JSONModel/JSONModel.h>
 
-@protocol ModelDeatail;
+@protocol PropertysModel;
 /**
  商品模型
  */
@@ -25,16 +25,34 @@
 @property (copy, nonatomic) NSString<Optional> *pdetailId;//商品详细id 
 @property (copy, nonatomic) NSString<Optional> *favTime;//收藏时间
 @property (copy, nonatomic) NSString *shipping;//配送方式 “次日达”
+@property (copy, nonatomic) NSString *kw;//关键字
+@property (copy, nonatomic) NSString *storelogo;//卖家头像
+@property (copy, nonatomic) NSString *storename;//卖家名字
 
-@property (strong, nonatomic) NSArray<ModelDeatail> *model_detail;
+@property (strong, nonatomic) NSArray<PropertysModel> *propertylist;//属性列表
 // 商品左侧按钮是否选中
 @property (nonatomic,assign) BOOL productIsChoosed;
 @end
 
-@interface ModelDeatail : JSONModel
 
-@property (nonatomic,copy) NSString *key;
-@property (nonatomic,copy) NSString *type_name;
-@property (nonatomic,copy) NSString *value;
+@protocol PropertyModel;
+/**
+ 属性列表
+ */
+@interface PropertysModel : JSONModel
+
+@property (nonatomic,copy) NSString *propertyname;//属性名
+@property (strong, nonatomic) NSArray<PropertyModel> *propertyid;//
 
 @end
+
+/**
+ 属性model
+ */
+@interface PropertyModel : JSONModel
+
+@property (nonatomic,copy) NSString *propertyId;//属性id
+@property (nonatomic,copy) NSString *propertyName;//属性名
+
+@end
+

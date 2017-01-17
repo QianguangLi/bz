@@ -87,10 +87,12 @@
             _searchViewTopLayout.constant = -_searchView.frame.size.height;
             [weakSelf.view layoutIfNeeded];
         } completion:^(BOOL finished) {
+            _searchView.hidden = YES;
             [weakSelf startHeardRefresh];
             weakSelf.mTableView.userInteractionEnabled = YES;
         }];
     } else {
+        _searchView.hidden = NO;
         [UIView animateWithDuration:0.25 animations:^{
             _searchViewTopLayout.constant = 0;
             [weakSelf.view layoutIfNeeded];

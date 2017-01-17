@@ -13,6 +13,7 @@
 #import "LoginViewController.h"
 #import "GoodsViewController.h"
 #import "SelectLocationView.h"
+#import "UIView+Addition.h"
 
 @interface FirstPageViewController () <UISearchBarDelegate, PYSearchViewControllerDelegate, UITextFieldDelegate, SelectLocationViewDelegate>
 
@@ -39,7 +40,8 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    self.navigationController.navigationBar.barTintColor = kPinkColor;
+//    self.navigationController.navigationBar.barTintColor = kPinkColor;
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:kPinkColor] forBarMetrics:UIBarMetricsDefault];
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor whiteColor], NSFontAttributeName:[UIFont boldSystemFontOfSize:17]};
 }

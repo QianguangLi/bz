@@ -15,7 +15,16 @@
 }
 @end
 
-@implementation ModelDeatail
+@implementation PropertysModel
+
++ (BOOL)propertyIsOptional:(NSString *)propertyName
+{
+    return YES;
+}
+
+@end
+
+@implementation PropertyModel
 
 + (BOOL)propertyIsOptional:(NSString *)propertyName
 {
