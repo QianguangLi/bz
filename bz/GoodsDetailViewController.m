@@ -15,6 +15,8 @@
 #import "UIImageView+AFNetworking.h"
 #import "CommentCell.h"
 #import "UITableView+FDTemplateLayoutCell.h"
+#import "ChooseGoodsPropertyViewController.h"
+#import "UIViewController+KNSemiModal.h"
 
 @interface GoodsDetailViewController () <UITableViewDelegate, UITableViewDataSource>
 {
@@ -44,6 +46,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *noneComment;
 
 @property (strong, nonatomic) NSArray *commentArray;//评论数组
+
+@property (nonatomic,strong) ChooseGoodsPropertyViewController *chooseVC;
 
 @end
 
@@ -193,7 +197,18 @@
 #pragma mark - 选择商品
 - (IBAction)selectProductAction:(UIButton *)sender
 {
-    
+    if (!_chooseVC)
+    {
+        _chooseVC = [[ChooseGoodsPropertyViewController alloc] init];
+    }
+    self.chooseVC.enterType = FirstEnterType;
+//    self.chooseVC.price = 256.0f;
+    [self.navigationController presentSemiViewController:_chooseVC withOptions:@{
+                                                                                     KNSemiModalOptionKeys.pushParentBack    : @(YES),
+                                                                                     KNSemiModalOptionKeys.animationDuration : @(0.25),
+                                                                                     KNSemiModalOptionKeys.shadowOpacity     : @(0.3),
+                                                                                     KNSemiModalOptionKeys.backgroundView : [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"background_01"]]
+                                                                                     }];
 }
 
 #pragma mark - 进店逛逛
