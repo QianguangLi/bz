@@ -230,7 +230,10 @@
     if (_goToSearchResult) {
         
     } else {
-        [self.searchBar becomeFirstResponder];
+        if (_firstEntry) {
+            [self.searchBar becomeFirstResponder];
+            _firstEntry = NO;
+        }
     }
 }
 

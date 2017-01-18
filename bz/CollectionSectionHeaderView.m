@@ -11,7 +11,8 @@
 
 @interface CollectionSectionHeaderView ()
 @property (strong, nonatomic) NSIndexPath *indexPath;
-@property (weak, nonatomic) IBOutlet UILabel *categoryName;
+//@property (weak, nonatomic) IBOutlet UILabel *categoryName;
+//@property (weak, nonatomic) IBOutlet UIButton *rightButton;
 
 @end
 
@@ -24,6 +25,7 @@
 
 - (void)setContentWithGoodsCategoryModel:(GoodsCategoryModel *)model andIndexPath:(NSIndexPath *)indexPath
 {
+    _seperateLine.hidden = YES;
     _indexPath = indexPath;
     _categoryName.text = model.categoryName;
 }

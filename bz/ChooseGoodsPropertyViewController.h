@@ -7,6 +7,7 @@
 //
 
 #import "BaseViewController.h"
+#import "ProductModel.h"
 
 typedef NS_ENUM(NSInteger,EnterType){
     
@@ -19,5 +20,7 @@ typedef NS_ENUM(NSInteger,EnterType){
 @interface ChooseGoodsPropertyViewController : BaseViewController
 
 @property (nonatomic,assign) EnterType enterType;
+
+@property (strong, nonatomic) ProductModel *model;
 
 @end

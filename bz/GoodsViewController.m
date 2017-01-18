@@ -184,16 +184,16 @@
     
     if (_isFirstEntry) {
         [_task cancel];
-        WS(weakSelf);
         _kw = IS_NULL_STRING(_kw)?@"":_kw;
         NSString *categoryId = IS_NULL_STRING(_model.categoryId) ? @"" : _model.categoryId;
         
         NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                     StringFromNumber(weakSelf.pageIndex), kPageIndex,
-                                     StringFromNumber(weakSelf.pageSize), kPageSize,
+                                     StringFromNumber(self.pageIndex), kPageIndex,
+                                     StringFromNumber(self.pageSize), kPageSize,
                                      categoryId, @"categoryId",
                                      _kw, @"kw",
                                      nil];
+        WS(weakSelf);
         _task = [NetService POST:@"/api/Home/CategoryList" parameters:dict complete:^(id responseObject, NSError *error) {
             endRefreshing(error);
             _isFirstEntry = NO;
@@ -240,8 +240,8 @@
         NSString *categoryId = IS_NULL_STRING(_model.categoryId) ? @"" : _model.categoryId;
         
         NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                     StringFromNumber(weakSelf.pageIndex), kPageIndex,
-                                     StringFromNumber(weakSelf.pageSize), kPageSize,
+                                     StringFromNumber(self.pageIndex), kPageIndex,
+                                     StringFromNumber(self.pageSize), kPageSize,
                                      _order, @"order",
                                      _action, @"action",
                                      _pinpaiCode, @"ppcode",

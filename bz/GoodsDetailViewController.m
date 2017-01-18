@@ -17,6 +17,8 @@
 #import "UITableView+FDTemplateLayoutCell.h"
 #import "ChooseGoodsPropertyViewController.h"
 #import "UIViewController+KNSemiModal.h"
+#import "LoginViewController.h"
+#import "BaseNavigationController.h"
 
 @interface GoodsDetailViewController () <UITableViewDelegate, UITableViewDataSource>
 {
@@ -48,6 +50,8 @@
 @property (strong, nonatomic) NSArray *commentArray;//评论数组
 
 @property (nonatomic,strong) ChooseGoodsPropertyViewController *chooseVC;
+
+@property (strong, nonatomic) ProductModel *productDetailModel;//商品model，具备更详细的数据
 
 @end
 
@@ -120,6 +124,7 @@
         if ([responseObject[kStatusCode] integerValue] == NetStatusSuccess) {
             NSDictionary *dataDict = responseObject[kResponseData];
             ProductModel *model = [[ProductModel alloc] initWithDictionary:dataDict error:nil];
+            weakSelf.productDetailModel = model;
             [weakSelf reloadViewWithProductModel:model];
         } else {
             [Utility showString:responseObject[kErrMsg] onView:weakSelf.view];
@@ -197,11 +202,21 @@
 #pragma mark - 选择商品
 - (IBAction)selectProductAction:(UIButton *)sender
 {
+    //如果未登录，先登录
+    if (!kIsLogin) {
+        LoginViewController *loginVC = [[LoginViewController alloc] init];
+        BaseNavigationController *loginNvc = [[BaseNavigationController alloc] initWithRootViewController:loginVC];
+        [self presentViewController:loginNvc animated:YES completion:^{
+            
+        }];
+        return;
+    }
     if (!_chooseVC)
     {
         _chooseVC = [[ChooseGoodsPropertyViewController alloc] init];
     }
-    self.chooseVC.enterType = FirstEnterType;
+    _chooseVC.enterType = FirstEnterType;
+    _chooseVC.model = _productDetailModel;
 //    self.chooseVC.price = 256.0f;
     [self.navigationController presentSemiViewController:_chooseVC withOptions:@{
                                                                                      KNSemiModalOptionKeys.pushParentBack    : @(YES),
@@ -225,14 +240,24 @@
 }
 
 #pragma mark - 底部按钮操作
-- (IBAction)buy:(UIButton *)sender {
+- (IBAction)buy:(UIButton *)sender
+{
+    [self selectProductAction:sender];
 }
 
-- (IBAction)addToShoppingCart:(UIButton *)sender {
+- (IBAction)addToShoppingCart:(UIButton *)sender
+{
+    [self selectProductAction:sender];
 }
-- (IBAction)goToShoppingCart:(JXButton *)sender {
+
+- (IBAction)goToShoppingCart:(JXButton *)sender
+{
+    [self selectProductAction:sender];
 }
-- (IBAction)contactService:(JXButton *)sender {
+
+- (IBAction)contactService:(JXButton *)sender
+{
+    
 }
 
 

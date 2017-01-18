@@ -14,6 +14,10 @@
  */
 @interface CollectionSectionHeaderView : UICollectionReusableView
 
+@property (weak, nonatomic) IBOutlet UILabel *categoryName;
+@property (weak, nonatomic) IBOutlet UIButton *rightButton;
+@property (weak, nonatomic) IBOutlet UILabel *seperateLine;
+
 - (void)setContentWithGoodsCategoryModel:(GoodsCategoryModel *)model andIndexPath:(NSIndexPath *)indexPath;
 
 @end

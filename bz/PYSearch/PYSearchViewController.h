@@ -184,6 +184,7 @@ typedef NS_ENUM(NSInteger, PYSearchResultShowMode) { // 搜索结果显示方式
 
 //是否已经有搜索结果 该属性只要当searchResultShowMode == PYSearchResultShowModeEmbed时，才会生效
 @property (assign, nonatomic) BOOL hasSearchResult;
+@property (assign, nonatomic) BOOL firstEntry;//第一次进入
 
 /**
  返回 PYSearchViewController 实例

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="GoodsPropertyCell" id="gTV-IL-0wX" customClass="GoodsPropertyCell">
+            <rect key="frame" x="0.0" y="0.0" width="84" height="50"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="84" height="50"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rkK-Uv-RP2">
+                        <rect key="frame" x="0.0" y="0.0" width="84" height="40"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="otC-ZQ-L4P">
+                                <rect key="frame" x="5" y="0.0" width="74" height="40"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="otC-ZQ-L4P" firstAttribute="top" secondItem="rkK-Uv-RP2" secondAttribute="top" id="1Rc-PT-jNi"/>
+                            <constraint firstItem="otC-ZQ-L4P" firstAttribute="leading" secondItem="rkK-Uv-RP2" secondAttribute="leading" constant="5" id="cOn-J8-llW"/>
+                            <constraint firstAttribute="bottom" secondItem="otC-ZQ-L4P" secondAttribute="bottom" id="tnK-GB-NmS"/>
+                            <constraint firstAttribute="trailing" secondItem="otC-ZQ-L4P" secondAttribute="trailing" constant="5" id="z5d-hK-JvK"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="5"/>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="rkK-Uv-RP2" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="17V-9x-9Xs"/>
+                <constraint firstAttribute="bottom" secondItem="rkK-Uv-RP2" secondAttribute="bottom" constant="10" id="SrY-TZ-DGP"/>
+                <constraint firstAttribute="trailing" secondItem="rkK-Uv-RP2" secondAttribute="trailing" id="cfg-vP-Ok0"/>
+                <constraint firstItem="rkK-Uv-RP2" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="ey5-co-EMw"/>
+            </constraints>
+            <size key="customSize" width="84" height="50"/>
+            <connections>
+                <outlet property="bgView" destination="rkK-Uv-RP2" id="TtH-Dw-WRM"/>
+                <outlet property="propertyLabel" destination="otC-ZQ-L4P" id="4Y4-op-nV2"/>
+            </connections>
+            <point key="canvasLocation" x="51" y="54"/>
+        </collectionViewCell>
+    </objects>
+</document>

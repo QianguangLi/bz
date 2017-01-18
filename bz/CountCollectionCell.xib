@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CountCollectionCell" id="yqW-4T-VJy" customClass="GoodsPropertyCell">
+            <rect key="frame" x="0.0" y="0.0" width="283" height="50"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="283" height="50"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tox-YE-IMW">
+                        <rect key="frame" x="0.0" y="0.0" width="283" height="50"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="87c-WZ-a6Z">
+                                <rect key="frame" x="201" y="8" width="50" height="34"/>
+                                <color key="backgroundColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="EkL-c7-8GM"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <state key="normal" title="+"/>
+                                <connections>
+                                    <action selector="plus:" destination="yqW-4T-VJy" eventType="touchUpInside" id="Nhp-Ro-ECu"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qdL-bc-mDM">
+                                <rect key="frame" x="31" y="8" width="50" height="34"/>
+                                <color key="backgroundColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="EK7-Vi-a8P"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <state key="normal" title="-"/>
+                                <connections>
+                                    <action selector="minus:" destination="yqW-4T-VJy" eventType="touchUpInside" id="rRA-ZT-ut4"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ALe-YU-g7o">
+                                <rect key="frame" x="81" y="8" width="120" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="waR-xf-xg6"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="layer.borderWidth" value="0.5"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
+                                        <color key="value" red="0.66757217639593902" green="0.66757217639593902" blue="0.66757217639593902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="qdL-bc-mDM" firstAttribute="centerY" secondItem="Tox-YE-IMW" secondAttribute="centerY" id="85J-zk-w3c"/>
+                            <constraint firstItem="87c-WZ-a6Z" firstAttribute="leading" secondItem="ALe-YU-g7o" secondAttribute="trailing" id="KiK-vh-0Sj"/>
+                            <constraint firstItem="ALe-YU-g7o" firstAttribute="centerX" secondItem="Tox-YE-IMW" secondAttribute="centerX" id="Onc-Y5-80L"/>
+                            <constraint firstItem="ALe-YU-g7o" firstAttribute="centerY" secondItem="Tox-YE-IMW" secondAttribute="centerY" id="a7o-aQ-zde"/>
+                            <constraint firstItem="ALe-YU-g7o" firstAttribute="height" secondItem="87c-WZ-a6Z" secondAttribute="height" id="kW3-2T-vqm"/>
+                            <constraint firstItem="87c-WZ-a6Z" firstAttribute="centerY" secondItem="Tox-YE-IMW" secondAttribute="centerY" id="rd3-nF-BkQ"/>
+                            <constraint firstItem="ALe-YU-g7o" firstAttribute="leading" secondItem="qdL-bc-mDM" secondAttribute="trailing" id="uWt-CK-nbO"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="Tox-YE-IMW" secondAttribute="trailing" id="DDm-6d-XX4"/>
+                <constraint firstAttribute="bottom" secondItem="Tox-YE-IMW" secondAttribute="bottom" id="hgM-PJ-KkS"/>
+                <constraint firstItem="Tox-YE-IMW" firstAttribute="leading" secondItem="yqW-4T-VJy" secondAttribute="leading" id="mnK-Ri-s6L"/>
+                <constraint firstItem="Tox-YE-IMW" firstAttribute="top" secondItem="yqW-4T-VJy" secondAttribute="top" id="qx2-Ph-EgR"/>
+            </constraints>
+            <size key="customSize" width="283" height="50"/>
+            <connections>
+                <outlet property="countTF" destination="ALe-YU-g7o" id="y0b-Wf-gg6"/>
+            </connections>
+            <point key="canvasLocation" x="4.5" y="48"/>
+        </collectionViewCell>
+    </objects>
+</document>

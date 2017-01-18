@@ -161,6 +161,9 @@
 		619319A11E1CF67800AF63E7 /* RechargeScanViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6193199F1E1CF67800AF63E7 /* RechargeScanViewController.xib */; };
 		619319A51E1CF70A00AF63E7 /* RechargeScanCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 619319A31E1CF70A00AF63E7 /* RechargeScanCell.m */; };
 		619319A61E1CF70A00AF63E7 /* RechargeScanCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 619319A41E1CF70A00AF63E7 /* RechargeScanCell.xib */; };
+		619605EC1E2EF6FD00377D95 /* GoodsPropertyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 619605EA1E2EF6FD00377D95 /* GoodsPropertyCell.m */; };
+		619605ED1E2EF6FD00377D95 /* GoodsPropertyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 619605EB1E2EF6FD00377D95 /* GoodsPropertyCell.xib */; };
+		619605EF1E2F316300377D95 /* CountCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 619605EE1E2F316300377D95 /* CountCollectionCell.xib */; };
 		61A08CD61E2CB0A8001063DC /* ico_make.png in Resources */ = {isa = PBXBuildFile; fileRef = 61A08CD31E2CB0A8001063DC /* ico_make.png */; };
 		61A08CD71E2CB0A8001063DC /* JSDropDownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 61A08CD51E2CB0A8001063DC /* JSDropDownMenu.m */; };
 		61A08CE11E2CC670001063DC /* QGDropDownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 61A08CE01E2CC670001063DC /* QGDropDownMenu.m */; };
@@ -469,6 +472,10 @@
 		619319A21E1CF70A00AF63E7 /* RechargeScanCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RechargeScanCell.h; sourceTree = "<group>"; };
 		619319A31E1CF70A00AF63E7 /* RechargeScanCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RechargeScanCell.m; sourceTree = "<group>"; };
 		619319A41E1CF70A00AF63E7 /* RechargeScanCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RechargeScanCell.xib; sourceTree = "<group>"; };
+		619605E91E2EF6FD00377D95 /* GoodsPropertyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsPropertyCell.h; sourceTree = "<group>"; };
+		619605EA1E2EF6FD00377D95 /* GoodsPropertyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsPropertyCell.m; sourceTree = "<group>"; };
+		619605EB1E2EF6FD00377D95 /* GoodsPropertyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoodsPropertyCell.xib; sourceTree = "<group>"; };
+		619605EE1E2F316300377D95 /* CountCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CountCollectionCell.xib; sourceTree = "<group>"; };
 		61A08CD31E2CB0A8001063DC /* ico_make.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ico_make.png; sourceTree = "<group>"; };
 		61A08CD41E2CB0A8001063DC /* JSDropDownMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSDropDownMenu.h; sourceTree = "<group>"; };
 		61A08CD51E2CB0A8001063DC /* JSDropDownMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSDropDownMenu.m; sourceTree = "<group>"; };
@@ -586,6 +593,10 @@
 				616597561E2E343F00A8B735 /* CommentCell.h */,
 				616597571E2E343F00A8B735 /* CommentCell.m */,
 				616597581E2E343F00A8B735 /* CommentCell.xib */,
+				619605E91E2EF6FD00377D95 /* GoodsPropertyCell.h */,
+				619605EA1E2EF6FD00377D95 /* GoodsPropertyCell.m */,
+				619605EB1E2EF6FD00377D95 /* GoodsPropertyCell.xib */,
+				619605EE1E2F316300377D95 /* CountCollectionCell.xib */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -1411,9 +1422,11 @@
 				6171115B1E28707B001B6BA5 /* ShoppingCartBottom.xib in Resources */,
 				61661C2C1E29FD630022A1FC /* BuyerInfoCell.xib in Resources */,
 				11FE82831E1FA00400309719 /* BonusScanDetailsViewController.xib in Resources */,
+				619605EF1E2F316300377D95 /* CountCollectionCell.xib in Resources */,
 				11DC85461E20938900AE7947 /* WriteEmailViewController.xib in Resources */,
 				615FBF3D1E14CB2200F50C0D /* OrderListViewController.xib in Resources */,
 				617288F11E10BEF30037DB40 /* FirstPageViewController.xib in Resources */,
+				619605ED1E2EF6FD00377D95 /* GoodsPropertyCell.xib in Resources */,
 				11FE82701E1F79A600309719 /* MMNumberKeyboardDeleteKey@3x.png in Resources */,
 				619319A61E1CF70A00AF63E7 /* RechargeScanCell.xib in Resources */,
 				11FE82791E1F828300309719 /* DZMoneyDetailsViewController.xib in Resources */,
@@ -1705,6 +1718,7 @@
 				11C3C13E1E1FCEAA005A2403 /* AccountSafeViewController.m in Sources */,
 				617111581E286104001B6BA5 /* CAAnimation+WAnimation.m in Sources */,
 				616A09B31E128AC600FCF886 /* MeCell.m in Sources */,
+				619605EC1E2EF6FD00377D95 /* GoodsPropertyCell.m in Sources */,
 				61B1EA921E26030B006F8276 /* PYSearchConst.m in Sources */,
 				615FBF3C1E14CB2200F50C0D /* OrderListViewController.m in Sources */,
 				617288F01E10BEF30037DB40 /* FirstPageViewController.m in Sources */,

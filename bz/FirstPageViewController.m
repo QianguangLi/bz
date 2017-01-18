@@ -129,6 +129,7 @@
     // 2. 创建搜索控制器
     PYSearchViewController *searchViewController = [PYSearchViewController searchViewControllerWithHotSearches:hotSeaches searchBarPlaceholder:@"搜索全部商品" toToResult:model?YES:NO andSearchResultController:_goodsVC andSearchBarText:model.categoryName];
     
+    searchViewController.firstEntry = model?NO:YES;
     searchViewController.delegate = self;
     searchViewController.searchResultShowMode = PYSearchResultShowModeEmbed;
     //    searchViewController.goToSearchResult = YES;

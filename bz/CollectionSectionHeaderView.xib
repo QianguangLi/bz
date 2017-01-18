@@ -31,8 +31,21 @@
                         <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BpQ-Zh-qg5">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="0.5"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="0.5" id="w63-oQ-NMU"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <constraints>
+                <constraint firstItem="BpQ-Zh-qg5" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" id="0ua-dr-fTW"/>
+                <constraint firstAttribute="trailing" secondItem="BpQ-Zh-qg5" secondAttribute="trailing" id="2qe-mn-y0C"/>
+                <constraint firstItem="BpQ-Zh-qg5" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" id="43E-hi-cBa"/>
                 <constraint firstItem="BhK-xH-Ace" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" constant="16" id="jxK-51-lFI"/>
                 <constraint firstItem="dgf-2b-qk9" firstAttribute="centerY" secondItem="BhK-xH-Ace" secondAttribute="centerY" id="lL3-Zr-H83"/>
                 <constraint firstAttribute="trailing" secondItem="dgf-2b-qk9" secondAttribute="trailing" constant="7" id="lgh-bL-wVV"/>
@@ -40,7 +53,10 @@
             </constraints>
             <connections>
                 <outlet property="categoryName" destination="BhK-xH-Ace" id="70p-5J-FVj"/>
+                <outlet property="rightButton" destination="dgf-2b-qk9" id="6y2-3V-ZcI"/>
+                <outlet property="seperateLine" destination="BpQ-Zh-qg5" id="ASF-8b-Jsq"/>
             </connections>
+            <point key="canvasLocation" x="-149" y="81"/>
         </collectionReusableView>
     </objects>
 </document>

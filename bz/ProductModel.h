@@ -9,6 +9,7 @@
 #import <JSONModel/JSONModel.h>
 
 @protocol PropertysModel;
+@protocol ProductDetailModel;
 /**
  商品模型
  */
@@ -30,6 +31,9 @@
 @property (copy, nonatomic) NSString *storename;//卖家名字
 
 @property (strong, nonatomic) NSArray<PropertysModel> *propertylist;//属性列表
+
+@property (strong, nonatomic) NSArray<ProductDetailModel> *pdetaillist;//子商品详细
+
 // 商品左侧按钮是否选中
 @property (nonatomic,assign) BOOL productIsChoosed;
 @end
@@ -54,5 +58,18 @@
 @property (nonatomic,copy) NSString *propertyId;//属性id
 @property (nonatomic,copy) NSString *propertyName;//属性名
 
+@end
+
+/**
+ 子商品内容
+ */
+@interface ProductDetailModel : JSONModel
+@property (nonatomic,copy) NSString *pdetailId;//子商品id
+@property (nonatomic,copy) NSString *pdetailcode;//子商品编码
+@property (nonatomic,copy) NSString *pdetailimg;//图片
+@property (nonatomic,copy) NSString *pdetailname;//子商品属性描述
+@property (nonatomic,assign) double price;//价格
+@property (nonatomic,copy) NSString *propertyid;//子商品属性值
+@property (nonatomic,copy) NSString *propertyname;//子商品属性描述
 @end
 
