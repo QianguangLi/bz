@@ -67,16 +67,15 @@
     [_goodsImageView setImageWithURL:[NSURL URLWithString:_model.pImgUrl] placeholderImage:[UIImage imageNamed:@"productpic"]];
     _propertyArray = _model.propertylist;
     _pDetailArray = _model.pdetaillist;
+    //如果没有属性，则只有一个子商品，直接默认选中唯一的子商品
+    if (IS_NULL_ARRAY(_propertyArray)) {
+        _selectedProductDetailModel = _pDetailArray.firstObject;
+    }
 }
 
 #pragma mark - 底部按钮点击事件
 - (IBAction)addToShoppingCart:(UIButton *)sender
 {
-    //商品属性没全选提示选择商品属性
-    if (_propertyCollectionView.indexPathsForSelectedItems.count != _propertyArray.count) {
-        [Utility showString:Localized(@"请选择商品属性") onView:self.view];
-        return;
-    }
     [self addToShoopingCart];
 }
 
@@ -95,6 +94,7 @@
 
 - (void)addToShoopingCart
 {
+    //商品属性没全选提示选择商品属性
     if (!_selectedProductDetailModel) {
         [Utility showString:Localized(@"请选择商品属性") onView:self.view];
         return;
@@ -116,6 +116,7 @@
         NSLog(@"%@", responseObject);
         if ([responseObject[kStatusCode] integerValue] == NetStatusSuccess) {
             [Utility showString:Localized(@"商品已经加入购物车") onView:weakSelf.view];
+            [[NSNotificationCenter defaultCenter] postNotificationName:kAddToShoppingCartSuccessNotification object:nil];
         } else {
             [Utility showString:responseObject[kErrMsg] onView:weakSelf.view];
         }
@@ -142,6 +143,7 @@
 {
     NSString *ID = nil;
     if (indexPath.section == _propertyArray.count) {
+        NSLog(@"%lu", (unsigned long)_propertyArray.count);
         ID = @"CountCollectionCell";
         GoodsPropertyCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:ID forIndexPath:indexPath];
         cell.countDelegate = self;

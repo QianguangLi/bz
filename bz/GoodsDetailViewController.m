@@ -19,11 +19,13 @@
 #import "UIViewController+KNSemiModal.h"
 #import "LoginViewController.h"
 #import "BaseNavigationController.h"
+#import "ShoppingCartViewController.h"
 
 @interface GoodsDetailViewController () <UITableViewDelegate, UITableViewDataSource, ChooseGoodsPropertyViewControllerDelegate>
 {
     NSURLSessionTask *_task;
     NSURLSessionTask *_commentTask;
+    NSURLSessionTask *_storeTask;
 }
 #pragma mark - 商品详情
 @property (weak, nonatomic) IBOutlet UIImageView *proImageView;
@@ -63,6 +65,7 @@
 {
     [_commentTask cancel];
     [_task cancel];
+    [_storeTask cancel];
     NSLog(@"GoodsDetailViewController dealloc");
 }
 
@@ -270,12 +273,65 @@
 
 - (IBAction)goToShoppingCart:(JXButton *)sender
 {
-    [self selectProductAction:sender];
+    //如果未登录，先登录
+    if (!kIsLogin) {
+        LoginViewController *loginVC = [[LoginViewController alloc] init];
+        BaseNavigationController *loginNvc = [[BaseNavigationController alloc] initWithRootViewController:loginVC];
+        [self presentViewController:loginNvc animated:YES completion:^{
+            
+        }];
+        return;
+    }
+    ShoppingCartViewController *vc = [[ShoppingCartViewController alloc] init];
+    vc.title = Localized(@"购物车");
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+    //改变返回按钮文字
+    self.navigationItem.backBarButtonItem = item;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
+//收藏商品   联系客服改成了收藏商品
 - (IBAction)contactService:(JXButton *)sender
 {
-    
+    //如果未登录，先登录
+    if (!kIsLogin) {
+        LoginViewController *loginVC = [[LoginViewController alloc] init];
+        BaseNavigationController *loginNvc = [[BaseNavigationController alloc] initWithRootViewController:loginVC];
+        [self presentViewController:loginNvc animated:YES completion:^{
+            
+        }];
+        return;
+    }
+    [self storeGoodsWithProductIds:_productModel.productId];
+}
+
+#pragma mark - 收藏商品
+- (void)storeGoodsWithProductIds:(NSString *)productIds
+{
+    if (IS_NULL_STRING(productIds)) {
+        return;
+    }
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                 kLoginToken, @"Token",
+                                 productIds, @"productId",
+                                 nil];
+    [_storeTask cancel];
+    WS(weakSelf);
+    _storeTask = [NetService POST:@"api/User/AddFav" parameters:dict complete:^(id responseObject, NSError *error) {
+        [Utility hideHUDForView:weakSelf.view];
+        if (error) {
+            NSLog(@"failure:%ld:%@", (long)error.code, error.localizedDescription);
+            [Utility showString:error.localizedDescription onView:weakSelf.view];
+            return ;
+        }
+        NSLog(@"%@", responseObject);
+        if ([responseObject[kStatusCode] integerValue] == NetStatusSuccess) {
+            [Utility showString:Localized(@"收藏成功") onView:weakSelf.view];
+        } else {
+            [Utility showString:responseObject[kErrMsg] onView:weakSelf.view];
+        }
+    }];
+    [Utility showHUDAddedTo:self.view forTask:_storeTask];
 }
 
 - (void)didReceiveMemoryWarning {

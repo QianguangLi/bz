@@ -53,6 +53,7 @@ static NSString *goodsCategoryCache = @"goodCategoryCache";
     [self initNavigationItem];
     
     [_leftTableView registerNib:[UINib nibWithNibName:@"LeftCell" bundle:nil] forCellReuseIdentifier:@"LeftCell"];
+    _leftTableView.tableFooterView = [UIView new];
     UIButton *collectionHeader = [UIButton buttonWithType:UIButtonTypeCustom];
     collectionHeader.frame = CGRectMake(kLeftSpace, -((_rightCollectionView.frame.size.width-kLeftSpace*2)*9/28), kScreenWidth/4*3-kLeftSpace*2, (_rightCollectionView.frame.size.width-kLeftSpace*2)*9/28);
     [collectionHeader setImage:[UIImage imageNamed:@"fenlei_banner"] forState:UIControlStateNormal];
@@ -64,12 +65,13 @@ static NSString *goodsCategoryCache = @"goodCategoryCache";
     //导航栏透明，方式覆盖下方view
     self.edgesForExtendedLayout = UIRectEdgeNone;
     
+    [self getAllCategory];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self getAllCategory];
+//    [self getAllCategory];
 }
 
 - (void)setGoodsCategoryCache:(id)responseObject

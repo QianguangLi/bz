@@ -53,6 +53,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *minusButton;
 @property (weak, nonatomic) IBOutlet UILabel *editCountLabel;
 @property (weak, nonatomic) IBOutlet UIButton *plusButton;
+@property (weak, nonatomic) IBOutlet UILabel *editDetailLabel;
 @property (weak, nonatomic) IBOutlet UIView *editDetailView;
 @property (weak, nonatomic) IBOutlet UILabel *editDetailTitleLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *downArrowButton;

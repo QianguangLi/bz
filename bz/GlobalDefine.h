@@ -80,6 +80,8 @@
 #define kReLoginNotification @"go_re_login_notification"
 //会员申请过门店后的通知
 #define kRegistStoreNotification @"after_regist_store_notification"
+//加入购物车成功通知
+#define kAddToShoppingCartSuccessNotification @"add_to_shopping_cart_success_notify"
 
 #define kBaseUrl @"http://103.48.169.52/bzapi"
 //登录URL

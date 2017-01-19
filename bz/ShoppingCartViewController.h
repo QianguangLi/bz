@@ -14,4 +14,6 @@
  */
 @interface ShoppingCartViewController : RefreshViewController
 
+@property (assign, nonatomic) BOOL hasTabbar;//下方是否有tabbar
+
 @end

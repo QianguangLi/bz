@@ -18,6 +18,9 @@
 @interface ShoppingCartViewController () <UITableViewDataSource, UITableViewDelegate, ShoppingCartCellDelegate>
 {
     NSURLSessionTask *_task;
+    NSURLSessionTask *_updateTask;
+    NSURLSessionTask *_deleteTask;
+    NSURLSessionTask *_storeTask;
 }
 
 @property (nonatomic,strong) UIButton *rightButton;
@@ -59,13 +62,17 @@ static NSString *shoppingHeaderID = @"BuyerHeaderCell";
 - (void)dealloc
 {
     [_task cancel];
+    [_updateTask cancel];
+    [_deleteTask cancel];
+    [_storeTask cancel];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     NSLog(@"dealloc");
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshShoppingCart:) name:kAddToShoppingCartSuccessNotification object:nil];
 //    self.edgesForExtendedLayout = UIRectEdgeNone;
     self.mTableView.frame = CGRectMake(0, 64, kScreenWidth, kScreenHeight - 64 - 49 - 50);
     self.mTableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
@@ -91,9 +98,9 @@ static NSString *shoppingHeaderID = @"BuyerHeaderCell";
     self.rightButton = [UIButton buttonWithType:UIButtonTypeCustom];
     self.rightButton.frame = CGRectMake(0, 0, 40, 40);
     [self.rightButton setTitle:@"编辑" forState:UIControlStateNormal];
-    [self.rightButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    [self.rightButton setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
     [self.rightButton setTitle:@"完成" forState:UIControlStateSelected];
-    [self.rightButton setTitleColor:[UIColor blueColor] forState:UIControlStateSelected];
+    [self.rightButton setTitleColor:[UIColor darkGrayColor] forState:UIControlStateSelected];
     
     [self.rightButton setTitle:@"编辑" forState:UIControlStateDisabled];
     [self.rightButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateDisabled];
@@ -119,6 +126,26 @@ static NSString *shoppingHeaderID = @"BuyerHeaderCell";
     }
     [self.mTableView reloadData];
     self.editBottomRightView.hidden = !button.selected;
+    //如果编辑完成
+    if (!button.selected) {
+        NSMutableArray *productIdsArr = [NSMutableArray array];
+        for (ShoppingCartModel *shoppingCartmodel in self.dataArray) {
+            for (ProductModel *productModel in shoppingCartmodel.products) {
+                NSString *str = [NSString stringWithFormat:@"%@-%lu", productModel.pdetailId, (unsigned long)productModel.quantity];
+                [productIdsArr addObject:str];
+            }
+        }
+        NSString *productIds = [productIdsArr componentsJoinedByString:@","];
+        [self editShoppingCartWithProductIds:productIds];
+    }
+}
+
+- (void)refreshShoppingCart:(NSNotification *)notify
+{
+    //清空数据，刷新
+    [self.dataArray removeAllObjects];
+    [self.mTableView reloadData];
+    [self startRequest];
 }
 
 - (void)requestDataListPullDown:(BOOL)pullDown andEndRefreshing:(EndRefreshing)endRefreshing
@@ -127,6 +154,7 @@ static NSString *shoppingHeaderID = @"BuyerHeaderCell";
     self.allSelectedButton.selected = NO;
     self.rightButton.selected = NO;
     
+    [_task cancel];
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                  kLoginToken, @"Token",
                                  nil];
@@ -152,6 +180,7 @@ static NSString *shoppingHeaderID = @"BuyerHeaderCell";
             }
             [weakSelf.mTableView reloadData];
             [weakSelf showTipWithNoData:IS_NULL_ARRAY(weakSelf.dataArray)];
+            weakSelf.rightButton.enabled = !IS_NULL_ARRAY(weakSelf.dataArray);
         } else {
             [Utility showString:responseObject[kErrMsg] onView:weakSelf.view];
         }
@@ -189,22 +218,23 @@ static NSString *shoppingHeaderID = @"BuyerHeaderCell";
     [cell.productImageView setImageWithURL:[NSURL URLWithString:product.pImgUrl] placeholderImage:[UIImage imageNamed:@"productpic"]];
     
     cell.titleLabel.text = product.pName;
-    if (IS_NULL_STRING(product.propertyd))
-    {
-        cell.sizeDetailLabel.text = @"";
-        cell.editDetailView.hidden = YES;
-    }
-    else
-    {
-        cell.editDetailView.hidden = NO;
-        cell.sizeDetailLabel.text = product.propertyd;
-        cell.editDetailTitleLabel.text = @"点击我修改规格";
-    }
-//    cell.editDetailView.hidden = NO;
+    cell.sizeDetailLabel.text = product.propertyd;
+//    if (IS_NULL_STRING(product.propertyd))
+//    {
+//        cell.editDetailView.hidden = YES;
+//        cell.sizeDetailLabel.text = @"";
+//    }
+//    else
+//    {
+//        cell.editDetailView.hidden = NO;
+//        cell.editDetailTitleLabel.text = @"点击我修改规格";
+//    }
+    //隐藏选择商品属性，改成直接显示商品属性
+    cell.editDetailView.hidden = YES;
+    cell.editDetailLabel.text = product.propertyd;
 //    cell.sizeDetailLabel.text = product.propertyd;
 //    cell.editDetailTitleLabel.text = @"点击我修改规格";
     
-//    cell.priceLabel.attributedText = [Utility recombinePrice:product.markprice orderPrice:product.price];
     cell.priceLabel.text = [NSString stringWithFormat:@"￥%.2f", product.price];
     [cell.marketPrice setStrikeLineText:[NSString stringWithFormat:@"￥%.2f", product.markprice]];
     
@@ -351,12 +381,58 @@ static NSString *shoppingHeaderID = @"BuyerHeaderCell";
     self.totalPriceLabel.text = [NSString stringWithFormat:@"合计￥%.2f",[self countTotalPrice]];
 }
 
+#pragma mark - 编辑购物车，网络请求
+- (void)editShoppingCartWithProductIds:(NSString *)productIds
+{
+    if (IS_NULL_STRING(productIds)) {
+        return;
+    }
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                 kLoginToken, @"Token",
+                                 productIds, @"productIds",
+                                 @"edit", @"action",
+                                 nil];
+    [_task cancel];
+    WS(weakSelf);
+    _task = [NetService POST:@"api/User/ManageShoppingCart" parameters:dict complete:^(id responseObject, NSError *error) {
+//        [Utility hideHUDForView:weakSelf.view];
+        if (error) {
+            NSLog(@"failure:%ld:%@", (long)error.code, error.localizedDescription);
+            [Utility showString:error.localizedDescription onView:weakSelf.view];
+            //因为要增删改查，如果出错重新加载数据，保证数据完整性
+            [self refreshShoppingCart:nil];
+            return ;
+        }
+        NSLog(@"%@", responseObject);
+        if ([responseObject[kStatusCode] integerValue] == NetStatusSuccess) {
+            [Utility showString:Localized(@"修改成功") onView:weakSelf.view];
+            [weakSelf.mTableView reloadData];
+//            [[NSNotificationCenter defaultCenter] postNotificationName:kAddToShoppingCartSuccessNotification object:nil];
+        } else {
+            [Utility showString:responseObject[kErrMsg] onView:weakSelf.view];
+            //因为要增删改查，如果出错重新加载数据，保证数据完整性
+            [self refreshShoppingCart:nil];
+        }
+    }];
+//    [Utility showHUDAddedTo:self.view forTask:_task];
+}
+
 #pragma mark - 点击buyer编辑按钮回调
 - (void)buyerEditingSelected:(NSInteger)sectionIdx
 {
     ShoppingCartModel *buy = self.dataArray[sectionIdx];
     buy.buyerIsEditing = !buy.buyerIsEditing;
     [self.mTableView reloadData];
+    if (!buy.buyerIsEditing) {
+        ShoppingCartModel *buyer = self.dataArray[sectionIdx];
+        NSMutableArray *productIdsArr = [NSMutableArray array];
+        for (ProductModel *model in buyer.products) {
+            NSString *str = [NSString stringWithFormat:@"%@-%lu", model.pdetailId, (unsigned long)model.quantity];
+            [productIdsArr addObject:str];
+        }
+        NSString *productIds = [productIdsArr componentsJoinedByString:@","];
+        [self editShoppingCartWithProductIds:productIds];
+    }
 }
 
 #pragma mark - 点击编辑详情回调
@@ -439,7 +515,8 @@ static NSString *shoppingHeaderID = @"BuyerHeaderCell";
                 [buyer.products removeObject:product];
             }
             // 这里删除之后操作涉及到太多东西了，需要
-            [self updateInfomation];
+//            [self updateInfomation];
+            [self removeGoodsWithProductIds:product.pdetailId];
         }
     }
     else if (alertView.tag == 102) // 多个或者单个
@@ -447,11 +524,17 @@ static NSString *shoppingHeaderID = @"BuyerHeaderCell";
         if (buttonIndex == 1)
         {
             NSMutableArray *buyerTempArr = [[NSMutableArray alloc] init];
+            //要删除的商品id数组
+            NSMutableArray *productIdsArr = [NSMutableArray array];
             for (ShoppingCartModel *buyer in self.dataArray)
             {
                 if (buyer.buyerIsChoosed)
                 {
                     [buyerTempArr addObject:buyer];
+                    for (ProductModel *productModel in buyer.products) {
+                        //全选添加所有要删除的商品的id
+                        [productIdsArr addObject:productModel.pdetailId];
+                    }
                 }
                 else
                 {
@@ -461,19 +544,59 @@ static NSString *shoppingHeaderID = @"BuyerHeaderCell";
                         if (product.productIsChoosed)
                         {
                             [productTempArr addObject:product];
+                            //没有全选添加选中的商品id
+                            [productIdsArr addObject:product.pdetailId];
                         }
                     }
-                    if (!IS_NULL_ARRAY(buyerTempArr))
+                    if (!IS_NULL_ARRAY(productTempArr))
                     {
                         [buyer.products removeObjectsInArray:productTempArr];
                     }
                 }
             }
             [self.dataArray removeObjectsInArray:buyerTempArr];
-            [self updateInfomation];
+            NSString *productIds = [productIdsArr componentsJoinedByString:@","];
+            [self removeGoodsWithProductIds:productIds];
+//            [self updateInfomation];
         }
     }
     
+}
+
+#pragma mark - 删除商品，网络请求
+- (void)removeGoodsWithProductIds:(NSString *)productIds
+{
+    if (IS_NULL_STRING(productIds)) {
+        return;
+    }
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                 kLoginToken, @"Token",
+                                 productIds, @"productIds",
+                                 @"remove", @"action",
+                                 nil];
+    [_task cancel];
+    WS(weakSelf);
+    _task = [NetService POST:@"api/User/ManageShoppingCart" parameters:dict complete:^(id responseObject, NSError *error) {
+        [Utility hideHUDForView:weakSelf.view];
+        if (error) {
+            NSLog(@"failure:%ld:%@", (long)error.code, error.localizedDescription);
+            [Utility showString:error.localizedDescription onView:weakSelf.view];
+            //因为要增删改查，如果出错重新加载数据，保证数据完整性
+            [self refreshShoppingCart:nil];
+            return ;
+        }
+        NSLog(@"%@", responseObject);
+        if ([responseObject[kStatusCode] integerValue] == NetStatusSuccess) {
+            [Utility showString:Localized(@"删除成功") onView:weakSelf.view];
+//            [[NSNotificationCenter defaultCenter] postNotificationName:kAddToShoppingCartSuccessNotification object:nil];
+            [weakSelf updateInfomation];
+        } else {
+            [Utility showString:responseObject[kErrMsg] onView:weakSelf.view];
+            //因为要增删改查，如果出错重新加载数据，保证数据完整性
+            [self refreshShoppingCart:nil];
+        }
+    }];
+    [Utility showHUDAddedTo:self.view forTask:_task];
 }
 
 #pragma mark - 删除之后一些列更新操作
@@ -499,9 +622,9 @@ static NSString *shoppingHeaderID = @"BuyerHeaderCell";
     [self.accountButton setTitle:[NSString stringWithFormat:@"结算(%ld)",[self countTotalSelectedNumber]] forState:UIControlStateNormal];
     
     [self.mTableView reloadData];
-    
     // 如果删除干净了
     if (IS_NULL_ARRAY(self.dataArray)) {
+        [self showTipWithNoData:YES];
         [self clickAllEdit:self.rightButton];
         self.rightButton.enabled = NO;
     }
@@ -587,7 +710,63 @@ static NSString *shoppingHeaderID = @"BuyerHeaderCell";
 
 // 移动到收藏夹
 - (IBAction)store:(id)sender {
-    NSLog(@"移动到收藏夹");
+    //购物车的收藏按钮隐藏了，想打开可以在xib里面把hidden取消
+    //要删除的商品id数组
+    NSMutableArray *productIdsArr = [NSMutableArray array];
+    for (ShoppingCartModel *buyer in self.dataArray)
+    {
+        if (buyer.buyerIsChoosed)
+        {
+            for (ProductModel *productModel in buyer.products) {
+                //全选添加所有要收藏的商品的id
+                [productIdsArr addObject:productModel.productId];
+            }
+        }
+        else
+        {
+            for (ProductModel *product in buyer.products)
+            {
+                if (product.productIsChoosed)
+                {
+                    //没有全选添加选中的商品id
+                    [productIdsArr addObject:product.productId];
+                }
+            }
+        }
+    }
+    NSString *productIds = [productIdsArr componentsJoinedByString:@","];
+    [self storeGoodsWithProductIds:productIds];
+}
+
+#pragma mark - 收藏商品
+- (void)storeGoodsWithProductIds:(NSString *)productIds
+{
+    if (IS_NULL_STRING(productIds)) {
+        return;
+    }
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                 kLoginToken, @"Token",
+                                 productIds, @"productId",
+                                 nil];
+    [_task cancel];
+    WS(weakSelf);
+    _task = [NetService POST:@"api/User/AddFav" parameters:dict complete:^(id responseObject, NSError *error) {
+        [Utility hideHUDForView:weakSelf.view];
+        if (error) {
+            NSLog(@"failure:%ld:%@", (long)error.code, error.localizedDescription);
+            [Utility showString:error.localizedDescription onView:weakSelf.view];
+            return ;
+        }
+        NSLog(@"%@", responseObject);
+        if ([responseObject[kStatusCode] integerValue] == NetStatusSuccess) {
+            [Utility showString:Localized(@"收藏成功") onView:weakSelf.view];
+        } else {
+            //收藏特殊处理，无论如何都提示收藏成功
+            [Utility showString:Localized(@"收藏成功") onView:weakSelf.view];
+//            [Utility showString:responseObject[kErrMsg] onView:weakSelf.view];
+        }
+    }];
+    [Utility showHUDAddedTo:self.view forTask:_task];
 }
 
 // 底部多选删除也可单选删除

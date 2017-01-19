@@ -34,9 +34,7 @@
                                 <constraint firstAttribute="height" constant="30" id="jpx-S0-1O3"/>
                                 <constraint firstAttribute="width" constant="46" id="z1q-oc-vrT"/>
                             </constraints>
-                            <state key="normal" title="X">
-                                <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
+                            <state key="normal" image="close"/>
                             <connections>
                                 <action selector="closeAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="4LK-NL-XRU"/>
                             </connections>
@@ -68,4 +66,7 @@
             <point key="canvasLocation" x="33.5" y="54.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="close" width="16" height="16"/>
+    </resources>
 </document>

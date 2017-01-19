@@ -24,9 +24,31 @@
     Method method = class_getClassMethod([self class], @selector(systemFontOfSize:));
     //然后交换类方法
     method_exchangeImplementations(newMethod, method);
+    
+//    //获取替换后的类方法
+//    Method boldNewMethod = class_getClassMethod([self class], @selector(adjustBoldFont:));
+//    //获取替换前的类方法
+//    Method blodmethod = class_getClassMethod([self class], @selector(boldSystemFontOfSize:));
+//    //然后交换类方法
+//    method_exchangeImplementations(boldNewMethod, blodmethod);
 }
 
-+(UIFont *)adjustFont:(CGFloat)fontSize{
+//+ (UIFont *)adjustBoldFont:(CGFloat)fontSize
+//{
+//    UIFont *newFont=nil;
+//    if (IS_IPHONE_5){
+//        newFont = [UIFont adjustBoldFont:fontSize - 2];
+//    }else if (IS_IPHONE_6P){
+//        newFont = [UIFont adjustBoldFont:fontSize + 2];
+//    } else if (IS_IPHONE_4) {
+//        newFont = [UIFont adjustBoldFont:fontSize-2];
+//    } else {
+//        newFont = [UIFont adjustBoldFont:fontSize];
+//    }
+//    return newFont;
+//}
+
++ (UIFont *)adjustFont:(CGFloat)fontSize{
     UIFont *newFont=nil;
     if (IS_IPHONE_5){
         newFont = [UIFont adjustFont:fontSize - 2];
@@ -57,6 +79,7 @@
         if(self.tag != 666){
             CGFloat fontSize = self.titleLabel.font.pointSize;
             self.titleLabel.font = [UIFont systemFontOfSize:fontSize];
+//            self.titleLabel.font = [UIFont boldSystemFontOfSize:fontSize];
         }
     }
     return self;

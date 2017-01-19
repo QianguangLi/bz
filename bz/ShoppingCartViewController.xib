@@ -83,8 +83,8 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cEZ-l9-wWZ">
                     <rect key="frame" x="175" y="0.0" width="200" height="50"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tzo-eg-ZJS">
-                            <rect key="frame" x="0.0" y="0.0" width="66" height="50"/>
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tzo-eg-ZJS">
+                            <rect key="frame" x="0.0" y="0.0" width="66.5" height="50"/>
                             <color key="backgroundColor" red="0.99607843139999996" green="0.76078431369999999" blue="0.59607843140000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <state key="normal" title="分享宝贝">
@@ -95,7 +95,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bQY-93-NEJ">
-                            <rect key="frame" x="134" y="0.0" width="66" height="50"/>
+                            <rect key="frame" x="133.5" y="0.0" width="66.5" height="50"/>
                             <color key="backgroundColor" red="0.75820574659999995" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                             <state key="normal" title="多选删除">
@@ -105,8 +105,8 @@
                                 <action selector="deleteMultipleOrSingfle:" destination="-1" eventType="touchUpInside" id="lsd-80-HSl"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OvZ-AH-5WS">
-                            <rect key="frame" x="67" y="0.0" width="66" height="50"/>
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OvZ-AH-5WS">
+                            <rect key="frame" x="66.5" y="0.0" width="67" height="50"/>
                             <color key="backgroundColor" red="0.99607843139999996" green="0.76078431369999999" blue="0.59607843140000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <state key="normal" title="移到收藏夹">
@@ -132,8 +132,8 @@
                         <constraint firstAttribute="trailing" secondItem="bQY-93-NEJ" secondAttribute="trailing" id="aPU-ci-LFy"/>
                         <constraint firstAttribute="width" constant="200" id="dz1-g9-Ji1"/>
                         <constraint firstAttribute="bottom" secondItem="bQY-93-NEJ" secondAttribute="bottom" id="ewp-Bg-i0x"/>
-                        <constraint firstItem="bQY-93-NEJ" firstAttribute="leading" secondItem="OvZ-AH-5WS" secondAttribute="trailing" constant="1" id="ko6-t2-R0N"/>
-                        <constraint firstItem="OvZ-AH-5WS" firstAttribute="leading" secondItem="tzo-eg-ZJS" secondAttribute="trailing" constant="1" id="neH-hG-z6K"/>
+                        <constraint firstItem="bQY-93-NEJ" firstAttribute="leading" secondItem="OvZ-AH-5WS" secondAttribute="trailing" id="ko6-t2-R0N"/>
+                        <constraint firstItem="OvZ-AH-5WS" firstAttribute="leading" secondItem="tzo-eg-ZJS" secondAttribute="trailing" id="neH-hG-z6K"/>
                         <constraint firstItem="OvZ-AH-5WS" firstAttribute="width" secondItem="tzo-eg-ZJS" secondAttribute="width" id="w3g-n0-bZ7"/>
                     </constraints>
                 </view>
