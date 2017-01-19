@@ -20,7 +20,7 @@
 #import "LoginViewController.h"
 #import "BaseNavigationController.h"
 
-@interface GoodsDetailViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface GoodsDetailViewController () <UITableViewDelegate, UITableViewDataSource, ChooseGoodsPropertyViewControllerDelegate>
 {
     NSURLSessionTask *_task;
     NSURLSessionTask *_commentTask;
@@ -52,6 +52,8 @@
 @property (nonatomic,strong) ChooseGoodsPropertyViewController *chooseVC;
 
 @property (strong, nonatomic) ProductModel *productDetailModel;//商品model，具备更详细的数据
+
+@property (assign, nonatomic) BOOL canSelect;//是否可以去选择商品
 
 @end
 
@@ -125,6 +127,7 @@
             NSDictionary *dataDict = responseObject[kResponseData];
             ProductModel *model = [[ProductModel alloc] initWithDictionary:dataDict error:nil];
             weakSelf.productDetailModel = model;
+            weakSelf.canSelect = YES;
             [weakSelf reloadViewWithProductModel:model];
         } else {
             [Utility showString:responseObject[kErrMsg] onView:weakSelf.view];
@@ -166,6 +169,16 @@
         _commentTableView.hidden = NO;
         
         _commentHeightLayout.constant = _commentTableView.contentSize.height;
+    }
+}
+
+#pragma mark - ChooseGoodsPropertyViewControllerDelegate
+- (void)chooseGoodsPropertyViewControllerDidSelectedProductDetailModel:(ProductDetailModel *)model
+{
+    if (model) {
+        [_selectProductButton setTitle:[NSString stringWithFormat:@"已选:%@", model.propertyname] forState:UIControlStateNormal];
+    } else {
+        [_selectProductButton setTitle:@"请选择" forState:UIControlStateNormal];
     }
 }
 
@@ -211,12 +224,17 @@
         }];
         return;
     }
+    //数据没有加载完成不能取选择商品
+    if (!_canSelect) {
+        return;
+    }
     if (!_chooseVC)
     {
         _chooseVC = [[ChooseGoodsPropertyViewController alloc] init];
     }
     _chooseVC.enterType = FirstEnterType;
     _chooseVC.model = _productDetailModel;
+    _chooseVC.delegate = self;
 //    self.chooseVC.price = 256.0f;
     [self.navigationController presentSemiViewController:_chooseVC withOptions:@{
                                                                                      KNSemiModalOptionKeys.pushParentBack    : @(YES),
@@ -242,7 +260,7 @@
 #pragma mark - 底部按钮操作
 - (IBAction)buy:(UIButton *)sender
 {
-    [self selectProductAction:sender];
+//    [self selectProductAction:sender];
 }
 
 - (IBAction)addToShoppingCart:(UIButton *)sender
@@ -259,7 +277,6 @@
 {
     
 }
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -31,11 +31,11 @@
 
 - (IBAction)minus:(UIButton *)sender
 {
-    int num = _countTF.text.intValue;
+    NSUInteger num = _countTF.text.integerValue;
     if (num > 1) {
         num--;
     }
-    _countTF.text = [NSString stringWithFormat:@"%d", num];
+    _countTF.text = [NSString stringWithFormat:@"%lu", (unsigned long)num];
     if (_countDelegate && [_countDelegate respondsToSelector:@selector(numberOfBuyGoods:)]) {
         [_countDelegate numberOfBuyGoods:num];
     }
@@ -43,10 +43,9 @@
 
 - (IBAction)plus:(UIButton *)sender
 {
-    int num = _countTF.text.intValue;
+    NSUInteger num = _countTF.text.integerValue;
     num++;
-    _countTF.text = [NSString stringWithFormat:@"%d", num];
-    _countTF.text = [NSString stringWithFormat:@"%d", num];
+    _countTF.text = [NSString stringWithFormat:@"%lu", (unsigned long)num];
     if (_countDelegate && [_countDelegate respondsToSelector:@selector(numberOfBuyGoods:)]) {
         [_countDelegate numberOfBuyGoods:num];
     }

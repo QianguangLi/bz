@@ -10,6 +10,8 @@
 #import "GoodsPropertyCell.h"
 #import "CollectionSectionHeaderView.h"
 #import "UIImageView+AFNetworking.h"
+#import "UIViewController+KNSemiModal.h"
+#import "NetService.h"
 
 #define kColunm 3 //3列
 #define kInterSpace 10 //列间距
@@ -17,6 +19,9 @@
 #define kLineSpace 5 //行间距
 
 @interface ChooseGoodsPropertyViewController () <UICollectionViewDelegate, UICollectionViewDataSource, CountCollectionCellDelegate>
+{
+    NSURLSessionTask *_task;
+}
 @property (weak, nonatomic) IBOutlet UIImageView *goodsImageView;
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *alreadySelectLabel;
@@ -27,6 +32,10 @@
 @property (strong, nonatomic) NSArray *propertyArray;//属性数组
 @property (strong, nonatomic) NSArray *pDetailArray;//子商品数组
 
+//被选中的子商品属性
+@property (strong, nonatomic) ProductDetailModel *selectedProductDetailModel;
+@property (assign, nonatomic) NSUInteger numberOfBuyGoods;//购买数量
+
 @end
 
 @implementation ChooseGoodsPropertyViewController
@@ -36,9 +45,18 @@
     NSLog(@"ChooseGoodsPropertyViewController dealloc");
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [_task cancel];
+    NSLog(@"disappear");
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    //初始化购买数量为1
+    _numberOfBuyGoods = 1;
     
     [_propertyCollectionView registerNib:[UINib nibWithNibName:@"GoodsPropertyCell" bundle:nil] forCellWithReuseIdentifier:@"GoodsPropertyCell"];
     [_propertyCollectionView registerNib:[UINib nibWithNibName:@"CountCollectionCell" bundle:nil] forCellWithReuseIdentifier:@"CountCollectionCell"];
@@ -54,10 +72,12 @@
 #pragma mark - 底部按钮点击事件
 - (IBAction)addToShoppingCart:(UIButton *)sender
 {
+    //商品属性没全选提示选择商品属性
     if (_propertyCollectionView.indexPathsForSelectedItems.count != _propertyArray.count) {
         [Utility showString:Localized(@"请选择商品属性") onView:self.view];
         return;
     }
+    [self addToShoopingCart];
 }
 
 - (IBAction)buy:(UIButton *)sender
@@ -66,6 +86,41 @@
         [Utility showString:Localized(@"请选择商品属性") onView:self.view];
         return;
     }
+    
+    UIViewController * parent = [self.view containingViewController];
+    if ([parent respondsToSelector:@selector(dismissSemiModalView)]) {
+        [parent dismissSemiModalView];
+    }
+}
+
+- (void)addToShoopingCart
+{
+    if (!_selectedProductDetailModel) {
+        [Utility showString:Localized(@"请选择商品属性") onView:self.view];
+        return;
+    }
+    NSString *productIds = [NSString stringWithFormat:@"%@-%lu", _selectedProductDetailModel.pdetailId, (unsigned long)_numberOfBuyGoods];
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                 kLoginToken, @"Token",
+                                 productIds, @"productIds",
+                                 @"add", @"action",
+                                 nil];
+    WS(weakSelf);
+    _task = [NetService POST:@"api/User/ManageShoppingCart" parameters:dict complete:^(id responseObject, NSError *error) {
+        [Utility hideHUDForView:weakSelf.view];
+        if (error) {
+            NSLog(@"failure:%ld:%@", (long)error.code, error.localizedDescription);
+            [Utility showString:error.localizedDescription onView:weakSelf.view];
+            return ;
+        }
+        NSLog(@"%@", responseObject);
+        if ([responseObject[kStatusCode] integerValue] == NetStatusSuccess) {
+            [Utility showString:Localized(@"商品已经加入购物车") onView:weakSelf.view];
+        } else {
+            [Utility showString:responseObject[kErrMsg] onView:weakSelf.view];
+        }
+    }];
+    [Utility showHUDAddedTo:self.view forTask:_task];
 }
 
 #pragma mark - UICollectionViewDelegate
@@ -193,14 +248,15 @@
 }
 
 #pragma mark - CountCollectionCellDelegate
-- (void)numberOfBuyGoods:(int)numberOfBuyGoods
+- (void)numberOfBuyGoods:(NSUInteger)numberOfBuyGoods
 {
-    NSLog(@"购买数量%d", numberOfBuyGoods);
+    _numberOfBuyGoods = numberOfBuyGoods;
 }
 
 #pragma mark - 根据选择条件刷新页面
 - (void)searchProductDetailWith:(NSString *)propertyIdStr
 {
+    //根据propertyid来判断选中了哪个子商品
     for (ProductDetailModel *productDetailModel in _pDetailArray) {
         if ([productDetailModel.propertyid isEqualToString:propertyIdStr]) {
             [self reloadWithProductDetailModel:productDetailModel];
@@ -211,6 +267,7 @@
 
 - (void)reloadWithProductDetailModel:(ProductDetailModel *)productDetailModel
 {
+    //如果子商品存在则填充内容，否则填充商品属性
     if (productDetailModel) {
         [_goodsImageView setImageWithURL:[NSURL URLWithString:productDetailModel.pdetailimg] placeholderImage:[UIImage imageNamed:@"productpic"]];
         _priceLabel.text = [NSString stringWithFormat:@"￥%.2f", productDetailModel.price];
@@ -219,6 +276,12 @@
         [_goodsImageView setImageWithURL:[NSURL URLWithString:_model.pImgUrl] placeholderImage:[UIImage imageNamed:@"productpic"]];
         _priceLabel.text = [NSString stringWithFormat:@"￥%.2f", _model.price];
         _alreadySelectLabel.text = @"已选:";
+    }
+    //给选择商品赋值，后面使用
+    _selectedProductDetailModel = productDetailModel;
+    //代理
+    if (_delegate && [_delegate respondsToSelector:@selector(chooseGoodsPropertyViewControllerDidSelectedProductDetailModel:)]) {
+        [_delegate chooseGoodsPropertyViewControllerDidSelectedProductDetailModel:productDetailModel];
     }
 }
 

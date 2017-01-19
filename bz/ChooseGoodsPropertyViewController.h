@@ -14,10 +14,19 @@ typedef NS_ENUM(NSInteger,EnterType){
     FirstEnterType = 0,
     SecondEnterType
 };
+
+@protocol ChooseGoodsPropertyViewControllerDelegate <NSObject>
+@optional
+- (void)chooseGoodsPropertyViewControllerDidSelectedProductDetailModel:(ProductDetailModel *)model;
+
+@end
+
 /**
  选择商品属性
  */
 @interface ChooseGoodsPropertyViewController : BaseViewController
+
+@property (weak, nonatomic) id <ChooseGoodsPropertyViewControllerDelegate> delegate;
 
 @property (nonatomic,assign) EnterType enterType;
 

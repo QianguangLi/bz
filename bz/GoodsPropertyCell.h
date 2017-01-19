@@ -10,7 +10,7 @@
 
 @protocol CountCollectionCellDelegate <NSObject>
 
-- (void)numberOfBuyGoods:(int)numberOfBuyGoods;
+- (void)numberOfBuyGoods:(NSUInteger)numberOfBuyGoods;
 
 @end
 
