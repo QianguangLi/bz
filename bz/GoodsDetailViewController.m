@@ -20,6 +20,7 @@
 #import "LoginViewController.h"
 #import "BaseNavigationController.h"
 #import "ShoppingCartViewController.h"
+#import "GoodsCommentViewController.h"
 
 @interface GoodsDetailViewController () <UITableViewDelegate, UITableViewDataSource, ChooseGoodsPropertyViewControllerDelegate>
 {
@@ -205,6 +206,12 @@
     }];
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [self goToComment];
+}
+
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
@@ -257,7 +264,19 @@
 #pragma mark - 商品评价
 - (IBAction)commentBtnAction:(UIButton *)sender
 {
-    
+    [self goToComment];
+}
+//去评论页面
+- (void)goToComment
+{
+    GoodsCommentViewController *vc = [[GoodsCommentViewController alloc] init];
+    vc.isRequireRefreshFooter = YES;
+    vc.isRequireRefreshHeader = YES;
+    vc.productId = _productModel.productId;
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+    //改变返回按钮文字
+    self.navigationItem.backBarButtonItem = item;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - 底部按钮操作

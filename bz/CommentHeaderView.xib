@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="U6b-Vx-4bR" customClass="CommentHeaderView">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="67"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eC1-HI-448">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="67"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="member-head" translatesAutoresizingMaskIntoConstraints="NO" id="zXm-de-huJ">
+                            <rect key="frame" x="8" y="8" width="30" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="zXm-de-huJ" secondAttribute="height" multiplier="1:1" id="H5c-k8-ZgN"/>
+                                <constraint firstAttribute="width" constant="30" id="KGv-8X-bfT"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="评论人" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zBv-Lp-jf3">
+                            <rect key="frame" x="43" y="14.5" width="43" height="17"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="评论内容" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A2u-yq-BPf">
+                            <rect key="frame" x="8" y="46" width="304" height="16"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="A2u-yq-BPf" secondAttribute="trailing" constant="8" id="7tm-eB-1xG"/>
+                        <constraint firstItem="A2u-yq-BPf" firstAttribute="leading" secondItem="eC1-HI-448" secondAttribute="leading" constant="8" id="JKh-1B-rzK"/>
+                        <constraint firstItem="zXm-de-huJ" firstAttribute="top" secondItem="eC1-HI-448" secondAttribute="top" constant="8" id="M59-rr-UiS"/>
+                        <constraint firstItem="zBv-Lp-jf3" firstAttribute="leading" secondItem="zXm-de-huJ" secondAttribute="trailing" constant="5" id="OyO-mT-L1r"/>
+                        <constraint firstItem="A2u-yq-BPf" firstAttribute="top" secondItem="zXm-de-huJ" secondAttribute="bottom" constant="8" id="UTW-Zv-noc"/>
+                        <constraint firstItem="zXm-de-huJ" firstAttribute="leading" secondItem="eC1-HI-448" secondAttribute="leading" constant="8" id="bB5-dZ-1h3"/>
+                        <constraint firstItem="zBv-Lp-jf3" firstAttribute="centerY" secondItem="zXm-de-huJ" secondAttribute="centerY" id="idv-qZ-U7M"/>
+                        <constraint firstAttribute="bottom" secondItem="A2u-yq-BPf" secondAttribute="bottom" constant="5" id="w7o-uw-Ncf"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="eC1-HI-448" secondAttribute="bottom" id="6IT-0P-qki"/>
+                <constraint firstItem="eC1-HI-448" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" id="9sL-km-g2W"/>
+                <constraint firstAttribute="trailing" secondItem="eC1-HI-448" secondAttribute="trailing" id="Icw-XY-oNB"/>
+                <constraint firstItem="eC1-HI-448" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" id="IuY-Lb-vCO"/>
+            </constraints>
+            <connections>
+                <outlet property="contentLabel" destination="A2u-yq-BPf" id="ij4-GL-Poj"/>
+                <outlet property="faceImageView" destination="zXm-de-huJ" id="F0c-Ox-Vgw"/>
+                <outlet property="nameLabel" destination="zBv-Lp-jf3" id="BCd-nL-mpo"/>
+            </connections>
+            <point key="canvasLocation" x="34" y="35.5"/>
+        </collectionReusableView>
+    </objects>
+    <resources>
+        <image name="member-head" width="50" height="50"/>
+    </resources>
+</document>

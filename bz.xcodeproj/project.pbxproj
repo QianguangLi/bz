@@ -181,6 +181,15 @@
 		61B1EA941E26030B006F8276 /* PYSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61B1EA8B1E26030B006F8276 /* PYSearchViewController.m */; };
 		61B1EA951E26030B006F8276 /* UIColor+PYSearchExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 61B1EA8D1E26030B006F8276 /* UIColor+PYSearchExtension.m */; };
 		61B1EA961E26030B006F8276 /* UIView+PYSearchExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 61B1EA8F1E26030B006F8276 /* UIView+PYSearchExtension.m */; };
+		61BB46081E31A273003C602B /* GoodsCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61BB46061E31A273003C602B /* GoodsCommentViewController.m */; };
+		61BB46091E31A273003C602B /* GoodsCommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61BB46071E31A273003C602B /* GoodsCommentViewController.xib */; };
+		61BB460D1E31A2E7003C602B /* CollectionRefreshViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61BB460B1E31A2E7003C602B /* CollectionRefreshViewController.m */; };
+		61BB460E1E31A2E7003C602B /* CollectionRefreshViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61BB460C1E31A2E7003C602B /* CollectionRefreshViewController.xib */; };
+		61BB46121E31A9F5003C602B /* ImageCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 61BB46101E31A9F5003C602B /* ImageCollectionCell.m */; };
+		61BB46131E31A9F5003C602B /* ImageCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61BB46111E31A9F5003C602B /* ImageCollectionCell.xib */; };
+		61BB46171E31ABDB003C602B /* CommentHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 61BB46151E31ABDB003C602B /* CommentHeaderView.m */; };
+		61BB46181E31ABDB003C602B /* CommentHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61BB46161E31ABDB003C602B /* CommentHeaderView.xib */; };
+		61BB461D1E31ABEF003C602B /* CommentFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61BB461B1E31ABEF003C602B /* CommentFooterView.xib */; };
 		61DFD3CD1E232FCA00D9C2D7 /* PaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61DFD3CB1E232FCA00D9C2D7 /* PaymentViewController.m */; };
 		61DFD3CE1E232FCA00D9C2D7 /* PaymentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61DFD3CC1E232FCA00D9C2D7 /* PaymentViewController.xib */; };
 		61DFD3D21E23385F00D9C2D7 /* AlwaysBuyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61DFD3D01E23385F00D9C2D7 /* AlwaysBuyViewController.m */; };
@@ -507,6 +516,19 @@
 		61B1EA8D1E26030B006F8276 /* UIColor+PYSearchExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+PYSearchExtension.m"; sourceTree = "<group>"; };
 		61B1EA8E1E26030B006F8276 /* UIView+PYSearchExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+PYSearchExtension.h"; sourceTree = "<group>"; };
 		61B1EA8F1E26030B006F8276 /* UIView+PYSearchExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+PYSearchExtension.m"; sourceTree = "<group>"; };
+		61BB46051E31A273003C602B /* GoodsCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsCommentViewController.h; sourceTree = "<group>"; };
+		61BB46061E31A273003C602B /* GoodsCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsCommentViewController.m; sourceTree = "<group>"; };
+		61BB46071E31A273003C602B /* GoodsCommentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoodsCommentViewController.xib; sourceTree = "<group>"; };
+		61BB460A1E31A2E7003C602B /* CollectionRefreshViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionRefreshViewController.h; sourceTree = "<group>"; };
+		61BB460B1E31A2E7003C602B /* CollectionRefreshViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionRefreshViewController.m; sourceTree = "<group>"; };
+		61BB460C1E31A2E7003C602B /* CollectionRefreshViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollectionRefreshViewController.xib; sourceTree = "<group>"; };
+		61BB460F1E31A9F5003C602B /* ImageCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageCollectionCell.h; sourceTree = "<group>"; };
+		61BB46101E31A9F5003C602B /* ImageCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageCollectionCell.m; sourceTree = "<group>"; };
+		61BB46111E31A9F5003C602B /* ImageCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageCollectionCell.xib; sourceTree = "<group>"; };
+		61BB46141E31ABDB003C602B /* CommentHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentHeaderView.h; sourceTree = "<group>"; };
+		61BB46151E31ABDB003C602B /* CommentHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentHeaderView.m; sourceTree = "<group>"; };
+		61BB46161E31ABDB003C602B /* CommentHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentHeaderView.xib; sourceTree = "<group>"; };
+		61BB461B1E31ABEF003C602B /* CommentFooterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentFooterView.xib; sourceTree = "<group>"; };
 		61DFD3CA1E232FCA00D9C2D7 /* PaymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentViewController.h; sourceTree = "<group>"; };
 		61DFD3CB1E232FCA00D9C2D7 /* PaymentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentViewController.m; sourceTree = "<group>"; };
 		61DFD3CC1E232FCA00D9C2D7 /* PaymentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PaymentViewController.xib; sourceTree = "<group>"; };
@@ -597,6 +619,13 @@
 				619605EA1E2EF6FD00377D95 /* GoodsPropertyCell.m */,
 				619605EB1E2EF6FD00377D95 /* GoodsPropertyCell.xib */,
 				619605EE1E2F316300377D95 /* CountCollectionCell.xib */,
+				61BB460F1E31A9F5003C602B /* ImageCollectionCell.h */,
+				61BB46101E31A9F5003C602B /* ImageCollectionCell.m */,
+				61BB46111E31A9F5003C602B /* ImageCollectionCell.xib */,
+				61BB46141E31ABDB003C602B /* CommentHeaderView.h */,
+				61BB46151E31ABDB003C602B /* CommentHeaderView.m */,
+				61BB46161E31ABDB003C602B /* CommentHeaderView.xib */,
+				61BB461B1E31ABEF003C602B /* CommentFooterView.xib */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -743,6 +772,9 @@
 				6165975B1E2E3DE700A8B735 /* ChooseGoodsPropertyViewController.h */,
 				6165975C1E2E3DE700A8B735 /* ChooseGoodsPropertyViewController.m */,
 				616597621E2E474200A8B735 /* ChooseGoodsPropertyViewController.xib */,
+				61BB46051E31A273003C602B /* GoodsCommentViewController.h */,
+				61BB46061E31A273003C602B /* GoodsCommentViewController.m */,
+				61BB46071E31A273003C602B /* GoodsCommentViewController.xib */,
 			);
 			name = GoodsCategory;
 			sourceTree = "<group>";
@@ -987,6 +1019,9 @@
 				615FBF3E1E14E9AC00F50C0D /* RefreshViewController.h */,
 				615FBF3F1E14E9AC00F50C0D /* RefreshViewController.m */,
 				615FBF401E14E9AC00F50C0D /* RefreshViewController.xib */,
+				61BB460A1E31A2E7003C602B /* CollectionRefreshViewController.h */,
+				61BB460B1E31A2E7003C602B /* CollectionRefreshViewController.m */,
+				61BB460C1E31A2E7003C602B /* CollectionRefreshViewController.xib */,
 			);
 			name = BaseController;
 			sourceTree = "<group>";
@@ -1407,7 +1442,9 @@
 				615FBF581E15066200F50C0D /* OrderListTopCell.xib in Resources */,
 				615FBF381E14BF0400F50C0D /* GoodsCategoryViewController.xib in Resources */,
 				617288F61E10BF070037DB40 /* ShoppingCartViewController.xib in Resources */,
+				61BB461D1E31ABEF003C602B /* CommentFooterView.xib in Resources */,
 				613FB9521E1E355F00CB2070 /* BonusScanCell.xib in Resources */,
+				61BB460E1E31A2E7003C602B /* CollectionRefreshViewController.xib in Resources */,
 				615FBF531E15064400F50C0D /* OrderProductCell.xib in Resources */,
 				61661C271E29F5040022A1FC /* OrderInfoSendCell.xib in Resources */,
 				617289021E10CBEF0037DB40 /* Localizable.strings in Resources */,
@@ -1423,6 +1460,7 @@
 				61661C2C1E29FD630022A1FC /* BuyerInfoCell.xib in Resources */,
 				11FE82831E1FA00400309719 /* BonusScanDetailsViewController.xib in Resources */,
 				619605EF1E2F316300377D95 /* CountCollectionCell.xib in Resources */,
+				61BB46181E31ABDB003C602B /* CommentHeaderView.xib in Resources */,
 				11DC85461E20938900AE7947 /* WriteEmailViewController.xib in Resources */,
 				615FBF3D1E14CB2200F50C0D /* OrderListViewController.xib in Resources */,
 				617288F11E10BEF30037DB40 /* FirstPageViewController.xib in Resources */,
@@ -1436,7 +1474,9 @@
 				61DFD3CE1E232FCA00D9C2D7 /* PaymentViewController.xib in Resources */,
 				613FB94D1E1E352200CB2070 /* BonusTXScanViewController.xib in Resources */,
 				11FE82711E1F79A600309719 /* MMNumberKeyboardDismissKey.png in Resources */,
+				61BB46131E31A9F5003C602B /* ImageCollectionCell.xib in Resources */,
 				617F79791E1620FF00E139CF /* FunctionListViewController.xib in Resources */,
+				61BB46091E31A273003C602B /* GoodsCommentViewController.xib in Resources */,
 				617288FB1E10BF110037DB40 /* MeViewController.xib in Resources */,
 				6171116A1E28CCA1001B6BA5 /* SelectLocationView.xib in Resources */,
 				6193197F1E1CA41200AF63E7 /* DZMoneyViewController.xib in Resources */,
@@ -1638,6 +1678,7 @@
 				61661C211E29F4DC0022A1FC /* OrderInfoDetailCell.m in Sources */,
 				11FE82821E1FA00400309719 /* BonusScanDetailsViewController.m in Sources */,
 				619319901E1CB22200AF63E7 /* NSDate+GFCalendar.m in Sources */,
+				61BB46171E31ABDB003C602B /* CommentHeaderView.m in Sources */,
 				6171115F1E2874E8001B6BA5 /* EmailDetailsViewController.m in Sources */,
 				617289171E11071A0037DB40 /* GlobalData.m in Sources */,
 				61DFD3DC1E2351E900D9C2D7 /* PaymentBottomCell.m in Sources */,
@@ -1671,6 +1712,7 @@
 				61F9ADAF1E24E63D00649D80 /* GTMBase64.m in Sources */,
 				611AF9C91E27197600F10C49 /* ShoppingCartCell.m in Sources */,
 				616448281E1B459E0007E50E /* AddressCell.m in Sources */,
+				61BB460D1E31A2E7003C602B /* CollectionRefreshViewController.m in Sources */,
 				61B1EA931E26030B006F8276 /* PYSearchSuggestionViewController.m in Sources */,
 				61B1EA901E26030B006F8276 /* NSBundle+PYSearchExtension.m in Sources */,
 				115E35831E175258002A9957 /* RightCell.m in Sources */,
@@ -1679,6 +1721,7 @@
 				1154B99E1E113C3E00C8459D /* NetService.m in Sources */,
 				11FE826D1E1F79A600309719 /* MMNumberKeyboard.m in Sources */,
 				613B47B61E2E07D700D0EB12 /* JXButton.m in Sources */,
+				61BB46081E31A273003C602B /* GoodsCommentViewController.m in Sources */,
 				61661C3F1E2A216B0022A1FC /* OrderSendViewController.m in Sources */,
 				613FB94C1E1E352200CB2070 /* BonusTXScanViewController.m in Sources */,
 				6193197E1E1CA41200AF63E7 /* DZMoneyViewController.m in Sources */,
@@ -1695,6 +1738,7 @@
 				615FBF371E14BF0400F50C0D /* GoodsCategoryViewController.m in Sources */,
 				613B47B31E2DEE7A00D0EB12 /* CALayer+Addition.m in Sources */,
 				61661C1B1E29F1200022A1FC /* OrderSendDetailViewController.m in Sources */,
+				61BB46121E31A9F5003C602B /* ImageCollectionCell.m in Sources */,
 				615FBF5C1E1506AB00F50C0D /* OrderListBottomCell.m in Sources */,
 				116DF0651E20BE8500484D72 /* EmailViewController.m in Sources */,
 				11FE827D1E1F917500309719 /* RechargeDetailsViewController.m in Sources */,

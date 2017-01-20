@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GoodsCommentViewController">
+            <connections>
+                <outlet property="allCommentBtn" destination="1Uu-of-l1c" id="d7L-cU-ZeO"/>
+                <outlet property="badCommentBtn" destination="3Nr-lY-1gu" id="jgi-x2-Pb6"/>
+                <outlet property="goodCommentBtn" destination="qmd-qP-YIq" id="QyV-hX-x1g"/>
+                <outlet property="imageCommentBtn" destination="TBb-0G-aAb" id="Hk9-iL-GPK"/>
+                <outlet property="mediumCommentBtn" destination="Gsm-U0-EhM" id="HXO-2s-cTl"/>
+                <outlet property="secondNavigation" destination="9uZ-jz-WQZ" id="i2j-YC-zjZ"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9uZ-jz-WQZ">
+                    <rect key="frame" x="0.0" y="63.5" width="375" height="45"/>
+                    <subviews>
+                        <button opaque="NO" clipsSubviews="YES" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Uu-of-l1c">
+                            <rect key="frame" x="8" y="8" width="64" height="27"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="27" id="4ja-zK-07Y"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <state key="normal" title="全部  ">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <state key="selected">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="layer.borderWidth" value="0.5"/>
+                                <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="13.5"/>
+                                <userDefinedRuntimeAttribute type="color" keyPath="layer.borderUIColor">
+                                    <color key="value" red="0.79215577410000004" green="0.79215577410000004" blue="0.79215577410000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="commentBtnAction:" destination="-1" eventType="touchUpInside" id="h7L-ad-Tjf"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" clipsSubviews="YES" tag="101" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qmd-qP-YIq">
+                            <rect key="frame" x="82" y="8" width="63.5" height="27"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="27" id="ffB-cI-drl"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <state key="normal" title="  好评 ">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <state key="selected">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="layer.borderWidth" value="0.5"/>
+                                <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="13.5"/>
+                                <userDefinedRuntimeAttribute type="color" keyPath="layer.borderUIColor">
+                                    <color key="value" red="0.79215577410000004" green="0.79215577410000004" blue="0.79215577410000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="commentBtnAction:" destination="-1" eventType="touchUpInside" id="Wpv-10-tNO"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" clipsSubviews="YES" tag="102" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gsm-U0-EhM">
+                            <rect key="frame" x="155.5" y="8" width="64" height="27"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="27" id="3vA-8y-7FL"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <state key="normal" title="  中评 ">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <state key="selected">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="layer.borderWidth" value="0.5"/>
+                                <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="13.5"/>
+                                <userDefinedRuntimeAttribute type="color" keyPath="layer.borderUIColor">
+                                    <color key="value" red="0.79215577410000004" green="0.79215577410000004" blue="0.79215577410000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="commentBtnAction:" destination="-1" eventType="touchUpInside" id="Qcv-7J-FcX"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" clipsSubviews="YES" tag="103" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Nr-lY-1gu">
+                            <rect key="frame" x="229.5" y="8" width="63.5" height="27"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="27" id="acq-Ig-vtG"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <state key="normal" title="  差评 ">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <state key="selected">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="layer.borderWidth" value="0.5"/>
+                                <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="13.5"/>
+                                <userDefinedRuntimeAttribute type="color" keyPath="layer.borderUIColor">
+                                    <color key="value" red="0.79215577410000004" green="0.79215577410000004" blue="0.79215577410000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="commentBtnAction:" destination="-1" eventType="touchUpInside" id="y5Y-bh-lph"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" clipsSubviews="YES" tag="104" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TBb-0G-aAb">
+                            <rect key="frame" x="303" y="8" width="64" height="27"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="27" id="CAR-NI-SyP"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <state key="normal" title="  有图  ">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <state key="selected">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="layer.borderWidth" value="0.5"/>
+                                <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="13.5"/>
+                                <userDefinedRuntimeAttribute type="color" keyPath="layer.borderUIColor">
+                                    <color key="value" red="0.79215577410000004" green="0.79215577410000004" blue="0.79215577410000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="commentBtnAction:" destination="-1" eventType="touchUpInside" id="7n5-KT-H0w"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="3Nr-lY-1gu" firstAttribute="centerY" secondItem="1Uu-of-l1c" secondAttribute="centerY" id="03D-uo-waR"/>
+                        <constraint firstItem="qmd-qP-YIq" firstAttribute="width" secondItem="1Uu-of-l1c" secondAttribute="width" id="4Jd-5e-fMD"/>
+                        <constraint firstItem="1Uu-of-l1c" firstAttribute="leading" secondItem="9uZ-jz-WQZ" secondAttribute="leading" constant="8" id="64y-wN-bRe"/>
+                        <constraint firstItem="Gsm-U0-EhM" firstAttribute="centerY" secondItem="1Uu-of-l1c" secondAttribute="centerY" id="7MV-2Y-vlb"/>
+                        <constraint firstItem="3Nr-lY-1gu" firstAttribute="leading" secondItem="Gsm-U0-EhM" secondAttribute="trailing" constant="10" id="ARS-MU-JBs"/>
+                        <constraint firstItem="Gsm-U0-EhM" firstAttribute="leading" secondItem="qmd-qP-YIq" secondAttribute="trailing" constant="10" id="Njt-mw-uOR"/>
+                        <constraint firstAttribute="trailing" secondItem="TBb-0G-aAb" secondAttribute="trailing" constant="8" id="Q0L-ie-RLH"/>
+                        <constraint firstItem="3Nr-lY-1gu" firstAttribute="width" secondItem="1Uu-of-l1c" secondAttribute="width" id="RqD-Ia-hQ6"/>
+                        <constraint firstItem="qmd-qP-YIq" firstAttribute="centerY" secondItem="1Uu-of-l1c" secondAttribute="centerY" id="S9z-hO-baM"/>
+                        <constraint firstAttribute="height" constant="44.5" id="U1a-cG-96b"/>
+                        <constraint firstItem="qmd-qP-YIq" firstAttribute="leading" secondItem="1Uu-of-l1c" secondAttribute="trailing" constant="10" id="c5E-gv-DcA"/>
+                        <constraint firstItem="TBb-0G-aAb" firstAttribute="width" secondItem="1Uu-of-l1c" secondAttribute="width" id="dWH-RX-E85"/>
+                        <constraint firstItem="1Uu-of-l1c" firstAttribute="top" secondItem="9uZ-jz-WQZ" secondAttribute="top" constant="8" id="nzF-xK-C9e"/>
+                        <constraint firstItem="Gsm-U0-EhM" firstAttribute="width" secondItem="1Uu-of-l1c" secondAttribute="width" id="pTX-cc-Eqq"/>
+                        <constraint firstItem="TBb-0G-aAb" firstAttribute="centerY" secondItem="1Uu-of-l1c" secondAttribute="centerY" id="q42-Sz-jJr"/>
+                        <constraint firstItem="TBb-0G-aAb" firstAttribute="leading" secondItem="3Nr-lY-1gu" secondAttribute="trailing" constant="10" id="zi6-kZ-QTU"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="layer.borderWidth" value="0.5"/>
+                        <userDefinedRuntimeAttribute type="color" keyPath="layer.borderUIColor">
+                            <color key="value" red="0.67207328680203049" green="0.67207328680203049" blue="0.67207328680203049" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="9uZ-jz-WQZ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="-0.5" id="aLg-86-f0B"/>
+                <constraint firstAttribute="trailing" secondItem="9uZ-jz-WQZ" secondAttribute="trailing" constant="-0.5" id="dVW-wa-wfo"/>
+                <constraint firstItem="9uZ-jz-WQZ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="63.5" id="w3e-tB-ZoD"/>
+            </constraints>
+            <point key="canvasLocation" x="33.5" y="65.5"/>
+        </view>
+    </objects>
+</document>

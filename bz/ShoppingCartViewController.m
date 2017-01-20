@@ -74,7 +74,11 @@ static NSString *shoppingHeaderID = @"BuyerHeaderCell";
     // Do any additional setup after loading the view from its nib.
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshShoppingCart:) name:kAddToShoppingCartSuccessNotification object:nil];
 //    self.edgesForExtendedLayout = UIRectEdgeNone;
-    self.mTableView.frame = CGRectMake(0, 64, kScreenWidth, kScreenHeight - 64 - 49 - 50);
+    if (_hasTabbar) {
+        self.mTableView.frame = CGRectMake(0, 64, kScreenWidth, kScreenHeight - 64 - 49 - 50);
+    } else {
+        self.mTableView.frame = CGRectMake(0, 64, kScreenWidth, kScreenHeight - 64 - 50);
+    }
     self.mTableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     self.mTableView.delegate = self;
     self.mTableView.dataSource = self;
@@ -86,7 +90,11 @@ static NSString *shoppingHeaderID = @"BuyerHeaderCell";
     rec.size.width = [UIScreen mainScreen].bounds.size.width;
     rec.size.height = 50;
     rec.origin.x = 0;
-    rec.origin.y = kScreenHeight - 49 - 50;
+    if (_hasTabbar) {
+        rec.origin.y = kScreenHeight - 49 - 50;
+    } else {
+        rec.origin.y = kScreenHeight - 50;
+    }
     self.bottomView.frame = rec;
     self.normalBottomRightWidthConstraint.constant = [UIScreen mainScreen].bounds.size.width * 2 / 3;
     self.editBottomRightWidthConstraint.constant = [UIScreen mainScreen].bounds.size.width * 2 / 3;

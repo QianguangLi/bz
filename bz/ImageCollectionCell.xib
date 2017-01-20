@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ImageCollectionCell" id="gTV-IL-0wX" customClass="ImageCollectionCell">
+            <rect key="frame" x="0.0" y="0.0" width="110" height="110"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="110" height="110"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o22-3q-sIU">
+                        <rect key="frame" x="0.0" y="0.0" width="110" height="110"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="productpic" translatesAutoresizingMaskIntoConstraints="NO" id="GFd-Bc-1Je">
+                                <rect key="frame" x="5" y="5" width="100" height="100"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="GFd-Bc-1Je" secondAttribute="trailing" constant="5" id="AA4-wn-2Kw"/>
+                            <constraint firstItem="GFd-Bc-1Je" firstAttribute="top" secondItem="o22-3q-sIU" secondAttribute="top" constant="5" id="QpY-CG-2ZX"/>
+                            <constraint firstItem="GFd-Bc-1Je" firstAttribute="leading" secondItem="o22-3q-sIU" secondAttribute="leading" constant="5" id="gvu-me-ctW"/>
+                            <constraint firstAttribute="bottom" secondItem="GFd-Bc-1Je" secondAttribute="bottom" constant="5" id="loG-M9-aqd"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="o22-3q-sIU" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="1OC-eY-bjC"/>
+                <constraint firstAttribute="trailing" secondItem="o22-3q-sIU" secondAttribute="trailing" id="8dO-2h-GJi"/>
+                <constraint firstItem="o22-3q-sIU" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="le4-u6-Yy4"/>
+                <constraint firstAttribute="bottom" secondItem="o22-3q-sIU" secondAttribute="bottom" id="slT-nG-eqt"/>
+            </constraints>
+            <size key="customSize" width="110" height="103"/>
+            <connections>
+                <outlet property="commentImage" destination="GFd-Bc-1Je" id="tcx-l0-0lm"/>
+            </connections>
+            <point key="canvasLocation" x="64" y="92"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="productpic" width="100" height="100"/>
+    </resources>
+</document>
