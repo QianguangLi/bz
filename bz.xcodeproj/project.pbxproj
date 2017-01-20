@@ -190,6 +190,14 @@
 		61BB46171E31ABDB003C602B /* CommentHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 61BB46151E31ABDB003C602B /* CommentHeaderView.m */; };
 		61BB46181E31ABDB003C602B /* CommentHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61BB46161E31ABDB003C602B /* CommentHeaderView.xib */; };
 		61BB461D1E31ABEF003C602B /* CommentFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61BB461B1E31ABEF003C602B /* CommentFooterView.xib */; };
+		61BB46211E31E233003C602B /* ConfirmOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61BB461F1E31E233003C602B /* ConfirmOrderViewController.m */; };
+		61BB46221E31E233003C602B /* ConfirmOrderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61BB46201E31E233003C602B /* ConfirmOrderViewController.xib */; };
+		61BB46261E31E655003C602B /* ConfirmOrderAddressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 61BB46241E31E655003C602B /* ConfirmOrderAddressCell.m */; };
+		61BB46271E31E655003C602B /* ConfirmOrderAddressCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61BB46251E31E655003C602B /* ConfirmOrderAddressCell.xib */; };
+		61D079821E3220BD006755FD /* ConfirmOrderGoodsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 61D079801E3220BD006755FD /* ConfirmOrderGoodsCell.m */; };
+		61D079831E3220BD006755FD /* ConfirmOrderGoodsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61D079811E3220BD006755FD /* ConfirmOrderGoodsCell.xib */; };
+		61D079871E3225C6006755FD /* ConfirmOrderHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 61D079851E3225C6006755FD /* ConfirmOrderHeader.m */; };
+		61D079881E3225C6006755FD /* ConfirmOrderHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61D079861E3225C6006755FD /* ConfirmOrderHeader.xib */; };
 		61DFD3CD1E232FCA00D9C2D7 /* PaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61DFD3CB1E232FCA00D9C2D7 /* PaymentViewController.m */; };
 		61DFD3CE1E232FCA00D9C2D7 /* PaymentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61DFD3CC1E232FCA00D9C2D7 /* PaymentViewController.xib */; };
 		61DFD3D21E23385F00D9C2D7 /* AlwaysBuyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61DFD3D01E23385F00D9C2D7 /* AlwaysBuyViewController.m */; };
@@ -529,6 +537,18 @@
 		61BB46151E31ABDB003C602B /* CommentHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentHeaderView.m; sourceTree = "<group>"; };
 		61BB46161E31ABDB003C602B /* CommentHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentHeaderView.xib; sourceTree = "<group>"; };
 		61BB461B1E31ABEF003C602B /* CommentFooterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentFooterView.xib; sourceTree = "<group>"; };
+		61BB461E1E31E233003C602B /* ConfirmOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfirmOrderViewController.h; sourceTree = "<group>"; };
+		61BB461F1E31E233003C602B /* ConfirmOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfirmOrderViewController.m; sourceTree = "<group>"; };
+		61BB46201E31E233003C602B /* ConfirmOrderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConfirmOrderViewController.xib; sourceTree = "<group>"; };
+		61BB46231E31E655003C602B /* ConfirmOrderAddressCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfirmOrderAddressCell.h; sourceTree = "<group>"; };
+		61BB46241E31E655003C602B /* ConfirmOrderAddressCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfirmOrderAddressCell.m; sourceTree = "<group>"; };
+		61BB46251E31E655003C602B /* ConfirmOrderAddressCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConfirmOrderAddressCell.xib; sourceTree = "<group>"; };
+		61D0797F1E3220BD006755FD /* ConfirmOrderGoodsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfirmOrderGoodsCell.h; sourceTree = "<group>"; };
+		61D079801E3220BD006755FD /* ConfirmOrderGoodsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfirmOrderGoodsCell.m; sourceTree = "<group>"; };
+		61D079811E3220BD006755FD /* ConfirmOrderGoodsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConfirmOrderGoodsCell.xib; sourceTree = "<group>"; };
+		61D079841E3225C6006755FD /* ConfirmOrderHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfirmOrderHeader.h; sourceTree = "<group>"; };
+		61D079851E3225C6006755FD /* ConfirmOrderHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfirmOrderHeader.m; sourceTree = "<group>"; };
+		61D079861E3225C6006755FD /* ConfirmOrderHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConfirmOrderHeader.xib; sourceTree = "<group>"; };
 		61DFD3CA1E232FCA00D9C2D7 /* PaymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentViewController.h; sourceTree = "<group>"; };
 		61DFD3CB1E232FCA00D9C2D7 /* PaymentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentViewController.m; sourceTree = "<group>"; };
 		61DFD3CC1E232FCA00D9C2D7 /* PaymentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PaymentViewController.xib; sourceTree = "<group>"; };
@@ -732,6 +752,15 @@
 				611AF9C71E27197600F10C49 /* ShoppingCartCell.xib */,
 				611AF9C41E27197600F10C49 /* BuyerHeaderCell.xib */,
 				6171115A1E28707B001B6BA5 /* ShoppingCartBottom.xib */,
+				61BB46231E31E655003C602B /* ConfirmOrderAddressCell.h */,
+				61BB46241E31E655003C602B /* ConfirmOrderAddressCell.m */,
+				61BB46251E31E655003C602B /* ConfirmOrderAddressCell.xib */,
+				61D0797F1E3220BD006755FD /* ConfirmOrderGoodsCell.h */,
+				61D079801E3220BD006755FD /* ConfirmOrderGoodsCell.m */,
+				61D079811E3220BD006755FD /* ConfirmOrderGoodsCell.xib */,
+				61D079841E3225C6006755FD /* ConfirmOrderHeader.h */,
+				61D079851E3225C6006755FD /* ConfirmOrderHeader.m */,
+				61D079861E3225C6006755FD /* ConfirmOrderHeader.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -1047,6 +1076,9 @@
 				617288F21E10BF070037DB40 /* ShoppingCartViewController.h */,
 				617288F31E10BF070037DB40 /* ShoppingCartViewController.m */,
 				617288F41E10BF070037DB40 /* ShoppingCartViewController.xib */,
+				61BB461E1E31E233003C602B /* ConfirmOrderViewController.h */,
+				61BB461F1E31E233003C602B /* ConfirmOrderViewController.m */,
+				61BB46201E31E233003C602B /* ConfirmOrderViewController.xib */,
 			);
 			name = ShoppingCart;
 			sourceTree = "<group>";
@@ -1445,6 +1477,7 @@
 				61BB461D1E31ABEF003C602B /* CommentFooterView.xib in Resources */,
 				613FB9521E1E355F00CB2070 /* BonusScanCell.xib in Resources */,
 				61BB460E1E31A2E7003C602B /* CollectionRefreshViewController.xib in Resources */,
+				61BB46271E31E655003C602B /* ConfirmOrderAddressCell.xib in Resources */,
 				615FBF531E15064400F50C0D /* OrderProductCell.xib in Resources */,
 				61661C271E29F5040022A1FC /* OrderInfoSendCell.xib in Resources */,
 				617289021E10CBEF0037DB40 /* Localizable.strings in Resources */,
@@ -1476,8 +1509,10 @@
 				11FE82711E1F79A600309719 /* MMNumberKeyboardDismissKey.png in Resources */,
 				61BB46131E31A9F5003C602B /* ImageCollectionCell.xib in Resources */,
 				617F79791E1620FF00E139CF /* FunctionListViewController.xib in Resources */,
+				61D079881E3225C6006755FD /* ConfirmOrderHeader.xib in Resources */,
 				61BB46091E31A273003C602B /* GoodsCommentViewController.xib in Resources */,
 				617288FB1E10BF110037DB40 /* MeViewController.xib in Resources */,
+				61BB46221E31E233003C602B /* ConfirmOrderViewController.xib in Resources */,
 				6171116A1E28CCA1001B6BA5 /* SelectLocationView.xib in Resources */,
 				6193197F1E1CA41200AF63E7 /* DZMoneyViewController.xib in Resources */,
 				115E35891E1766EE002A9957 /* CollectionSectionHeaderView.xib in Resources */,
@@ -1506,6 +1541,7 @@
 				611AF9CA1E27197600F10C49 /* ShoppingCartCell.xib in Resources */,
 				11FE82721E1F79A600309719 /* MMNumberKeyboardDismissKey@2x.png in Resources */,
 				617111601E2874E8001B6BA5 /* EmailDetailsViewController.xib in Resources */,
+				61D079831E3220BD006755FD /* ConfirmOrderGoodsCell.xib in Resources */,
 				615FBF281E14B60500F50C0D /* MyOrdersViewController.xib in Resources */,
 				11FE82731E1F79A600309719 /* MMNumberKeyboardDismissKey@3x.png in Resources */,
 				617F797F1E1651C700E139CF /* BZStoryboard.storyboard in Resources */,
@@ -1700,10 +1736,12 @@
 				61DFD3CD1E232FCA00D9C2D7 /* PaymentViewController.m in Sources */,
 				613B47AC1E2DC5A000D0EB12 /* GoodsDetailViewController.m in Sources */,
 				6193198D1E1CB22200AF63E7 /* GFCalendarMonth.m in Sources */,
+				61D079821E3220BD006755FD /* ConfirmOrderGoodsCell.m in Sources */,
 				6172891B1E110BCD0037DB40 /* LoginViewController.m in Sources */,
 				617F79741E15FEF800E139CF /* YLButton.m in Sources */,
 				116DF06B1E20BF3800484D72 /* EmailCell.m in Sources */,
 				613FB9551E1E388A00CB2070 /* BonusModel.m in Sources */,
+				61D079871E3225C6006755FD /* ConfirmOrderHeader.m in Sources */,
 				1154B9A41E11736A00C8459D /* NSObject+Addition.m in Sources */,
 				61A08CD71E2CB0A8001063DC /* JSDropDownMenu.m in Sources */,
 				617288E91E10BE470037DB40 /* BaseViewController.m in Sources */,
@@ -1733,6 +1771,7 @@
 				61A09ECD1E13AFFC00C58519 /* UserModel.m in Sources */,
 				116DF06F1E20C10300484D72 /* EmailModel.m in Sources */,
 				617288AF1E10BCA40037DB40 /* AppDelegate.mm in Sources */,
+				61BB46261E31E655003C602B /* ConfirmOrderAddressCell.m in Sources */,
 				11FE82781E1F828300309719 /* DZMoneyDetailsViewController.m in Sources */,
 				611AF9C21E2713D200F10C49 /* ShoppingCartModel.m in Sources */,
 				615FBF371E14BF0400F50C0D /* GoodsCategoryViewController.m in Sources */,
@@ -1791,6 +1830,7 @@
 				617111571E286104001B6BA5 /* UITabBarItem+WZLBadge.m in Sources */,
 				61E2F9071E25C2DD00CC61C1 /* GoodsCategoryModel.m in Sources */,
 				11C3C1431E1FDE6A005A2403 /* MyCollectionViewController.m in Sources */,
+				61BB46211E31E233003C602B /* ConfirmOrderViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

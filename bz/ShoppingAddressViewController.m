@@ -11,6 +11,7 @@
 #import "NetService.h"
 #import "ShoppingAddressModel.h"
 #import "AddShoppingAddressViewController.h"
+#import "UITableView+FDTemplateLayoutCell.h"
 
 @interface ShoppingAddressViewController () <UITableViewDelegate, UITableViewDataSource, AddressCellDelegate, UIAlertViewDelegate>
 {
@@ -164,7 +165,10 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 130.0;
+//    return 130.0;
+    return [tableView fd_heightForCellWithIdentifier:@"AddressCell" cacheByIndexPath:indexPath configuration:^(AddressCell *cell) {
+        [cell setContentWithShoppingAddressModel:self.dataArray[indexPath.row] andIndexPath:indexPath];
+    }];
 }
 
 #pragma mark -

@@ -27,7 +27,7 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="收货人地址" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6UO-1C-yYx">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="收货人地址" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6UO-1C-yYx">
                                 <rect key="frame" x="8" y="49.5" width="304" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -89,6 +89,7 @@
                             <constraint firstItem="Rs0-73-f6f" firstAttribute="top" secondItem="Nxk-G1-UGN" secondAttribute="top" constant="15" id="9gW-h7-UNE"/>
                             <constraint firstItem="4dQ-tP-yci" firstAttribute="top" secondItem="6UO-1C-yYx" secondAttribute="bottom" constant="15" id="DKO-8H-YqW"/>
                             <constraint firstItem="EIa-IY-wAG" firstAttribute="centerY" secondItem="fYA-Z5-BKd" secondAttribute="centerY" id="HDH-Xa-YlA"/>
+                            <constraint firstAttribute="bottom" secondItem="EIa-IY-wAG" secondAttribute="bottom" constant="8" id="O0n-lb-0XC"/>
                             <constraint firstItem="EIa-IY-wAG" firstAttribute="centerY" secondItem="4nZ-9y-RIX" secondAttribute="centerY" id="OuA-N8-7JX"/>
                             <constraint firstAttribute="trailing" secondItem="EIa-IY-wAG" secondAttribute="trailing" constant="8" id="SBM-Z9-9I5"/>
                             <constraint firstItem="aKz-w3-1pu" firstAttribute="centerY" secondItem="Rs0-73-f6f" secondAttribute="centerY" id="Sw1-AU-hru"/>

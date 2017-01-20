@@ -14,6 +14,7 @@
 #import "UIImageView+AFNetworking.h"
 #import "UITableView+FDTemplateLayoutCell.h"
 #import "UIView+Addition.h"
+#import "ConfirmOrderViewController.h"
 
 @interface ShoppingCartViewController () <UITableViewDataSource, UITableViewDelegate, ShoppingCartCellDelegate>
 {
@@ -695,6 +696,51 @@ static NSString *shoppingHeaderID = @"BuyerHeaderCell";
         }
     }
     return totalPrice;
+}
+
+#pragma mark - 结算
+- (IBAction)settleAccount:(UIButton *)sender
+{
+    NSMutableArray *buyerTempArr = [[NSMutableArray alloc] init];
+    for (ShoppingCartModel *buyer in self.dataArray)
+    {
+        if (buyer.buyerIsChoosed)
+        {
+            [buyerTempArr addObject:buyer];
+        }
+        else
+        {
+            NSMutableArray *productTempArr = [[NSMutableArray alloc] init];
+            for (ProductModel *product in buyer.products)
+            {
+                if (product.productIsChoosed)
+                {
+                    [productTempArr addObject:product];
+                }
+            }
+            if (!IS_NULL_ARRAY(productTempArr))
+            {
+                //这么做是有道理的
+                ShoppingCartModel *model = [[ShoppingCartModel alloc] init];
+                model.storename = buyer.storename;
+                model.storelogo = buyer.storelogo;
+                model.totalMoney = buyer.totalMoney;
+                model.buyerIsEditing = buyer.buyerIsEditing;
+                model.buyerIsChoosed = buyer.buyerIsChoosed;
+                model.products = [NSMutableArray<ProductModel> array];
+                [model.products addObjectsFromArray:productTempArr];
+                [buyerTempArr addObject:model];
+            }
+        }
+    }
+    if (IS_NULL_ARRAY(buyerTempArr)) {
+        [Utility showString:Localized(@"请选择要结算的商品") onView:self.view];
+        return;
+    }
+    ConfirmOrderViewController *vc = [[ConfirmOrderViewController alloc] init];
+    vc.hidesBottomBarWhenPushed = YES;
+    vc.shopppingCartArray = buyerTempArr;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - 计算商品被选择了数量
