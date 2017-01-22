@@ -17,8 +17,8 @@ typedef NS_ENUM(NSInteger,EnterType){
 
 @protocol ChooseGoodsPropertyViewControllerDelegate <NSObject>
 @optional
-- (void)chooseGoodsPropertyViewControllerDidSelectedProductDetailModel:(ProductDetailModel *)model;
-
+- (void)chooseGoodsPropertyViewControllerDidSelectedProductDetailModel:(ProductDetailModel *)model andQuantity:(NSUInteger)quantity;
+- (void)chooseGoodsPropertyViewControllerBuy;
 @end
 
 /**

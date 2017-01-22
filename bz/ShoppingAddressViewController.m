@@ -171,6 +171,17 @@
     }];
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (_isSelect) {
+        ShoppingAddressModel *model = self.dataArray[indexPath.row];
+        if (_delegate && [_delegate respondsToSelector:@selector(shoppingAddressViewController:didSelectedShoppingAddressModel:)]) {
+            [_delegate shoppingAddressViewController:self didSelectedShoppingAddressModel:model];
+        }
+    }
+}
+
 #pragma mark -
 
 - (void)didReceiveMemoryWarning {

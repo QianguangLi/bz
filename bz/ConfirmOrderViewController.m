@@ -14,8 +14,9 @@
 #import "ConfirmOrderHeader.h"
 #import "NetService.h"
 #import "ShoppingAddressModel.h"
+#import "ShoppingAddressViewController.h"
 
-@interface ConfirmOrderViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface ConfirmOrderViewController () <UITableViewDelegate, UITableViewDataSource, ShoppingAddressViewControllerDelegate>
 {
     NSURLSessionTask *_task;
 }
@@ -128,6 +129,7 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
+    //如果是第一行不显示卖家信息
     if (section == 0) {
         return nil;
     } else {
@@ -140,6 +142,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
+    //如果是第一行不显示卖家信息
     if (section == 0) {
         return 0;
     }
@@ -160,6 +163,21 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (indexPath.section == 0) {
+        ShoppingAddressViewController *vc = [[ShoppingAddressViewController alloc] init];
+        vc.isRequireRefreshHeader = YES;
+        vc.isSelect = YES;
+        vc.delegate = self;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+}
+
+#pragma mark - ShoppingAddressViewControllerDelegate
+- (void)shoppingAddressViewController:(ShoppingAddressViewController *)vc didSelectedShoppingAddressModel:(ShoppingAddressModel *)model
+{
+    [vc.navigationController popViewControllerAnimated:YES];
+    _defaultAddressModel = model;
+    [self.mTableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -13,6 +13,7 @@
  */
 @interface ConfirmOrderViewController : RefreshViewController
 
-@property (strong, nonatomic) NSArray *shopppingCartArray;//
+@property (assign, nonatomic) BOOL isBuy;//立即购买
+@property (strong, nonatomic) NSArray *shopppingCartArray;//购物车里面的卖家和商品
 
 @end

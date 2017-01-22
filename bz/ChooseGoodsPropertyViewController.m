@@ -62,7 +62,7 @@
     [_propertyCollectionView registerNib:[UINib nibWithNibName:@"CountCollectionCell" bundle:nil] forCellWithReuseIdentifier:@"CountCollectionCell"];
     [_propertyCollectionView registerNib:[UINib nibWithNibName:@"CollectionSectionHeaderView" bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"CollectionSectionHeaderView"];
     _propertyCollectionView.allowsMultipleSelection = YES;
-    NSLog(@"%@", _model);
+//    NSLog(@"%@", _model);
     _priceLabel.text = [NSString stringWithFormat:@"￥%.2f", _model.price];
     [_goodsImageView setImageWithURL:[NSURL URLWithString:_model.pImgUrl] placeholderImage:[UIImage imageNamed:@"productpic"]];
     _propertyArray = _model.propertylist;
@@ -88,7 +88,11 @@
     
     UIViewController * parent = [self.view containingViewController];
     if ([parent respondsToSelector:@selector(dismissSemiModalView)]) {
-        [parent dismissSemiModalView];
+        [parent dismissSemiModalViewWithCompletion:^{
+            if (_delegate && [_delegate respondsToSelector:@selector(chooseGoodsPropertyViewControllerBuy)]) {
+                [_delegate chooseGoodsPropertyViewControllerBuy];
+            }
+        }];
     }
 }
 
@@ -143,7 +147,6 @@
 {
     NSString *ID = nil;
     if (indexPath.section == _propertyArray.count) {
-        NSLog(@"%lu", (unsigned long)_propertyArray.count);
         ID = @"CountCollectionCell";
         GoodsPropertyCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:ID forIndexPath:indexPath];
         cell.countDelegate = self;
@@ -253,6 +256,10 @@
 - (void)numberOfBuyGoods:(NSUInteger)numberOfBuyGoods
 {
     _numberOfBuyGoods = numberOfBuyGoods;
+    //代理
+    if (_delegate && [_delegate respondsToSelector:@selector(chooseGoodsPropertyViewControllerDidSelectedProductDetailModel:andQuantity:)]) {
+        [_delegate chooseGoodsPropertyViewControllerDidSelectedProductDetailModel:_selectedProductDetailModel andQuantity:_numberOfBuyGoods];
+    }
 }
 
 #pragma mark - 根据选择条件刷新页面
@@ -282,8 +289,8 @@
     //给选择商品赋值，后面使用
     _selectedProductDetailModel = productDetailModel;
     //代理
-    if (_delegate && [_delegate respondsToSelector:@selector(chooseGoodsPropertyViewControllerDidSelectedProductDetailModel:)]) {
-        [_delegate chooseGoodsPropertyViewControllerDidSelectedProductDetailModel:productDetailModel];
+    if (_delegate && [_delegate respondsToSelector:@selector(chooseGoodsPropertyViewControllerDidSelectedProductDetailModel:andQuantity:)]) {
+        [_delegate chooseGoodsPropertyViewControllerDidSelectedProductDetailModel:_selectedProductDetailModel andQuantity:_numberOfBuyGoods];
     }
 }
 

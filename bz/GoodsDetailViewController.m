@@ -21,6 +21,8 @@
 #import "BaseNavigationController.h"
 #import "ShoppingCartViewController.h"
 #import "GoodsCommentViewController.h"
+#import "ConfirmOrderViewController.h"
+#import "ShoppingCartModel.h"
 
 @interface GoodsDetailViewController () <UITableViewDelegate, UITableViewDataSource, ChooseGoodsPropertyViewControllerDelegate>
 {
@@ -55,6 +57,8 @@
 @property (nonatomic,strong) ChooseGoodsPropertyViewController *chooseVC;
 
 @property (strong, nonatomic) ProductModel *productDetailModel;//商品model，具备更详细的数据
+@property (strong, nonatomic) ProductDetailModel *selectedProductModel;//选中的子商品详情 用于本页面直接购买使用
+@property (assign, nonatomic) NSUInteger quantity;//商品数量，默认1，用于在本页面直接购买使用
 
 @property (assign, nonatomic) BOOL canSelect;//是否可以去选择商品
 
@@ -75,6 +79,7 @@
     // Do any additional setup after loading the view from its nib.
     self.title = _productModel.pName;
     [self getProductDetais];
+    _quantity = 1;//默认1一个商品
     
     _commentTableView.delegate = self;
     _commentTableView.dataSource = self;
@@ -177,13 +182,20 @@
 }
 
 #pragma mark - ChooseGoodsPropertyViewControllerDelegate
-- (void)chooseGoodsPropertyViewControllerDidSelectedProductDetailModel:(ProductDetailModel *)model
+- (void)chooseGoodsPropertyViewControllerDidSelectedProductDetailModel:(ProductDetailModel *)model andQuantity:(NSUInteger)quantity
 {
     if (model) {
         [_selectProductButton setTitle:[NSString stringWithFormat:@"已选:%@", model.propertyname] forState:UIControlStateNormal];
     } else {
         [_selectProductButton setTitle:@"请选择" forState:UIControlStateNormal];
     }
+    _selectedProductModel = model;
+    _quantity = quantity;
+}
+
+- (void)chooseGoodsPropertyViewControllerBuy
+{
+    [self buy:nil];
 }
 
 #pragma mark - UITableViewDelegate
@@ -282,7 +294,29 @@
 #pragma mark - 底部按钮操作
 - (IBAction)buy:(UIButton *)sender
 {
-//    [self selectProductAction:sender];
+    if (!_selectedProductModel) {
+        [self selectProductAction:nil];
+        return;
+    }
+    //理解购买是组装确认订单需要的数据
+    ShoppingCartModel *shoppingCartModel = [[ShoppingCartModel alloc] init];
+    shoppingCartModel.storelogo = [NSURL URLWithString:_productDetailModel.storelogo];
+    shoppingCartModel.storename = _productDetailModel.storename;
+    shoppingCartModel.products = [NSMutableArray<ProductModel> array];
+    ProductModel *model = [[ProductModel alloc] init];
+    model.productId = _productDetailModel.productId;
+    model.pName = _productDetailModel.pName;
+    model.pImgUrl = _selectedProductModel.pdetailimg;
+    model.price = _selectedProductModel.price;
+    model.propertyd = _selectedProductModel.propertyname;
+    model.pdetailId = _selectedProductModel.pdetailId;
+    model.quantity = _quantity;
+    [shoppingCartModel.products addObject:model];
+    //立即购买
+    ConfirmOrderViewController *vc = [[ConfirmOrderViewController alloc] init];
+    vc.isBuy = YES;
+    vc.shopppingCartArray = @[shoppingCartModel];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (IBAction)addToShoppingCart:(UIButton *)sender
