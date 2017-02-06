@@ -16,7 +16,7 @@
 #import "ShoppingAddressModel.h"
 #import "ShoppingAddressViewController.h"
 
-@interface ConfirmOrderViewController () <UITableViewDelegate, UITableViewDataSource, ShoppingAddressViewControllerDelegate>
+@interface ConfirmOrderViewController () <UITableViewDelegate, UITableViewDataSource, ShoppingAddressViewControllerDelegate, UIAlertViewDelegate>
 {
     NSURLSessionTask *_task;
 }
@@ -49,7 +49,9 @@
     [self.mTableView registerNib:[UINib nibWithNibName:@"ConfirmOrderGoodsCell" bundle:nil] forCellReuseIdentifier:@"ConfirmOrderGoodsCell"];
     [self.mTableView registerNib:[UINib nibWithNibName:@"ConfirmOrderHeader" bundle:nil] forCellReuseIdentifier:@"ConfirmOrderHeader"];
     
-    [self reloadData];
+//    [self reloadData];
+//    objc_msgSend(self, @selector(reloadData));
+    method_invoke(self, class_getInstanceMethod(self.class, @selector(reloadData)));
     
     [self getDefaultAddress];
 }
@@ -94,8 +96,59 @@
 }
 
 #pragma mark - 确认
-- (IBAction)confirmAction:(UIButton *)sender {
+- (IBAction)confirmAction:(UIButton *)sender
+{
+    if (!_defaultAddressModel) {
+        return;
+    }
+    NSMutableArray *productsArray = [NSMutableArray array];
+    for (ShoppingCartModel *cartModel in _shopppingCartArray) {
+        for (ProductModel *productModel in cartModel.products) {
+            [productsArray addObject:[NSString stringWithFormat:@"%@-%lu", productModel.pdetailId, (unsigned long)productModel.quantity]];
+        }
+    }
+    NSString *products = [productsArray componentsJoinedByString:@","];
+    NSLog(@"%@", products);
+    NSString *from = _isBuy ? @"buy" : @"cart";
+    
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                 kLoginToken, @"Token",
+                                 from, @"from",
+                                 products, @"products",
+                                 _defaultAddressModel.conId, @"conId",
+                                 nil];
+    WS(weakSelf);
+    [_task cancel];
+    _task = [NetService POST:@"api/Shopping/GenerationOrder" parameters:dict complete:^(id responseObject, NSError *error) {
+        [Utility hideHUDForView:self.view];
+        if (error) {
+            NSLog(@"failure:%@", error);
+            [Utility showString:error.localizedDescription onView:weakSelf.view];
+            return ;
+        }
+        NSLog(@"%@", responseObject);
+        if ([responseObject[kStatusCode] integerValue] == NetStatusSuccess) {
+            UIAlertView *av = [[UIAlertView alloc] initWithTitle:Localized(@"提示") message:Localized(@"订单提交成功") delegate:self cancelButtonTitle:nil otherButtonTitles:Localized(@"确定"), Localized(@"去支付"), nil];
+            [av show];
+        } else {
+            [Utility showString:responseObject[kErrMsg] onView:weakSelf.view];
+        }
+    }];
+    [Utility showHUDAddedTo:self.view forTask:_task];
 }
+
+#pragma mark - UIAlertViewDelegate
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    //发送加入购物车成功通知，目的只为刷新购物车
+    [[NSNotificationCenter defaultCenter] postNotificationName:kAddToShoppingCartSuccessNotification object:nil];
+    if (buttonIndex == 1) {
+        //TODO:去支付
+    } else {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+}
+
 #pragma mark - UITableViewDelegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {

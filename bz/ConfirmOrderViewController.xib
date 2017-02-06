@@ -29,7 +29,7 @@
                             <rect key="frame" x="281" y="0.0" width="93.5" height="48"/>
                             <color key="backgroundColor" red="0.91764705879999997" green="0.48627450979999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                            <state key="normal" title="确认"/>
+                            <state key="normal" title="提交订单"/>
                             <connections>
                                 <action selector="confirmAction:" destination="-1" eventType="touchUpInside" id="dL8-wH-2rt"/>
                             </connections>
