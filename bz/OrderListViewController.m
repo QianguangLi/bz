@@ -14,7 +14,7 @@
 #import "OrderProductCell.h"
 #import "OrderListBottomCell.h"
 
-@interface OrderListViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface OrderListViewController () <UITableViewDelegate, UITableViewDataSource, OrderListBottomCellDelegate>
 {
     NSURLSessionTask *_task;
 }
@@ -120,7 +120,8 @@
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
 {
     OrderListBottomCell *cell = [tableView dequeueReusableCellWithIdentifier:@"OrderListBottomCell"];
-//    [cell setContentWithOrderModel:self.dataArray[section]];
+    cell.delegate = self;
+    [cell setContentWithOrderModel:self.dataArray[section] andSection:section];
     return cell;
 }
 
@@ -132,6 +133,27 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
     return 49;
+}
+
+#pragma mark - OrderListBottomCellDelegate
+- (void)otherPayOrder:(OrderModel *)orderModel atSection:(NSInteger)section
+{
+    NSLog(@"%@", orderModel);
+}
+
+- (void)payOrder:(OrderModel *)orderModel atSection:(NSInteger)section
+{
+    NSLog(@"%@", orderModel);
+}
+
+- (void)cancelOrder:(OrderModel *)orderModel atSection:(NSInteger)section
+{
+    NSLog(@"%@", orderModel);
+}
+
+- (void)returnOrder:(OrderModel *)orderModel atSection:(NSInteger)section
+{
+    NSLog(@"%@", orderModel);
 }
 
 #pragma mark -

@@ -663,6 +663,7 @@
 		116DF0701E212AFB00484D72 /* Mendian */ = {
 			isa = PBXGroup;
 			children = (
+				6142A6C51E49688800A1DE72 /* StoreMenuSetting */,
 				61661C171E29C9070022A1FC /* DealManger */,
 				116DF0711E212B6900484D72 /* MenDianFuncViewController.h */,
 				116DF0721E212B6900484D72 /* MenDianFuncViewController.m */,
@@ -763,6 +764,13 @@
 				61D079861E3225C6006755FD /* ConfirmOrderHeader.xib */,
 			);
 			name = Cells;
+			sourceTree = "<group>";
+		};
+		6142A6C51E49688800A1DE72 /* StoreMenuSetting */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = StoreMenuSetting;
 			sourceTree = "<group>";
 		};
 		615FBF231E14B5DC00F50C0D /* Orders */ = {
