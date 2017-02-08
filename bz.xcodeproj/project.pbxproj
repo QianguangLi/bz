@@ -198,6 +198,9 @@
 		61D079831E3220BD006755FD /* ConfirmOrderGoodsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61D079811E3220BD006755FD /* ConfirmOrderGoodsCell.xib */; };
 		61D079871E3225C6006755FD /* ConfirmOrderHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 61D079851E3225C6006755FD /* ConfirmOrderHeader.m */; };
 		61D079881E3225C6006755FD /* ConfirmOrderHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61D079861E3225C6006755FD /* ConfirmOrderHeader.xib */; };
+		61D77DAA1E4AAC37002B217A /* BZ1Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61D77DA91E4AAC37002B217A /* BZ1Storyboard.storyboard */; };
+		61D77DAD1E4AAE9B002B217A /* UpdateStoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61D77DAC1E4AAE9B002B217A /* UpdateStoreViewController.m */; };
+		61D77DB01E4ABC63002B217A /* UpdateStoreLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61D77DAF1E4ABC63002B217A /* UpdateStoreLocationViewController.m */; };
 		61DFD3CD1E232FCA00D9C2D7 /* PaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61DFD3CB1E232FCA00D9C2D7 /* PaymentViewController.m */; };
 		61DFD3CE1E232FCA00D9C2D7 /* PaymentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61DFD3CC1E232FCA00D9C2D7 /* PaymentViewController.xib */; };
 		61DFD3D21E23385F00D9C2D7 /* AlwaysBuyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61DFD3D01E23385F00D9C2D7 /* AlwaysBuyViewController.m */; };
@@ -549,6 +552,11 @@
 		61D079841E3225C6006755FD /* ConfirmOrderHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfirmOrderHeader.h; sourceTree = "<group>"; };
 		61D079851E3225C6006755FD /* ConfirmOrderHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfirmOrderHeader.m; sourceTree = "<group>"; };
 		61D079861E3225C6006755FD /* ConfirmOrderHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConfirmOrderHeader.xib; sourceTree = "<group>"; };
+		61D77DA91E4AAC37002B217A /* BZ1Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BZ1Storyboard.storyboard; sourceTree = "<group>"; };
+		61D77DAB1E4AAE9B002B217A /* UpdateStoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdateStoreViewController.h; sourceTree = "<group>"; };
+		61D77DAC1E4AAE9B002B217A /* UpdateStoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdateStoreViewController.m; sourceTree = "<group>"; };
+		61D77DAE1E4ABC63002B217A /* UpdateStoreLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdateStoreLocationViewController.h; sourceTree = "<group>"; };
+		61D77DAF1E4ABC63002B217A /* UpdateStoreLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdateStoreLocationViewController.m; sourceTree = "<group>"; };
 		61DFD3CA1E232FCA00D9C2D7 /* PaymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentViewController.h; sourceTree = "<group>"; };
 		61DFD3CB1E232FCA00D9C2D7 /* PaymentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentViewController.m; sourceTree = "<group>"; };
 		61DFD3CC1E232FCA00D9C2D7 /* PaymentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PaymentViewController.xib; sourceTree = "<group>"; };
@@ -663,6 +671,7 @@
 		116DF0701E212AFB00484D72 /* Mendian */ = {
 			isa = PBXGroup;
 			children = (
+				61D77DA91E4AAC37002B217A /* BZ1Storyboard.storyboard */,
 				6142A6C51E49688800A1DE72 /* StoreMenuSetting */,
 				61661C171E29C9070022A1FC /* DealManger */,
 				116DF0711E212B6900484D72 /* MenDianFuncViewController.h */,
@@ -769,6 +778,10 @@
 		6142A6C51E49688800A1DE72 /* StoreMenuSetting */ = {
 			isa = PBXGroup;
 			children = (
+				61D77DAB1E4AAE9B002B217A /* UpdateStoreViewController.h */,
+				61D77DAC1E4AAE9B002B217A /* UpdateStoreViewController.m */,
+				61D77DAE1E4ABC63002B217A /* UpdateStoreLocationViewController.h */,
+				61D77DAF1E4ABC63002B217A /* UpdateStoreLocationViewController.m */,
 			);
 			name = StoreMenuSetting;
 			sourceTree = "<group>";
@@ -1552,6 +1565,7 @@
 				61D079831E3220BD006755FD /* ConfirmOrderGoodsCell.xib in Resources */,
 				615FBF281E14B60500F50C0D /* MyOrdersViewController.xib in Resources */,
 				11FE82731E1F79A600309719 /* MMNumberKeyboardDismissKey@3x.png in Resources */,
+				61D77DAA1E4AAC37002B217A /* BZ1Storyboard.storyboard in Resources */,
 				617F797F1E1651C700E139CF /* BZStoryboard.storyboard in Resources */,
 				61661C311E29FF990022A1FC /* ExpressInfoCell.xib in Resources */,
 				61661C1C1E29F1200022A1FC /* OrderSendDetailViewController.xib in Resources */,
@@ -1771,6 +1785,7 @@
 				61661C3F1E2A216B0022A1FC /* OrderSendViewController.m in Sources */,
 				613FB94C1E1E352200CB2070 /* BonusTXScanViewController.m in Sources */,
 				6193197E1E1CA41200AF63E7 /* DZMoneyViewController.m in Sources */,
+				61D77DB01E4ABC63002B217A /* UpdateStoreLocationViewController.m in Sources */,
 				6165975E1E2E3DE700A8B735 /* ChooseGoodsPropertyViewController.m in Sources */,
 				11DC85451E20938900AE7947 /* WriteEmailViewController.m in Sources */,
 				1176F89B1E1FDF580057227C /* CollectionCell.m in Sources */,
@@ -1782,6 +1797,7 @@
 				61BB46261E31E655003C602B /* ConfirmOrderAddressCell.m in Sources */,
 				11FE82781E1F828300309719 /* DZMoneyDetailsViewController.m in Sources */,
 				611AF9C21E2713D200F10C49 /* ShoppingCartModel.m in Sources */,
+				61D77DAD1E4AAE9B002B217A /* UpdateStoreViewController.m in Sources */,
 				615FBF371E14BF0400F50C0D /* GoodsCategoryViewController.m in Sources */,
 				613B47B31E2DEE7A00D0EB12 /* CALayer+Addition.m in Sources */,
 				61661C1B1E29F1200022A1FC /* OrderSendDetailViewController.m in Sources */,

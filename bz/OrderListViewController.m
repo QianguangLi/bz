@@ -132,7 +132,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
-    return 49;
+    return 65;
 }
 
 #pragma mark - OrderListBottomCellDelegate

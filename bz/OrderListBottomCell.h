@@ -23,6 +23,9 @@
 @end
 
 @interface OrderListBottomCell : UITableViewCell
+
+@property (weak, nonatomic) IBOutlet UILabel *orderTime;
+
 @property (weak, nonatomic) IBOutlet UIView *waitPayView;
 @property (weak, nonatomic) IBOutlet UIView *waitPostView;
 

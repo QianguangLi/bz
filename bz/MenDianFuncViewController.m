@@ -9,6 +9,8 @@
 #import "MenDianFuncViewController.h"
 #import "MeCell.h"
 #import "OrderSendViewController.h"
+#import "UpdateStoreViewController.h"
+#import "UpdateStoreLocationViewController.h"
 
 @interface MenDianFuncViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *functionTableView;
@@ -151,6 +153,7 @@
             break;
         case 1:
         {
+            //订单发货
              OrderSendViewController *vc = [[OrderSendViewController alloc] init];
             vc.isRequireRefreshFooter = YES;
             vc.isRequireRefreshHeader = YES;
@@ -187,12 +190,18 @@
             break;
         case 4:
         {
-            
+            //门店信息修改
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"BZ1Storyboard" bundle:nil];
+            UpdateStoreViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"UpdateStoreViewController"];
+            [self.navigationController pushViewController:vc animated:YES];
         }
             break;
         case 5:
         {
-            
+            //门店位置设置
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"BZ1Storyboard" bundle:nil];
+            UpdateStoreLocationViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"UpdateStoreLocationViewController"];
+            [self.navigationController pushViewController:vc animated:YES];
         }
             break;
             

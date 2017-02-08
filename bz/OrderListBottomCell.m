@@ -39,6 +39,7 @@
 
 - (void)setContentWithOrderModel:(OrderModel *)orderModel andSection:(NSInteger)section
 {
+    _orderTime.text = [NSString stringWithFormat:@"%@    ,", orderModel.orderTime];
     _section = section;
     _orderModel = orderModel;
     

@@ -66,18 +66,22 @@
     }
     NSArray *arr = [string componentsSeparatedByString:@","];
     for (int i = 0; i < arr.count; i++) {
-        if (i == 0) {
-            _countryid = arr[0];
-        } else if (i == 1) {
-            _provinceid = arr[1];
-        } else if (i == 2) {
-            _cityid = arr[2];
-        } else {
-            _countyid = arr[3];
-        }
         Address *address = [service getAddressWithAreaID:arr[i]];
         UITextField *tf = (UITextField *)[self viewWithTag:100 + i];
         tf.text = address.areaName ? address.areaName : Localized(@"请选择");
+        if (i == 0) {
+            _countryid = arr[0];
+            _countryName = address.areaName;
+        } else if (i == 1) {
+            _provinceid = arr[1];
+            _provinceName = address.areaName;
+        } else if (i == 2) {
+            _cityid = arr[2];
+            _cityName = address.areaName;
+        } else {
+            _countyid = arr[3];
+            _countyName = address.areaName;
+        }
     }
 }
 
