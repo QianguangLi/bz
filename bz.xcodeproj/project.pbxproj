@@ -178,6 +178,8 @@
 		61AB84AD1E4C45E900D308CB /* ServiceTimeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61AB84AB1E4C45E900D308CB /* ServiceTimeViewController.xib */; };
 		61AB84B21E4C4B7B00D308CB /* ServiceTimeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 61AB84B01E4C4B7B00D308CB /* ServiceTimeCell.m */; };
 		61AB84B31E4C4B7B00D308CB /* ServiceTimeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61AB84B11E4C4B7B00D308CB /* ServiceTimeCell.xib */; };
+		61AB84B71E4C5F1C00D308CB /* APServiceTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61AB84B51E4C5F1C00D308CB /* APServiceTimeViewController.m */; };
+		61AB84B81E4C5F1C00D308CB /* APServiceTimeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61AB84B61E4C5F1C00D308CB /* APServiceTimeViewController.xib */; };
 		61B1EA901E26030B006F8276 /* NSBundle+PYSearchExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 61B1EA831E26030B006F8276 /* NSBundle+PYSearchExtension.m */; };
 		61B1EA911E26030B006F8276 /* PYSearch.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 61B1EA841E26030B006F8276 /* PYSearch.bundle */; };
 		61B1EA921E26030B006F8276 /* PYSearchConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 61B1EA871E26030B006F8276 /* PYSearchConst.m */; };
@@ -523,6 +525,9 @@
 		61AB84AF1E4C4B7B00D308CB /* ServiceTimeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceTimeCell.h; sourceTree = "<group>"; };
 		61AB84B01E4C4B7B00D308CB /* ServiceTimeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceTimeCell.m; sourceTree = "<group>"; };
 		61AB84B11E4C4B7B00D308CB /* ServiceTimeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ServiceTimeCell.xib; sourceTree = "<group>"; };
+		61AB84B41E4C5F1C00D308CB /* APServiceTimeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APServiceTimeViewController.h; sourceTree = "<group>"; };
+		61AB84B51E4C5F1C00D308CB /* APServiceTimeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APServiceTimeViewController.m; sourceTree = "<group>"; };
+		61AB84B61E4C5F1C00D308CB /* APServiceTimeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = APServiceTimeViewController.xib; sourceTree = "<group>"; };
 		61B1EA821E26030B006F8276 /* NSBundle+PYSearchExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+PYSearchExtension.h"; sourceTree = "<group>"; };
 		61B1EA831E26030B006F8276 /* NSBundle+PYSearchExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+PYSearchExtension.m"; sourceTree = "<group>"; };
 		61B1EA841E26030B006F8276 /* PYSearch.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = PYSearch.bundle; sourceTree = "<group>"; };
@@ -796,6 +801,9 @@
 				61AB84A91E4C45E900D308CB /* ServiceTimeViewController.h */,
 				61AB84AA1E4C45E900D308CB /* ServiceTimeViewController.m */,
 				61AB84AB1E4C45E900D308CB /* ServiceTimeViewController.xib */,
+				61AB84B41E4C5F1C00D308CB /* APServiceTimeViewController.h */,
+				61AB84B51E4C5F1C00D308CB /* APServiceTimeViewController.m */,
+				61AB84B61E4C5F1C00D308CB /* APServiceTimeViewController.xib */,
 			);
 			name = StoreMenuSetting;
 			sourceTree = "<group>";
@@ -1512,6 +1520,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				61AB84B81E4C5F1C00D308CB /* APServiceTimeViewController.xib in Resources */,
 				61AB84B31E4C4B7B00D308CB /* ServiceTimeCell.xib in Resources */,
 				11C3C13F1E1FCEAA005A2403 /* AccountSafeViewController.xib in Resources */,
 				61A08CD61E2CB0A8001063DC /* ico_make.png in Resources */,
@@ -1813,6 +1822,7 @@
 				613FB94C1E1E352200CB2070 /* BonusTXScanViewController.m in Sources */,
 				6193197E1E1CA41200AF63E7 /* DZMoneyViewController.m in Sources */,
 				61D77DB01E4ABC63002B217A /* UpdateStoreLocationViewController.m in Sources */,
+				61AB84B71E4C5F1C00D308CB /* APServiceTimeViewController.m in Sources */,
 				6165975E1E2E3DE700A8B735 /* ChooseGoodsPropertyViewController.m in Sources */,
 				11DC85451E20938900AE7947 /* WriteEmailViewController.m in Sources */,
 				1176F89B1E1FDF580057227C /* CollectionCell.m in Sources */,

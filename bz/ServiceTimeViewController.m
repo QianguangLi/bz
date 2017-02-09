@@ -9,6 +9,7 @@
 #import "ServiceTimeViewController.h"
 #import "NetService.h"
 #import "ServiceTimeCell.h"
+#import "APServiceTimeViewController.h"
 
 @interface ServiceTimeViewController () <UITableViewDelegate, UITableViewDataSource, ServiceTimeCellDelegate>
 {
@@ -21,16 +22,26 @@
 - (void)dealloc
 {
     [_task cancel];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     NSLog(@"ServiceTimeViewController dealloc");
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refresh) name:kAddOrUpdateServiceTimeSuccess object:nil];
     self.title = Localized(@"送达时间折扣");
     
     [self initView];
     [self initNavigation];
+}
+
+- (void)refresh
+{
+    //清空数据，刷新
+    [self.dataArray removeAllObjects];
+    [self.mTableView reloadData];
+    [self startRequest];
 }
 
 - (void)initNavigation
@@ -42,6 +53,10 @@
 - (void)addItemAction:(UIBarButtonItem *)item
 {
     //TODO:添加时间折扣
+    APServiceTimeViewController *vc = [[APServiceTimeViewController alloc] init];
+    vc.type = ServiceTimeTypeAdd;
+    vc.title = Localized(@"添加");
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)initView
@@ -87,6 +102,11 @@
 - (void)editRowAtIndexPath:(NSIndexPath *)indexPath
 {
     //TODO:修改送达时间折扣
+    APServiceTimeViewController *vc = [[APServiceTimeViewController alloc] init];
+    vc.type = ServiceTimeTypeEdit;
+    vc.dict = self.dataArray[indexPath.row];
+    vc.title = Localized(@"修改");
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - UITableViewDelegate
@@ -106,6 +126,11 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 60;//kScreenWidth*100.0/320.0;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath

@@ -82,6 +82,8 @@
 #define kRegistStoreNotification @"after_regist_store_notification"
 //加入购物车成功通知
 #define kAddToShoppingCartSuccessNotification @"add_to_shopping_cart_success_notify"
+//添加或修改送达时间折扣通知
+#define kAddOrUpdateServiceTimeSuccess @"add_or_update_service_time_notification"
 
 #define kBaseUrl @"http://103.48.169.52/bzapi"
 //登录URL
