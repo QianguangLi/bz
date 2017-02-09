@@ -257,7 +257,7 @@
         }
         NSLog(@"%@", responseObject);
         if ([responseObject[kStatusCode] integerValue] == NetStatusSuccess) {
-            UIAlertView *av = [[UIAlertView alloc] initWithTitle:Localized(@"提示") message:Localized(@"更新收货地址成功") delegate:self cancelButtonTitle:Localized(@"确定") otherButtonTitles:nil, nil];
+            UIAlertView *av = [[UIAlertView alloc] initWithTitle:Localized(@"提示") message:Localized(@"更新收货地址成功") delegate:weakSelf cancelButtonTitle:Localized(@"确定") otherButtonTitles:nil, nil];
             [av show];
         } else {
             [Utility showString:responseObject[kErrMsg] onView:weakSelf.view];

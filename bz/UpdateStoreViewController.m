@@ -10,7 +10,7 @@
 #import "NetService.h"
 #import "UIImageView+AFNetworking.h"
 
-@interface UpdateStoreViewController ()
+@interface UpdateStoreViewController () <UIAlertViewDelegate>
 {
     UIButton *_updateButton;
     NSURLSessionTask *_getInfoTask;
@@ -64,7 +64,52 @@
 
 - (void)updateStoreInfo:(UIButton *)btn
 {
-    
+    if (IS_NULL_STRING(_memberName.text)) {
+        [Utility showString:Localized(@"请输入商户名称") onView:self.view];
+        return;
+    }
+    if (IS_NULL_STRING(_storeName.text)) {
+        [Utility showString:Localized(@"请输入门店名称") onView:self.view];
+        return;
+    }
+    if (![Utility isLegalEmail:_email.text]) {
+        [Utility showString:Localized(@"请输入正确电子邮箱") onView:self.view];
+        return;
+    }
+    if (IS_NULL_STRING(_mobile.text)) {
+        [Utility showString:Localized(@"请输入移动电话") onView:self.view];
+        return;
+    }
+    if (![Utility isLegalMobile:_mobile.text]) {
+        [Utility showString:Localized(@"请输入正确手机号") onView:self.view];
+        return;
+    }
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                 kLoginToken, @"Token",
+                                 _memberName.text, @"memberName",
+                                 _storeName.text, @"storename",
+                                 _email.text, @"email",
+                                 _mobile.text, @"mobile",
+                                 _storeQQ.text, @"qq",
+                                 _comment.text, @"tips",
+                                 nil];
+    WS(weakSelf);
+    _task = [NetService POST:@"api/Store/ModifyStoreInfo" parameters:dict complete:^(id responseObject, NSError *error) {
+        [Utility hideHUDForView:weakSelf.view];
+        if (error) {
+            NSLog(@"failure:%@", error);
+            [Utility showString:error.localizedDescription onView:weakSelf.view];
+            return ;
+        }
+        NSLog(@"%@", responseObject);
+        if ([responseObject[kStatusCode] integerValue] == NetStatusSuccess) {
+            UIAlertView *av = [[UIAlertView alloc] initWithTitle:Localized(@"提示") message:Localized(@"信息修改成功") delegate:weakSelf cancelButtonTitle:Localized(@"确定") otherButtonTitles:nil, nil];
+            [av show];
+        } else {
+            [Utility showString:responseObject[kErrMsg] onView:weakSelf.view];
+        }
+    }];
+    [Utility showHUDAddedTo:self.view forTask:_task];
 }
 
 - (void)getStoreInfo
@@ -74,7 +119,7 @@
                                  nil];
     WS(weakSelf);
     _getInfoTask = [NetService GET:@"api/Store/GetStoreInfo" parameters:dict complete:^(id responseObject, NSError *error) {
-        [Utility hideHUDForView:self.view];
+        [Utility hideHUDForView:weakSelf.view];
         if (error) {
             NSLog(@"failure:%@", error);
             [Utility showString:error.localizedDescription onView:weakSelf.view];
@@ -110,10 +155,20 @@
     // Dispose of any resources that can be recreated.
 }
 //TODO:选择门店logo
-- (IBAction)selectStoreLogo:(UIButton *)sender {
+- (IBAction)selectStoreLogo:(UIButton *)sender
+{
+    
 }
 //TODO:选择店主头像
-- (IBAction)selectStoreFace:(UIButton *)sender {
+- (IBAction)selectStoreFace:(UIButton *)sender
+{
+    
+}
+
+#pragma mark - UIAlertViewDelegate
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - Table view data source

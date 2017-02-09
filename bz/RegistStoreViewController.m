@@ -162,7 +162,7 @@
                                  nil];
     WS(weakSelf);
     _registTask = [NetService POST:@"/api/User/ApplyStore" parameters:dict complete:^(id responseObject, NSError *error) {
-        [Utility hideHUDForView:self.view];
+        [Utility hideHUDForView:weakSelf.view];
         if (error) {
             NSLog(@"failure:%@", error);
             [Utility showString:error.localizedDescription onView:weakSelf.view];
@@ -172,7 +172,7 @@
         if ([responseObject[kStatusCode] integerValue] == NetStatusSuccess) {
             //            NSDictionary *dataDict = responseObject[kResponseData];
             [[NSNotificationCenter defaultCenter] postNotificationName:kRegistStoreNotification object:nil];
-            UIAlertView *av = [[UIAlertView alloc] initWithTitle:Localized(@"提示") message:Localized(@"成功") delegate:self cancelButtonTitle:Localized(@"确定") otherButtonTitles:nil, nil];
+            UIAlertView *av = [[UIAlertView alloc] initWithTitle:Localized(@"提示") message:Localized(@"成功") delegate:weakSelf cancelButtonTitle:Localized(@"确定") otherButtonTitles:nil, nil];
             [av show];
         } else {
             [Utility showString:responseObject[kErrMsg] onView:weakSelf.view];

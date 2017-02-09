@@ -55,7 +55,7 @@
                                  nil];
     WS(weakSelf);
     _task = [NetService POST:kUserRechargeUrl parameters:dict complete:^(id responseObject, NSError *error) {
-        [Utility hideHUDForView:self.view];
+        [Utility hideHUDForView:weakSelf.view];
         if (error) {
             NSLog(@"failure:%@", error);
             [Utility showString:error.localizedDescription onView:weakSelf.view];
@@ -64,7 +64,7 @@
         NSLog(@"%@", responseObject);
         if ([responseObject[kStatusCode] integerValue] == NetStatusSuccess) {
             //            NSDictionary *dataDict = responseObject[kResponseData];
-            UIAlertView *av = [[UIAlertView alloc] initWithTitle:Localized(@"提示") message:Localized(@"提交成功成功") delegate:self cancelButtonTitle:Localized(@"确定") otherButtonTitles:nil, nil];
+            UIAlertView *av = [[UIAlertView alloc] initWithTitle:Localized(@"提示") message:Localized(@"提交成功成功") delegate:weakSelf cancelButtonTitle:Localized(@"确定") otherButtonTitles:nil, nil];
             [av show];
         } else {
             [Utility showString:responseObject[kErrMsg] onView:weakSelf.view];

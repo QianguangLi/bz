@@ -90,7 +90,52 @@
 
 - (void)updateStoreInfo:(UIButton *)btn
 {
-    
+    if (IS_NULL_STRING(areaString)) {
+        [Utility showString:Localized(@"请选择地区") onView:appDelegate.window];
+        return;
+    }
+    if (IS_NULL_STRING(_conRoad.text)) {
+        [Utility showString:Localized(@"请填写街道信息") onView:appDelegate.window];
+        return;
+    }
+    if (IS_NULL_STRING(_detailAddress.text)) {
+        [Utility showString:Localized(@"请填写楼号/门牌号") onView:appDelegate.window];
+        return;
+    }
+    if (IS_NULL_STRING(_longitude.text) || IS_NULL_STRING(_latitude.text)) {
+        [Utility showString:Localized(@"请点击查询查询位置经纬度") onView:appDelegate.window];
+        return;
+    }
+    if (IS_NULL_STRING(_postRegion.text)) {
+        [Utility showString:Localized(@"请填写配送范围") onView:appDelegate.window];
+        return;
+    }
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                 kLoginToken, @"Token",
+                                 areaCodeString, @"areacode",
+                                 _conRoad.text, @"road",
+                                 _detailAddress.text, @"addr",
+                                 _longitude.text, @"longitude",
+                                 _latitude.text, @"latitude",
+                                 _postRegion.text, @"psrange",
+                                 nil];
+    WS(weakSelf);
+    _task = [NetService POST:@"api/Store/ManageStoreAddress" parameters:dict complete:^(id responseObject, NSError *error) {
+        [Utility hideHUDForView:weakSelf.view];
+        if (error) {
+            NSLog(@"failure:%@", error);
+            [Utility showString:error.localizedDescription onView:weakSelf.view];
+            return ;
+        }
+        NSLog(@"%@", responseObject);
+        if ([responseObject[kStatusCode] integerValue] == NetStatusSuccess) {
+            UIAlertView *av = [[UIAlertView alloc] initWithTitle:Localized(@"提示") message:Localized(@"门店位置设置成功") delegate:weakSelf cancelButtonTitle:Localized(@"确定") otherButtonTitles:nil, nil];
+            [av show];
+        } else {
+            [Utility showString:responseObject[kErrMsg] onView:weakSelf.view];
+        }
+    }];
+    [Utility showHUDAddedTo:self.view forTask:_task];
 }
 
 - (void)getStoreInfo
@@ -100,7 +145,7 @@
                                  nil];
     WS(weakSelf);
     _getInfoTask = [NetService GET:@"api/Store/GetStoreInfo" parameters:dict complete:^(id responseObject, NSError *error) {
-        [Utility hideHUDForView:self.view];
+        [Utility hideHUDForView:weakSelf.view];
         if (error) {
             NSLog(@"failure:%@", error);
             [Utility showString:error.localizedDescription onView:weakSelf.view];
@@ -132,6 +177,8 @@
     
     CLLocationCoordinate2D center = CLLocationCoordinate2DMake(((NSString *)[dict objectForKey:@"latitude"]).doubleValue, ((NSString *)[dict objectForKey:@"longitude"]).doubleValue);
     [self setMapCenterWith:center];
+    
+    _postRegion.text = [NSString stringWithFormat:@"%@", [dict objectForKey:@"psrange"]];
 }
 
 - (IBAction)requestLocation:(UIButton *)sender
@@ -171,7 +218,7 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     [self.navigationController popViewControllerAnimated:YES];
-    [[NSNotificationCenter defaultCenter] postNotificationName:kAddOrUpdateShoppingAddressSuccess object:nil];
+//    [[NSNotificationCenter defaultCenter] postNotificationName:kAddOrUpdateShoppingAddressSuccess object:nil];
 }
 
 #pragma mark - BMKGeoCodeSearchDelegate

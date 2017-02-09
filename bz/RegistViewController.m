@@ -110,7 +110,7 @@
                                  email, @"email", nil];
     WS(weakSelf);
     _task = [NetService POST:kUserRegistUrl parameters:dict complete:^(id responseObject, NSError *error) {
-        [Utility hideHUDForView:self.view];
+        [Utility hideHUDForView:weakSelf.view];
         if (error) {
             NSLog(@"failure:%@", error);
             [Utility showString:error.localizedDescription onView:weakSelf.view];

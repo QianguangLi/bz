@@ -120,7 +120,7 @@
     WS(weakSelf);
     [_task cancel];
     _task = [NetService POST:@"api/Shopping/GenerationOrder" parameters:dict complete:^(id responseObject, NSError *error) {
-        [Utility hideHUDForView:self.view];
+        [Utility hideHUDForView:weakSelf.view];
         if (error) {
             NSLog(@"failure:%@", error);
             [Utility showString:error.localizedDescription onView:weakSelf.view];
@@ -128,7 +128,7 @@
         }
         NSLog(@"%@", responseObject);
         if ([responseObject[kStatusCode] integerValue] == NetStatusSuccess) {
-            UIAlertView *av = [[UIAlertView alloc] initWithTitle:Localized(@"提示") message:Localized(@"订单提交成功") delegate:self cancelButtonTitle:nil otherButtonTitles:Localized(@"确定"), Localized(@"去支付"), nil];
+            UIAlertView *av = [[UIAlertView alloc] initWithTitle:Localized(@"提示") message:Localized(@"订单提交成功") delegate:weakSelf cancelButtonTitle:nil otherButtonTitles:Localized(@"确定"), Localized(@"去支付"), nil];
             [av show];
         } else {
             [Utility showString:responseObject[kErrMsg] onView:weakSelf.view];
