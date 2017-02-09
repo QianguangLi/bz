@@ -28,7 +28,9 @@
     if (!_dataArray) {
         _dataArray = [[NSMutableArray alloc] init];
     }
-    
+    //默认不会延伸到导航栏下
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+
     _mTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight-49-64) style:UITableViewStyleGrouped];
     _mTableView.sectionFooterHeight = 0;
     _mTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, CGFLOAT_MIN)];

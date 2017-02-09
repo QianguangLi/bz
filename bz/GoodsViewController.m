@@ -196,7 +196,7 @@
         WS(weakSelf);
         _task = [NetService POST:@"/api/Home/CategoryList" parameters:dict complete:^(id responseObject, NSError *error) {
             endRefreshing(error);
-            _isFirstEntry = NO;
+            weakSelf.isFirstEntry = NO;
             if (error) {
                 NSLog(@"failure:%@", error);
                 [Utility showString:error.localizedDescription onView:weakSelf.view];
@@ -231,7 +231,6 @@
         }];
     } else {
         [_otherTask cancel];
-        WS(weakSelf);
         //如果参数为空设置默认值
         _kw = IS_NULL_STRING(_kw)?@"":_kw;
         _order = IS_NULL_STRING(_order)?@"default":_order;
@@ -250,6 +249,7 @@
                                      @"", @"startMoney",
                                      @"", @"endMoney",
                                      nil];
+        WS(weakSelf);
         _task = [NetService POST:@"api/Home/ProductsList" parameters:dict complete:^(id responseObject, NSError *error) {
             endRefreshing(error);
             if (error) {

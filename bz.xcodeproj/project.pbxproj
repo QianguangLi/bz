@@ -174,6 +174,10 @@
 		61A09ED21E13D86200C58519 /* GoodsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61A09ED01E13D86200C58519 /* GoodsViewController.xib */; };
 		61A09ED71E13EA2C00C58519 /* GoodsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 61A09ED51E13EA2C00C58519 /* GoodsCell.m */; };
 		61A09ED81E13EA2C00C58519 /* GoodsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61A09ED61E13EA2C00C58519 /* GoodsCell.xib */; };
+		61AB84AC1E4C45E900D308CB /* ServiceTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61AB84AA1E4C45E900D308CB /* ServiceTimeViewController.m */; };
+		61AB84AD1E4C45E900D308CB /* ServiceTimeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61AB84AB1E4C45E900D308CB /* ServiceTimeViewController.xib */; };
+		61AB84B21E4C4B7B00D308CB /* ServiceTimeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 61AB84B01E4C4B7B00D308CB /* ServiceTimeCell.m */; };
+		61AB84B31E4C4B7B00D308CB /* ServiceTimeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61AB84B11E4C4B7B00D308CB /* ServiceTimeCell.xib */; };
 		61B1EA901E26030B006F8276 /* NSBundle+PYSearchExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 61B1EA831E26030B006F8276 /* NSBundle+PYSearchExtension.m */; };
 		61B1EA911E26030B006F8276 /* PYSearch.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 61B1EA841E26030B006F8276 /* PYSearch.bundle */; };
 		61B1EA921E26030B006F8276 /* PYSearchConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 61B1EA871E26030B006F8276 /* PYSearchConst.m */; };
@@ -513,6 +517,12 @@
 		61A09ED41E13EA2C00C58519 /* GoodsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsCell.h; sourceTree = "<group>"; };
 		61A09ED51E13EA2C00C58519 /* GoodsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsCell.m; sourceTree = "<group>"; };
 		61A09ED61E13EA2C00C58519 /* GoodsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoodsCell.xib; sourceTree = "<group>"; };
+		61AB84A91E4C45E900D308CB /* ServiceTimeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceTimeViewController.h; sourceTree = "<group>"; };
+		61AB84AA1E4C45E900D308CB /* ServiceTimeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceTimeViewController.m; sourceTree = "<group>"; };
+		61AB84AB1E4C45E900D308CB /* ServiceTimeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ServiceTimeViewController.xib; sourceTree = "<group>"; };
+		61AB84AF1E4C4B7B00D308CB /* ServiceTimeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceTimeCell.h; sourceTree = "<group>"; };
+		61AB84B01E4C4B7B00D308CB /* ServiceTimeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceTimeCell.m; sourceTree = "<group>"; };
+		61AB84B11E4C4B7B00D308CB /* ServiceTimeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ServiceTimeCell.xib; sourceTree = "<group>"; };
 		61B1EA821E26030B006F8276 /* NSBundle+PYSearchExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+PYSearchExtension.h"; sourceTree = "<group>"; };
 		61B1EA831E26030B006F8276 /* NSBundle+PYSearchExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+PYSearchExtension.m"; sourceTree = "<group>"; };
 		61B1EA841E26030B006F8276 /* PYSearch.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = PYSearch.bundle; sourceTree = "<group>"; };
@@ -778,10 +788,14 @@
 		6142A6C51E49688800A1DE72 /* StoreMenuSetting */ = {
 			isa = PBXGroup;
 			children = (
+				61AB84AE1E4C4B5B00D308CB /* Cells */,
 				61D77DAB1E4AAE9B002B217A /* UpdateStoreViewController.h */,
 				61D77DAC1E4AAE9B002B217A /* UpdateStoreViewController.m */,
 				61D77DAE1E4ABC63002B217A /* UpdateStoreLocationViewController.h */,
 				61D77DAF1E4ABC63002B217A /* UpdateStoreLocationViewController.m */,
+				61AB84A91E4C45E900D308CB /* ServiceTimeViewController.h */,
+				61AB84AA1E4C45E900D308CB /* ServiceTimeViewController.m */,
+				61AB84AB1E4C45E900D308CB /* ServiceTimeViewController.xib */,
 			);
 			name = StoreMenuSetting;
 			sourceTree = "<group>";
@@ -1330,6 +1344,16 @@
 			name = Cells;
 			sourceTree = "<group>";
 		};
+		61AB84AE1E4C4B5B00D308CB /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				61AB84AF1E4C4B7B00D308CB /* ServiceTimeCell.h */,
+				61AB84B01E4C4B7B00D308CB /* ServiceTimeCell.m */,
+				61AB84B11E4C4B7B00D308CB /* ServiceTimeCell.xib */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
 		61B1EA811E26030B006F8276 /* PYSearch */ = {
 			isa = PBXGroup;
 			children = (
@@ -1488,9 +1512,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				61AB84B31E4C4B7B00D308CB /* ServiceTimeCell.xib in Resources */,
 				11C3C13F1E1FCEAA005A2403 /* AccountSafeViewController.xib in Resources */,
 				61A08CD61E2CB0A8001063DC /* ico_make.png in Resources */,
 				11FE826E1E1F79A600309719 /* MMNumberKeyboardDeleteKey.png in Resources */,
+				61AB84AD1E4C45E900D308CB /* ServiceTimeViewController.xib in Resources */,
 				619319A11E1CF67800AF63E7 /* RechargeScanViewController.xib in Resources */,
 				615FBF581E15066200F50C0D /* OrderListTopCell.xib in Resources */,
 				615FBF381E14BF0400F50C0D /* GoodsCategoryViewController.xib in Resources */,
@@ -1767,6 +1793,7 @@
 				1154B9A41E11736A00C8459D /* NSObject+Addition.m in Sources */,
 				61A08CD71E2CB0A8001063DC /* JSDropDownMenu.m in Sources */,
 				617288E91E10BE470037DB40 /* BaseViewController.m in Sources */,
+				61AB84AC1E4C45E900D308CB /* ServiceTimeViewController.m in Sources */,
 				61A08CE11E2CC670001063DC /* QGDropDownMenu.m in Sources */,
 				617289141E1100B90037DB40 /* Utility.m in Sources */,
 				61F9ADAF1E24E63D00649D80 /* GTMBase64.m in Sources */,
@@ -1842,6 +1869,7 @@
 				617F79821E16544800E139CF /* UpdateMemberInfoTableViewController.m in Sources */,
 				619319A01E1CF67800AF63E7 /* RechargeScanViewController.m in Sources */,
 				617288B81E10BCA40037DB40 /* bz.xcdatamodeld in Sources */,
+				61AB84B21E4C4B7B00D308CB /* ServiceTimeCell.m in Sources */,
 				617F79781E1620FF00E139CF /* FunctionListViewController.m in Sources */,
 				617111591E286104001B6BA5 /* UIView+WZLBadge.m in Sources */,
 				61DFD3E01E235F3600D9C2D7 /* QGAlertView.m in Sources */,

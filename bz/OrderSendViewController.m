@@ -20,7 +20,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.title = Localized(@"订单发货");
-    self.mTableView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight);
+    self.mTableView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight-64);
     [self.mTableView registerNib:[UINib nibWithNibName:@"MeCell" bundle:nil] forCellReuseIdentifier:@"MeCell"];
     self.mTableView.delegate = self;
     self.mTableView.dataSource = self;

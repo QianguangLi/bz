@@ -11,6 +11,7 @@
 #import "OrderSendViewController.h"
 #import "UpdateStoreViewController.h"
 #import "UpdateStoreLocationViewController.h"
+#import "ServiceTimeViewController.h"
 
 @interface MenDianFuncViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *functionTableView;
@@ -171,7 +172,11 @@
 {
     switch (indexPath.row) {
         case 0:
-            
+        {
+            ServiceTimeViewController *vc = [[ServiceTimeViewController alloc] init];
+            vc.isRequireRefreshHeader = YES;
+            [self.navigationController pushViewController:vc animated:YES];
+        }
             break;
         case 1:
         {
