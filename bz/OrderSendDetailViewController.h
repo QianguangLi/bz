@@ -13,4 +13,6 @@
  */
 @interface OrderSendDetailViewController : BaseViewController
 
+@property (copy, nonatomic) NSString *orderId;//订单号
+
 @end

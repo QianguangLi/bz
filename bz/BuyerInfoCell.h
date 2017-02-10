@@ -13,5 +13,8 @@
  */
 @interface BuyerInfoCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *addressLabel;
+@property (weak, nonatomic) IBOutlet UILabel *buyerName;
+@property (weak, nonatomic) IBOutlet UILabel *conName;
+@property (weak, nonatomic) IBOutlet UILabel *conMobile;
 
 @end

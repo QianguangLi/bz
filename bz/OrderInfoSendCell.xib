@@ -149,6 +149,10 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
                 <outlet property="note" destination="jOk-Su-2cu" id="yjU-l6-aTy"/>
+                <outlet property="orderId" destination="due-M4-TCD" id="gQg-K9-ONr"/>
+                <outlet property="orderState" destination="EYs-E3-XbG" id="Pij-ol-Lx4"/>
+                <outlet property="orderTime" destination="fI2-aF-rna" id="LcV-D2-T4f"/>
+                <outlet property="totalMoney" destination="X4O-lR-xc9" id="GaC-0Z-vln"/>
             </connections>
             <point key="canvasLocation" x="34" y="110.5"/>
         </tableViewCell>

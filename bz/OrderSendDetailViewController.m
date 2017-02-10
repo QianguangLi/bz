@@ -9,6 +9,7 @@
 #import "OrderSendDetailViewController.h"
 #import "UIView+Addition.h"
 #import "UITableView+FDTemplateLayoutCell.h"
+#import "NetService.h"
 
 #import "OrderInfoSendCell.h"
 #import "OrderInfoDetailCell.h"
@@ -24,7 +25,9 @@ typedef enum : NSInteger {
 } OrderSend;
 
 @interface OrderSendDetailViewController () <UITableViewDelegate, UITableViewDataSource>
-
+{
+    NSURLSessionTask *_task;
+}
 @property (weak, nonatomic) IBOutlet UIButton *detailBtn;
 @property (weak, nonatomic) IBOutlet UIButton *sendBtn;
 @property (strong, nonatomic) UITableView *tableView;
@@ -33,6 +36,9 @@ typedef enum : NSInteger {
 @property (assign, nonatomic) OrderSend type;
 
 @property (strong, nonatomic) UIBarButtonItem *sendItem;//发货
+
+@property (strong, nonatomic) NSMutableArray *orderDetail;
+@property (strong, nonatomic) NSDictionary *orderInfo;
 
 @end
 
@@ -46,9 +52,16 @@ static NSString *OrderProductCellId= @"OrderProductCell";
 
 @implementation OrderSendDetailViewController
 
+- (void)dealloc
+{
+    [_task cancel];
+    NSLog(@"OrderSendDetailViewController dealloc");
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    _orderDetail = [NSMutableArray array];
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.title = Localized(@"订单信息");
     [_detailBtn setBackgroundImage:[UIImage imageWithColor:kPinkColor] forState:UIControlStateSelected];
@@ -77,6 +90,38 @@ static NSString *OrderProductCellId= @"OrderProductCell";
     _tableView.delegate = self;
     _tableView.dataSource = self;
     [self registCell];
+    
+    [self getOrderInfo];
+}
+
+- (void)getOrderInfo
+{
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                 kLoginToken, @"Token",
+                                 _orderId, @"orderid",
+                                 nil];
+    WS(weakSelf);
+    _task = [NetService POST:@"api/Store/OrderSendDetails" parameters:dict complete:^(id responseObject, NSError *error) {
+        [Utility hideHUDForView:weakSelf.view];
+        if (error) {
+            NSLog(@"failure:%@", error);
+            [Utility showString:error.localizedDescription onView:weakSelf.view];
+            return ;
+        }
+        NSLog(@"%@", responseObject);
+        if ([responseObject[kStatusCode] integerValue] == NetStatusSuccess) {
+            weakSelf.orderInfo = responseObject[kResponseData];
+            NSArray *arr = weakSelf.orderInfo[@"orderdetail"];
+            for (NSDictionary *orderDetail in arr) {
+                ProductModel *model = [[ProductModel alloc] initWithDictionary:orderDetail error:nil];
+                [weakSelf.orderDetail addObject:model];
+            }
+            [weakSelf.tableView reloadData];
+        } else {
+            [Utility showString:responseObject[kErrMsg] onView:weakSelf.view];
+        }
+    }];
+    [Utility showHUDAddedTo:self.view forTask:_task];
 }
 
 - (void)sendAction:(UIBarButtonItem *)item
@@ -123,7 +168,7 @@ static NSString *OrderProductCellId= @"OrderProductCell";
     if (section == 0) {
         return 4;
     }
-    return 2;
+    return self.orderDetail.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -134,9 +179,25 @@ static NSString *OrderProductCellId= @"OrderProductCell";
             {
                 if (_type == OrderSendDetail) {
                     OrderInfoDetailCell *cell = [tableView dequeueReusableCellWithIdentifier:OrderInfoDetailCellId forIndexPath:indexPath];
+                    cell.orderId.text = _orderInfo[@"orderid"];
+                    cell.orderTime.text = _orderInfo[@"ordertime"];
+                    cell.orderTime.text = _orderInfo[@"ordertime"];
+                    cell.totalMoney.text = _orderInfo[@"totalmoney"];
+                    cell.orderState.text = _orderInfo[@"orderstate"];
+                    cell.payTime.text = _orderInfo[@"paytime"];
+                    cell.orderType.text = _orderInfo[@"ordertype"];
+                    cell.jfPay.text = _orderInfo[@"jfpay"];
+                    cell.sendType.text = _orderInfo[@"sendtype"];
+                    cell.note.text = _orderInfo[@"remark"];
                     return cell;
                 } else {
                     OrderInfoSendCell *cell = [tableView dequeueReusableCellWithIdentifier:OrderInfoSendCellId forIndexPath:indexPath];
+                    cell.orderId.text = _orderInfo[@"orderid"];
+                    cell.orderTime.text = _orderInfo[@"ordertime"];
+                    cell.orderTime.text = _orderInfo[@"ordertime"];
+                    cell.totalMoney.text = _orderInfo[@"totalmoney"];
+                    cell.orderState.text = _orderInfo[@"orderstate"];
+                    cell.note.text = _orderInfo[@"remark"];
                     return cell;
                 }
             }
@@ -144,14 +205,17 @@ static NSString *OrderProductCellId= @"OrderProductCell";
             case 1:
             {
                 BuyerInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:BuyerInfoCellId forIndexPath:indexPath];
-                cell.addressLabel.text = @"收货地址:中国 上海市 闵行区 梅龙镇 莘朱路863弄 XXX号 XXX XXX室";
+                cell.buyerName.text = _orderInfo[@"name"];
+                cell.conName.text = _orderInfo[@"recename"];
+                cell.conMobile.text = _orderInfo[@"recemobile"];
+                cell.addressLabel.text = _orderInfo[@"receaddress"];
                 return cell;
             }
                 break;
             case 2:
             {
                 ExpressInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:ExpressInfoCellId forIndexPath:indexPath];
-                cell.addressLabel.text = @"收货地址:中国 上海市 闵行区 梅龙镇 莘朱路863弄 XXX号 XXX XXX室";
+                cell.addressLabel.text = _orderInfo[@"receaddress"];
                 return cell;
             }
                 break;
@@ -167,6 +231,7 @@ static NSString *OrderProductCellId= @"OrderProductCell";
         }
     } else if (indexPath.section == 1) {
         OrderProductCell *cell = [tableView dequeueReusableCellWithIdentifier:OrderProductCellId forIndexPath:indexPath];
+        [cell setContentWithProductModel:self.orderDetail[indexPath.row] andIndexPath:indexPath];
         return cell;
     }
     return nil;
@@ -183,11 +248,11 @@ static NSString *OrderProductCellId= @"OrderProductCell";
             }
         } else if (indexPath.row == 1) {
             return [tableView fd_heightForCellWithIdentifier:BuyerInfoCellId cacheByIndexPath:indexPath configuration:^(BuyerInfoCell *cell) {
-                cell.addressLabel.text = @"收货地址:中国 上海市 闵行区 梅龙镇 莘朱路863弄 XXX号 XXX XXX室";
+                cell.addressLabel.text = _orderInfo[@"receaddress"];
             }];
         } else if (indexPath.row == 2) {
             return [tableView fd_heightForCellWithIdentifier:ExpressInfoCellId cacheByIndexPath:indexPath configuration:^(ExpressInfoCell *cell) {
-                cell.addressLabel.text = @"收货地址:中国 上海市 闵行区 梅龙镇 莘朱路863弄 XXX号 XXX XXX室";
+                cell.addressLabel.text = _orderInfo[@"receaddress"];
             }];
         } else if (indexPath.row == 3) {
             return 40;
@@ -203,7 +268,7 @@ static NSString *OrderProductCellId= @"OrderProductCell";
 {
     if (section == 1) {
         ProductInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:ProductInfoCellId];
-        
+        cell.orderId.text = _orderInfo[@"orderid"];
         return cell;
     }
     return nil;

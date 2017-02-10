@@ -57,7 +57,7 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="收货地址:上海市 闵行区 梅龙镇 XXX弄XXX号XXX" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sFP-HX-w7y">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="收货地址" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sFP-HX-w7y">
                                 <rect key="frame" x="8" y="82" width="304" height="16"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -109,6 +109,9 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
                 <outlet property="addressLabel" destination="sFP-HX-w7y" id="eAe-oj-ZOP"/>
+                <outlet property="buyerName" destination="f7V-ez-oaI" id="d9s-pj-A9y"/>
+                <outlet property="conMobile" destination="bn2-ba-cLy" id="c2V-Qg-H1Y"/>
+                <outlet property="conName" destination="zWk-lQ-rVO" id="icJ-pt-QCB"/>
             </connections>
             <point key="canvasLocation" x="34" y="89"/>
         </tableViewCell>

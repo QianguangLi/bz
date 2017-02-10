@@ -216,7 +216,15 @@
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
+                <outlet property="jfPay" destination="zNS-ek-iOs" id="aIz-aB-N3D"/>
                 <outlet property="note" destination="6cz-C4-19k" id="h9b-SA-bxS"/>
+                <outlet property="orderId" destination="O7H-xc-49t" id="Txs-gg-dhn"/>
+                <outlet property="orderState" destination="efN-WY-UVk" id="1J0-f5-iYg"/>
+                <outlet property="orderTime" destination="QtG-8B-3Gt" id="7MG-t3-ufv"/>
+                <outlet property="orderType" destination="eTd-c7-x90" id="htM-sM-viG"/>
+                <outlet property="payTime" destination="v2y-06-Rw1" id="CRM-ns-7J1"/>
+                <outlet property="sendType" destination="KWQ-4f-ngA" id="hot-tA-S5i"/>
+                <outlet property="totalMoney" destination="3pt-4w-Z3E" id="0nt-lu-jXP"/>
             </connections>
             <point key="canvasLocation" x="34" y="135"/>
         </tableViewCell>

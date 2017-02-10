@@ -1030,7 +1030,7 @@
 				617F79701E15FEB900E139CF /* Assistent */,
 				61A09EC41E1386B900C58519 /* DateBase */,
 				1154B99B1E113C0400C8459D /* NetWorkingManager */,
-				6172890E1E10F8580037DB40 /* model */,
+				6172890E1E10F8580037DB40 /* Model */,
 				6172890A1E10E3670037DB40 /* LocationManager */,
 				617288FC1E10C6F90037DB40 /* Global */,
 				116DF0701E212AFB00484D72 /* Mendian */,
@@ -1183,7 +1183,7 @@
 			name = LocationManager;
 			sourceTree = "<group>";
 		};
-		6172890E1E10F8580037DB40 /* model */ = {
+		6172890E1E10F8580037DB40 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				6172890F1E10F8750037DB40 /* UserLocationModel.h */,
@@ -1211,7 +1211,7 @@
 				613B47B71E2E16C600D0EB12 /* CommentModel.h */,
 				613B47B81E2E16C600D0EB12 /* CommentModel.m */,
 			);
-			name = model;
+			name = Model;
 			sourceTree = "<group>";
 		};
 		617F79701E15FEB900E139CF /* Assistent */ = {

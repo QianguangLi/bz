@@ -14,4 +14,9 @@
 @interface OrderInfoSendCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UITextView *note;
 
+@property (weak, nonatomic) IBOutlet UILabel *orderId;
+@property (weak, nonatomic) IBOutlet UILabel *orderTime;
+@property (weak, nonatomic) IBOutlet UILabel *totalMoney;
+@property (weak, nonatomic) IBOutlet UILabel *orderState;
+
 @end

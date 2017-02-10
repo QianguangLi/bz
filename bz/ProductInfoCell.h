@@ -11,5 +11,6 @@
 
 @interface ProductInfoCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet YLButton *stateBtn;
+@property (weak, nonatomic) IBOutlet UILabel *orderId;
 
 @end

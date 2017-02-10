@@ -86,6 +86,7 @@
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
+                <outlet property="orderId" destination="ppj-ab-EZl" id="cCr-tn-hsN"/>
                 <outlet property="stateBtn" destination="Wg3-Co-8v5" id="U8y-7A-IMJ"/>
             </connections>
             <point key="canvasLocation" x="34" y="66.5"/>
