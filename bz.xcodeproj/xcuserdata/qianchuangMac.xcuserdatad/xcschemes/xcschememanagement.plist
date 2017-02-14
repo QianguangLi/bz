@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>bz copy.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>13</integer>
+		</dict>
 		<key>bz.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -23,6 +28,11 @@
 			<true/>
 		</dict>
 		<key>617288CD1E10BCA40037DB40</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>61FC05AA1E52D3440093A866</key>
 		<dict>
 			<key>primary</key>
 			<true/>

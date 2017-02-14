@@ -8,10 +8,14 @@
 
 #import "MenDianFuncViewController.h"
 #import "MeCell.h"
+//交易管理
 #import "OrderSendViewController.h"
+//门店设置
 #import "UpdateStoreViewController.h"
 #import "UpdateStoreLocationViewController.h"
 #import "ServiceTimeViewController.h"
+//库存管理
+#import "RepositoryListViewController.h"
 
 @interface MenDianFuncViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *functionTableView;
@@ -126,7 +130,7 @@
             [self storeMenuSetting:indexPath];
             break;
         case StoreMenuStockManager:
-            
+            [self stockManager:indexPath];
             break;
         case StoreMenuGoodsManager:
             
@@ -208,6 +212,33 @@
             UpdateStoreLocationViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"UpdateStoreLocationViewController"];
             [self.navigationController pushViewController:vc animated:YES];
         }
+            break;
+            
+        default:
+            break;
+    }
+}
+
+- (void)stockManager:(NSIndexPath *)indexPath
+{
+    switch (indexPath.row) {
+        case 0:
+            
+            break;
+        case 1:
+            
+            break;
+        case 2:
+        {
+            //仓库管理
+            RepositoryListViewController *vc = [[RepositoryListViewController alloc] init];
+            vc.isRequireRefreshFooter = YES;
+            vc.isRequireRefreshHeader = YES;
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+            break;
+        case 3:
+            
             break;
             
         default:

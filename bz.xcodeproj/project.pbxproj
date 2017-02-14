@@ -221,6 +221,10 @@
 		61F437F31E153A5000762CAF /* ProductModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 61F437F21E153A5000762CAF /* ProductModel.m */; };
 		61F9ADAA1E24734B00649D80 /* UIView+MyFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 61F9ADA91E24734B00649D80 /* UIView+MyFont.m */; };
 		61F9ADAF1E24E63D00649D80 /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 61F9ADAD1E24E63D00649D80 /* GTMBase64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		61FC05A21E5298660093A866 /* RepositoryListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61FC05A01E5298660093A866 /* RepositoryListViewController.m */; };
+		61FC05A31E5298660093A866 /* RepositoryListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61FC05A11E5298660093A866 /* RepositoryListViewController.xib */; };
+		61FC05A81E52992A0093A866 /* RepositoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 61FC05A61E52992A0093A866 /* RepositoryCell.m */; };
+		61FC05A91E52992A0093A866 /* RepositoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61FC05A71E52992A0093A866 /* RepositoryCell.xib */; };
 		C7AE5725228759A1D4099EE2 /* libPods-bzTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C819CC4F9EC579CD896525DC /* libPods-bzTests.a */; };
 		CB60EDAD8A812E83A6DC6A46 /* libPods-bzUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BBD9FECB363268F3739B789 /* libPods-bzUITests.a */; };
 /* End PBXBuildFile section */
@@ -597,6 +601,13 @@
 		61F9ADAC1E24E63D00649D80 /* GTMBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMBase64.h; sourceTree = "<group>"; };
 		61F9ADAD1E24E63D00649D80 /* GTMBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMBase64.m; sourceTree = "<group>"; };
 		61F9ADAE1E24E63D00649D80 /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
+		61FC059F1E5298660093A866 /* RepositoryListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepositoryListViewController.h; sourceTree = "<group>"; };
+		61FC05A01E5298660093A866 /* RepositoryListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepositoryListViewController.m; sourceTree = "<group>"; };
+		61FC05A11E5298660093A866 /* RepositoryListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RepositoryListViewController.xib; sourceTree = "<group>"; };
+		61FC05A51E52992A0093A866 /* RepositoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepositoryCell.h; sourceTree = "<group>"; };
+		61FC05A61E52992A0093A866 /* RepositoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepositoryCell.m; sourceTree = "<group>"; };
+		61FC05A71E52992A0093A866 /* RepositoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RepositoryCell.xib; sourceTree = "<group>"; };
+		61FC068D1E52D3440093A866 /* bz copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "bz copy-Info.plist"; path = "/Users/qianchuangMac/Working/bz/bz copy-Info.plist"; sourceTree = "<absolute>"; };
 		63277A970CC28472312B0E2A /* libPods-bz.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-bz.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9531E3B048B237F24D71B746 /* Pods-bzUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bzUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-bzUITests/Pods-bzUITests.release.xcconfig"; sourceTree = "<group>"; };
 		C5657D440376AF6D55313C1A /* Pods-bzTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bzTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-bzTests/Pods-bzTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -689,6 +700,7 @@
 				61D77DA91E4AAC37002B217A /* BZ1Storyboard.storyboard */,
 				6142A6C51E49688800A1DE72 /* StoreMenuSetting */,
 				61661C171E29C9070022A1FC /* DealManger */,
+				61FC059E1E5297FE0093A866 /* StockManager */,
 				116DF0711E212B6900484D72 /* MenDianFuncViewController.h */,
 				116DF0721E212B6900484D72 /* MenDianFuncViewController.m */,
 				116DF0731E212B6900484D72 /* MenDianFuncViewController.xib */,
@@ -1011,6 +1023,7 @@
 				617288A81E10BCA40037DB40 /* Products */,
 				21DECBBC2E154760A3032807 /* Pods */,
 				B0E55AF93A2A71BE17D3BAE1 /* Frameworks */,
+				61FC068D1E52D3440093A866 /* bz copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1393,6 +1406,27 @@
 			path = GTMBase64;
 			sourceTree = "<group>";
 		};
+		61FC059E1E5297FE0093A866 /* StockManager */ = {
+			isa = PBXGroup;
+			children = (
+				61FC05A41E52990A0093A866 /* Cells */,
+				61FC059F1E5298660093A866 /* RepositoryListViewController.h */,
+				61FC05A01E5298660093A866 /* RepositoryListViewController.m */,
+				61FC05A11E5298660093A866 /* RepositoryListViewController.xib */,
+			);
+			name = StockManager;
+			sourceTree = "<group>";
+		};
+		61FC05A41E52990A0093A866 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				61FC05A51E52992A0093A866 /* RepositoryCell.h */,
+				61FC05A61E52992A0093A866 /* RepositoryCell.m */,
+				61FC05A71E52992A0093A866 /* RepositoryCell.xib */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
 		B0E55AF93A2A71BE17D3BAE1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1579,6 +1613,7 @@
 				61DFD3D31E23385F00D9C2D7 /* AlwaysBuyViewController.xib in Resources */,
 				6172891C1E110BCD0037DB40 /* LoginViewController.xib in Resources */,
 				61DFD3D81E23408700D9C2D7 /* AlwaysBuyCell.xib in Resources */,
+				61FC05A31E5298660093A866 /* RepositoryListViewController.xib in Resources */,
 				11FE827E1E1F917500309719 /* RechargeDetailsViewController.xib in Resources */,
 				116DF0661E20BE8500484D72 /* EmailViewController.xib in Resources */,
 				616A09AA1E11FF1600FCF886 /* RegistViewController.xib in Resources */,
@@ -1604,6 +1639,7 @@
 				617F797F1E1651C700E139CF /* BZStoryboard.storyboard in Resources */,
 				61661C311E29FF990022A1FC /* ExpressInfoCell.xib in Resources */,
 				61661C1C1E29F1200022A1FC /* OrderSendDetailViewController.xib in Resources */,
+				61FC05A91E52992A0093A866 /* RepositoryCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1831,6 +1867,7 @@
 				61A09ECD1E13AFFC00C58519 /* UserModel.m in Sources */,
 				116DF06F1E20C10300484D72 /* EmailModel.m in Sources */,
 				617288AF1E10BCA40037DB40 /* AppDelegate.mm in Sources */,
+				61FC05A81E52992A0093A866 /* RepositoryCell.m in Sources */,
 				61BB46261E31E655003C602B /* ConfirmOrderAddressCell.m in Sources */,
 				11FE82781E1F828300309719 /* DZMoneyDetailsViewController.m in Sources */,
 				611AF9C21E2713D200F10C49 /* ShoppingCartModel.m in Sources */,
@@ -1850,6 +1887,7 @@
 				617111551E286104001B6BA5 /* UIViewController+KNSemiModal.m in Sources */,
 				61661C261E29F5040022A1FC /* OrderInfoSendCell.m in Sources */,
 				613FB9481E1E1A6B00CB2070 /* BonusTXViewController.m in Sources */,
+				61FC05A21E5298660093A866 /* RepositoryListViewController.m in Sources */,
 				617288AC1E10BCA40037DB40 /* main.m in Sources */,
 				6193198E1E1CB22200AF63E7 /* GFCalendarScrollView.m in Sources */,
 				617F797C1E1633F600E139CF /* AddressPickerView.m in Sources */,

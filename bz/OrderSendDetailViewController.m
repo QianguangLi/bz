@@ -10,6 +10,7 @@
 #import "UIView+Addition.h"
 #import "UITableView+FDTemplateLayoutCell.h"
 #import "NetService.h"
+#import "YLButton.h"
 
 #import "OrderInfoSendCell.h"
 #import "OrderInfoDetailCell.h"
@@ -269,10 +270,13 @@ static NSString *OrderProductCellId= @"OrderProductCell";
     if (section == 1) {
         ProductInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:ProductInfoCellId];
         cell.orderId.text = _orderInfo[@"orderid"];
+//        [cell.stateBtn setTitle:_orderDetail[0][@"orderstate"] forState:UIControlStateNormal];
         return cell;
     }
     return nil;
 }
+
+
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
