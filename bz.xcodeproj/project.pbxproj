@@ -225,6 +225,7 @@
 		61FC05A31E5298660093A866 /* RepositoryListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61FC05A11E5298660093A866 /* RepositoryListViewController.xib */; };
 		61FC05A81E52992A0093A866 /* RepositoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 61FC05A61E52992A0093A866 /* RepositoryCell.m */; };
 		61FC05A91E52992A0093A866 /* RepositoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61FC05A71E52992A0093A866 /* RepositoryCell.xib */; };
+		61FC06961E52F9FC0093A866 /* RepositoryAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61FC06951E52F9FC0093A866 /* RepositoryAddViewController.m */; };
 		C7AE5725228759A1D4099EE2 /* libPods-bzTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C819CC4F9EC579CD896525DC /* libPods-bzTests.a */; };
 		CB60EDAD8A812E83A6DC6A46 /* libPods-bzUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BBD9FECB363268F3739B789 /* libPods-bzUITests.a */; };
 /* End PBXBuildFile section */
@@ -607,7 +608,8 @@
 		61FC05A51E52992A0093A866 /* RepositoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepositoryCell.h; sourceTree = "<group>"; };
 		61FC05A61E52992A0093A866 /* RepositoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepositoryCell.m; sourceTree = "<group>"; };
 		61FC05A71E52992A0093A866 /* RepositoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RepositoryCell.xib; sourceTree = "<group>"; };
-		61FC068D1E52D3440093A866 /* bz copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "bz copy-Info.plist"; path = "/Users/qianchuangMac/Working/bz/bz copy-Info.plist"; sourceTree = "<absolute>"; };
+		61FC06941E52F9FC0093A866 /* RepositoryAddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepositoryAddViewController.h; sourceTree = "<group>"; };
+		61FC06951E52F9FC0093A866 /* RepositoryAddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepositoryAddViewController.m; sourceTree = "<group>"; };
 		63277A970CC28472312B0E2A /* libPods-bz.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-bz.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9531E3B048B237F24D71B746 /* Pods-bzUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bzUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-bzUITests/Pods-bzUITests.release.xcconfig"; sourceTree = "<group>"; };
 		C5657D440376AF6D55313C1A /* Pods-bzTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bzTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-bzTests/Pods-bzTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1023,7 +1025,6 @@
 				617288A81E10BCA40037DB40 /* Products */,
 				21DECBBC2E154760A3032807 /* Pods */,
 				B0E55AF93A2A71BE17D3BAE1 /* Frameworks */,
-				61FC068D1E52D3440093A866 /* bz copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1413,6 +1414,8 @@
 				61FC059F1E5298660093A866 /* RepositoryListViewController.h */,
 				61FC05A01E5298660093A866 /* RepositoryListViewController.m */,
 				61FC05A11E5298660093A866 /* RepositoryListViewController.xib */,
+				61FC06941E52F9FC0093A866 /* RepositoryAddViewController.h */,
+				61FC06951E52F9FC0093A866 /* RepositoryAddViewController.m */,
 			);
 			name = StockManager;
 			sourceTree = "<group>";
@@ -1818,6 +1821,7 @@
 				613FB9511E1E355F00CB2070 /* BonusScanCell.m in Sources */,
 				619319951E1CB41800AF63E7 /* DZMoneyCell.m in Sources */,
 				617288F51E10BF070037DB40 /* ShoppingCartViewController.m in Sources */,
+				61FC06961E52F9FC0093A866 /* RepositoryAddViewController.m in Sources */,
 				61B1EA941E26030B006F8276 /* PYSearchViewController.m in Sources */,
 				61B1EA961E26030B006F8276 /* UIView+PYSearchExtension.m in Sources */,
 				61F9ADAA1E24734B00649D80 /* UIView+MyFont.m in Sources */,

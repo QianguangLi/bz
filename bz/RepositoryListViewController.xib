@@ -1,12 +1,20 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RepositoryListViewController">
             <connections>
+                <outlet property="repositoryAddress" destination="JZu-QH-hIq" id="WWM-5T-w4L"/>
+                <outlet property="repositoryName" destination="a5c-Rn-t5h" id="fd3-tu-dMP"/>
+                <outlet property="searchView" destination="8nV-QM-RAr" id="VAm-1x-1H7"/>
+                <outlet property="searchViewTopLayout" destination="bDZ-Nq-dt5" id="RE8-Ea-GQM"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -14,7 +22,62 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8nV-QM-RAr">
+                    <rect key="frame" x="0.0" y="-96" width="375" height="96"/>
+                    <subviews>
+                        <textField opaque="NO" clipsSubviews="YES" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="仓库地址" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JZu-QH-hIq">
+                            <rect key="frame" x="80" y="52" width="285" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="qbo-hR-oRR"/>
+                            </constraints>
+                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="仓库地址" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x4k-Gn-A0J">
+                            <rect key="frame" x="8" y="58" width="62" height="18"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <textField opaque="NO" clipsSubviews="YES" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="仓库名称" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="a5c-Rn-t5h">
+                            <rect key="frame" x="80" y="14" width="285" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="VGz-sD-fgk"/>
+                            </constraints>
+                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="仓库名称" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FIW-lu-0Nb">
+                            <rect key="frame" x="8" y="20" width="62" height="18"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="JZu-QH-hIq" firstAttribute="leading" secondItem="x4k-Gn-A0J" secondAttribute="trailing" constant="10" id="FmM-KX-ucc"/>
+                        <constraint firstItem="x4k-Gn-A0J" firstAttribute="top" secondItem="FIW-lu-0Nb" secondAttribute="bottom" constant="20" id="JYQ-uj-l9W"/>
+                        <constraint firstItem="JZu-QH-hIq" firstAttribute="centerY" secondItem="x4k-Gn-A0J" secondAttribute="centerY" id="KEF-Fc-9cB"/>
+                        <constraint firstAttribute="trailing" secondItem="JZu-QH-hIq" secondAttribute="trailing" constant="10" id="SkE-u9-Uh7"/>
+                        <constraint firstItem="FIW-lu-0Nb" firstAttribute="top" secondItem="8nV-QM-RAr" secondAttribute="top" constant="20" id="VfW-k6-BV4"/>
+                        <constraint firstItem="FIW-lu-0Nb" firstAttribute="leading" secondItem="8nV-QM-RAr" secondAttribute="leading" constant="8" id="bEt-dO-zge"/>
+                        <constraint firstItem="a5c-Rn-t5h" firstAttribute="centerY" secondItem="FIW-lu-0Nb" secondAttribute="centerY" id="bWn-1l-dUp"/>
+                        <constraint firstAttribute="height" constant="96" id="egS-6S-3Hr"/>
+                        <constraint firstItem="a5c-Rn-t5h" firstAttribute="leading" secondItem="FIW-lu-0Nb" secondAttribute="trailing" constant="10" id="nCg-qm-xhf"/>
+                        <constraint firstAttribute="trailing" secondItem="a5c-Rn-t5h" secondAttribute="trailing" constant="10" id="o2a-rq-gtf"/>
+                        <constraint firstItem="x4k-Gn-A0J" firstAttribute="leading" secondItem="8nV-QM-RAr" secondAttribute="leading" constant="8" id="zwP-sn-Q0D"/>
+                    </constraints>
+                </view>
+            </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="8nV-QM-RAr" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="9A4-af-zZj"/>
+                <constraint firstItem="8nV-QM-RAr" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="-96" id="bDZ-Nq-dt5"/>
+                <constraint firstAttribute="trailing" secondItem="8nV-QM-RAr" secondAttribute="trailing" id="jp3-Gd-CS8"/>
+            </constraints>
+            <point key="canvasLocation" x="33.5" y="91.5"/>
         </view>
     </objects>
 </document>

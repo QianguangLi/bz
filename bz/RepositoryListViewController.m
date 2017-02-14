@@ -10,30 +10,91 @@
 #import "RepositoryCell.h"
 #import "NetService.h"
 #import "UITableView+FDTemplateLayoutCell.h"
+#import "RepositoryAddViewController.h"
 #import <objc/runtime.h>
 
 @interface RepositoryListViewController () <UITableViewDelegate, UITableViewDataSource, RepositoryCellDelegate, UIAlertViewDelegate>
 {
     NSURLSessionTask *_task;
 }
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *searchViewTopLayout;
+
+@property (weak, nonatomic) IBOutlet UIView *searchView;
+
+@property (weak, nonatomic) IBOutlet UITextField *repositoryName;
+@property (weak, nonatomic) IBOutlet UITextField *repositoryAddress;
+
 @end
 const void *alertViewKey;
 @implementation RepositoryListViewController
 - (void)dealloc
 {
     [_task cancel];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     NSLog(@"RepositoryListViewController dealloc");
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refresh) name:kAddOrUpdateRepositorySuccess object:nil];
     self.title = Localized(@"仓库管理");
     self.mTableView.contentInset = UIEdgeInsetsZero;
     self.mTableView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight-64);
     [self.mTableView registerNib:[UINib nibWithNibName:@"RepositoryCell" bundle:nil] forCellReuseIdentifier:@"RepositoryCell"];
     self.mTableView.delegate = self;
     self.mTableView.dataSource = self;
+    
+    [self setupNavigationItem];
+    
+    [self.view bringSubviewToFront:_searchView];
+}
+
+- (void)refresh
+{
+    //清空数据，刷新
+    [self.dataArray removeAllObjects];
+    [self.mTableView reloadData];
+    [self startRequest];
+}
+
+- (void)setupNavigationItem
+{
+    UIBarButtonItem *searchItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"nav-search"] style:UIBarButtonItemStylePlain target:self action:@selector(searchItemAction:)];
+    
+    UIBarButtonItem *addItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"nav-add"] style:UIBarButtonItemStylePlain target:self action:@selector(addItemAction:)];
+    self.navigationItem.rightBarButtonItems = @[searchItem, addItem];
+}
+
+- (void)searchItemAction:(UIBarButtonItem *)item
+{
+    WS(weakSelf);
+    if (_searchViewTopLayout.constant == 0) {
+        [UIView animateWithDuration:0.25 animations:^{
+            _searchViewTopLayout.constant = -_searchView.frame.size.height;
+            [weakSelf.view layoutIfNeeded];
+        } completion:^(BOOL finished) {
+            _searchView.hidden = YES;
+            [weakSelf startHeardRefresh];
+            weakSelf.mTableView.userInteractionEnabled = YES;
+        }];
+    } else {
+        _searchView.hidden = NO;
+        [UIView animateWithDuration:0.25 animations:^{
+            _searchViewTopLayout.constant = 0;
+            [weakSelf.view layoutIfNeeded];
+        } completion:^(BOOL finished) {
+            weakSelf.mTableView.userInteractionEnabled = NO;
+        }];
+    }
+}
+
+- (void)addItemAction:(UIBarButtonItem *)item
+{
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"BZ1Storyboard" bundle:nil];
+    RepositoryAddViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"RepositoryAddViewController"];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)requestDataListPullDown:(BOOL)pullDown andEndRefreshing:(EndRefreshing)endRefreshing
@@ -42,8 +103,8 @@ const void *alertViewKey;
                                  kLoginToken, @"Token",
                                  StringFromNumber(self.pageIndex), kPageIndex,
                                  StringFromNumber(self.pageSize), kPageSize,
-                                 @"", @"whname",
-                                 @"", @"whaddress",
+                                 _repositoryName.text, @"whname",
+                                 _repositoryAddress.text, @"whaddress",
                                  nil];
     WS(weakSelf);
     _task = [NetService POST:@"api/Store/WareHoseView" parameters:dict complete:^(id responseObject, NSError *error) {
