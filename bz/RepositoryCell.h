@@ -9,9 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @protocol RepositoryCellDelegate <NSObject>
-
-
-
+@optional
+- (void)editRepositoryAtIndexPath:(NSIndexPath *)indexPath;
+- (void)viewRepositoryLocationAtIndexPath:(NSIndexPath *)indexPath;
 @end
 
 @interface RepositoryCell : UITableViewCell

@@ -218,6 +218,11 @@
 		61DFD3E01E235F3600D9C2D7 /* QGAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 61DFD3DF1E235F3600D9C2D7 /* QGAlertView.m */; };
 		61DFD3E31E23802900D9C2D7 /* RegistStoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61DFD3E21E23802900D9C2D7 /* RegistStoreViewController.m */; };
 		61E2F9071E25C2DD00CC61C1 /* GoodsCategoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 61E2F9061E25C2DD00CC61C1 /* GoodsCategoryModel.m */; };
+		61F288001E53E84000375C59 /* RepositoryEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61F287FF1E53E84000375C59 /* RepositoryEditViewController.m */; };
+		61F288041E5428E700375C59 /* RepositoryLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61F288021E5428E700375C59 /* RepositoryLocationViewController.m */; };
+		61F288051E5428E700375C59 /* RepositoryLocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61F288031E5428E700375C59 /* RepositoryLocationViewController.xib */; };
+		61F288091E54292F00375C59 /* RepositoryLocationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 61F288071E54292F00375C59 /* RepositoryLocationCell.m */; };
+		61F2880A1E54292F00375C59 /* RepositoryLocationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61F288081E54292F00375C59 /* RepositoryLocationCell.xib */; };
 		61F437F31E153A5000762CAF /* ProductModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 61F437F21E153A5000762CAF /* ProductModel.m */; };
 		61F9ADAA1E24734B00649D80 /* UIView+MyFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 61F9ADA91E24734B00649D80 /* UIView+MyFont.m */; };
 		61F9ADAF1E24E63D00649D80 /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 61F9ADAD1E24E63D00649D80 /* GTMBase64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -595,6 +600,14 @@
 		61DFD3E21E23802900D9C2D7 /* RegistStoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistStoreViewController.m; sourceTree = "<group>"; };
 		61E2F9051E25C2DD00CC61C1 /* GoodsCategoryModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsCategoryModel.h; sourceTree = "<group>"; };
 		61E2F9061E25C2DD00CC61C1 /* GoodsCategoryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsCategoryModel.m; sourceTree = "<group>"; };
+		61F287FE1E53E84000375C59 /* RepositoryEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepositoryEditViewController.h; sourceTree = "<group>"; };
+		61F287FF1E53E84000375C59 /* RepositoryEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepositoryEditViewController.m; sourceTree = "<group>"; };
+		61F288011E5428E700375C59 /* RepositoryLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepositoryLocationViewController.h; sourceTree = "<group>"; };
+		61F288021E5428E700375C59 /* RepositoryLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepositoryLocationViewController.m; sourceTree = "<group>"; };
+		61F288031E5428E700375C59 /* RepositoryLocationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RepositoryLocationViewController.xib; sourceTree = "<group>"; };
+		61F288061E54292F00375C59 /* RepositoryLocationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepositoryLocationCell.h; sourceTree = "<group>"; };
+		61F288071E54292F00375C59 /* RepositoryLocationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepositoryLocationCell.m; sourceTree = "<group>"; };
+		61F288081E54292F00375C59 /* RepositoryLocationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RepositoryLocationCell.xib; sourceTree = "<group>"; };
 		61F437F11E153A5000762CAF /* ProductModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductModel.h; sourceTree = "<group>"; };
 		61F437F21E153A5000762CAF /* ProductModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductModel.m; sourceTree = "<group>"; };
 		61F9ADA81E24734B00649D80 /* UIView+MyFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MyFont.h"; sourceTree = "<group>"; };
@@ -1416,6 +1429,11 @@
 				61FC05A11E5298660093A866 /* RepositoryListViewController.xib */,
 				61FC06941E52F9FC0093A866 /* RepositoryAddViewController.h */,
 				61FC06951E52F9FC0093A866 /* RepositoryAddViewController.m */,
+				61F287FE1E53E84000375C59 /* RepositoryEditViewController.h */,
+				61F287FF1E53E84000375C59 /* RepositoryEditViewController.m */,
+				61F288011E5428E700375C59 /* RepositoryLocationViewController.h */,
+				61F288021E5428E700375C59 /* RepositoryLocationViewController.m */,
+				61F288031E5428E700375C59 /* RepositoryLocationViewController.xib */,
 			);
 			name = StockManager;
 			sourceTree = "<group>";
@@ -1426,6 +1444,9 @@
 				61FC05A51E52992A0093A866 /* RepositoryCell.h */,
 				61FC05A61E52992A0093A866 /* RepositoryCell.m */,
 				61FC05A71E52992A0093A866 /* RepositoryCell.xib */,
+				61F288061E54292F00375C59 /* RepositoryLocationCell.h */,
+				61F288071E54292F00375C59 /* RepositoryLocationCell.m */,
+				61F288081E54292F00375C59 /* RepositoryLocationCell.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -1609,6 +1630,7 @@
 				6171116A1E28CCA1001B6BA5 /* SelectLocationView.xib in Resources */,
 				6193197F1E1CA41200AF63E7 /* DZMoneyViewController.xib in Resources */,
 				115E35891E1766EE002A9957 /* CollectionSectionHeaderView.xib in Resources */,
+				61F2880A1E54292F00375C59 /* RepositoryLocationCell.xib in Resources */,
 				615FBF5D1E1506AB00F50C0D /* OrderListBottomCell.xib in Resources */,
 				617288BD1E10BCA40037DB40 /* LaunchScreen.storyboard in Resources */,
 				616448291E1B459E0007E50E /* AddressCell.xib in Resources */,
@@ -1629,6 +1651,7 @@
 				61A09ED81E13EA2C00C58519 /* GoodsCell.xib in Resources */,
 				61B1EA911E26030B006F8276 /* PYSearch.bundle in Resources */,
 				616597631E2E474200A8B735 /* ChooseGoodsPropertyViewController.xib in Resources */,
+				61F288051E5428E700375C59 /* RepositoryLocationViewController.xib in Resources */,
 				61661C361E2A015C0022A1FC /* ReceiptInfoCell.xib in Resources */,
 				616A09B41E128AC600FCF886 /* MeCell.xib in Resources */,
 				6165975A1E2E343F00A8B735 /* CommentCell.xib in Resources */,
@@ -1838,6 +1861,7 @@
 				617F79741E15FEF800E139CF /* YLButton.m in Sources */,
 				116DF06B1E20BF3800484D72 /* EmailCell.m in Sources */,
 				613FB9551E1E388A00CB2070 /* BonusModel.m in Sources */,
+				61F288041E5428E700375C59 /* RepositoryLocationViewController.m in Sources */,
 				61D079871E3225C6006755FD /* ConfirmOrderHeader.m in Sources */,
 				1154B9A41E11736A00C8459D /* NSObject+Addition.m in Sources */,
 				61A08CD71E2CB0A8001063DC /* JSDropDownMenu.m in Sources */,
@@ -1919,9 +1943,11 @@
 				61A09ED11E13D86200C58519 /* GoodsViewController.m in Sources */,
 				615FBF411E14E9AC00F50C0D /* RefreshViewController.m in Sources */,
 				617F79821E16544800E139CF /* UpdateMemberInfoTableViewController.m in Sources */,
+				61F288091E54292F00375C59 /* RepositoryLocationCell.m in Sources */,
 				619319A01E1CF67800AF63E7 /* RechargeScanViewController.m in Sources */,
 				617288B81E10BCA40037DB40 /* bz.xcdatamodeld in Sources */,
 				61AB84B21E4C4B7B00D308CB /* ServiceTimeCell.m in Sources */,
+				61F288001E53E84000375C59 /* RepositoryEditViewController.m in Sources */,
 				617F79781E1620FF00E139CF /* FunctionListViewController.m in Sources */,
 				617111591E286104001B6BA5 /* UIView+WZLBadge.m in Sources */,
 				61DFD3E01E235F3600D9C2D7 /* QGAlertView.m in Sources */,

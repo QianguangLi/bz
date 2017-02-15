@@ -23,12 +23,16 @@
 
 - (IBAction)editBtnAction:(UIButton *)sender
 {
-    
+    if (_delegate && [_delegate respondsToSelector:@selector(editRepositoryAtIndexPath:)]) {
+        [_delegate editRepositoryAtIndexPath:_indexPath];
+    }
 }
 
 - (IBAction)scanBtnAction:(UIButton *)sender
 {
-    
+    if (_delegate && [_delegate respondsToSelector:@selector(viewRepositoryLocationAtIndexPath:)]) {
+        [_delegate viewRepositoryLocationAtIndexPath:_indexPath];
+    }
 }
 
 - (void)setContentWithDict:(NSDictionary *)dict andIndexPath:(NSIndexPath *)indexPath
@@ -37,7 +41,7 @@
     
     _repositoryName.text = dict[@"whname"];
     _shortName.text = dict[@"whshorename"];
-    _repositoryAddress.text = dict[@"whaddress"];
+    _repositoryAddress.text = [NSString stringWithFormat:@"%@ %@", dict[@"whaddresshz"], dict[@"whaddress"]];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

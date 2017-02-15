@@ -11,6 +11,8 @@
 #import "NetService.h"
 #import "UITableView+FDTemplateLayoutCell.h"
 #import "RepositoryAddViewController.h"
+#import "RepositoryEditViewController.h"
+#import "RepositoryLocationViewController.h"
 #import <objc/runtime.h>
 
 @interface RepositoryListViewController () <UITableViewDelegate, UITableViewDataSource, RepositoryCellDelegate, UIAlertViewDelegate>
@@ -129,6 +131,23 @@ const void *alertViewKey;
         }
         [weakSelf showTipWithNoData:IS_NULL_ARRAY(weakSelf.dataArray)];
     }];
+}
+
+#pragma mark - RepositoryCellDelegate
+- (void)editRepositoryAtIndexPath:(NSIndexPath *)indexPath
+{
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"BZ1Storyboard" bundle:nil];
+    RepositoryEditViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"RepositoryEditViewController"];
+    vc.repositoryInfo = self.dataArray[indexPath.row];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)viewRepositoryLocationAtIndexPath:(NSIndexPath *)indexPath
+{
+    RepositoryLocationViewController *vc = [[RepositoryLocationViewController alloc] init];
+    vc.repositoryId = self.dataArray[indexPath.row][@"whid"];
+    vc.isRequireRefreshHeader = YES;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - UITableViewDelegate

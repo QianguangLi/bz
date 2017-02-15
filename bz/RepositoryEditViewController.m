@@ -1,17 +1,17 @@
 //
-//  RepositoryAddViewController.m
+//  RepositoryEditViewController.m
 //  bz
 //
-//  Created by qianchuang on 2017/2/14.
+//  Created by qianchuang on 2017/2/15.
 //  Copyright © 2017年 ing. All rights reserved.
 //
 
-#import "RepositoryAddViewController.h"
+#import "RepositoryEditViewController.h"
 #import "AddressPickerView.h"
-#import "UIView+Addition.h"
 #import "NetService.h"
+#import "UIView+Addition.h"
 
-@interface RepositoryAddViewController () <AddressPickerViewDelegate, UIAlertViewDelegate>
+@interface RepositoryEditViewController () <UIAlertViewDelegate, AddressPickerViewDelegate>
 {
     NSURLSessionTask *_getTask;
     NSURLSessionTask *_task;
@@ -22,45 +22,45 @@
 @property (weak, nonatomic) IBOutlet UITextField *repositoryShortName;
 @property (weak, nonatomic) IBOutlet AddressPickerView *repositoryAddress;
 @property (weak, nonatomic) IBOutlet UITextField *repositoryDetailAddress;
-@property (weak, nonatomic) IBOutlet UITextField *locationName;
-@property (weak, nonatomic) IBOutlet UITextField *locationShortName;
 @property (weak, nonatomic) IBOutlet UITextView *repositoryCommnet;
-@property (weak, nonatomic) IBOutlet UITextView *locationComment;
 
 @property (strong, nonatomic) UIButton *clearButton;
 @property (strong, nonatomic) UIButton *addButton;
-
 @end
 
-@implementation RepositoryAddViewController
+@implementation RepositoryEditViewController
 - (void)dealloc
 {
     [_getTask cancel];
     [_task cancel];
-    NSLog(@"RepositoryAddViewController dealloc");
+    NSLog(@"RepositoryEditViewController dealloc");
 }
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     self.view.backgroundColor = QGCOLOR(237, 238, 239, 1);
-
     self.tableView.sectionFooterHeight = 0;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, CGFLOAT_MIN)];
     self.tableView.sectionHeaderHeight = 0;
     self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, CGFLOAT_MIN)];
     
-    self.title = Localized(@"添加仓库");
+    self.title = Localized(@"修改仓库");
     [_repositoryCommnet setBorderCorneRadius:5];
-    [_locationComment setBorderCorneRadius:5];
     _repositoryAddress.delegate = self;
     
-    if (_type == RepositoryTypeEdit) {
-        [self getRepositoryInfo];
-    }
+    [self reloadRepositoryInfo];
 }
 
-- (void)getRepositoryInfo
+- (void)reloadRepositoryInfo
 {
+    _repositoryName.text = _repositoryInfo[@"whname"];
+    _repositoryShortName.text = _repositoryInfo[@"whshorename"];
     
+    [_repositoryAddress setDefaultAddressWithAreaIDString:_repositoryInfo[@"whaddresscode"]];
+    _repositoryDetailAddress.text = _repositoryInfo[@"whaddress"];
+    
+    areaCodeString = _repositoryInfo[@"whaddresscode"];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -72,7 +72,7 @@
     if (!_clearButton) {
         _clearButton = [UIButton buttonWithType:UIButtonTypeCustom];
         _clearButton.frame = CGRectMake(0, CGRectGetMaxY(self.tableView.frame), kScreenWidth, 49);
-        [_clearButton setTitle:Localized(@"添加") forState:UIControlStateNormal];
+        [_clearButton setTitle:Localized(@"修改") forState:UIControlStateNormal];
         _clearButton.backgroundColor = kPinkColor;
         [_clearButton addTarget:self action:@selector(addRepository:) forControlEvents:UIControlEventTouchUpInside];
         [self.tableView.superview addSubview:_clearButton];
@@ -97,27 +97,19 @@
         [Utility showString:Localized(@"请输入详细地址") onView:self.view];
         return;
     }
-    if (IS_NULL_STRING(_locationName.text)) {
-        [Utility showString:Localized(@"请输入库位名称") onView:self.view];
-        return;
-    }
-    if (IS_NULL_STRING(_locationShortName.text)) {
-        [Utility showString:Localized(@"请输入库位简码") onView:self.view];
-        return;
-    }
     
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                  kLoginToken, @"Token",
                                  @"am", @"action",
-                                 @"0", @"whid",
+                                 _repositoryInfo[@"whid"], @"whid",
                                  _repositoryName.text, @"whname",
                                  _repositoryShortName.text, @"whshortname",
                                  areaCodeString, @"whaddresscode",
                                  _repositoryDetailAddress.text, @"whaddress",
-                                 _locationName.text, @"dsname",
-                                 _locationShortName.text, @"dsshortname",
+                                 @"", @"dsname",
+                                 @"", @"dsshortname",
                                  _repositoryCommnet.text, @"whremark",
-                                 _locationComment.text, @"dsremark",
+                                 @"", @"dsremark",
                                  nil];
     WS(weakSelf);
     _task = [NetService POST:@"api/Store/ManageWareHose" parameters:dict complete:^(id responseObject, NSError *error) {
@@ -129,7 +121,7 @@
         }
         NSLog(@"%@", responseObject);
         if ([responseObject[kStatusCode] integerValue] == NetStatusSuccess) {
-            UIAlertView *av = [[UIAlertView alloc] initWithTitle:Localized(@"提示") message:Localized(@"添加仓库成功") delegate:weakSelf cancelButtonTitle:Localized(@"确定") otherButtonTitles:nil, nil];
+            UIAlertView *av = [[UIAlertView alloc] initWithTitle:Localized(@"提示") message:Localized(@"修改仓库成功") delegate:weakSelf cancelButtonTitle:Localized(@"确定") otherButtonTitles:nil, nil];
             [av show];
         } else {
             [Utility showString:responseObject[kErrMsg] onView:weakSelf.view];
@@ -147,7 +139,7 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     [self.navigationController popViewControllerAnimated:YES];
-        [[NSNotificationCenter defaultCenter] postNotificationName:kAddOrUpdateRepositorySuccess object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kAddOrUpdateRepositorySuccess object:nil];
 }
 
 #pragma mark - AddressPickerViewDelegate
@@ -173,6 +165,7 @@
         [cell setSeparatorInset:UIEdgeInsetsZero];
     }
 }
+
 /*
 #pragma mark - Navigation
 
