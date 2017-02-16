@@ -84,7 +84,10 @@
 #define kAddToShoppingCartSuccessNotification @"add_to_shopping_cart_success_notify"
 //添加或修改送达时间折扣通知
 #define kAddOrUpdateServiceTimeSuccess @"add_or_update_service_time_notification"
+//添加或修改仓库成功通知
 #define kAddOrUpdateRepositorySuccess @"add_or_update_repository_notification"
+//添加或修改仓库库位成功通知
+#define kAddOrUpdateRepositoryLocationSuccess @"add_or_update_repository_location_notification"
 
 #define kBaseUrl @"http://103.48.169.52/bzapi"
 //登录URL

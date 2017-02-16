@@ -9,6 +9,7 @@
 #import "RepositoryLocationViewController.h"
 #import "RepositoryLocationCell.h"
 #import "NetService.h"
+#import "AERepositoryLocationViewController.h"
 #import <objc/runtime.h>
 
 const void *alertViewIndexPathKey;
@@ -23,11 +24,13 @@ const void *alertViewIndexPathKey;
 - (void)dealloc
 {
     [_task cancel];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     NSLog(@"RepositoryLocationViewController dealloc");
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refresh) name:kAddOrUpdateRepositoryLocationSuccess object:nil];
     self.title = Localized(@"库位列表");
     self.mTableView.contentInset = UIEdgeInsetsZero;
     self.mTableView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight-64);
@@ -38,6 +41,14 @@ const void *alertViewIndexPathKey;
     [self setupNavigationItem];
 }
 
+- (void)refresh
+{
+    //清空数据，刷新
+    [self.dataArray removeAllObjects];
+    [self.mTableView reloadData];
+    [self startRequest];
+}
+
 - (void)setupNavigationItem
 {
     UIBarButtonItem *addItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"nav-add"] style:UIBarButtonItemStylePlain target:self action:@selector(addItemAction:)];
@@ -46,7 +57,10 @@ const void *alertViewIndexPathKey;
 
 - (void)addItemAction:(UIBarButtonItem *)item
 {
-    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"BZ1Storyboard" bundle:nil];
+    AERepositoryLocationViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"AERepositoryLocationViewController"];
+    vc.type = RepositoryLocationTypeAdd;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)requestDataListPullDown:(BOOL)pullDown andEndRefreshing:(EndRefreshing)endRefreshing
@@ -80,6 +94,16 @@ const void *alertViewIndexPathKey;
     }];
 }
 
+#pragma mark - RepositoryLocationCellDelegate
+- (void)editRepositoryLocationAtIndexPath:(NSIndexPath *)indexPath
+{
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"BZ1Storyboard" bundle:nil];
+    AERepositoryLocationViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"AERepositoryLocationViewController"];
+    vc.type = RepositoryLocationTypeEdit;
+    vc.locationInfo = self.dataArray[indexPath.row];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
 #pragma mark - UITableViewDelegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -92,13 +116,14 @@ const void *alertViewIndexPathKey;
     cell.delegate = self;
     cell.name.text = self.dataArray[indexPath.row][@"dsname"];
     cell.shortName.text = self.dataArray[indexPath.row][@"dsshorename"];
+    cell.indexPath = indexPath;
 //    [cell setContentWithDict:self.dataArray[indexPath.row] andIndexPath:indexPath];
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 40;
+    return 60;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -126,7 +151,29 @@ const void *alertViewIndexPathKey;
 {
     if (buttonIndex == 1) {
         NSIndexPath *indexPath = objc_getAssociatedObject(alertView, alertViewIndexPathKey);
-        
+        NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                     kLoginToken, @"Token",
+                                     self.dataArray[indexPath.row][@"whid"], @"whid",
+                                     self.dataArray[indexPath.row][@"dsid"], @"dsid",
+                                     nil];
+        WS(weakSelf);
+        _task = [NetService POST:@"api/Store/DelDepotSeat" parameters:dict complete:^(id responseObject, NSError *error) {
+            [Utility hideHUDForView:weakSelf.view];
+            if (error) {
+                NSLog(@"failure:%@", error);
+                [Utility showString:error.localizedDescription onView:weakSelf.view];
+                return ;
+            }
+            NSLog(@"%@", responseObject);
+            if ([responseObject[kStatusCode] integerValue] == NetStatusSuccess) {
+                [weakSelf.dataArray removeObjectAtIndex:indexPath.row];
+                [weakSelf.mTableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            } else {
+                [Utility showString:responseObject[kErrMsg] onView:weakSelf.view];
+            }
+            [weakSelf showTipWithNoData:IS_NULL_ARRAY(weakSelf.dataArray)];
+        }];
+        [Utility showHUDAddedTo:self.view forTask:_task];
     }
 }
 

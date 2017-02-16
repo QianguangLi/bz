@@ -10,7 +10,7 @@
 
 @protocol RepositoryLocationCellDelegate <NSObject>
 
-
+- (void)editRepositoryLocationAtIndexPath:(NSIndexPath *)indexPath;
 
 @end
 
@@ -23,5 +23,6 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *name;
 @property (weak, nonatomic) IBOutlet UILabel *shortName;
-
+@property (strong, nonatomic) NSIndexPath *indexPath;
+- (void)setContentWithDict:(NSDictionary *)dict andIndexPath:(NSIndexPath *)indexPath;
 @end

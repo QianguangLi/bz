@@ -197,7 +197,37 @@ const void *alertViewKey;
 {
     if (buttonIndex == 1) {
         NSIndexPath *indexPath = objc_getAssociatedObject(alertView, alertViewKey);
-        
+        NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                     kLoginToken, @"Token",
+                                     @"sc", @"action",
+                                     self.dataArray[indexPath.row][@"whid"], @"whid",
+                                     @"", @"whname",
+                                     @"", @"whshortname",
+                                     @"", @"whaddresscode",
+                                     @"", @"whaddress",
+                                     @"", @"dsname",
+                                     @"", @"dsshortname",
+                                     @"", @"whremark",
+                                     @"", @"dsremark",
+                                     nil];
+        WS(weakSelf);
+        _task = [NetService POST:@"api/Store/ManageWareHose" parameters:dict complete:^(id responseObject, NSError *error) {
+            [Utility hideHUDForView:weakSelf.view];
+            if (error) {
+                NSLog(@"failure:%@", error);
+                [Utility showString:error.localizedDescription onView:weakSelf.view];
+                return ;
+            }
+            NSLog(@"%@", responseObject);
+            if ([responseObject[kStatusCode] integerValue] == NetStatusSuccess) {
+                [weakSelf.dataArray removeObjectAtIndex:indexPath.row];
+                [weakSelf.mTableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            } else {
+                [Utility showString:responseObject[kErrMsg] onView:weakSelf.view];
+            }
+            [weakSelf showTipWithNoData:IS_NULL_ARRAY(weakSelf.dataArray)];
+        }];
+        [Utility showHUDAddedTo:self.view forTask:_task];
     }
 }
 

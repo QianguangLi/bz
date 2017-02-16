@@ -48,6 +48,7 @@
 		611AF9C81E27197600F10C49 /* BuyerHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 611AF9C41E27197600F10C49 /* BuyerHeaderCell.xib */; };
 		611AF9C91E27197600F10C49 /* ShoppingCartCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 611AF9C61E27197600F10C49 /* ShoppingCartCell.m */; };
 		611AF9CA1E27197600F10C49 /* ShoppingCartCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 611AF9C71E27197600F10C49 /* ShoppingCartCell.xib */; };
+		612FB8F11E55431E00DBE82E /* AERepositoryLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 612FB8F01E55431E00DBE82E /* AERepositoryLocationViewController.m */; };
 		613B47AC1E2DC5A000D0EB12 /* GoodsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 613B47AA1E2DC5A000D0EB12 /* GoodsDetailViewController.m */; };
 		613B47AD1E2DC5A000D0EB12 /* GoodsDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 613B47AB1E2DC5A000D0EB12 /* GoodsDetailViewController.xib */; };
 		613B47B31E2DEE7A00D0EB12 /* CALayer+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 613B47B21E2DEE7A00D0EB12 /* CALayer+Addition.m */; };
@@ -314,6 +315,8 @@
 		611AF9C51E27197600F10C49 /* ShoppingCartCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingCartCell.h; sourceTree = "<group>"; };
 		611AF9C61E27197600F10C49 /* ShoppingCartCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingCartCell.m; sourceTree = "<group>"; };
 		611AF9C71E27197600F10C49 /* ShoppingCartCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShoppingCartCell.xib; sourceTree = "<group>"; };
+		612FB8EF1E55431E00DBE82E /* AERepositoryLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AERepositoryLocationViewController.h; sourceTree = "<group>"; };
+		612FB8F01E55431E00DBE82E /* AERepositoryLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AERepositoryLocationViewController.m; sourceTree = "<group>"; };
 		613B47A91E2DC5A000D0EB12 /* GoodsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsDetailViewController.h; sourceTree = "<group>"; };
 		613B47AA1E2DC5A000D0EB12 /* GoodsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsDetailViewController.m; sourceTree = "<group>"; };
 		613B47AB1E2DC5A000D0EB12 /* GoodsDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoodsDetailViewController.xib; sourceTree = "<group>"; };
@@ -1434,6 +1437,8 @@
 				61F288011E5428E700375C59 /* RepositoryLocationViewController.h */,
 				61F288021E5428E700375C59 /* RepositoryLocationViewController.m */,
 				61F288031E5428E700375C59 /* RepositoryLocationViewController.xib */,
+				612FB8EF1E55431E00DBE82E /* AERepositoryLocationViewController.h */,
+				612FB8F01E55431E00DBE82E /* AERepositoryLocationViewController.m */,
 			);
 			name = StockManager;
 			sourceTree = "<group>";
@@ -1919,6 +1924,7 @@
 				617288AC1E10BCA40037DB40 /* main.m in Sources */,
 				6193198E1E1CB22200AF63E7 /* GFCalendarScrollView.m in Sources */,
 				617F797C1E1633F600E139CF /* AddressPickerView.m in Sources */,
+				612FB8F11E55431E00DBE82E /* AERepositoryLocationViewController.m in Sources */,
 				615FBF271E14B60500F50C0D /* MyOrdersViewController.m in Sources */,
 				615FBF571E15066200F50C0D /* OrderListTopCell.m in Sources */,
 				6164482F1E1B6A030007E50E /* AddShoppingAddressViewController.m in Sources */,

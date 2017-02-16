@@ -14,7 +14,17 @@
     [super awakeFromNib];
     // Initialization code
 }
-- (IBAction)editBtnAction:(UIButton *)sender {
+
+- (void)setContentWithDict:(NSDictionary *)dict andIndexPath:(NSIndexPath *)indexPath
+{
+    
+}
+
+- (IBAction)editBtnAction:(UIButton *)sender
+{
+    if (_delegate && [_delegate respondsToSelector:@selector(editRepositoryLocationAtIndexPath:)]) {
+        [_delegate editRepositoryLocationAtIndexPath:_indexPath];
+    }
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
