@@ -44,12 +44,15 @@
     
     if (_type == RepositoryLocationTypeEdit) {
         [self reloadLocation];
+    } else {
+        _repositoryName.text = _repositoryInfo[@"whname"];
+        _repositoryName.enabled = NO;
     }
 }
 
 - (void)reloadLocation
 {
-    _repositoryName.text = @"";
+    _repositoryName.text = _locationInfo[@"whname"];
     _locationName.text = _locationInfo[@"dsname"];
     _locationShortName.text = _locationInfo[@"dsshorename"];
     _locationComment.text = _locationInfo[@"remark"];
@@ -88,9 +91,8 @@
     
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                  kLoginToken, @"Token",
-                                 @"am", @"action",
-                                 @"", @"whid",
-                                 _type == RepositoryLocationTypeAdd ? @"0" : @"", @"dsid",
+                                 _type==RepositoryLocationTypeAdd?_repositoryInfo[@"whid"]:_locationInfo[@"whid"], @"whid",
+                                 _type == RepositoryLocationTypeAdd ? @"0" : _locationInfo[@"dsid"], @"dsid",
                                  _locationName.text, @"dsname",
                                  _locationShortName.text, @"dsshortname",
                                  _locationComment.text, @"dsremark",
@@ -105,7 +107,7 @@
         }
         NSLog(@"%@", responseObject);
         if ([responseObject[kStatusCode] integerValue] == NetStatusSuccess) {
-            UIAlertView *av = [[UIAlertView alloc] initWithTitle:Localized(@"提示") message:_type == RepositoryLocationTypeAdd ? Localized(@"添加库位成功") : Localized(@"修改库位成功") delegate:weakSelf cancelButtonTitle:Localized(@"确定") otherButtonTitles:nil, nil];
+            UIAlertView *av = [[UIAlertView alloc] initWithTitle:Localized(@"提示") message:weakSelf.type == RepositoryLocationTypeAdd ? Localized(@"添加库位成功") : Localized(@"修改库位成功") delegate:weakSelf cancelButtonTitle:Localized(@"确定") otherButtonTitles:nil, nil];
             [av show];
         } else {
             [Utility showString:responseObject[kErrMsg] onView:weakSelf.view];

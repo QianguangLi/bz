@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="StoreSellingViewController">
+            <connections>
+                <outlet property="isSellingBtn" destination="JO3-dL-M2g" id="Lsi-KE-oy0"/>
+                <outlet property="notSellingBtn" destination="tcR-1f-wlj" id="d8L-Vi-ykO"/>
+                <outlet property="submitBtn" destination="6mA-YN-Ygf" id="5ik-SO-jrh"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tcR-1f-wlj">
+                    <rect key="frame" x="188" y="0.0" width="187.5" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="nA1-Y7-fTq"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <state key="normal" title="未上架">
+                        <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="selected" title="未上架">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="switchAction:" destination="-1" eventType="touchUpInside" id="Kfx-BS-cdf"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JO3-dL-M2g">
+                    <rect key="frame" x="0.0" y="0.0" width="187.5" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="GoN-pz-a5b"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <state key="normal" title="已上架">
+                        <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="selected" title="已上架">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="switchAction:" destination="-1" eventType="touchUpInside" id="fe1-is-ywG"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6mA-YN-Ygf">
+                    <rect key="frame" x="0.0" y="618" width="375" height="49"/>
+                    <color key="backgroundColor" red="0.89019607840000003" green="0.10980392160000001" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="49" id="Xif-A8-xIb"/>
+                    </constraints>
+                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <state key="normal" title="撤销上架">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="submit:" destination="-1" eventType="touchUpInside" id="g2j-t2-9Qw"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="tcR-1f-wlj" secondAttribute="trailing" id="11t-wO-glK"/>
+                <constraint firstItem="6mA-YN-Ygf" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="1Os-xk-4Ca"/>
+                <constraint firstItem="JO3-dL-M2g" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="7cE-hV-L6M"/>
+                <constraint firstAttribute="bottom" secondItem="6mA-YN-Ygf" secondAttribute="bottom" id="8ft-zF-HiW"/>
+                <constraint firstItem="tcR-1f-wlj" firstAttribute="width" secondItem="JO3-dL-M2g" secondAttribute="width" id="G5f-Vl-XRm"/>
+                <constraint firstItem="tcR-1f-wlj" firstAttribute="leading" secondItem="JO3-dL-M2g" secondAttribute="trailing" id="MNt-k3-tJg"/>
+                <constraint firstAttribute="trailing" secondItem="6mA-YN-Ygf" secondAttribute="trailing" id="NBV-wQ-oF6"/>
+                <constraint firstItem="JO3-dL-M2g" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="eLJ-su-5M0"/>
+                <constraint firstItem="tcR-1f-wlj" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="hq0-l7-Z7D"/>
+            </constraints>
+            <point key="canvasLocation" x="34.5" y="91.5"/>
+        </view>
+    </objects>
+</document>

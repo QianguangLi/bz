@@ -15,4 +15,6 @@
 
 @property (copy, nonatomic) NSString *repositoryId;//仓库id
 
+@property (strong, nonatomic) NSDictionary *repositoryInfo;//仓库信息
+
 @end

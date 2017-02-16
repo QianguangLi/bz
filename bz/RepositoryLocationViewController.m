@@ -60,6 +60,7 @@ const void *alertViewIndexPathKey;
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"BZ1Storyboard" bundle:nil];
     AERepositoryLocationViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"AERepositoryLocationViewController"];
     vc.type = RepositoryLocationTypeAdd;
+    vc.repositoryInfo = _repositoryInfo;
     [self.navigationController pushViewController:vc animated:YES];
 }
 

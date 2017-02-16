@@ -49,6 +49,11 @@
 		611AF9C91E27197600F10C49 /* ShoppingCartCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 611AF9C61E27197600F10C49 /* ShoppingCartCell.m */; };
 		611AF9CA1E27197600F10C49 /* ShoppingCartCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 611AF9C71E27197600F10C49 /* ShoppingCartCell.xib */; };
 		612FB8F11E55431E00DBE82E /* AERepositoryLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 612FB8F01E55431E00DBE82E /* AERepositoryLocationViewController.m */; };
+		612FB8F51E55770B00DBE82E /* StoreSellingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 612FB8F31E55770B00DBE82E /* StoreSellingViewController.m */; };
+		612FB8F61E55770B00DBE82E /* StoreSellingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 612FB8F41E55770B00DBE82E /* StoreSellingViewController.xib */; };
+		612FB8FA1E557A7000DBE82E /* StoreSellingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 612FB8F81E557A7000DBE82E /* StoreSellingCell.m */; };
+		612FB8FB1E557A7000DBE82E /* StoreSellingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 612FB8F91E557A7000DBE82E /* StoreSellingCell.xib */; };
+		612FB8FE1E557D9800DBE82E /* SellingProductModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 612FB8FD1E557D9800DBE82E /* SellingProductModel.m */; };
 		613B47AC1E2DC5A000D0EB12 /* GoodsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 613B47AA1E2DC5A000D0EB12 /* GoodsDetailViewController.m */; };
 		613B47AD1E2DC5A000D0EB12 /* GoodsDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 613B47AB1E2DC5A000D0EB12 /* GoodsDetailViewController.xib */; };
 		613B47B31E2DEE7A00D0EB12 /* CALayer+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 613B47B21E2DEE7A00D0EB12 /* CALayer+Addition.m */; };
@@ -317,6 +322,14 @@
 		611AF9C71E27197600F10C49 /* ShoppingCartCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShoppingCartCell.xib; sourceTree = "<group>"; };
 		612FB8EF1E55431E00DBE82E /* AERepositoryLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AERepositoryLocationViewController.h; sourceTree = "<group>"; };
 		612FB8F01E55431E00DBE82E /* AERepositoryLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AERepositoryLocationViewController.m; sourceTree = "<group>"; };
+		612FB8F21E55770B00DBE82E /* StoreSellingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreSellingViewController.h; sourceTree = "<group>"; };
+		612FB8F31E55770B00DBE82E /* StoreSellingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreSellingViewController.m; sourceTree = "<group>"; };
+		612FB8F41E55770B00DBE82E /* StoreSellingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StoreSellingViewController.xib; sourceTree = "<group>"; };
+		612FB8F71E557A7000DBE82E /* StoreSellingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreSellingCell.h; sourceTree = "<group>"; };
+		612FB8F81E557A7000DBE82E /* StoreSellingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreSellingCell.m; sourceTree = "<group>"; };
+		612FB8F91E557A7000DBE82E /* StoreSellingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StoreSellingCell.xib; sourceTree = "<group>"; };
+		612FB8FC1E557D9800DBE82E /* SellingProductModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SellingProductModel.h; sourceTree = "<group>"; };
+		612FB8FD1E557D9800DBE82E /* SellingProductModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SellingProductModel.m; sourceTree = "<group>"; };
 		613B47A91E2DC5A000D0EB12 /* GoodsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsDetailViewController.h; sourceTree = "<group>"; };
 		613B47AA1E2DC5A000D0EB12 /* GoodsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsDetailViewController.m; sourceTree = "<group>"; };
 		613B47AB1E2DC5A000D0EB12 /* GoodsDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoodsDetailViewController.xib; sourceTree = "<group>"; };
@@ -1240,6 +1253,8 @@
 				611AF9C11E2713D200F10C49 /* ShoppingCartModel.m */,
 				613B47B71E2E16C600D0EB12 /* CommentModel.h */,
 				613B47B81E2E16C600D0EB12 /* CommentModel.m */,
+				612FB8FC1E557D9800DBE82E /* SellingProductModel.h */,
+				612FB8FD1E557D9800DBE82E /* SellingProductModel.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1439,6 +1454,9 @@
 				61F288031E5428E700375C59 /* RepositoryLocationViewController.xib */,
 				612FB8EF1E55431E00DBE82E /* AERepositoryLocationViewController.h */,
 				612FB8F01E55431E00DBE82E /* AERepositoryLocationViewController.m */,
+				612FB8F21E55770B00DBE82E /* StoreSellingViewController.h */,
+				612FB8F31E55770B00DBE82E /* StoreSellingViewController.m */,
+				612FB8F41E55770B00DBE82E /* StoreSellingViewController.xib */,
 			);
 			name = StockManager;
 			sourceTree = "<group>";
@@ -1452,6 +1470,9 @@
 				61F288061E54292F00375C59 /* RepositoryLocationCell.h */,
 				61F288071E54292F00375C59 /* RepositoryLocationCell.m */,
 				61F288081E54292F00375C59 /* RepositoryLocationCell.xib */,
+				612FB8F71E557A7000DBE82E /* StoreSellingCell.h */,
+				612FB8F81E557A7000DBE82E /* StoreSellingCell.m */,
+				612FB8F91E557A7000DBE82E /* StoreSellingCell.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -1621,6 +1642,7 @@
 				619319A61E1CF70A00AF63E7 /* RechargeScanCell.xib in Resources */,
 				11FE82791E1F828300309719 /* DZMoneyDetailsViewController.xib in Resources */,
 				61DFD3DD1E2351E900D9C2D7 /* PaymentBottomCell.xib in Resources */,
+				612FB8FB1E557A7000DBE82E /* StoreSellingCell.xib in Resources */,
 				61661C221E29F4DC0022A1FC /* OrderInfoDetailCell.xib in Resources */,
 				116DF0751E212B6900484D72 /* MenDianFuncViewController.xib in Resources */,
 				61DFD3CE1E232FCA00D9C2D7 /* PaymentViewController.xib in Resources */,
@@ -1670,6 +1692,7 @@
 				617F797F1E1651C700E139CF /* BZStoryboard.storyboard in Resources */,
 				61661C311E29FF990022A1FC /* ExpressInfoCell.xib in Resources */,
 				61661C1C1E29F1200022A1FC /* OrderSendDetailViewController.xib in Resources */,
+				612FB8F61E55770B00DBE82E /* StoreSellingViewController.xib in Resources */,
 				61FC05A91E52992A0093A866 /* RepositoryCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1887,6 +1910,7 @@
 				11FE826D1E1F79A600309719 /* MMNumberKeyboard.m in Sources */,
 				613B47B61E2E07D700D0EB12 /* JXButton.m in Sources */,
 				61BB46081E31A273003C602B /* GoodsCommentViewController.m in Sources */,
+				612FB8F51E55770B00DBE82E /* StoreSellingViewController.m in Sources */,
 				61661C3F1E2A216B0022A1FC /* OrderSendViewController.m in Sources */,
 				613FB94C1E1E352200CB2070 /* BonusTXScanViewController.m in Sources */,
 				6193197E1E1CA41200AF63E7 /* DZMoneyViewController.m in Sources */,
@@ -1928,6 +1952,7 @@
 				615FBF271E14B60500F50C0D /* MyOrdersViewController.m in Sources */,
 				615FBF571E15066200F50C0D /* OrderListTopCell.m in Sources */,
 				6164482F1E1B6A030007E50E /* AddShoppingAddressViewController.m in Sources */,
+				612FB8FA1E557A7000DBE82E /* StoreSellingCell.m in Sources */,
 				6172890D1E10E3860037DB40 /* LocationService.m in Sources */,
 				6193198F1E1CB22200AF63E7 /* GFCalendarView.m in Sources */,
 				619319991E1CB89800AF63E7 /* DZMoneyModel.m in Sources */,
@@ -1938,6 +1963,7 @@
 				61B1EA921E26030B006F8276 /* PYSearchConst.m in Sources */,
 				615FBF3C1E14CB2200F50C0D /* OrderListViewController.m in Sources */,
 				617288F01E10BEF30037DB40 /* FirstPageViewController.m in Sources */,
+				612FB8FE1E557D9800DBE82E /* SellingProductModel.m in Sources */,
 				61581A8C1E1DD79100985112 /* RechargeModel.m in Sources */,
 				61661C2B1E29FD630022A1FC /* BuyerInfoCell.m in Sources */,
 				61A09EC71E1386E200C58519 /* DataBaseService.m in Sources */,

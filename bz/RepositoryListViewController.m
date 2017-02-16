@@ -146,6 +146,7 @@ const void *alertViewKey;
 {
     RepositoryLocationViewController *vc = [[RepositoryLocationViewController alloc] init];
     vc.repositoryId = self.dataArray[indexPath.row][@"whid"];
+    vc.repositoryInfo = self.dataArray[indexPath.row];
     vc.isRequireRefreshHeader = YES;
     [self.navigationController pushViewController:vc animated:YES];
 }

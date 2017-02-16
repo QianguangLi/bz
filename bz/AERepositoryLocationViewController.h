@@ -18,6 +18,8 @@ typedef enum : NSUInteger {
 
 @property (assign, nonatomic) RepositoryLocationType type;
 
-@property (assign, nonatomic) NSDictionary *locationInfo;//库位信息
+@property (strong, nonatomic) NSDictionary *locationInfo;//库位信息
+
+@property (strong, nonatomic) NSDictionary *repositoryInfo;//仓库信息
 
 @end
