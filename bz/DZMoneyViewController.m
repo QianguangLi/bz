@@ -69,7 +69,7 @@
     if (!_searchView) {
         float offSet = 0;
         _searchView = [[UIView alloc] initWithFrame:CGRectMake(0, -offSet, kScreenWidth, offSet)];
-        _searchView.backgroundColor = [UIColor lightGrayColor];
+        _searchView.backgroundColor = QGCOLOR(230, 230, 230, 1);
         [self.view addSubview:_searchView];
         offSet += 20;
         NSArray *arr1 = [NSArray arrayWithObjects:Localized(@"电子钱包"), Localized(@"积分账户"), Localized(@"奖金账户"), nil];
@@ -78,6 +78,7 @@
             btn.frame = CGRectMake(20 + ((kScreenWidth-40-arr1.count*80)/(arr1.count-1) + 80)*i, offSet, 80, 30);
             [btn setTitle:arr1[i] forState:UIControlStateNormal];
             [btn setBackgroundImage:[UIImage imageWithColor:kPinkColor] forState:UIControlStateSelected];
+            [btn setCorneRadius:5];
             [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
             [btn setBackgroundImage:[UIImage imageWithColor:[UIColor clearColor]] forState:UIControlStateNormal];
             [btn setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
@@ -97,6 +98,7 @@
             [btn setTitle:arr2[i] forState:UIControlStateNormal];
             [btn setBackgroundImage:[UIImage imageWithColor:kPinkColor] forState:UIControlStateSelected];
             [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
+            [btn setCorneRadius:5];
             [btn setBackgroundImage:[UIImage imageWithColor:[UIColor clearColor]] forState:UIControlStateNormal];
             [btn setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
             btn.tag = 200 + i - 1;
