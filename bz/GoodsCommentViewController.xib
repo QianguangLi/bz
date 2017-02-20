@@ -26,7 +26,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9uZ-jz-WQZ">
-                    <rect key="frame" x="0.0" y="63.5" width="375" height="45"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                     <subviews>
                         <button opaque="NO" clipsSubviews="YES" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Uu-of-l1c">
                             <rect key="frame" x="8" y="8" width="64" height="27"/>
@@ -160,7 +160,7 @@
                         <constraint firstAttribute="trailing" secondItem="TBb-0G-aAb" secondAttribute="trailing" constant="8" id="Q0L-ie-RLH"/>
                         <constraint firstItem="3Nr-lY-1gu" firstAttribute="width" secondItem="1Uu-of-l1c" secondAttribute="width" id="RqD-Ia-hQ6"/>
                         <constraint firstItem="qmd-qP-YIq" firstAttribute="centerY" secondItem="1Uu-of-l1c" secondAttribute="centerY" id="S9z-hO-baM"/>
-                        <constraint firstAttribute="height" constant="44.5" id="U1a-cG-96b"/>
+                        <constraint firstAttribute="height" constant="44" id="U1a-cG-96b"/>
                         <constraint firstItem="qmd-qP-YIq" firstAttribute="leading" secondItem="1Uu-of-l1c" secondAttribute="trailing" constant="10" id="c5E-gv-DcA"/>
                         <constraint firstItem="TBb-0G-aAb" firstAttribute="width" secondItem="1Uu-of-l1c" secondAttribute="width" id="dWH-RX-E85"/>
                         <constraint firstItem="1Uu-of-l1c" firstAttribute="top" secondItem="9uZ-jz-WQZ" secondAttribute="top" constant="8" id="nzF-xK-C9e"/>
@@ -178,9 +178,9 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="9uZ-jz-WQZ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="-0.5" id="aLg-86-f0B"/>
-                <constraint firstAttribute="trailing" secondItem="9uZ-jz-WQZ" secondAttribute="trailing" constant="-0.5" id="dVW-wa-wfo"/>
-                <constraint firstItem="9uZ-jz-WQZ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="63.5" id="w3e-tB-ZoD"/>
+                <constraint firstItem="9uZ-jz-WQZ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="aLg-86-f0B"/>
+                <constraint firstAttribute="trailing" secondItem="9uZ-jz-WQZ" secondAttribute="trailing" id="dVW-wa-wfo"/>
+                <constraint firstItem="9uZ-jz-WQZ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="w3e-tB-ZoD"/>
             </constraints>
             <point key="canvasLocation" x="33.5" y="65.5"/>
         </view>

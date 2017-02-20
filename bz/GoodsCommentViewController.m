@@ -44,9 +44,9 @@
     // Do any additional setup after loading the view from its nib.
     self.title = Localized(@"商品评价");
     [self setupCommentButton];
-    self.mCollectionView.frame = CGRectMake(0, 64+44, kScreenWidth, kScreenHeight-64-44);
-    self.mCollectionView.backgroundColor = [UIColor whiteColor];
-    
+    self.mCollectionView.frame = CGRectMake(0, 44, kScreenWidth, kScreenHeight-64-44);
+//    self.mCollectionView.backgroundColor = [UIColor whiteColor];
+    self.mCollectionView.contentInset = UIEdgeInsetsZero;
     self.mCollectionView.delegate = self;
     self.mCollectionView.dataSource = self;
 

@@ -101,7 +101,10 @@
                 [weakSelf endRefresh:error];
             }];
         }];
-
+        //隐藏时间 隐藏状态
+        mjHeader.lastUpdatedTimeLabel.hidden = YES;
+        mjHeader.stateLabel.hidden = YES;
+        
         self.mTableView.mj_header = mjHeader;
         
 //        [self startHeardRefresh];

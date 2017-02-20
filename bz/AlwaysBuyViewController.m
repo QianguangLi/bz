@@ -21,9 +21,6 @@
 {
     NSURLSessionTask *_task;
 }
-@property (weak, nonatomic) IBOutlet UICollectionView *mCollectionView;
-
-@property (strong, nonatomic) UILabel *tipView;
 
 @end
 
@@ -40,27 +37,13 @@
     // Do any additional setup after loading the view from its nib.
     self.title = Localized(@"常购清单");
     
-    _pageIndex = 0;
-    _pageSize = 20;
-    
-    if (!_dataArray) {
-        _dataArray = [[NSMutableArray alloc] init];
-    }
     self.mCollectionView.backgroundColor = QGCOLOR(238, 238, 239, 1);
     self.mCollectionView.delegate = self;
     self.mCollectionView.dataSource = self;
     self.mCollectionView.contentInset = UIEdgeInsetsMake(5, 0, 5, 0);
     
-    _tipView = [[UILabel alloc] initWithFrame:CGRectMake(0, 60, kScreenWidth, 30)];
-    _tipView.text = Localized(@"无数据");
-    _tipView.textColor = [UIColor lightGrayColor];
-    _tipView.textAlignment = NSTextAlignmentCenter;
-    _tipView.hidden = YES;
-    [_mCollectionView addSubview:_tipView];
-    
     [self.mCollectionView registerNib:[UINib nibWithNibName:@"AlwaysBuyCell" bundle:nil] forCellWithReuseIdentifier:@"AlwaysBuyCell"];
     
-    [self setRefreshControl];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -68,52 +51,16 @@
     [self.navigationController setNavigationBarHidden:NO animated:NO];
 }
 
-- (void)startHeardRefresh
-{
-    [self.mCollectionView.mj_header beginRefreshing];
-}
-
-- (void)setRefreshControl
-{
-    //    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 0)];
-    //    _mTableView.tableFooterView = view;
-    if (_isRequireRefreshHeader) {
-        __weak AlwaysBuyViewController *vc = self;
-        self.mCollectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-            [vc showTipWithNoData:NO];
-            vc.pageIndex = 0;
-            //            [vc.dataArray removeAllObjects];
-            //            [vc.mTableView reloadData];
-            [vc requestDataListPullDown:YES withWeakSelf:vc];
-        }];
-        
-        [self startHeardRefresh];
-    }
-    if (_isRequireRefreshFooter) {
-        __weak AlwaysBuyViewController *vc = self;
-        self.mCollectionView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
-            if (vc.pageIndex >= vc.pageCount-1) {
-                [Utility showString:Localized(@"已经是最后一页了！") onView:vc.view];
-                [vc.mCollectionView.mj_footer endRefreshingWithNoMoreData];
-                return;
-            }
-            [vc showTipWithNoData:NO];
-            vc.pageIndex++;
-            [vc requestDataListPullDown:NO withWeakSelf:vc];
-        }];
-    }
-}
-
-
-- (void)requestDataListPullDown:(BOOL)pullDown withWeakSelf:(AlwaysBuyViewController *__weak)weakSelf
+- (void)requestDataListPullDown:(BOOL)pullDown andEndRefreshing:(EndRefreshing)endRefreshing
 {
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                  kLoginToken, @"Token",
-                                 StringFromNumber(weakSelf.pageIndex), kPageIndex,
-                                 StringFromNumber(weakSelf.pageSize), kPageSize,
+                                 StringFromNumber(self.pageIndex), kPageIndex,
+                                 StringFromNumber(self.pageSize), kPageSize,
                                  nil];
+    WS(weakSelf);
     _task = [NetService POST:@"api/User/PurchaseList" parameters:dict complete:^(id responseObject, NSError *error) {
-        [weakSelf stopRefreshing];
+        endRefreshing(error);
         if (error) {
             NSLog(@"failure:%@", error);
             [Utility showString:error.localizedDescription onView:weakSelf.view];
@@ -137,23 +84,6 @@
             [Utility showString:responseObject[kErrMsg] onView:weakSelf.view];
         }
     }];
-}
-
-- (void)stopRefreshing
-{
-    __weak AlwaysBuyViewController *weakSelf = self;
-    if (_isRequireRefreshHeader) {
-        [weakSelf.mCollectionView.mj_header endRefreshing];
-    }
-    if (_isRequireRefreshFooter) {
-        [weakSelf.mCollectionView.mj_footer endRefreshing];
-    }
-}
-
-- (void)showTipWithNoData:(BOOL)show
-{
-    __weak AlwaysBuyViewController *weakSelf = self;
-    weakSelf.tipView.hidden = !show;
 }
 
 #pragma mark - UICollectionViewDelegate

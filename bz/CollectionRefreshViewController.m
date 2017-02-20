@@ -27,8 +27,10 @@
         _dataArray = [[NSMutableArray alloc] init];
     }
     
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+    
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
-    _mCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight-49-64) collectionViewLayout:flowLayout];
+    _mCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - 64) collectionViewLayout:flowLayout];
     
     _mCollectionView.backgroundColor = QGCOLOR(238, 238, 239, 1);
     _mCollectionView.contentInset = UIEdgeInsetsMake(5, 0, 0, 0);
@@ -93,6 +95,10 @@
                 [weakSelf endRefresh:error];
             }];
         }];
+        
+        //隐藏时间 隐藏状态
+        mjHeader.lastUpdatedTimeLabel.hidden = YES;
+        mjHeader.stateLabel.hidden = YES;
         
         self.mCollectionView.mj_header = mjHeader;
         
