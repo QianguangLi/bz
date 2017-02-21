@@ -9,12 +9,16 @@
 #import "UpdateStoreViewController.h"
 #import "NetService.h"
 #import "UIImageView+AFNetworking.h"
+#import <objc/runtime.h>
 
-@interface UpdateStoreViewController () <UIAlertViewDelegate>
+const void *ImagePickerControllerKey;
+
+@interface UpdateStoreViewController () <UIAlertViewDelegate, UIActionSheetDelegate, UIAlertViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 {
     UIButton *_updateButton;
     NSURLSessionTask *_getInfoTask;
     NSURLSessionTask *_task;
+    NSURLSessionTask *_uploadTask;
 }
 
 @property (weak, nonatomic) IBOutlet UITextField *storeId;//门店编号
@@ -35,6 +39,7 @@
 {
     [_getInfoTask cancel];
     [_task cancel];
+    [_uploadTask cancel];
     NSLog(@"UpdateStoreViewController dealloc");
 }
 
@@ -157,18 +162,97 @@
 //TODO:选择门店logo
 - (IBAction)selectStoreLogo:(UIButton *)sender
 {
-    
+    UIActionSheet *as = [[UIActionSheet alloc] initWithTitle:Localized(@"请选择") delegate:self cancelButtonTitle:Localized(@"取消") destructiveButtonTitle:nil otherButtonTitles:Localized(@"相机"), Localized(@"相册"), nil];
+    as.tag = 0;
+    [as showInView:self.view];
 }
 //TODO:选择店主头像
 - (IBAction)selectStoreFace:(UIButton *)sender
 {
+    UIActionSheet *as = [[UIActionSheet alloc] initWithTitle:Localized(@"请选择") delegate:self cancelButtonTitle:Localized(@"取消") destructiveButtonTitle:nil otherButtonTitles:Localized(@"相机"), Localized(@"相册"), nil];
+    as.tag = 1;
+    [as showInView:self.view];
+}
+
+#pragma mark - UIActionSheetDelegate
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 0) {
+        //相机
+        if( [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera] ) {
+            [self invokeImagePiker:UIImagePickerControllerSourceTypeCamera andTag:actionSheet.tag];
+        } else {
+            [Utility showString:Localized(@"相机不可用") onView:self.view];
+        }
+    } else if (buttonIndex == 1) {
+        //相册
+        if( [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary] ) {
+            [self invokeImagePiker:UIImagePickerControllerSourceTypePhotoLibrary andTag:actionSheet.tag];
+        } else {
+            [Utility showString:Localized(@"相册不可用") onView:self.view];
+        }
+    }
+}
+
+- (void)invokeImagePiker:(UIImagePickerControllerSourceType)type andTag:(NSInteger)tag
+{
+    UIImagePickerController *imgPicker = [[UIImagePickerController alloc] init];
+    imgPicker.delegate = self;
+    imgPicker.sourceType = type;
+    objc_setAssociatedObject(imgPicker, ImagePickerControllerKey, StringFromNumber(tag), OBJC_ASSOCIATION_ASSIGN);
+    [self presentViewController:imgPicker animated:YES completion:^{
+        
+    }];
+}
+
+#pragma mark - UIImagePickerControllerDelegate
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
+{
+    UIImage *image = info[UIImagePickerControllerOriginalImage];
+    NSData *data = UIImageJPEGRepresentation(image, 0.7);
+    NSString *imagePickerControllerKey = objc_getAssociatedObject(picker, ImagePickerControllerKey);
+    NSString *action = nil;
+    if (imagePickerControllerKey.integerValue == 0) {
+        self.storeLogo.image = [UIImage imageWithData:data];
+        action = @"storelogo";
+    } else {
+        self.storeFace.image = [UIImage imageWithData:data];
+        action = @"storeface";
+    }
+    NSString *str = [data base64EncodedStringWithOptions:0];
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                 kLoginToken, @"Token",
+                                 action, @"action",
+                                 str.urlEncode, @"faceBase64",
+                                 nil];
     
+    WS(weakSelf);
+    _uploadTask = [NetService POST:@"api/User/Upload" parameters:dict complete:^(id responseObject, NSError *error) {
+        [Utility hideHUDForView:weakSelf.view];
+        if (error) {
+            NSLog(@"failure:%@", error);
+            [Utility showString:error.localizedDescription onView:weakSelf.view];
+            return ;
+        }
+        NSLog(@"%@", responseObject);
+        if ([responseObject[kStatusCode] integerValue] == NetStatusSuccess) {
+            UIAlertView *av = [[UIAlertView alloc] initWithTitle:Localized(@"提示") message:Localized(@"头像上传成功") delegate:weakSelf cancelButtonTitle:Localized(@"确定") otherButtonTitles:nil, nil];
+            [av show];
+        } else {
+            [Utility showString:responseObject[kErrMsg] onView:weakSelf.view];
+        }
+    }];
+    [Utility showHUDAddedTo:self.view forTask:_uploadTask];
+    
+    [picker dismissViewControllerAnimated:YES completion:^{
+        
+    }];
 }
 
 #pragma mark - UIAlertViewDelegate
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    [self.navigationController popViewControllerAnimated:YES];
+//    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - Table view data source

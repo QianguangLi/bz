@@ -35,6 +35,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    UIDevice *device = [UIDevice currentDevice];
+    NSUUID *uuid = device.identifierForVendor;
+    NSLog(@"%@", uuid.UUIDString);
+    // 66CF6870-DD92-4550-9857-D91E0A1B6EA4
     // Override point for customization after application launch.
     //注册重新登录通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reLogon:) name:kReLoginNotification object:nil];
