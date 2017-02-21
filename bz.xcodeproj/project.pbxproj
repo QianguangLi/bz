@@ -54,6 +54,7 @@
 		612FB8FA1E557A7000DBE82E /* StoreSellingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 612FB8F81E557A7000DBE82E /* StoreSellingCell.m */; };
 		612FB8FB1E557A7000DBE82E /* StoreSellingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 612FB8F91E557A7000DBE82E /* StoreSellingCell.xib */; };
 		612FB8FE1E557D9800DBE82E /* SellingProductModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 612FB8FD1E557D9800DBE82E /* SellingProductModel.m */; };
+		613958A01E5C32B1004FCB24 /* AEStoreCustomerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6139589F1E5C32B1004FCB24 /* AEStoreCustomerViewController.m */; };
 		613B47AC1E2DC5A000D0EB12 /* GoodsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 613B47AA1E2DC5A000D0EB12 /* GoodsDetailViewController.m */; };
 		613B47AD1E2DC5A000D0EB12 /* GoodsDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 613B47AB1E2DC5A000D0EB12 /* GoodsDetailViewController.xib */; };
 		613B47B31E2DEE7A00D0EB12 /* CALayer+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 613B47B21E2DEE7A00D0EB12 /* CALayer+Addition.m */; };
@@ -330,6 +331,8 @@
 		612FB8F91E557A7000DBE82E /* StoreSellingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StoreSellingCell.xib; sourceTree = "<group>"; };
 		612FB8FC1E557D9800DBE82E /* SellingProductModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SellingProductModel.h; sourceTree = "<group>"; };
 		612FB8FD1E557D9800DBE82E /* SellingProductModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SellingProductModel.m; sourceTree = "<group>"; };
+		6139589E1E5C32B1004FCB24 /* AEStoreCustomerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AEStoreCustomerViewController.h; sourceTree = "<group>"; };
+		6139589F1E5C32B1004FCB24 /* AEStoreCustomerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AEStoreCustomerViewController.m; sourceTree = "<group>"; };
 		613B47A91E2DC5A000D0EB12 /* GoodsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsDetailViewController.h; sourceTree = "<group>"; };
 		613B47AA1E2DC5A000D0EB12 /* GoodsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsDetailViewController.m; sourceTree = "<group>"; };
 		613B47AB1E2DC5A000D0EB12 /* GoodsDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoodsDetailViewController.xib; sourceTree = "<group>"; };
@@ -732,6 +735,7 @@
 				6142A6C51E49688800A1DE72 /* StoreMenuSetting */,
 				61661C171E29C9070022A1FC /* DealManger */,
 				61FC059E1E5297FE0093A866 /* StockManager */,
+				6139589D1E5C2D9E004FCB24 /* StoreCustomer */,
 				116DF0711E212B6900484D72 /* MenDianFuncViewController.h */,
 				116DF0721E212B6900484D72 /* MenDianFuncViewController.m */,
 				116DF0731E212B6900484D72 /* MenDianFuncViewController.xib */,
@@ -831,6 +835,15 @@
 				61D079861E3225C6006755FD /* ConfirmOrderHeader.xib */,
 			);
 			name = Cells;
+			sourceTree = "<group>";
+		};
+		6139589D1E5C2D9E004FCB24 /* StoreCustomer */ = {
+			isa = PBXGroup;
+			children = (
+				6139589E1E5C32B1004FCB24 /* AEStoreCustomerViewController.h */,
+				6139589F1E5C32B1004FCB24 /* AEStoreCustomerViewController.m */,
+			);
+			name = StoreCustomer;
 			sourceTree = "<group>";
 		};
 		6142A6C51E49688800A1DE72 /* StoreMenuSetting */ = {
@@ -1960,6 +1973,7 @@
 				617111581E286104001B6BA5 /* CAAnimation+WAnimation.m in Sources */,
 				616A09B31E128AC600FCF886 /* MeCell.m in Sources */,
 				619605EC1E2EF6FD00377D95 /* GoodsPropertyCell.m in Sources */,
+				613958A01E5C32B1004FCB24 /* AEStoreCustomerViewController.m in Sources */,
 				61B1EA921E26030B006F8276 /* PYSearchConst.m in Sources */,
 				615FBF3C1E14CB2200F50C0D /* OrderListViewController.m in Sources */,
 				617288F01E10BEF30037DB40 /* FirstPageViewController.m in Sources */,

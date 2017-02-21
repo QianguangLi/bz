@@ -17,6 +17,8 @@
 //库存管理
 #import "RepositoryListViewController.h"
 #import "StoreSellingViewController.h"
+//门店客户
+#import "AEStoreCustomerViewController.h"
 
 @interface MenDianFuncViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *functionTableView;
@@ -137,7 +139,7 @@
             
             break;
         case StoreMenuCustomer:
-            
+            [self storeCustomer:indexPath];
             break;
         case StoreMenuEmail:
             
@@ -150,7 +152,7 @@
             break;
     }
 }
-
+#pragma mark - 交易管理
 - (void)dealManger:(NSIndexPath *)indexPath
 {
     switch (indexPath.row) {
@@ -172,7 +174,7 @@
             break;
     }
 }
-
+#pragma mark - 门店设置
 - (void)storeMenuSetting:(NSIndexPath *)indexPath
 {
     switch (indexPath.row) {
@@ -219,7 +221,7 @@
             break;
     }
 }
-
+#pragma mark - 库存管理
 - (void)stockManager:(NSIndexPath *)indexPath
 {
     switch (indexPath.row) {
@@ -245,6 +247,30 @@
             break;
         case 3:
             
+            break;
+            
+        default:
+            break;
+    }
+}
+
+#pragma mark - 门店客户
+- (void)storeCustomer:(NSIndexPath *)indexPath
+{
+    switch (indexPath.row) {
+        case 0:
+        
+            break;
+        case 1:
+        {
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"BZ1Storyboard" bundle:nil];
+            AEStoreCustomerViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"AEStoreCustomerViewController"];
+            vc.type = StoreCustomerAdd;
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+            break;
+        case 2:
+        
             break;
             
         default:
