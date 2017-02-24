@@ -13,6 +13,8 @@
  */
 @interface RepositoryEditViewController : UITableViewController
 
-@property (strong, nonatomic) NSDictionary *repositoryInfo;
+//@property (strong, nonatomic) NSDictionary *repositoryInfo;
+
+@property (strong, nonatomic) NSString *repositoryId;//仓库id;
 
 @end

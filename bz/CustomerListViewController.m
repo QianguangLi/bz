@@ -1,21 +1,21 @@
 //
-//  RepositoryListViewController.m
+//  CustomerListViewController.m
 //  bz
 //
-//  Created by qianchuang on 2017/2/14.
+//  Created by qianchuang on 2017/2/24.
 //  Copyright © 2017年 ing. All rights reserved.
 //
 
-#import "RepositoryListViewController.h"
-#import "RepositoryCell.h"
+#import "CustomerListViewController.h"
 #import "NetService.h"
+#import "CustomerCell.h"
 #import "UITableView+FDTemplateLayoutCell.h"
-#import "RepositoryAddViewController.h"
-#import "RepositoryEditViewController.h"
-#import "RepositoryLocationViewController.h"
 #import <objc/runtime.h>
+#import "CustomerModel.h"
 
-@interface RepositoryListViewController () <UITableViewDelegate, UITableViewDataSource, RepositoryCellDelegate, UIAlertViewDelegate>
+const void *alertViewKey1;
+
+@interface CustomerListViewController () <UITableViewDelegate, UITableViewDataSource, CustomerCellDelegate>
 {
     NSURLSessionTask *_task;
 }
@@ -23,28 +23,28 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *searchViewTopLayout;
 
 @property (weak, nonatomic) IBOutlet UIView *searchView;
-
-@property (weak, nonatomic) IBOutlet UITextField *repositoryName;
-@property (weak, nonatomic) IBOutlet UITextField *repositoryAddress;
+@property (weak, nonatomic) IBOutlet UITextField *cName;
+@property (weak, nonatomic) IBOutlet UITextField *sfz;
+@property (weak, nonatomic) IBOutlet UITextField *phone;
+@property (weak, nonatomic) IBOutlet UITextField *qq;
+@property (weak, nonatomic) IBOutlet UITextField *wx;
 
 @end
-const void *alertViewKey;
-@implementation RepositoryListViewController
+
+@implementation CustomerListViewController
 - (void)dealloc
 {
     [_task cancel];
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-    NSLog(@"RepositoryListViewController dealloc");
+    NSLog(@"CustomerListViewController dealloc");
 }
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refresh) name:kAddOrUpdateRepositorySuccess object:nil];
-    self.title = Localized(@"仓库管理");
+    self.title = Localized(@"客户信息");
     self.mTableView.contentInset = UIEdgeInsetsZero;
+    self.mTableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     self.mTableView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight-64);
-    [self.mTableView registerNib:[UINib nibWithNibName:@"RepositoryCell" bundle:nil] forCellReuseIdentifier:@"RepositoryCell"];
+    [self.mTableView registerNib:[UINib nibWithNibName:@"CustomerCell" bundle:nil] forCellReuseIdentifier:@"CustomerCell"];
     self.mTableView.delegate = self;
     self.mTableView.dataSource = self;
     
@@ -53,20 +53,11 @@ const void *alertViewKey;
     [self.view bringSubviewToFront:_searchView];
 }
 
-- (void)refresh
-{
-    //清空数据，刷新
-    [self.dataArray removeAllObjects];
-    [self.mTableView reloadData];
-    [self startRequest];
-}
-
 - (void)setupNavigationItem
 {
     UIBarButtonItem *searchItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"nav-search"] style:UIBarButtonItemStylePlain target:self action:@selector(searchItemAction:)];
     
-    UIBarButtonItem *addItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"nav-add"] style:UIBarButtonItemStylePlain target:self action:@selector(addItemAction:)];
-    self.navigationItem.rightBarButtonItems = @[searchItem, addItem];
+    self.navigationItem.rightBarButtonItem = searchItem;
 }
 
 - (void)searchItemAction:(UIBarButtonItem *)item
@@ -92,24 +83,20 @@ const void *alertViewKey;
     }
 }
 
-- (void)addItemAction:(UIBarButtonItem *)item
-{
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"BZ1Storyboard" bundle:nil];
-    RepositoryAddViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"RepositoryAddViewController"];
-    [self.navigationController pushViewController:vc animated:YES];
-}
-
 - (void)requestDataListPullDown:(BOOL)pullDown andEndRefreshing:(EndRefreshing)endRefreshing
 {
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                  kLoginToken, @"Token",
                                  StringFromNumber(self.pageIndex), kPageIndex,
                                  StringFromNumber(self.pageSize), kPageSize,
-                                 _repositoryName.text, @"whname",
-                                 _repositoryAddress.text, @"whaddress",
+                                 _cName.text, @"name",
+                                 _sfz.text, @"sfz",
+                                 _phone.text, @"mobile",
+                                 _qq.text, @"qq",
+                                 _wx.text, @"wx",
                                  nil];
     WS(weakSelf);
-    _task = [NetService POST:@"api/Store/WareHoseView" parameters:dict complete:^(id responseObject, NSError *error) {
+    _task = [NetService POST:@"api/Store/QueryClient" parameters:dict complete:^(id responseObject, NSError *error) {
         endRefreshing(error);
         if (error) {
             NSLog(@"failure:%@", error);
@@ -118,14 +105,14 @@ const void *alertViewKey;
         }
         NSLog(@"%@", responseObject);
         if ([responseObject[kStatusCode] integerValue] == NetStatusSuccess) {
-            NSDictionary *dataDict = responseObject[kResponseData];
-            weakSelf.pageCount = [dataDict[kPageCount] integerValue];
-            NSArray *listArray = dataDict[@"list"];
-            if (pullDown) {
-                [weakSelf.dataArray removeAllObjects];
-            }
-            [weakSelf.dataArray addObjectsFromArray:listArray];
-            [weakSelf.mTableView reloadData];
+//            NSDictionary *dataDict = responseObject[kResponseData];
+//            weakSelf.pageCount = [dataDict[kPageCount] integerValue];
+//            NSArray *listArray = dataDict[@"list"];
+//            if (pullDown) {
+//                [weakSelf.dataArray removeAllObjects];
+//            }
+//            [weakSelf.dataArray addObjectsFromArray:listArray];
+//            [weakSelf.mTableView reloadData];
         } else {
             [Utility showString:responseObject[kErrMsg] onView:weakSelf.view];
         }
@@ -133,45 +120,37 @@ const void *alertViewKey;
     }];
 }
 
-#pragma mark - RepositoryCellDelegate
-- (void)editRepositoryAtIndexPath:(NSIndexPath *)indexPath
+#pragma mark - CustomerCellDelegate
+- (void)editCustomerAtIndexPath:(NSIndexPath *)indexPath
 {
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"BZ1Storyboard" bundle:nil];
-    RepositoryEditViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"RepositoryEditViewController"];
-//    vc.repositoryInfo = self.dataArray[indexPath.row];
-    vc.repositoryId = self.dataArray[indexPath.row][@"whid"];
-    [self.navigationController pushViewController:vc animated:YES];
+    
 }
 
-- (void)viewRepositoryLocationAtIndexPath:(NSIndexPath *)indexPath
+- (void)deleteCustomerAtIndexPath:(NSIndexPath *)indexPath
 {
-    RepositoryLocationViewController *vc = [[RepositoryLocationViewController alloc] init];
-    vc.repositoryId = self.dataArray[indexPath.row][@"whid"];
-    vc.repositoryInfo = self.dataArray[indexPath.row];
-    vc.isRequireRefreshHeader = YES;
-    [self.navigationController pushViewController:vc animated:YES];
+    UIAlertView *av = [[UIAlertView alloc] initWithTitle:Localized(@"提示") message:Localized(@"确定要删除库位?") delegate:self cancelButtonTitle:Localized(@"取消") otherButtonTitles:Localized(@"删除"), nil];
+    objc_setAssociatedObject(av, alertViewKey1, indexPath, OBJC_ASSOCIATION_RETAIN);
+    [av show];
 }
 
 #pragma mark - UITableViewDelegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    return 10;
     return self.dataArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    RepositoryCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RepositoryCell" forIndexPath:indexPath];
+    CustomerCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CustomerCell" forIndexPath:indexPath];
     cell.delegate = self;
-    [cell setContentWithDict:self.dataArray[indexPath.row] andIndexPath:indexPath];
+//    [cell setContentWithDict:self.dataArray[indexPath.row] andIndexPath:indexPath];
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    WS(weakSelf);
-    return [tableView fd_heightForCellWithIdentifier:@"RepositoryCell" cacheByIndexPath:indexPath configuration:^(RepositoryCell *cell) {
-        [cell setContentWithDict:weakSelf.dataArray[indexPath.row] andIndexPath:indexPath];
-    }];
+    return 90;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -180,37 +159,15 @@ const void *alertViewKey;
     
 }
 
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        UIAlertView *av = [[UIAlertView alloc] initWithTitle:Localized(@"提示") message:Localized(@"确定要删除库位?") delegate:self cancelButtonTitle:Localized(@"取消") otherButtonTitles:Localized(@"删除"), nil];
-        objc_setAssociatedObject(av, alertViewKey, indexPath, OBJC_ASSOCIATION_RETAIN);
-        [av show];
-    }
-}
-
-- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return Localized(@"删除");
-}
-
 #pragma mark - UIAlertViewDelegate
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex == 1) {
-        NSIndexPath *indexPath = objc_getAssociatedObject(alertView, alertViewKey);
+        NSIndexPath *indexPath = objc_getAssociatedObject(alertView, alertViewKey1);
         NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                      kLoginToken, @"Token",
                                      @"sc", @"action",
                                      self.dataArray[indexPath.row][@"whid"], @"whid",
-                                     @"", @"whname",
-                                     @"", @"whshortname",
-                                     @"", @"whaddresscode",
-                                     @"", @"whaddress",
-                                     @"", @"dsname",
-                                     @"", @"dsshortname",
-                                     @"", @"whremark",
-                                     @"", @"dsremark",
                                      nil];
         WS(weakSelf);
         _task = [NetService POST:@"api/Store/ManageWareHose" parameters:dict complete:^(id responseObject, NSError *error) {

@@ -49,18 +49,43 @@
     [_repositoryCommnet setBorderCorneRadius:5];
     _repositoryAddress.delegate = self;
     
-    [self reloadRepositoryInfo];
+    [self getRepositoryInfo];
 }
 
-- (void)reloadRepositoryInfo
+- (void)getRepositoryInfo
 {
-    _repositoryName.text = _repositoryInfo[@"whname"];
-    _repositoryShortName.text = _repositoryInfo[@"whshorename"];
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                 kLoginToken, @"Token",
+                                 _repositoryId, @"whid",
+                                 nil];
+    WS(weakSelf);
+    _getTask = [NetService POST:@"api/Store/WareHoseByidView" parameters:dict complete:^(id responseObject, NSError *error) {
+        [Utility hideHUDForView:weakSelf.view];
+        if (error) {
+            NSLog(@"failure:%@", error);
+            [Utility showString:error.localizedDescription onView:weakSelf.view];
+            return ;
+        }
+        NSLog(@"%@", responseObject);
+        if ([responseObject[kStatusCode] integerValue] == NetStatusSuccess) {
+            [weakSelf reloadRepositoryInfo:responseObject[kResponseData]];
+        } else {
+            [Utility showString:responseObject[kErrMsg] onView:weakSelf.view];
+        }
+    }];
+    [Utility showHUDAddedTo:self.view forTask:_getTask];
+}
+
+- (void)reloadRepositoryInfo:(NSDictionary *)dict
+{
+    _repositoryName.text = dict[@"whname"];
+    _repositoryShortName.text = dict[@"whshorename"];
     
-    [_repositoryAddress setDefaultAddressWithAreaIDString:_repositoryInfo[@"whaddresscode"]];
-    _repositoryDetailAddress.text = _repositoryInfo[@"whaddress"];
+    [_repositoryAddress setDefaultAddressWithAreaIDString:dict[@"whaddresscode"]];
+    _repositoryDetailAddress.text = dict[@"whaddress"];
     
-    areaCodeString = _repositoryInfo[@"whaddresscode"];
+    areaCodeString = dict[@"whaddresscode"];
+    _repositoryCommnet.text = dict[@"remark"];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -101,7 +126,7 @@
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                  kLoginToken, @"Token",
                                  @"am", @"action",
-                                 _repositoryInfo[@"whid"], @"whid",
+                                 _repositoryId, @"whid",
                                  _repositoryName.text, @"whname",
                                  _repositoryShortName.text, @"whshortname",
                                  areaCodeString, @"whaddresscode",

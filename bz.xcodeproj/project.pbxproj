@@ -48,6 +48,11 @@
 		611AF9C81E27197600F10C49 /* BuyerHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 611AF9C41E27197600F10C49 /* BuyerHeaderCell.xib */; };
 		611AF9C91E27197600F10C49 /* ShoppingCartCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 611AF9C61E27197600F10C49 /* ShoppingCartCell.m */; };
 		611AF9CA1E27197600F10C49 /* ShoppingCartCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 611AF9C71E27197600F10C49 /* ShoppingCartCell.xib */; };
+		612DD0D21E6004E50079A6A1 /* CustomerListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 612DD0D01E6004E50079A6A1 /* CustomerListViewController.m */; };
+		612DD0D31E6004E50079A6A1 /* CustomerListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 612DD0D11E6004E50079A6A1 /* CustomerListViewController.xib */; };
+		612DD0D81E6006BD0079A6A1 /* CustomerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 612DD0D61E6006BD0079A6A1 /* CustomerCell.m */; };
+		612DD0D91E6006BD0079A6A1 /* CustomerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 612DD0D71E6006BD0079A6A1 /* CustomerCell.xib */; };
+		612DD0DC1E600F0F0079A6A1 /* CustomerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 612DD0DB1E600F0F0079A6A1 /* CustomerModel.m */; };
 		612FB8F11E55431E00DBE82E /* AERepositoryLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 612FB8F01E55431E00DBE82E /* AERepositoryLocationViewController.m */; };
 		612FB8F51E55770B00DBE82E /* StoreSellingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 612FB8F31E55770B00DBE82E /* StoreSellingViewController.m */; };
 		612FB8F61E55770B00DBE82E /* StoreSellingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 612FB8F41E55770B00DBE82E /* StoreSellingViewController.xib */; };
@@ -321,6 +326,14 @@
 		611AF9C51E27197600F10C49 /* ShoppingCartCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingCartCell.h; sourceTree = "<group>"; };
 		611AF9C61E27197600F10C49 /* ShoppingCartCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingCartCell.m; sourceTree = "<group>"; };
 		611AF9C71E27197600F10C49 /* ShoppingCartCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShoppingCartCell.xib; sourceTree = "<group>"; };
+		612DD0CF1E6004E50079A6A1 /* CustomerListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerListViewController.h; sourceTree = "<group>"; };
+		612DD0D01E6004E50079A6A1 /* CustomerListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerListViewController.m; sourceTree = "<group>"; };
+		612DD0D11E6004E50079A6A1 /* CustomerListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomerListViewController.xib; sourceTree = "<group>"; };
+		612DD0D51E6006BD0079A6A1 /* CustomerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerCell.h; sourceTree = "<group>"; };
+		612DD0D61E6006BD0079A6A1 /* CustomerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerCell.m; sourceTree = "<group>"; };
+		612DD0D71E6006BD0079A6A1 /* CustomerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomerCell.xib; sourceTree = "<group>"; };
+		612DD0DA1E600F0F0079A6A1 /* CustomerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerModel.h; sourceTree = "<group>"; };
+		612DD0DB1E600F0F0079A6A1 /* CustomerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerModel.m; sourceTree = "<group>"; };
 		612FB8EF1E55431E00DBE82E /* AERepositoryLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AERepositoryLocationViewController.h; sourceTree = "<group>"; };
 		612FB8F01E55431E00DBE82E /* AERepositoryLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AERepositoryLocationViewController.m; sourceTree = "<group>"; };
 		612FB8F21E55770B00DBE82E /* StoreSellingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreSellingViewController.h; sourceTree = "<group>"; };
@@ -837,11 +850,25 @@
 			name = Cells;
 			sourceTree = "<group>";
 		};
+		612DD0D41E6006A40079A6A1 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				612DD0D51E6006BD0079A6A1 /* CustomerCell.h */,
+				612DD0D61E6006BD0079A6A1 /* CustomerCell.m */,
+				612DD0D71E6006BD0079A6A1 /* CustomerCell.xib */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
 		6139589D1E5C2D9E004FCB24 /* StoreCustomer */ = {
 			isa = PBXGroup;
 			children = (
+				612DD0D41E6006A40079A6A1 /* Cells */,
 				6139589E1E5C32B1004FCB24 /* AEStoreCustomerViewController.h */,
 				6139589F1E5C32B1004FCB24 /* AEStoreCustomerViewController.m */,
+				612DD0CF1E6004E50079A6A1 /* CustomerListViewController.h */,
+				612DD0D01E6004E50079A6A1 /* CustomerListViewController.m */,
+				612DD0D11E6004E50079A6A1 /* CustomerListViewController.xib */,
 			);
 			name = StoreCustomer;
 			sourceTree = "<group>";
@@ -1268,6 +1295,8 @@
 				613B47B81E2E16C600D0EB12 /* CommentModel.m */,
 				612FB8FC1E557D9800DBE82E /* SellingProductModel.h */,
 				612FB8FD1E557D9800DBE82E /* SellingProductModel.m */,
+				612DD0DA1E600F0F0079A6A1 /* CustomerModel.h */,
+				612DD0DB1E600F0F0079A6A1 /* CustomerModel.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1624,6 +1653,7 @@
 				11FE826E1E1F79A600309719 /* MMNumberKeyboardDeleteKey.png in Resources */,
 				61AB84AD1E4C45E900D308CB /* ServiceTimeViewController.xib in Resources */,
 				619319A11E1CF67800AF63E7 /* RechargeScanViewController.xib in Resources */,
+				612DD0D91E6006BD0079A6A1 /* CustomerCell.xib in Resources */,
 				615FBF581E15066200F50C0D /* OrderListTopCell.xib in Resources */,
 				615FBF381E14BF0400F50C0D /* GoodsCategoryViewController.xib in Resources */,
 				617288F61E10BF070037DB40 /* ShoppingCartViewController.xib in Resources */,
@@ -1645,6 +1675,7 @@
 				6171115B1E28707B001B6BA5 /* ShoppingCartBottom.xib in Resources */,
 				61661C2C1E29FD630022A1FC /* BuyerInfoCell.xib in Resources */,
 				11FE82831E1FA00400309719 /* BonusScanDetailsViewController.xib in Resources */,
+				612DD0D31E6004E50079A6A1 /* CustomerListViewController.xib in Resources */,
 				619605EF1E2F316300377D95 /* CountCollectionCell.xib in Resources */,
 				61BB46181E31ABDB003C602B /* CommentHeaderView.xib in Resources */,
 				11DC85461E20938900AE7947 /* WriteEmailViewController.xib in Resources */,
@@ -1880,6 +1911,7 @@
 				61DFD3DC1E2351E900D9C2D7 /* PaymentBottomCell.m in Sources */,
 				615FBF451E14FAB300F50C0D /* OrderModel.m in Sources */,
 				61661C3A1E2A021D0022A1FC /* ProductInfoCell.m in Sources */,
+				612DD0D81E6006BD0079A6A1 /* CustomerCell.m in Sources */,
 				616448221E1B39B90007E50E /* ShoppingAddressViewController.m in Sources */,
 				61A09ECA1E138D8D00C58519 /* Address.m in Sources */,
 				613FB9511E1E355F00CB2070 /* BonusScanCell.m in Sources */,
@@ -1951,6 +1983,7 @@
 				11FE827D1E1F917500309719 /* RechargeDetailsViewController.m in Sources */,
 				6172891F1E1118670037DB40 /* UIView+Addition.m in Sources */,
 				61DFD3D21E23385F00D9C2D7 /* AlwaysBuyViewController.m in Sources */,
+				612DD0DC1E600F0F0079A6A1 /* CustomerModel.m in Sources */,
 				617111681E28CC80001B6BA5 /* SelectLocationView.m in Sources */,
 				61DFD3D71E23408700D9C2D7 /* AlwaysBuyCell.m in Sources */,
 				617111561E286104001B6BA5 /* UIBarButtonItem+WZLBadge.m in Sources */,
@@ -2001,6 +2034,7 @@
 				616A09AE1E1253F800FCF886 /* MeHeadView.m in Sources */,
 				115E35881E1766EE002A9957 /* CollectionSectionHeaderView.m in Sources */,
 				617288E61E10BE360037DB40 /* BaseNavigationController.m in Sources */,
+				612DD0D21E6004E50079A6A1 /* CustomerListViewController.m in Sources */,
 				616597591E2E343F00A8B735 /* CommentCell.m in Sources */,
 				617289111E10F8750037DB40 /* UserLocationModel.m in Sources */,
 				617111571E286104001B6BA5 /* UITabBarItem+WZLBadge.m in Sources */,

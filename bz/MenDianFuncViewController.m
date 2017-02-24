@@ -19,6 +19,7 @@
 #import "StoreSellingViewController.h"
 //门店客户
 #import "AEStoreCustomerViewController.h"
+#import "CustomerListViewController.h"
 
 @interface MenDianFuncViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *functionTableView;
@@ -263,6 +264,7 @@
             break;
         case 1:
         {
+            //添加客户
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"BZ1Storyboard" bundle:nil];
             AEStoreCustomerViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"AEStoreCustomerViewController"];
             vc.type = StoreCustomerAdd;
@@ -270,7 +272,12 @@
         }
             break;
         case 2:
-        
+        {
+            CustomerListViewController *vc = [[CustomerListViewController alloc] init];
+            vc.isRequireRefreshHeader = YES;
+            vc.isRequireRefreshFooter = YES;
+            [self.navigationController pushViewController:vc animated:YES];
+        }
             break;
             
         default:
