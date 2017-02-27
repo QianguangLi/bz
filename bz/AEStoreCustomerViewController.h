@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+@class CustomerModel;
 
 typedef enum : NSUInteger {
     StoreCustomerAdd,
@@ -19,5 +20,7 @@ typedef enum : NSUInteger {
 @interface AEStoreCustomerViewController : UITableViewController
 
 @property (assign, nonatomic) StoreCustomerType type;
+
+@property (strong, nonatomic) CustomerModel *customerModel;
 
 @end

@@ -12,6 +12,8 @@
 #import "UIView+Addition.h"
 #import "GFCalendar.h"
 #import "AddressPickerView.h"
+#import "UIImageView+AFNetworking.h"
+#import "CustomerModel.h"
 
 @interface AEStoreCustomerViewController () <AddressPickerViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UIAlertViewDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 {
@@ -83,6 +85,38 @@
     pickerView.delegate = self;
     pickerView.dataSource = self;
     _sex.inputView = pickerView;
+    
+    if (_type == StoreCustomerEdit) {
+        [self reloadData];
+    }
+}
+
+- (void)reloadData
+{
+    [_customerFace setImageWithURL:[NSURL URLWithString:_customerModel.photo] placeholderImage:[UIImage imageNamed:@"member-head"]];
+    _memberId.text = _customerModel.memberid;
+    _customerName.text = _customerModel.cname;
+    _age.text = _customerModel.age;
+    
+    _sexId = _customerModel.sex;
+    _sex.text = _customerModel.sex.integerValue == 0 ? @"女" : @"男";
+    
+    [_birthdayBtn setTitle:_customerModel.birthday forState:UIControlStateNormal];
+    _birthdayDate = _customerModel.birthday;
+    
+    _sfz.text = _customerModel.sfz;
+    _phone.text = _customerModel.phone;
+    _mobile.text = _customerModel.mobileTele;
+    _qq.text = _customerModel.qq;
+    _wx.text = _customerModel.wx;
+    _wb.text = _customerModel.wb;
+    _email.text = _customerModel.email;
+    
+    areaCodeString = _customerModel.areacode;
+    [_address setDefaultAddressWithAreaIDString:_customerModel.areacode];
+    _detailAddress.text = _customerModel.address;
+    _postolCode.text = _customerModel.postolCode;
+    _comment.text = _customerModel.remark;
 }
 
 - (void)initSexData
@@ -132,7 +166,7 @@
     
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                  kLoginToken, @"Token",
-                                 @"0", @"id",
+                                 _type==StoreCustomerAdd?@"0":_customerModel.id, @"id",
                                  str.urlEncode, @"faceBase64",
                                  _memberId.text, @"memberid",
                                  _customerName.text, @"cname",
@@ -150,7 +184,7 @@
                                  _detailAddress.text, @"address",
                                  _postolCode.text, @"postolCode",
                                  _comment.text, @"remark",
-                                 @"add", @"action",
+                                 _type==StoreCustomerAdd?@"add":@"edit", @"action",
                                  nil];
     WS(weakSelf);
     _task = [NetService POST:@"api/Store/ManageClientInfo" parameters:dict complete:^(id responseObject, NSError *error) {
@@ -252,7 +286,7 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     [self.navigationController popViewControllerAnimated:YES];
-//    [[NSNotificationCenter defaultCenter] postNotificationName:kAddOrUpdateServiceTimeSuccess object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kAddOrUpdateCustomerSuccess object:nil];
 }
 
 #pragma mark - AddressPickerViewDelegate

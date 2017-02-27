@@ -28,6 +28,7 @@
 @property (copy, nonatomic) NSString *wb;//微博
 @property (copy, nonatomic) NSString *email;//
 @property (copy, nonatomic) NSString *areacode;//地区编码
+@property (copy, nonatomic) NSString *yaddress;//地区信息
 @property (copy, nonatomic) NSString *address;//详细地址
 @property (copy, nonatomic) NSString *postolCode;//邮编
 @property (copy, nonatomic) NSString *remark;//其他

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+@class CustomerModel;
 
 @protocol CustomerCellDelegate <NSObject>
 
@@ -26,5 +27,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *name;
 @property (weak, nonatomic) IBOutlet UILabel *phone;
 @property (weak, nonatomic) IBOutlet UILabel *address;
+
+- (void)setContentWithCustomerModel:(CustomerModel *)model andIndexPath:(NSIndexPath *)indexPath;
 
 @end

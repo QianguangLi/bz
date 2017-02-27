@@ -88,6 +88,8 @@
 #define kAddOrUpdateRepositorySuccess @"add_or_update_repository_notification"
 //添加或修改仓库库位成功通知
 #define kAddOrUpdateRepositoryLocationSuccess @"add_or_update_repository_location_notification"
+//添加或修改客户信息成功通知
+#define kAddOrUpdateCustomerSuccess @"add_or_update_customer_notification"
 
 #define kBaseUrl @"http://103.48.169.52/bzapi"
 //登录URL

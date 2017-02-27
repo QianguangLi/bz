@@ -12,6 +12,7 @@
 #import "UITableView+FDTemplateLayoutCell.h"
 #import <objc/runtime.h>
 #import "CustomerModel.h"
+#import "AEStoreCustomerViewController.h"
 
 const void *alertViewKey1;
 
@@ -35,11 +36,14 @@ const void *alertViewKey1;
 - (void)dealloc
 {
     [_task cancel];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     NSLog(@"CustomerListViewController dealloc");
 }
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refresh) name:kAddOrUpdateCustomerSuccess object:nil];
     self.title = Localized(@"客户信息");
     self.mTableView.contentInset = UIEdgeInsetsZero;
     self.mTableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
@@ -51,6 +55,14 @@ const void *alertViewKey1;
     [self setupNavigationItem];
     
     [self.view bringSubviewToFront:_searchView];
+}
+
+- (void)refresh
+{
+    //清空数据，刷新
+    [self.dataArray removeAllObjects];
+    [self.mTableView reloadData];
+    [self startRequest];
 }
 
 - (void)setupNavigationItem
@@ -105,14 +117,17 @@ const void *alertViewKey1;
         }
         NSLog(@"%@", responseObject);
         if ([responseObject[kStatusCode] integerValue] == NetStatusSuccess) {
-//            NSDictionary *dataDict = responseObject[kResponseData];
-//            weakSelf.pageCount = [dataDict[kPageCount] integerValue];
-//            NSArray *listArray = dataDict[@"list"];
-//            if (pullDown) {
-//                [weakSelf.dataArray removeAllObjects];
-//            }
-//            [weakSelf.dataArray addObjectsFromArray:listArray];
-//            [weakSelf.mTableView reloadData];
+            NSDictionary *dataDict = responseObject[kResponseData];
+            weakSelf.pageCount = [dataDict[kPageCount] integerValue];
+            if (pullDown) {
+                [weakSelf.dataArray removeAllObjects];
+            }
+            NSArray *listArray = dataDict[@"list"];
+            for (NSDictionary *customer in listArray) {
+                CustomerModel *model = [[CustomerModel alloc] initWithDictionary:customer error:nil];
+                [weakSelf.dataArray addObject:model];
+            }
+            [weakSelf.mTableView reloadData];
         } else {
             [Utility showString:responseObject[kErrMsg] onView:weakSelf.view];
         }
@@ -123,7 +138,11 @@ const void *alertViewKey1;
 #pragma mark - CustomerCellDelegate
 - (void)editCustomerAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"BZ1Storyboard" bundle:nil];
+    AEStoreCustomerViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"AEStoreCustomerViewController"];
+    vc.type = StoreCustomerEdit;
+    vc.customerModel = self.dataArray[indexPath.row];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)deleteCustomerAtIndexPath:(NSIndexPath *)indexPath
@@ -136,7 +155,6 @@ const void *alertViewKey1;
 #pragma mark - UITableViewDelegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 10;
     return self.dataArray.count;
 }
 
@@ -144,7 +162,7 @@ const void *alertViewKey1;
 {
     CustomerCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CustomerCell" forIndexPath:indexPath];
     cell.delegate = self;
-//    [cell setContentWithDict:self.dataArray[indexPath.row] andIndexPath:indexPath];
+    [cell setContentWithCustomerModel:self.dataArray[indexPath.row] andIndexPath:indexPath];
     return cell;
 }
 
@@ -164,13 +182,14 @@ const void *alertViewKey1;
 {
     if (buttonIndex == 1) {
         NSIndexPath *indexPath = objc_getAssociatedObject(alertView, alertViewKey1);
+        CustomerModel *model = self.dataArray[indexPath.row];
         NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                      kLoginToken, @"Token",
-                                     @"sc", @"action",
-                                     self.dataArray[indexPath.row][@"whid"], @"whid",
+                                     @"delete", @"action",
+                                     model.id, @"id",
                                      nil];
         WS(weakSelf);
-        _task = [NetService POST:@"api/Store/ManageWareHose" parameters:dict complete:^(id responseObject, NSError *error) {
+        _task = [NetService POST:@"api/Store/ManageClientInfo" parameters:dict complete:^(id responseObject, NSError *error) {
             [Utility hideHUDForView:weakSelf.view];
             if (error) {
                 NSLog(@"failure:%@", error);
