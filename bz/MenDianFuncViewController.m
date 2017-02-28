@@ -17,6 +17,7 @@
 //库存管理
 #import "RepositoryListViewController.h"
 #import "StoreSellingViewController.h"
+#import "QueryStorageViewController.h"
 //门店客户
 #import "AEStoreCustomerViewController.h"
 #import "CustomerListViewController.h"
@@ -228,6 +229,7 @@
     switch (indexPath.row) {
         case 0:
         {
+            //商品上下架
             StoreSellingViewController *vc = [[StoreSellingViewController alloc] init];
             vc.isRequireRefreshHeader = YES;
             vc.isRequireRefreshFooter = YES;
@@ -235,7 +237,14 @@
         }
             break;
         case 1:
-            
+        {
+            //库存查询
+            QueryStorageViewController *vc = [[QueryStorageViewController alloc] init];
+            vc.isRequireRefreshHeader = YES;
+            vc.isRequireRefreshFooter = YES;
+            vc.delay = YES;
+            [self.navigationController pushViewController:vc animated:YES];
+        }
             break;
         case 2:
         {

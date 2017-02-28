@@ -13,6 +13,7 @@
 #import <objc/runtime.h>
 #import "CustomerModel.h"
 #import "AEStoreCustomerViewController.h"
+#import "CustomerDetailViewController.h"
 
 const void *alertViewKey1;
 
@@ -174,7 +175,9 @@ const void *alertViewKey1;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
+    CustomerDetailViewController *vc = [[CustomerDetailViewController alloc] init];
+    vc.customerModel = self.dataArray[indexPath.row];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - UIAlertViewDelegate
