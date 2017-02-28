@@ -70,6 +70,7 @@
     //如果没有属性，则只有一个子商品，直接默认选中唯一的子商品
     if (IS_NULL_ARRAY(_propertyArray)) {
         _selectedProductDetailModel = _pDetailArray.firstObject;
+        [self reloadWithProductDetailModel:_selectedProductDetailModel];
     }
 }
 

@@ -53,7 +53,7 @@
     if (IS_IPHONE_5){
         newFont = [UIFont adjustFont:fontSize - 2];
     }else if (IS_IPHONE_6P){
-        newFont = [UIFont adjustFont:fontSize + 2];
+        newFont = [UIFont adjustFont:fontSize + 1];
     } else if (IS_IPHONE_4) {
         newFont = [UIFont adjustFont:fontSize-2];
     } else {
