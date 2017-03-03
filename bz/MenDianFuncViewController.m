@@ -18,6 +18,8 @@
 #import "RepositoryListViewController.h"
 #import "StoreSellingViewController.h"
 #import "QueryStorageViewController.h"
+//商品查询
+#import "GoodsQueryViewController.h"
 //门店客户
 #import "AEStoreCustomerViewController.h"
 #import "CustomerListViewController.h"
@@ -138,7 +140,7 @@
             [self stockManager:indexPath];
             break;
         case StoreMenuGoodsManager:
-            
+            [self goodsManager:indexPath];
             break;
         case StoreMenuCustomer:
             [self storeCustomer:indexPath];
@@ -254,6 +256,34 @@
             vc.isRequireRefreshHeader = YES;
             [self.navigationController pushViewController:vc animated:YES];
         }
+            break;
+        case 3:
+            
+            break;
+            
+        default:
+            break;
+    }
+}
+
+#pragma mark - 商品管理
+- (void)goodsManager:(NSIndexPath *)indexPath
+{
+    switch (indexPath.row) {
+        case 0:
+            
+            break;
+        case 1:
+        {
+            //商品查询
+            GoodsQueryViewController *vc = [[GoodsQueryViewController alloc] init];
+            vc.isRequireRefreshHeader = YES;
+            vc.isRequireRefreshFooter = YES;
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+            break;
+        case 2:
+            
             break;
         case 3:
             

@@ -71,6 +71,10 @@
 		613FB9511E1E355F00CB2070 /* BonusScanCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 613FB94F1E1E355F00CB2070 /* BonusScanCell.m */; };
 		613FB9521E1E355F00CB2070 /* BonusScanCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 613FB9501E1E355F00CB2070 /* BonusScanCell.xib */; };
 		613FB9551E1E388A00CB2070 /* BonusModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 613FB9541E1E388A00CB2070 /* BonusModel.m */; };
+		6154CCEA1E69455600C3933D /* GoodsQueryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6154CCE81E69455600C3933D /* GoodsQueryViewController.m */; };
+		6154CCEB1E69455600C3933D /* GoodsQueryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6154CCE91E69455600C3933D /* GoodsQueryViewController.xib */; };
+		6154CCF01E694C8F00C3933D /* GoodsQueryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6154CCEE1E694C8F00C3933D /* GoodsQueryCell.m */; };
+		6154CCF11E694C8F00C3933D /* GoodsQueryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6154CCEF1E694C8F00C3933D /* GoodsQueryCell.xib */; };
 		61581A8C1E1DD79100985112 /* RechargeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 61581A8B1E1DD79100985112 /* RechargeModel.m */; };
 		615FBF271E14B60500F50C0D /* MyOrdersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 615FBF251E14B60500F50C0D /* MyOrdersViewController.m */; };
 		615FBF281E14B60500F50C0D /* MyOrdersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 615FBF261E14B60500F50C0D /* MyOrdersViewController.xib */; };
@@ -371,6 +375,12 @@
 		613FB9501E1E355F00CB2070 /* BonusScanCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BonusScanCell.xib; sourceTree = "<group>"; };
 		613FB9531E1E388A00CB2070 /* BonusModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BonusModel.h; sourceTree = "<group>"; };
 		613FB9541E1E388A00CB2070 /* BonusModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BonusModel.m; sourceTree = "<group>"; };
+		6154CCE71E69455600C3933D /* GoodsQueryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsQueryViewController.h; sourceTree = "<group>"; };
+		6154CCE81E69455600C3933D /* GoodsQueryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsQueryViewController.m; sourceTree = "<group>"; };
+		6154CCE91E69455600C3933D /* GoodsQueryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoodsQueryViewController.xib; sourceTree = "<group>"; };
+		6154CCED1E694C8F00C3933D /* GoodsQueryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsQueryCell.h; sourceTree = "<group>"; };
+		6154CCEE1E694C8F00C3933D /* GoodsQueryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsQueryCell.m; sourceTree = "<group>"; };
+		6154CCEF1E694C8F00C3933D /* GoodsQueryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoodsQueryCell.xib; sourceTree = "<group>"; };
 		61581A8A1E1DD79100985112 /* RechargeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RechargeModel.h; sourceTree = "<group>"; };
 		61581A8B1E1DD79100985112 /* RechargeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RechargeModel.m; sourceTree = "<group>"; };
 		615FBF241E14B60500F50C0D /* MyOrdersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyOrdersViewController.h; sourceTree = "<group>"; };
@@ -763,6 +773,7 @@
 				6142A6C51E49688800A1DE72 /* StoreMenuSetting */,
 				61661C171E29C9070022A1FC /* DealManger */,
 				61FC059E1E5297FE0093A866 /* StockManager */,
+				6154CCE61E6942F100C3933D /* GoodsManager */,
 				6139589D1E5C2D9E004FCB24 /* StoreCustomer */,
 				116DF0711E212B6900484D72 /* MenDianFuncViewController.h */,
 				116DF0721E212B6900484D72 /* MenDianFuncViewController.m */,
@@ -907,6 +918,27 @@
 				61AB84B61E4C5F1C00D308CB /* APServiceTimeViewController.xib */,
 			);
 			name = StoreMenuSetting;
+			sourceTree = "<group>";
+		};
+		6154CCE61E6942F100C3933D /* GoodsManager */ = {
+			isa = PBXGroup;
+			children = (
+				6154CCEC1E694C7300C3933D /* Cells */,
+				6154CCE71E69455600C3933D /* GoodsQueryViewController.h */,
+				6154CCE81E69455600C3933D /* GoodsQueryViewController.m */,
+				6154CCE91E69455600C3933D /* GoodsQueryViewController.xib */,
+			);
+			name = GoodsManager;
+			sourceTree = "<group>";
+		};
+		6154CCEC1E694C7300C3933D /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				6154CCED1E694C8F00C3933D /* GoodsQueryCell.h */,
+				6154CCEE1E694C8F00C3933D /* GoodsQueryCell.m */,
+				6154CCEF1E694C8F00C3933D /* GoodsQueryCell.xib */,
+			);
+			name = Cells;
 			sourceTree = "<group>";
 		};
 		615FBF231E14B5DC00F50C0D /* Orders */ = {
@@ -1702,6 +1734,7 @@
 				612DD0D31E6004E50079A6A1 /* CustomerListViewController.xib in Resources */,
 				619605EF1E2F316300377D95 /* CountCollectionCell.xib in Resources */,
 				61BB46181E31ABDB003C602B /* CommentHeaderView.xib in Resources */,
+				6154CCF11E694C8F00C3933D /* GoodsQueryCell.xib in Resources */,
 				11DC85461E20938900AE7947 /* WriteEmailViewController.xib in Resources */,
 				615FBF3D1E14CB2200F50C0D /* OrderListViewController.xib in Resources */,
 				617288F11E10BEF30037DB40 /* FirstPageViewController.xib in Resources */,
@@ -1732,6 +1765,7 @@
 				61E8CC4E1E655F4700A0D01E /* QueryStorageViewController.xib in Resources */,
 				616448291E1B459E0007E50E /* AddressCell.xib in Resources */,
 				1176F89C1E1FDF580057227C /* CollectionCell.xib in Resources */,
+				6154CCEB1E69455600C3933D /* GoodsQueryViewController.xib in Resources */,
 				61DFD3D31E23385F00D9C2D7 /* AlwaysBuyViewController.xib in Resources */,
 				6172891C1E110BCD0037DB40 /* LoginViewController.xib in Resources */,
 				61DFD3D81E23408700D9C2D7 /* AlwaysBuyCell.xib in Resources */,
@@ -1982,12 +2016,14 @@
 				1154B99E1E113C3E00C8459D /* NetService.m in Sources */,
 				11FE826D1E1F79A600309719 /* MMNumberKeyboard.m in Sources */,
 				613B47B61E2E07D700D0EB12 /* JXButton.m in Sources */,
+				6154CCF01E694C8F00C3933D /* GoodsQueryCell.m in Sources */,
 				61BB46081E31A273003C602B /* GoodsCommentViewController.m in Sources */,
 				612FB8F51E55770B00DBE82E /* StoreSellingViewController.m in Sources */,
 				61661C3F1E2A216B0022A1FC /* OrderSendViewController.m in Sources */,
 				613FB94C1E1E352200CB2070 /* BonusTXScanViewController.m in Sources */,
 				6193197E1E1CA41200AF63E7 /* DZMoneyViewController.m in Sources */,
 				61D77DB01E4ABC63002B217A /* UpdateStoreLocationViewController.m in Sources */,
+				6154CCEA1E69455600C3933D /* GoodsQueryViewController.m in Sources */,
 				61E8CC571E65691A00A0D01E /* CustomerDetailViewController.m in Sources */,
 				61AB84B71E4C5F1C00D308CB /* APServiceTimeViewController.m in Sources */,
 				6165975E1E2E3DE700A8B735 /* ChooseGoodsPropertyViewController.m in Sources */,
