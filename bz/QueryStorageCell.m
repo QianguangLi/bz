@@ -15,6 +15,19 @@
     // Initialization code
 }
 
+- (void)setContentWithDict:(NSDictionary *)dict
+{
+    _commodityName.text = dict[@"CommodityName"];
+    _commodityPropertyDescribe.text = dict[@"CommodityPropertyDescribe"];
+    _commoditySellPrice.text = [NSString stringWithFormat:@"%.2f", [[dict objectForKey:@"CommoditySellPrice"] floatValue]];
+    _customCommodityId.text = dict[@"CustomCommodityId"];
+    _storeName.text = dict[@"StoreName"];
+    _wareHouseName.text = dict[@"WareHouseName"];
+    _stock.text = [[dict objectForKey:@"stock"] stringValue];
+    _stockin.text = [[dict objectForKey:@"stockin"] stringValue];
+    _stockout.text = [[dict objectForKey:@"stockout"] stringValue];
+}
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 

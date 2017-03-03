@@ -10,23 +10,38 @@
 #import "NetService.h"
 #import "QueryStorageCell.h"
 
-@interface QueryStorageViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface QueryStorageViewController () <UITableViewDelegate, UITableViewDataSource, UIPickerViewDelegate, UIPickerViewDataSource>
 {
     NSURLSessionTask *_task;
+    NSURLSessionTask *_getTask;
 }
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *searchViewTopLayout;
 
 @property (weak, nonatomic) IBOutlet UIView *searchView;
 
-@property (weak, nonatomic) IBOutlet UITextField *repositoryName;
-@property (weak, nonatomic) IBOutlet UITextField *repositoryAddress;
+@property (weak, nonatomic) IBOutlet UITextField *goodsName;//商品名称
+@property (weak, nonatomic) IBOutlet UITextField *repositoryName;//仓库
+@property (weak, nonatomic) IBOutlet UITextField *loacationAddress;//库位
+
+@property (copy, nonatomic) NSString *repositoryId;//仓库id
+@property (copy, nonatomic) NSString *locationId;//库位id
+
+@property (strong, nonatomic) UIPickerView *repositoryPV;
+@property (strong, nonatomic) UIPickerView *locationPV;
+
+@property (strong, nonatomic) NSMutableArray *repositoryArray;//仓库数组
+@property (strong, nonatomic) NSMutableArray *locationArray;//库位数组
+
+@property (strong, nonatomic) UIBarButtonItem *searchItem;
+
 @end
 
 @implementation QueryStorageViewController
 - (void)dealloc
 {
     [_task cancel];
+    [_getTask cancel];
     NSLog(@"QueryStorageViewController dealloc");
 }
 
@@ -44,7 +59,50 @@
     
     [self.view bringSubviewToFront:_searchView];
     
-    [self performSelector:@selector(start) withObject:nil afterDelay:2];
+    _repositoryPV = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 220)];
+    _repositoryPV.delegate = self;
+    _repositoryPV.dataSource = self;
+    _repositoryName.inputView = _repositoryPV;
+    _locationPV = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 220)];
+    _locationPV.delegate = self;
+    _locationPV.dataSource = self;
+    _loacationAddress.inputView = _locationPV;
+    
+    [self getRepositoryInfo];
+}
+
+- (void)getRepositoryInfo
+{
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:kLoginToken, @"Token", nil];
+    _searchItem.enabled = NO;
+    WS(weakSelf);
+    _getTask = [NetService POST:@"/api/Store/GetAllWareHose" parameters:dict complete:^(id responseObject, NSError *error) {
+        [Utility hideHUDForView:weakSelf.view];
+        if (error) {
+            NSLog(@"failure:%@", error);
+            [Utility showString:error.localizedDescription onView:weakSelf.view];
+            return ;
+        }
+        NSLog(@"%@", responseObject);
+        if ([responseObject[kStatusCode] integerValue] == NetStatusSuccess) {
+            weakSelf.searchItem.enabled = YES;
+            NSArray *dataArr = responseObject[kResponseData];
+            weakSelf.repositoryArray = [NSMutableArray arrayWithArray:dataArr];
+            weakSelf.repositoryId = dataArr.firstObject[@"whid"];
+            weakSelf.repositoryName.text = dataArr.firstObject[@"whname"];
+            NSArray *arr = dataArr.firstObject[@"storeBit"];
+            weakSelf.locationArray = [NSMutableArray arrayWithArray:arr];
+            weakSelf.locationId = arr.firstObject[@"dsid"];
+            weakSelf.loacationAddress.text = arr.firstObject[@"dsname"];
+            [weakSelf.repositoryPV reloadAllComponents];
+            [weakSelf.locationPV reloadAllComponents];
+            [weakSelf start];
+            
+        } else {
+            [Utility showString:responseObject[kErrMsg] onView:weakSelf.view];
+        }
+    }];
+    [Utility showHUDAddedTo:self.view forTask:_getTask];
 }
 
 - (void)start
@@ -54,9 +112,9 @@
 
 - (void)setupNavigationItem
 {
-    UIBarButtonItem *searchItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"nav-search"] style:UIBarButtonItemStylePlain target:self action:@selector(searchItemAction:)];
+    _searchItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"nav-search"] style:UIBarButtonItemStylePlain target:self action:@selector(searchItemAction:)];
     
-    self.navigationItem.rightBarButtonItem = searchItem;
+    self.navigationItem.rightBarButtonItem = _searchItem;
 }
 
 - (void)searchItemAction:(UIBarButtonItem *)item
@@ -85,12 +143,12 @@
 - (void)requestDataListPullDown:(BOOL)pullDown andEndRefreshing:(EndRefreshing)endRefreshing
 {
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-//                                 kLoginToken, @"Token",
+                                 kLoginToken, @"Token",
                                  StringFromNumber(self.pageIndex), kPageIndex,
                                  StringFromNumber(self.pageSize), kPageSize,
-                                 @"2", @"whid",
-                                 @"2", @"dsid",
-                                 @"", @"commodityname",
+                                 _repositoryId, @"whid",
+                                 _locationId, @"dsid",
+                                 _goodsName.text, @"commodityname",
                                  nil];
     WS(weakSelf);
     _task = [NetService POST:@"api/Store/QueryStorage" parameters:dict complete:^(id responseObject, NSError *error) {
@@ -108,8 +166,7 @@
             if (pullDown) {
                 [weakSelf.dataArray removeAllObjects];
             }
-            for (NSDictionary *orderDict in listArray) {
-            }
+            [weakSelf.dataArray addObjectsFromArray:listArray];
             [weakSelf.mTableView reloadData];
             [weakSelf showTipWithNoData:IS_NULL_ARRAY(weakSelf.dataArray)];
         } else {
@@ -118,10 +175,53 @@
     }];
 }
 
+#pragma mark - UIPickerViewDelegate
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+    return 1;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+    if (pickerView == _repositoryPV) {
+        return _repositoryArray.count;
+    } else {
+        return _locationArray.count;
+    }
+}
+
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    if (pickerView == _repositoryPV) {
+        return _repositoryArray[row][@"whname"];
+    } else {
+        return _locationArray[row][@"dsname"];
+    }
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+{
+    if (pickerView == _repositoryPV) {
+        //给仓库赋值
+        NSDictionary *dict = _repositoryArray[row];
+        _repositoryName.text = dict[@"whname"];
+        _repositoryId = dict[@"whid"];
+        //清空并重新组装库位数组 并给使用默认第一个库位信息给库位赋值
+        [_locationArray removeAllObjects];
+        [_locationArray addObjectsFromArray:dict[@"storeBit"]];
+        _loacationAddress.text = _locationArray.firstObject[@"dsname"];
+        _locationId = _locationArray.firstObject[@"dsid"];
+        [_locationPV reloadAllComponents];
+    } else {
+        //给库位赋值
+        _loacationAddress.text = _locationArray[row][@"dsname"];
+        _locationId = _locationArray[row][@"dsid"];
+    }
+}
+
 #pragma mark - UITableViewDelegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 20;
     return self.dataArray.count;
 }
 
@@ -129,13 +229,13 @@
 {
     QueryStorageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"QueryStorageCell" forIndexPath:indexPath];
 //    cell.delegate = self;
-//    [cell setContentWithDict:self.dataArray[indexPath.row] andIndexPath:indexPath];
+    [cell setContentWithDict:self.dataArray[indexPath.row]];
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 60;
+    return 175;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

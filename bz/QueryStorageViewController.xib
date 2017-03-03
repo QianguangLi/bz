@@ -11,6 +11,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="QueryStorageViewController">
             <connections>
+                <outlet property="goodsName" destination="DLK-pT-weL" id="qmB-Pj-NRP"/>
+                <outlet property="loacationAddress" destination="ejh-vL-gOA" id="tWa-fR-9hp"/>
+                <outlet property="repositoryName" destination="vyI-c3-Nz2" id="UlB-Sm-WAe"/>
                 <outlet property="searchView" destination="JKd-3q-QOj" id="LXH-cv-Hfp"/>
                 <outlet property="searchViewTopLayout" destination="c1j-J5-Y5O" id="ii2-3Q-A7V"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -22,7 +25,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JKd-3q-QOj">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="134"/>
+                    <rect key="frame" x="0.0" y="-134" width="375" height="134"/>
                     <subviews>
                         <textField opaque="NO" clipsSubviews="YES" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="仓库地址" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vyI-c3-Nz2">
                             <rect key="frame" x="49" y="52" width="316" height="30"/>
@@ -91,7 +94,7 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="JKd-3q-QOj" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Y2j-Wa-nPz"/>
-                <constraint firstItem="JKd-3q-QOj" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="c1j-J5-Y5O"/>
+                <constraint firstItem="JKd-3q-QOj" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="-134" id="c1j-J5-Y5O"/>
                 <constraint firstAttribute="trailing" secondItem="JKd-3q-QOj" secondAttribute="trailing" id="tto-VO-lfd"/>
             </constraints>
             <point key="canvasLocation" x="99.5" y="74.5"/>
