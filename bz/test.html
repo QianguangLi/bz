@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+<body>
+    <div style="margin-top: 100px">
+        <h1>Objective-C和JavaScript交互的那些事</h1>
+    </div>
+    <div>
+        <input type="button" name="camera" id="camera" value="相机" onclick="Toyun.callCamera()"/>
+    </div>
+    <div>
+        <input type="button" name="share" id="share" value="分享" onclick="callShare()"/>
+    </div>
+     
+<script>
+    var callShare = function() {
+        var shareInfo = JSON.stringify({"title": "标题", "desc": "内容", "shareUrl": "http://www.jianshu.com/p/f896d73c670a",
+        "shareIco":"http://upload-images.jianshu.io/upload_images/1192353-fd26211d54aea8a9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"});
+        Toyun.share(shareInfo);
+    }
+     
+    var picCallback = function(photos) {
+        alert(photos);
+    }
+     
+    var shareCallback = function(){
+        alert('success');
+    }
+    alert("test.html");
+</script>
+</body>
+</html>

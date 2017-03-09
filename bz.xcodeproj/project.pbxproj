@@ -97,6 +97,9 @@
 		616448291E1B459E0007E50E /* AddressCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 616448271E1B459E0007E50E /* AddressCell.xib */; };
 		6164482C1E1B4B290007E50E /* ShoppingAddressModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6164482B1E1B4B290007E50E /* ShoppingAddressModel.m */; };
 		6164482F1E1B6A030007E50E /* AddShoppingAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6164482E1E1B6A030007E50E /* AddShoppingAddressViewController.m */; };
+		6165634D1E6D0CF100096697 /* OrderOnlineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6165634B1E6D0CF100096697 /* OrderOnlineViewController.m */; };
+		6165634E1E6D0CF100096697 /* OrderOnlineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6165634C1E6D0CF100096697 /* OrderOnlineViewController.xib */; };
+		616563501E6D0E3700096697 /* test.html in Resources */ = {isa = PBXBuildFile; fileRef = 6165634F1E6D0E3700096697 /* test.html */; };
 		616597591E2E343F00A8B735 /* CommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 616597571E2E343F00A8B735 /* CommentCell.m */; };
 		6165975A1E2E343F00A8B735 /* CommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 616597581E2E343F00A8B735 /* CommentCell.xib */; };
 		6165975E1E2E3DE700A8B735 /* ChooseGoodsPropertyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6165975C1E2E3DE700A8B735 /* ChooseGoodsPropertyViewController.m */; };
@@ -416,6 +419,10 @@
 		6164482B1E1B4B290007E50E /* ShoppingAddressModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingAddressModel.m; sourceTree = "<group>"; };
 		6164482D1E1B6A030007E50E /* AddShoppingAddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddShoppingAddressViewController.h; sourceTree = "<group>"; };
 		6164482E1E1B6A030007E50E /* AddShoppingAddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddShoppingAddressViewController.m; sourceTree = "<group>"; };
+		6165634A1E6D0CF100096697 /* OrderOnlineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderOnlineViewController.h; sourceTree = "<group>"; };
+		6165634B1E6D0CF100096697 /* OrderOnlineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderOnlineViewController.m; sourceTree = "<group>"; };
+		6165634C1E6D0CF100096697 /* OrderOnlineViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderOnlineViewController.xib; sourceTree = "<group>"; };
+		6165634F1E6D0E3700096697 /* test.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = test.html; sourceTree = "<group>"; };
 		616597561E2E343F00A8B735 /* CommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentCell.h; sourceTree = "<group>"; };
 		616597571E2E343F00A8B735 /* CommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentCell.m; sourceTree = "<group>"; };
 		616597581E2E343F00A8B735 /* CommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentCell.xib; sourceTree = "<group>"; };
@@ -770,8 +777,8 @@
 			isa = PBXGroup;
 			children = (
 				61D77DA91E4AAC37002B217A /* BZ1Storyboard.storyboard */,
-				6142A6C51E49688800A1DE72 /* StoreMenuSetting */,
 				61661C171E29C9070022A1FC /* DealManger */,
+				6142A6C51E49688800A1DE72 /* StoreMenuSetting */,
 				61FC059E1E5297FE0093A866 /* StockManager */,
 				6154CCE61E6942F100C3933D /* GoodsManager */,
 				6139589D1E5C2D9E004FCB24 /* StoreCustomer */,
@@ -927,6 +934,10 @@
 				6154CCE71E69455600C3933D /* GoodsQueryViewController.h */,
 				6154CCE81E69455600C3933D /* GoodsQueryViewController.m */,
 				6154CCE91E69455600C3933D /* GoodsQueryViewController.xib */,
+				6165634A1E6D0CF100096697 /* OrderOnlineViewController.h */,
+				6165634B1E6D0CF100096697 /* OrderOnlineViewController.m */,
+				6165634C1E6D0CF100096697 /* OrderOnlineViewController.xib */,
+				6165634F1E6D0E3700096697 /* test.html */,
 			);
 			name = GoodsManager;
 			sourceTree = "<group>";
@@ -1737,6 +1748,7 @@
 				6154CCF11E694C8F00C3933D /* GoodsQueryCell.xib in Resources */,
 				11DC85461E20938900AE7947 /* WriteEmailViewController.xib in Resources */,
 				615FBF3D1E14CB2200F50C0D /* OrderListViewController.xib in Resources */,
+				616563501E6D0E3700096697 /* test.html in Resources */,
 				617288F11E10BEF30037DB40 /* FirstPageViewController.xib in Resources */,
 				619605ED1E2EF6FD00377D95 /* GoodsPropertyCell.xib in Resources */,
 				11FE82701E1F79A600309719 /* MMNumberKeyboardDeleteKey@3x.png in Resources */,
@@ -1748,6 +1760,7 @@
 				116DF0751E212B6900484D72 /* MenDianFuncViewController.xib in Resources */,
 				61DFD3CE1E232FCA00D9C2D7 /* PaymentViewController.xib in Resources */,
 				613FB94D1E1E352200CB2070 /* BonusTXScanViewController.xib in Resources */,
+				6165634E1E6D0CF100096697 /* OrderOnlineViewController.xib in Resources */,
 				11FE82711E1F79A600309719 /* MMNumberKeyboardDismissKey.png in Resources */,
 				61BB46131E31A9F5003C602B /* ImageCollectionCell.xib in Resources */,
 				617F79791E1620FF00E139CF /* FunctionListViewController.xib in Resources */,
@@ -2036,6 +2049,7 @@
 				617288AF1E10BCA40037DB40 /* AppDelegate.mm in Sources */,
 				61FC05A81E52992A0093A866 /* RepositoryCell.m in Sources */,
 				61BB46261E31E655003C602B /* ConfirmOrderAddressCell.m in Sources */,
+				6165634D1E6D0CF100096697 /* OrderOnlineViewController.m in Sources */,
 				11FE82781E1F828300309719 /* DZMoneyDetailsViewController.m in Sources */,
 				611AF9C21E2713D200F10C49 /* ShoppingCartModel.m in Sources */,
 				61D77DAD1E4AAE9B002B217A /* UpdateStoreViewController.m in Sources */,

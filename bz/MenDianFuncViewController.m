@@ -20,6 +20,7 @@
 #import "QueryStorageViewController.h"
 //商品查询
 #import "GoodsQueryViewController.h"
+#import "OrderOnlineViewController.h"
 //门店客户
 #import "AEStoreCustomerViewController.h"
 #import "CustomerListViewController.h"
@@ -283,7 +284,11 @@
         }
             break;
         case 2:
-            
+        {
+            //在线订货
+            OrderOnlineViewController *vc = [[OrderOnlineViewController alloc] init];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
             break;
         case 3:
             

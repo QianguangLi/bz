@@ -84,7 +84,7 @@ static NSString *OrderProductCellId= @"OrderProductCell";
     
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
-    _tableView.backgroundColor = QGCOLOR(238, 238, 239, 1);
+    _tableView.backgroundColor = [UIColor whiteColor];//QGCOLOR(238, 238, 239, 1);
 //    _tableView.contentInset = UIEdgeInsetsMake(5, 0, 0, 0);
     [self.view addSubview:_tableView];
     
