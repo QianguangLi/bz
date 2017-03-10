@@ -10,6 +10,8 @@
 
 @interface NSObject (Addition)
 
+@property (copy, nonatomic, readonly) NSString *toJson;
+
 @end
 
 @interface NSString (md5)
@@ -17,5 +19,11 @@
 @property (copy, nonatomic, readonly) NSString *urlEncode;
 
 - (NSString *)md5;
+
+@end
+
+@interface NSString (Json)
+
+
 
 @end

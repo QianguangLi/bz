@@ -17,6 +17,7 @@
 @interface OrderModel : JSONModel
 
 @property (copy, nonatomic) NSString *storename;//卖家名字
+@property (copy, nonatomic) NSString *buyMember;//买家名字
 @property (copy, nonatomic) NSString *apply;//代付订单申请人名字
 @property (copy, nonatomic) NSString *bagging;//包装费
 @property (copy, nonatomic) NSString *orderId;//订单号

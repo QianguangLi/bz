@@ -139,7 +139,7 @@
             [Utility showString:responseObject[kErrMsg] onView:weakSelf.view];
         }
         [weakSelf showTipWithNoData:IS_NULL_ARRAY(weakSelf.dataArray)];
-    }];;
+    }];
 }
 
 - (IBAction)timeBtnAction:(YLButton *)sender

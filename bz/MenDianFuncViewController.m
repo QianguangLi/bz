@@ -10,6 +10,7 @@
 #import "MeCell.h"
 //交易管理
 #import "OrderSendViewController.h"
+#import "TradeOrderViewController.h"
 //门店设置
 #import "UpdateStoreViewController.h"
 #import "UpdateStoreLocationViewController.h"
@@ -172,6 +173,23 @@
             vc.isRequireRefreshHeader = YES;
             [self.navigationController pushViewController:vc animated:YES];
         }
+            break;
+        case 2:
+            
+            break;
+        case 3:
+        {
+            //交易订单
+            TradeOrderViewController *vc = [[TradeOrderViewController alloc] init];
+            vc.isRequireRefreshHeader = YES;
+            vc.isRequireRefreshFooter = YES;
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+            break;
+        case 4:
+            
+            break;
+        case 5:
             
             break;
             

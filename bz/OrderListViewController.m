@@ -35,6 +35,7 @@
     self.mTableView.delegate = self;
     self.mTableView.dataSource = self;
     self.mTableView.contentInset = UIEdgeInsetsMake(5, 0, 0, 0);
+    self.mTableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     
     [self.mTableView registerNib:[UINib nibWithNibName:@"OrderListTopCell" bundle:nil] forCellReuseIdentifier:@"OrderListTopCell"];
     [self.mTableView registerNib:[UINib nibWithNibName:@"OrderProductCell" bundle:nil] forCellReuseIdentifier:@"OrderProductCell"];

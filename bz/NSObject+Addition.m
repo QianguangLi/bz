@@ -11,6 +11,18 @@
 
 @implementation NSObject (Addition)
 
+- (NSString *)toJson
+{
+    NSError *error = nil;
+    NSData *data = [NSJSONSerialization dataWithJSONObject:self options:0 error:&error];
+    if (error) {
+        return @"";
+    } else {
+        NSString *jsonStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        return jsonStr;
+    }
+}
+
 @end
 
 @implementation NSString (md5)
@@ -37,5 +49,11 @@
     }
     return outputString;
 }
+
+@end
+
+@implementation NSString (Json)
+
+
 
 @end

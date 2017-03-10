@@ -16,6 +16,7 @@
 @interface ProductModel : JSONModel
 
 @property (copy, nonatomic) NSString *productId;//商品id
+@property (copy, nonatomic) NSString *pCode;//商品编码
 @property (copy, nonatomic) NSString *pName;//商品名字
 @property (assign, nonatomic) double price;//价格
 @property (assign, nonatomic) double markprice;//市场价格

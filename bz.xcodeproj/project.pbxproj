@@ -44,6 +44,10 @@
 		11FE82821E1FA00400309719 /* BonusScanDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11FE82801E1FA00400309719 /* BonusScanDetailsViewController.m */; };
 		11FE82831E1FA00400309719 /* BonusScanDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11FE82811E1FA00400309719 /* BonusScanDetailsViewController.xib */; };
 		17E122BDA9BAA762D7A46B7F /* libPods-bz.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 63277A970CC28472312B0E2A /* libPods-bz.a */; };
+		610517641E7284C8009CD323 /* TradeOrderTopCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 610517621E7284C8009CD323 /* TradeOrderTopCell.m */; };
+		610517651E7284C8009CD323 /* TradeOrderTopCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 610517631E7284C8009CD323 /* TradeOrderTopCell.xib */; };
+		610517691E7286D4009CD323 /* TradeOrderBottomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 610517671E7286D4009CD323 /* TradeOrderBottomCell.m */; };
+		6105176A1E7286D4009CD323 /* TradeOrderBottomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 610517681E7286D4009CD323 /* TradeOrderBottomCell.xib */; };
 		611AF9C21E2713D200F10C49 /* ShoppingCartModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 611AF9C11E2713D200F10C49 /* ShoppingCartModel.m */; };
 		611AF9C81E27197600F10C49 /* BuyerHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 611AF9C41E27197600F10C49 /* BuyerHeaderCell.xib */; };
 		611AF9C91E27197600F10C49 /* ShoppingCartCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 611AF9C61E27197600F10C49 /* ShoppingCartCell.m */; };
@@ -125,6 +129,8 @@
 		616A09AE1E1253F800FCF886 /* MeHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 616A09AD1E1253F800FCF886 /* MeHeadView.m */; };
 		616A09B31E128AC600FCF886 /* MeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 616A09B11E128AC600FCF886 /* MeCell.m */; };
 		616A09B41E128AC600FCF886 /* MeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 616A09B21E128AC600FCF886 /* MeCell.xib */; };
+		616C209C1E70ECF500AA8102 /* TradeOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 616C209A1E70ECF500AA8102 /* TradeOrderViewController.m */; };
+		616C209D1E70ECF500AA8102 /* TradeOrderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 616C209B1E70ECF500AA8102 /* TradeOrderViewController.xib */; };
 		617111551E286104001B6BA5 /* UIViewController+KNSemiModal.m in Sources */ = {isa = PBXBuildFile; fileRef = 617111451E286104001B6BA5 /* UIViewController+KNSemiModal.m */; };
 		617111561E286104001B6BA5 /* UIBarButtonItem+WZLBadge.m in Sources */ = {isa = PBXBuildFile; fileRef = 617111491E286104001B6BA5 /* UIBarButtonItem+WZLBadge.m */; };
 		617111571E286104001B6BA5 /* UITabBarItem+WZLBadge.m in Sources */ = {isa = PBXBuildFile; fileRef = 6171114B1E286104001B6BA5 /* UITabBarItem+WZLBadge.m */; };
@@ -333,6 +339,12 @@
 		11FE82811E1FA00400309719 /* BonusScanDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BonusScanDetailsViewController.xib; sourceTree = "<group>"; };
 		2BBD9FECB363268F3739B789 /* libPods-bzUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-bzUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		54D4FF3445E3FD7D387B5F0E /* Pods-bz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bz.debug.xcconfig"; path = "Pods/Target Support Files/Pods-bz/Pods-bz.debug.xcconfig"; sourceTree = "<group>"; };
+		610517611E7284C8009CD323 /* TradeOrderTopCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TradeOrderTopCell.h; sourceTree = "<group>"; };
+		610517621E7284C8009CD323 /* TradeOrderTopCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TradeOrderTopCell.m; sourceTree = "<group>"; };
+		610517631E7284C8009CD323 /* TradeOrderTopCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TradeOrderTopCell.xib; sourceTree = "<group>"; };
+		610517661E7286D4009CD323 /* TradeOrderBottomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TradeOrderBottomCell.h; sourceTree = "<group>"; };
+		610517671E7286D4009CD323 /* TradeOrderBottomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TradeOrderBottomCell.m; sourceTree = "<group>"; };
+		610517681E7286D4009CD323 /* TradeOrderBottomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TradeOrderBottomCell.xib; sourceTree = "<group>"; };
 		611AF9C01E2713D200F10C49 /* ShoppingCartModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingCartModel.h; sourceTree = "<group>"; };
 		611AF9C11E2713D200F10C49 /* ShoppingCartModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingCartModel.m; sourceTree = "<group>"; };
 		611AF9C41E27197600F10C49 /* BuyerHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BuyerHeaderCell.xib; sourceTree = "<group>"; };
@@ -461,6 +473,9 @@
 		616A09B01E128AC600FCF886 /* MeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeCell.h; sourceTree = "<group>"; };
 		616A09B11E128AC600FCF886 /* MeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeCell.m; sourceTree = "<group>"; };
 		616A09B21E128AC600FCF886 /* MeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MeCell.xib; sourceTree = "<group>"; };
+		616C20991E70ECF500AA8102 /* TradeOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TradeOrderViewController.h; sourceTree = "<group>"; };
+		616C209A1E70ECF500AA8102 /* TradeOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TradeOrderViewController.m; sourceTree = "<group>"; };
+		616C209B1E70ECF500AA8102 /* TradeOrderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TradeOrderViewController.xib; sourceTree = "<group>"; };
 		617111441E286104001B6BA5 /* UIViewController+KNSemiModal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+KNSemiModal.h"; sourceTree = "<group>"; };
 		617111451E286104001B6BA5 /* UIViewController+KNSemiModal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+KNSemiModal.m"; sourceTree = "<group>"; };
 		617111481E286104001B6BA5 /* UIBarButtonItem+WZLBadge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+WZLBadge.h"; sourceTree = "<group>"; };
@@ -1037,6 +1052,9 @@
 				61661C3C1E2A216B0022A1FC /* OrderSendViewController.h */,
 				61661C3D1E2A216B0022A1FC /* OrderSendViewController.m */,
 				61661C3E1E2A216B0022A1FC /* OrderSendViewController.xib */,
+				616C20991E70ECF500AA8102 /* TradeOrderViewController.h */,
+				616C209A1E70ECF500AA8102 /* TradeOrderViewController.m */,
+				616C209B1E70ECF500AA8102 /* TradeOrderViewController.xib */,
 			);
 			name = DealManger;
 			sourceTree = "<group>";
@@ -1062,6 +1080,12 @@
 				61661C371E2A021D0022A1FC /* ProductInfoCell.h */,
 				61661C381E2A021D0022A1FC /* ProductInfoCell.m */,
 				61661C391E2A021D0022A1FC /* ProductInfoCell.xib */,
+				610517611E7284C8009CD323 /* TradeOrderTopCell.h */,
+				610517621E7284C8009CD323 /* TradeOrderTopCell.m */,
+				610517631E7284C8009CD323 /* TradeOrderTopCell.xib */,
+				610517661E7286D4009CD323 /* TradeOrderBottomCell.h */,
+				610517671E7286D4009CD323 /* TradeOrderBottomCell.m */,
+				610517681E7286D4009CD323 /* TradeOrderBottomCell.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -1713,6 +1737,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				610517651E7284C8009CD323 /* TradeOrderTopCell.xib in Resources */,
 				61AB84B81E4C5F1C00D308CB /* APServiceTimeViewController.xib in Resources */,
 				61AB84B31E4C4B7B00D308CB /* ServiceTimeCell.xib in Resources */,
 				11C3C13F1E1FCEAA005A2403 /* AccountSafeViewController.xib in Resources */,
@@ -1789,6 +1814,7 @@
 				619319961E1CB41800AF63E7 /* DZMoneyCell.xib in Resources */,
 				611AF9C81E27197600F10C49 /* BuyerHeaderCell.xib in Resources */,
 				61A09ED21E13D86200C58519 /* GoodsViewController.xib in Resources */,
+				616C209D1E70ECF500AA8102 /* TradeOrderViewController.xib in Resources */,
 				61661C3B1E2A021E0022A1FC /* ProductInfoCell.xib in Resources */,
 				617288BA1E10BCA40037DB40 /* Assets.xcassets in Resources */,
 				11FE826F1E1F79A600309719 /* MMNumberKeyboardDeleteKey@2x.png in Resources */,
@@ -1799,6 +1825,7 @@
 				61E8CC531E6562FC00A0D01E /* QueryStorageCell.xib in Resources */,
 				61661C361E2A015C0022A1FC /* ReceiptInfoCell.xib in Resources */,
 				616A09B41E128AC600FCF886 /* MeCell.xib in Resources */,
+				6105176A1E7286D4009CD323 /* TradeOrderBottomCell.xib in Resources */,
 				6165975A1E2E343F00A8B735 /* CommentCell.xib in Resources */,
 				611AF9CA1E27197600F10C49 /* ShoppingCartCell.xib in Resources */,
 				11FE82721E1F79A600309719 /* MMNumberKeyboardDismissKey@2x.png in Resources */,
@@ -1978,6 +2005,7 @@
 				617288FA1E10BF110037DB40 /* MeViewController.m in Sources */,
 				61661C211E29F4DC0022A1FC /* OrderInfoDetailCell.m in Sources */,
 				11FE82821E1FA00400309719 /* BonusScanDetailsViewController.m in Sources */,
+				610517641E7284C8009CD323 /* TradeOrderTopCell.m in Sources */,
 				619319901E1CB22200AF63E7 /* NSDate+GFCalendar.m in Sources */,
 				61BB46171E31ABDB003C602B /* CommentHeaderView.m in Sources */,
 				6171115F1E2874E8001B6BA5 /* EmailDetailsViewController.m in Sources */,
@@ -1994,6 +2022,7 @@
 				61FC06961E52F9FC0093A866 /* RepositoryAddViewController.m in Sources */,
 				61B1EA941E26030B006F8276 /* PYSearchViewController.m in Sources */,
 				61B1EA961E26030B006F8276 /* UIView+PYSearchExtension.m in Sources */,
+				616C209C1E70ECF500AA8102 /* TradeOrderViewController.m in Sources */,
 				61F9ADAA1E24734B00649D80 /* UIView+MyFont.m in Sources */,
 				61F437F31E153A5000762CAF /* ProductModel.m in Sources */,
 				61661C301E29FF990022A1FC /* ExpressInfoCell.m in Sources */,
@@ -2074,6 +2103,7 @@
 				6193198E1E1CB22200AF63E7 /* GFCalendarScrollView.m in Sources */,
 				617F797C1E1633F600E139CF /* AddressPickerView.m in Sources */,
 				612FB8F11E55431E00DBE82E /* AERepositoryLocationViewController.m in Sources */,
+				610517691E7286D4009CD323 /* TradeOrderBottomCell.m in Sources */,
 				615FBF271E14B60500F50C0D /* MyOrdersViewController.m in Sources */,
 				615FBF571E15066200F50C0D /* OrderListTopCell.m in Sources */,
 				6164482F1E1B6A030007E50E /* AddShoppingAddressViewController.m in Sources */,
