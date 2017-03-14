@@ -137,24 +137,35 @@
 }
 
 #pragma mark - OrderListBottomCellDelegate
+//招人代付
 - (void)otherPayOrder:(OrderModel *)orderModel atSection:(NSInteger)section
 {
-    NSLog(@"%@", orderModel);
+    NSLog(@"招人代付");
 }
-
+//立即支付
 - (void)payOrder:(OrderModel *)orderModel atSection:(NSInteger)section
 {
-    NSLog(@"%@", orderModel);
+    NSLog(@"立即支付");
 }
-
+//取消订单
 - (void)cancelOrder:(OrderModel *)orderModel atSection:(NSInteger)section
 {
-    NSLog(@"%@", orderModel);
+    NSLog(@"取消订单");
 }
-
+//退货
 - (void)returnOrder:(OrderModel *)orderModel atSection:(NSInteger)section
 {
-    NSLog(@"%@", orderModel);
+    NSLog(@"退货");
+}
+//确认订单
+- (void)confirmOrder:(OrderModel *)orderModel atSection:(NSInteger)section
+{
+    NSLog(@"确认订单");
+}
+//给个评论
+- (void)commentOrder:(OrderModel *)orderModel atSection:(NSInteger)section
+{
+    NSLog(@"给个评论");
 }
 
 #pragma mark -

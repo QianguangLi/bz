@@ -22,6 +22,16 @@
 @property (weak, nonatomic) IBOutlet UIButton *cancelBtn;
 //待发货按钮
 @property (weak, nonatomic) IBOutlet UIButton *returnGoodsBtn;
+//待收货
+@property (weak, nonatomic) IBOutlet UIButton *returnGoodsBtn1;
+@property (weak, nonatomic) IBOutlet UIButton *confirmReciveBtn;
+//待评价
+@property (weak, nonatomic) IBOutlet UIButton *returnGoodsBtn2;
+@property (weak, nonatomic) IBOutlet UIButton *commentBtn;
+//交易成功
+@property (weak, nonatomic) IBOutlet UIButton *returnGoodsBtn3;
+//已失效
+@property (weak, nonatomic) IBOutlet UIButton *cancleBtn1;
 
 @end
 
@@ -35,6 +45,16 @@
     [_cancelBtn setBorderCorneRadius:5];
     
     [_returnGoodsBtn setBorderCorneRadius:5];
+    
+    [_returnGoodsBtn1 setBorderCorneRadius:5];
+    [_confirmReciveBtn setBorderCorneRadius:5];
+    
+    [_returnGoodsBtn2 setBorderCorneRadius:5];
+    [_commentBtn setBorderCorneRadius:5];
+    
+    [_returnGoodsBtn3 setBorderCorneRadius:5];
+    
+    [_cancleBtn1 setBorderCorneRadius:5];
 }
 
 - (void)setContentWithOrderModel:(OrderModel *)orderModel andSection:(NSInteger)section
@@ -48,36 +68,60 @@
         {
             _waitPayView.hidden = NO;
             _waitPostView.hidden = YES;
+            _waitReciveView.hidden = YES;
+            _waitCommentView.hidden = YES;
+            _successView.hidden = YES;
+            _invalidView.hidden = YES;
         }
             break;
         case OrderTypeWaitPost:
         {
             _waitPostView.hidden = NO;
             _waitPayView.hidden = YES;
+            _waitReciveView.hidden = YES;
+            _waitCommentView.hidden = YES;
+            _successView.hidden = YES;
+            _invalidView.hidden = YES;
         }
             break;
         case OrderTypeWaitRecive:
         {
             _waitPayView.hidden = YES;
             _waitPostView.hidden = YES;
+            _waitReciveView.hidden = NO;
+            _waitCommentView.hidden = YES;
+            _successView.hidden = YES;
+            _invalidView.hidden = YES;
         }
             break;
         case OrderTypeWaitComment:
         {
             _waitPayView.hidden = YES;
             _waitPostView.hidden = YES;
+            _waitReciveView.hidden = YES;
+            _waitCommentView.hidden = NO;
+            _successView.hidden = YES;
+            _invalidView.hidden = YES;
         }
             break;
         case OrderTypeInvalid:
         {
             _waitPayView.hidden = YES;
             _waitPostView.hidden = YES;
+            _waitReciveView.hidden = YES;
+            _waitCommentView.hidden = YES;
+            _successView.hidden = YES;
+            _invalidView.hidden = NO;
         }
             break;
         case OrderTypeSuccess:
         {
             _waitPayView.hidden = YES;
             _waitPostView.hidden = YES;
+            _waitReciveView.hidden = YES;
+            _waitCommentView.hidden = YES;
+            _successView.hidden = NO;
+            _invalidView.hidden = YES;
         }
             break;
             
@@ -112,6 +156,20 @@
 {
     if (_delegate && [_delegate respondsToSelector:@selector(returnOrder:atSection:)]) {
         [_delegate returnOrder:_orderModel atSection:_section];
+    }
+}
+//MARK:确认收货
+- (IBAction)confirmRecive:(UIButton *)sender
+{
+    if (_delegate && [_delegate respondsToSelector:@selector(confirmOrder:atSection:)]) {
+        [_delegate confirmOrder:_orderModel atSection:_section];
+    }
+}
+//MARK给个评价
+- (IBAction)comment:(UIButton *)sender
+{
+    if (_delegate && [_delegate respondsToSelector:@selector(commentOrder:atSection:)]) {
+        [_delegate commentOrder:_orderModel atSection:_section];
     }
 }
 

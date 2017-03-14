@@ -36,6 +36,7 @@
     self.title = Localized(@"订单详情");
     
     self.mTableView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight - 64);
+    self.mTableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     self.mTableView.delegate = self;
     self.mTableView.dataSource = self;
     

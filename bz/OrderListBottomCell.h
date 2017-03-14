@@ -20,6 +20,10 @@
 - (void)cancelOrder:(OrderModel *)orderModel atSection:(NSInteger)section;
 //退货
 - (void)returnOrder:(OrderModel *)orderModel atSection:(NSInteger)section;
+//确认收货
+- (void)confirmOrder:(OrderModel *)orderModel atSection:(NSInteger)section;
+//给个评价
+- (void)commentOrder:(OrderModel *)orderModel atSection:(NSInteger)section;
 @end
 
 @interface OrderListBottomCell : UITableViewCell
@@ -28,6 +32,11 @@
 
 @property (weak, nonatomic) IBOutlet UIView *waitPayView;
 @property (weak, nonatomic) IBOutlet UIView *waitPostView;
+@property (weak, nonatomic) IBOutlet UIView *waitReciveView;
+@property (weak, nonatomic) IBOutlet UIView *waitCommentView;
+@property (weak, nonatomic) IBOutlet UIView *successView;
+@property (weak, nonatomic) IBOutlet UIView *invalidView;
+
 
 @property (weak, nonatomic) id <OrderListBottomCellDelegate> delegate;
 
