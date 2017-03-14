@@ -32,4 +32,11 @@ typedef void(^EndRefreshing)(NSError *error);
 //延迟加载时根据时机手动启动加载
 - (void)startRequest;
 
+/**
+ 注册cell
+
+ @param identifer cell identifer
+ */
+- (void)registerCellForCellReuseIdentifier:(NSString *)identifer;
+
 @end

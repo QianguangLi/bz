@@ -48,6 +48,8 @@
 		610517651E7284C8009CD323 /* TradeOrderTopCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 610517631E7284C8009CD323 /* TradeOrderTopCell.xib */; };
 		610517691E7286D4009CD323 /* TradeOrderBottomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 610517671E7286D4009CD323 /* TradeOrderBottomCell.m */; };
 		6105176A1E7286D4009CD323 /* TradeOrderBottomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 610517681E7286D4009CD323 /* TradeOrderBottomCell.xib */; };
+		6105176E1E729523009CD323 /* TradeOrderDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6105176C1E729523009CD323 /* TradeOrderDetailViewController.m */; };
+		6105176F1E729523009CD323 /* TradeOrderDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6105176D1E729523009CD323 /* TradeOrderDetailViewController.xib */; };
 		611AF9C21E2713D200F10C49 /* ShoppingCartModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 611AF9C11E2713D200F10C49 /* ShoppingCartModel.m */; };
 		611AF9C81E27197600F10C49 /* BuyerHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 611AF9C41E27197600F10C49 /* BuyerHeaderCell.xib */; };
 		611AF9C91E27197600F10C49 /* ShoppingCartCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 611AF9C61E27197600F10C49 /* ShoppingCartCell.m */; };
@@ -79,6 +81,8 @@
 		6154CCEB1E69455600C3933D /* GoodsQueryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6154CCE91E69455600C3933D /* GoodsQueryViewController.xib */; };
 		6154CCF01E694C8F00C3933D /* GoodsQueryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6154CCEE1E694C8F00C3933D /* GoodsQueryCell.m */; };
 		6154CCF11E694C8F00C3933D /* GoodsQueryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6154CCEF1E694C8F00C3933D /* GoodsQueryCell.xib */; };
+		6155B4581E763F1E00A71799 /* TradeBuyerInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6155B4561E763F1E00A71799 /* TradeBuyerInfoCell.m */; };
+		6155B4591E763F1E00A71799 /* TradeBuyerInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6155B4571E763F1E00A71799 /* TradeBuyerInfoCell.xib */; };
 		61581A8C1E1DD79100985112 /* RechargeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 61581A8B1E1DD79100985112 /* RechargeModel.m */; };
 		615FBF271E14B60500F50C0D /* MyOrdersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 615FBF251E14B60500F50C0D /* MyOrdersViewController.m */; };
 		615FBF281E14B60500F50C0D /* MyOrdersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 615FBF261E14B60500F50C0D /* MyOrdersViewController.xib */; };
@@ -345,6 +349,9 @@
 		610517661E7286D4009CD323 /* TradeOrderBottomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TradeOrderBottomCell.h; sourceTree = "<group>"; };
 		610517671E7286D4009CD323 /* TradeOrderBottomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TradeOrderBottomCell.m; sourceTree = "<group>"; };
 		610517681E7286D4009CD323 /* TradeOrderBottomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TradeOrderBottomCell.xib; sourceTree = "<group>"; };
+		6105176B1E729523009CD323 /* TradeOrderDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TradeOrderDetailViewController.h; sourceTree = "<group>"; };
+		6105176C1E729523009CD323 /* TradeOrderDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TradeOrderDetailViewController.m; sourceTree = "<group>"; };
+		6105176D1E729523009CD323 /* TradeOrderDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TradeOrderDetailViewController.xib; sourceTree = "<group>"; };
 		611AF9C01E2713D200F10C49 /* ShoppingCartModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingCartModel.h; sourceTree = "<group>"; };
 		611AF9C11E2713D200F10C49 /* ShoppingCartModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingCartModel.m; sourceTree = "<group>"; };
 		611AF9C41E27197600F10C49 /* BuyerHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BuyerHeaderCell.xib; sourceTree = "<group>"; };
@@ -396,6 +403,9 @@
 		6154CCED1E694C8F00C3933D /* GoodsQueryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsQueryCell.h; sourceTree = "<group>"; };
 		6154CCEE1E694C8F00C3933D /* GoodsQueryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsQueryCell.m; sourceTree = "<group>"; };
 		6154CCEF1E694C8F00C3933D /* GoodsQueryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoodsQueryCell.xib; sourceTree = "<group>"; };
+		6155B4551E763F1E00A71799 /* TradeBuyerInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TradeBuyerInfoCell.h; sourceTree = "<group>"; };
+		6155B4561E763F1E00A71799 /* TradeBuyerInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TradeBuyerInfoCell.m; sourceTree = "<group>"; };
+		6155B4571E763F1E00A71799 /* TradeBuyerInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TradeBuyerInfoCell.xib; sourceTree = "<group>"; };
 		61581A8A1E1DD79100985112 /* RechargeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RechargeModel.h; sourceTree = "<group>"; };
 		61581A8B1E1DD79100985112 /* RechargeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RechargeModel.m; sourceTree = "<group>"; };
 		615FBF241E14B60500F50C0D /* MyOrdersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyOrdersViewController.h; sourceTree = "<group>"; };
@@ -1055,6 +1065,9 @@
 				616C20991E70ECF500AA8102 /* TradeOrderViewController.h */,
 				616C209A1E70ECF500AA8102 /* TradeOrderViewController.m */,
 				616C209B1E70ECF500AA8102 /* TradeOrderViewController.xib */,
+				6105176B1E729523009CD323 /* TradeOrderDetailViewController.h */,
+				6105176C1E729523009CD323 /* TradeOrderDetailViewController.m */,
+				6105176D1E729523009CD323 /* TradeOrderDetailViewController.xib */,
 			);
 			name = DealManger;
 			sourceTree = "<group>";
@@ -1086,6 +1099,9 @@
 				610517661E7286D4009CD323 /* TradeOrderBottomCell.h */,
 				610517671E7286D4009CD323 /* TradeOrderBottomCell.m */,
 				610517681E7286D4009CD323 /* TradeOrderBottomCell.xib */,
+				6155B4551E763F1E00A71799 /* TradeBuyerInfoCell.h */,
+				6155B4561E763F1E00A71799 /* TradeBuyerInfoCell.m */,
+				6155B4571E763F1E00A71799 /* TradeBuyerInfoCell.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -1779,6 +1795,7 @@
 				11FE82701E1F79A600309719 /* MMNumberKeyboardDeleteKey@3x.png in Resources */,
 				619319A61E1CF70A00AF63E7 /* RechargeScanCell.xib in Resources */,
 				11FE82791E1F828300309719 /* DZMoneyDetailsViewController.xib in Resources */,
+				6155B4591E763F1E00A71799 /* TradeBuyerInfoCell.xib in Resources */,
 				61DFD3DD1E2351E900D9C2D7 /* PaymentBottomCell.xib in Resources */,
 				612FB8FB1E557A7000DBE82E /* StoreSellingCell.xib in Resources */,
 				61661C221E29F4DC0022A1FC /* OrderInfoDetailCell.xib in Resources */,
@@ -1790,6 +1807,7 @@
 				61BB46131E31A9F5003C602B /* ImageCollectionCell.xib in Resources */,
 				617F79791E1620FF00E139CF /* FunctionListViewController.xib in Resources */,
 				61D079881E3225C6006755FD /* ConfirmOrderHeader.xib in Resources */,
+				6105176F1E729523009CD323 /* TradeOrderDetailViewController.xib in Resources */,
 				61BB46091E31A273003C602B /* GoodsCommentViewController.xib in Resources */,
 				617288FB1E10BF110037DB40 /* MeViewController.xib in Resources */,
 				61BB46221E31E233003C602B /* ConfirmOrderViewController.xib in Resources */,
@@ -2003,6 +2021,7 @@
 			files = (
 				61B1EA951E26030B006F8276 /* UIColor+PYSearchExtension.m in Sources */,
 				617288FA1E10BF110037DB40 /* MeViewController.m in Sources */,
+				6155B4581E763F1E00A71799 /* TradeBuyerInfoCell.m in Sources */,
 				61661C211E29F4DC0022A1FC /* OrderInfoDetailCell.m in Sources */,
 				11FE82821E1FA00400309719 /* BonusScanDetailsViewController.m in Sources */,
 				610517641E7284C8009CD323 /* TradeOrderTopCell.m in Sources */,
@@ -2112,6 +2131,7 @@
 				6193198F1E1CB22200AF63E7 /* GFCalendarView.m in Sources */,
 				619319991E1CB89800AF63E7 /* DZMoneyModel.m in Sources */,
 				11C3C13E1E1FCEAA005A2403 /* AccountSafeViewController.m in Sources */,
+				6105176E1E729523009CD323 /* TradeOrderDetailViewController.m in Sources */,
 				617111581E286104001B6BA5 /* CAAnimation+WAnimation.m in Sources */,
 				616A09B31E128AC600FCF886 /* MeCell.m in Sources */,
 				619605EC1E2EF6FD00377D95 /* GoodsPropertyCell.m in Sources */,

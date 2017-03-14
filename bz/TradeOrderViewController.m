@@ -14,6 +14,8 @@
 #import "OrderProductCell.h"
 #import "TradeOrderBottomCell.h"
 
+#import "TradeOrderDetailViewController.h"
+
 @interface TradeOrderViewController () <UITableViewDelegate, UITableViewDataSource, UIPickerViewDelegate, UIPickerViewDataSource>
 {
     NSURLSessionTask *_task;
@@ -201,6 +203,16 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
     return 40;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    TradeOrderDetailViewController *vc = [[TradeOrderDetailViewController alloc] init];
+    OrderModel *model = self.dataArray[indexPath.section];
+    vc.orderId = model.orderId;
+    vc.goodsArray = model.products;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - UIPickerViewDelegate

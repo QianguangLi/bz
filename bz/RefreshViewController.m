@@ -55,6 +55,11 @@
     }
 }
 
+- (void)registerCellForCellReuseIdentifier:(NSString *)identifer
+{
+    [self.mTableView registerNib:[UINib nibWithNibName:identifer bundle:nil] forCellReuseIdentifier:identifer];
+}
+
 - (void)endRefresh:(NSError *)error
 {
     if (error && IS_NULL_ARRAY(self.dataArray)) {
