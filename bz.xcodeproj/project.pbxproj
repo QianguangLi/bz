@@ -193,6 +193,14 @@
 		619605EC1E2EF6FD00377D95 /* GoodsPropertyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 619605EA1E2EF6FD00377D95 /* GoodsPropertyCell.m */; };
 		619605ED1E2EF6FD00377D95 /* GoodsPropertyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 619605EB1E2EF6FD00377D95 /* GoodsPropertyCell.xib */; };
 		619605EF1E2F316300377D95 /* CountCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 619605EE1E2F316300377D95 /* CountCollectionCell.xib */; };
+		619BB63B1E77955600CE88CF /* TradeCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 619BB6391E77955600CE88CF /* TradeCommentViewController.m */; };
+		619BB63C1E77955600CE88CF /* TradeCommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 619BB63A1E77955600CE88CF /* TradeCommentViewController.xib */; };
+		619BB6411E77961400CE88CF /* StarLevelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 619BB63F1E77961400CE88CF /* StarLevelCell.m */; };
+		619BB6421E77961400CE88CF /* StarLevelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 619BB6401E77961400CE88CF /* StarLevelCell.xib */; };
+		619BB6461E7796A100CE88CF /* CumulativeCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 619BB6441E7796A100CE88CF /* CumulativeCommentCell.m */; };
+		619BB6471E7796A100CE88CF /* CumulativeCommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 619BB6451E7796A100CE88CF /* CumulativeCommentCell.xib */; };
+		619BB6541E779A0800CE88CF /* NALLabelsMatrix.m in Sources */ = {isa = PBXBuildFile; fileRef = 619BB6531E779A0800CE88CF /* NALLabelsMatrix.m */; };
+		619BB6581E77B7B400CE88CF /* LCStarRatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 619BB6571E77B7B400CE88CF /* LCStarRatingView.m */; };
 		61A08CD61E2CB0A8001063DC /* ico_make.png in Resources */ = {isa = PBXBuildFile; fileRef = 61A08CD31E2CB0A8001063DC /* ico_make.png */; };
 		61A08CD71E2CB0A8001063DC /* JSDropDownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 61A08CD51E2CB0A8001063DC /* JSDropDownMenu.m */; };
 		61A08CE11E2CC670001063DC /* QGDropDownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 61A08CE01E2CC670001063DC /* QGDropDownMenu.m */; };
@@ -592,6 +600,19 @@
 		619605EA1E2EF6FD00377D95 /* GoodsPropertyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsPropertyCell.m; sourceTree = "<group>"; };
 		619605EB1E2EF6FD00377D95 /* GoodsPropertyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoodsPropertyCell.xib; sourceTree = "<group>"; };
 		619605EE1E2F316300377D95 /* CountCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CountCollectionCell.xib; sourceTree = "<group>"; };
+		619BB6381E77955600CE88CF /* TradeCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TradeCommentViewController.h; sourceTree = "<group>"; };
+		619BB6391E77955600CE88CF /* TradeCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TradeCommentViewController.m; sourceTree = "<group>"; };
+		619BB63A1E77955600CE88CF /* TradeCommentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TradeCommentViewController.xib; sourceTree = "<group>"; };
+		619BB63E1E77961400CE88CF /* StarLevelCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StarLevelCell.h; sourceTree = "<group>"; };
+		619BB63F1E77961400CE88CF /* StarLevelCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StarLevelCell.m; sourceTree = "<group>"; };
+		619BB6401E77961400CE88CF /* StarLevelCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StarLevelCell.xib; sourceTree = "<group>"; };
+		619BB6431E7796A100CE88CF /* CumulativeCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CumulativeCommentCell.h; sourceTree = "<group>"; };
+		619BB6441E7796A100CE88CF /* CumulativeCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CumulativeCommentCell.m; sourceTree = "<group>"; };
+		619BB6451E7796A100CE88CF /* CumulativeCommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CumulativeCommentCell.xib; sourceTree = "<group>"; };
+		619BB6521E779A0800CE88CF /* NALLabelsMatrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NALLabelsMatrix.h; sourceTree = "<group>"; };
+		619BB6531E779A0800CE88CF /* NALLabelsMatrix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NALLabelsMatrix.m; sourceTree = "<group>"; };
+		619BB6561E77B7B400CE88CF /* LCStarRatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCStarRatingView.h; sourceTree = "<group>"; };
+		619BB6571E77B7B400CE88CF /* LCStarRatingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCStarRatingView.m; sourceTree = "<group>"; };
 		61A08CD31E2CB0A8001063DC /* ico_make.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ico_make.png; sourceTree = "<group>"; };
 		61A08CD41E2CB0A8001063DC /* JSDropDownMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSDropDownMenu.h; sourceTree = "<group>"; };
 		61A08CD51E2CB0A8001063DC /* JSDropDownMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSDropDownMenu.m; sourceTree = "<group>"; };
@@ -1055,6 +1076,7 @@
 		61661C171E29C9070022A1FC /* DealManger */ = {
 			isa = PBXGroup;
 			children = (
+				619BB63D1E77957A00CE88CF /* OrderSendCell */,
 				61661C1D1E29F4B00022A1FC /* Cells */,
 				61661C181E29F1200022A1FC /* OrderSendDetailViewController.h */,
 				61661C191E29F1200022A1FC /* OrderSendDetailViewController.m */,
@@ -1068,6 +1090,9 @@
 				6105176B1E729523009CD323 /* TradeOrderDetailViewController.h */,
 				6105176C1E729523009CD323 /* TradeOrderDetailViewController.m */,
 				6105176D1E729523009CD323 /* TradeOrderDetailViewController.xib */,
+				619BB6381E77955600CE88CF /* TradeCommentViewController.h */,
+				619BB6391E77955600CE88CF /* TradeCommentViewController.m */,
+				619BB63A1E77955600CE88CF /* TradeCommentViewController.xib */,
 			);
 			name = DealManger;
 			sourceTree = "<group>";
@@ -1075,24 +1100,6 @@
 		61661C1D1E29F4B00022A1FC /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				61661C1E1E29F4DC0022A1FC /* OrderInfoDetailCell.h */,
-				61661C1F1E29F4DC0022A1FC /* OrderInfoDetailCell.m */,
-				61661C201E29F4DC0022A1FC /* OrderInfoDetailCell.xib */,
-				61661C231E29F5040022A1FC /* OrderInfoSendCell.h */,
-				61661C241E29F5040022A1FC /* OrderInfoSendCell.m */,
-				61661C251E29F5040022A1FC /* OrderInfoSendCell.xib */,
-				61661C281E29FD630022A1FC /* BuyerInfoCell.h */,
-				61661C291E29FD630022A1FC /* BuyerInfoCell.m */,
-				61661C2A1E29FD630022A1FC /* BuyerInfoCell.xib */,
-				61661C2D1E29FF990022A1FC /* ExpressInfoCell.h */,
-				61661C2E1E29FF990022A1FC /* ExpressInfoCell.m */,
-				61661C2F1E29FF990022A1FC /* ExpressInfoCell.xib */,
-				61661C321E2A015C0022A1FC /* ReceiptInfoCell.h */,
-				61661C331E2A015C0022A1FC /* ReceiptInfoCell.m */,
-				61661C341E2A015C0022A1FC /* ReceiptInfoCell.xib */,
-				61661C371E2A021D0022A1FC /* ProductInfoCell.h */,
-				61661C381E2A021D0022A1FC /* ProductInfoCell.m */,
-				61661C391E2A021D0022A1FC /* ProductInfoCell.xib */,
 				610517611E7284C8009CD323 /* TradeOrderTopCell.h */,
 				610517621E7284C8009CD323 /* TradeOrderTopCell.m */,
 				610517631E7284C8009CD323 /* TradeOrderTopCell.xib */,
@@ -1102,6 +1109,12 @@
 				6155B4551E763F1E00A71799 /* TradeBuyerInfoCell.h */,
 				6155B4561E763F1E00A71799 /* TradeBuyerInfoCell.m */,
 				6155B4571E763F1E00A71799 /* TradeBuyerInfoCell.xib */,
+				619BB63E1E77961400CE88CF /* StarLevelCell.h */,
+				619BB63F1E77961400CE88CF /* StarLevelCell.m */,
+				619BB6401E77961400CE88CF /* StarLevelCell.xib */,
+				619BB6431E7796A100CE88CF /* CumulativeCommentCell.h */,
+				619BB6441E7796A100CE88CF /* CumulativeCommentCell.m */,
+				619BB6451E7796A100CE88CF /* CumulativeCommentCell.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -1405,6 +1418,8 @@
 		617F79701E15FEB900E139CF /* Assistent */ = {
 			isa = PBXGroup;
 			children = (
+				619BB6551E77B7B400CE88CF /* LCStarRatingView */,
+				619BB6511E779A0800CE88CF /* NALLabelsMatrix */,
 				61A08CD21E2CB0A8001063DC /* JSDropDownMenu */,
 				617111431E286104001B6BA5 /* Source */,
 				617111461E286104001B6BA5 /* WZLBadge */,
@@ -1507,6 +1522,49 @@
 				613FB9501E1E355F00CB2070 /* BonusScanCell.xib */,
 			);
 			name = Cells;
+			sourceTree = "<group>";
+		};
+		619BB63D1E77957A00CE88CF /* OrderSendCell */ = {
+			isa = PBXGroup;
+			children = (
+				61661C1E1E29F4DC0022A1FC /* OrderInfoDetailCell.h */,
+				61661C1F1E29F4DC0022A1FC /* OrderInfoDetailCell.m */,
+				61661C201E29F4DC0022A1FC /* OrderInfoDetailCell.xib */,
+				61661C231E29F5040022A1FC /* OrderInfoSendCell.h */,
+				61661C241E29F5040022A1FC /* OrderInfoSendCell.m */,
+				61661C251E29F5040022A1FC /* OrderInfoSendCell.xib */,
+				61661C281E29FD630022A1FC /* BuyerInfoCell.h */,
+				61661C291E29FD630022A1FC /* BuyerInfoCell.m */,
+				61661C2A1E29FD630022A1FC /* BuyerInfoCell.xib */,
+				61661C2D1E29FF990022A1FC /* ExpressInfoCell.h */,
+				61661C2E1E29FF990022A1FC /* ExpressInfoCell.m */,
+				61661C2F1E29FF990022A1FC /* ExpressInfoCell.xib */,
+				61661C321E2A015C0022A1FC /* ReceiptInfoCell.h */,
+				61661C331E2A015C0022A1FC /* ReceiptInfoCell.m */,
+				61661C341E2A015C0022A1FC /* ReceiptInfoCell.xib */,
+				61661C371E2A021D0022A1FC /* ProductInfoCell.h */,
+				61661C381E2A021D0022A1FC /* ProductInfoCell.m */,
+				61661C391E2A021D0022A1FC /* ProductInfoCell.xib */,
+			);
+			name = OrderSendCell;
+			sourceTree = "<group>";
+		};
+		619BB6511E779A0800CE88CF /* NALLabelsMatrix */ = {
+			isa = PBXGroup;
+			children = (
+				619BB6521E779A0800CE88CF /* NALLabelsMatrix.h */,
+				619BB6531E779A0800CE88CF /* NALLabelsMatrix.m */,
+			);
+			path = NALLabelsMatrix;
+			sourceTree = "<group>";
+		};
+		619BB6551E77B7B400CE88CF /* LCStarRatingView */ = {
+			isa = PBXGroup;
+			children = (
+				619BB6561E77B7B400CE88CF /* LCStarRatingView.h */,
+				619BB6571E77B7B400CE88CF /* LCStarRatingView.m */,
+			);
+			path = LCStarRatingView;
 			sourceTree = "<group>";
 		};
 		61A08CD21E2CB0A8001063DC /* JSDropDownMenu */ = {
@@ -1759,6 +1817,7 @@
 				11C3C13F1E1FCEAA005A2403 /* AccountSafeViewController.xib in Resources */,
 				61A08CD61E2CB0A8001063DC /* ico_make.png in Resources */,
 				11FE826E1E1F79A600309719 /* MMNumberKeyboardDeleteKey.png in Resources */,
+				619BB6471E7796A100CE88CF /* CumulativeCommentCell.xib in Resources */,
 				61AB84AD1E4C45E900D308CB /* ServiceTimeViewController.xib in Resources */,
 				619319A11E1CF67800AF63E7 /* RechargeScanViewController.xib in Resources */,
 				612DD0D91E6006BD0079A6A1 /* CustomerCell.xib in Resources */,
@@ -1788,6 +1847,7 @@
 				61BB46181E31ABDB003C602B /* CommentHeaderView.xib in Resources */,
 				6154CCF11E694C8F00C3933D /* GoodsQueryCell.xib in Resources */,
 				11DC85461E20938900AE7947 /* WriteEmailViewController.xib in Resources */,
+				619BB63C1E77955600CE88CF /* TradeCommentViewController.xib in Resources */,
 				615FBF3D1E14CB2200F50C0D /* OrderListViewController.xib in Resources */,
 				616563501E6D0E3700096697 /* test.html in Resources */,
 				617288F11E10BEF30037DB40 /* FirstPageViewController.xib in Resources */,
@@ -1834,6 +1894,7 @@
 				61A09ED21E13D86200C58519 /* GoodsViewController.xib in Resources */,
 				616C209D1E70ECF500AA8102 /* TradeOrderViewController.xib in Resources */,
 				61661C3B1E2A021E0022A1FC /* ProductInfoCell.xib in Resources */,
+				619BB6421E77961400CE88CF /* StarLevelCell.xib in Resources */,
 				617288BA1E10BCA40037DB40 /* Assets.xcassets in Resources */,
 				11FE826F1E1F79A600309719 /* MMNumberKeyboardDeleteKey@2x.png in Resources */,
 				61A09ED81E13EA2C00C58519 /* GoodsCell.xib in Resources */,
@@ -2029,6 +2090,7 @@
 				61BB46171E31ABDB003C602B /* CommentHeaderView.m in Sources */,
 				6171115F1E2874E8001B6BA5 /* EmailDetailsViewController.m in Sources */,
 				617289171E11071A0037DB40 /* GlobalData.m in Sources */,
+				619BB6411E77961400CE88CF /* StarLevelCell.m in Sources */,
 				61DFD3DC1E2351E900D9C2D7 /* PaymentBottomCell.m in Sources */,
 				615FBF451E14FAB300F50C0D /* OrderModel.m in Sources */,
 				61661C3A1E2A021D0022A1FC /* ProductInfoCell.m in Sources */,
@@ -2109,6 +2171,7 @@
 				116DF0651E20BE8500484D72 /* EmailViewController.m in Sources */,
 				11FE827D1E1F917500309719 /* RechargeDetailsViewController.m in Sources */,
 				6172891F1E1118670037DB40 /* UIView+Addition.m in Sources */,
+				619BB6461E7796A100CE88CF /* CumulativeCommentCell.m in Sources */,
 				61DFD3D21E23385F00D9C2D7 /* AlwaysBuyViewController.m in Sources */,
 				612DD0DC1E600F0F0079A6A1 /* CustomerModel.m in Sources */,
 				617111681E28CC80001B6BA5 /* SelectLocationView.m in Sources */,
@@ -2132,6 +2195,7 @@
 				619319991E1CB89800AF63E7 /* DZMoneyModel.m in Sources */,
 				11C3C13E1E1FCEAA005A2403 /* AccountSafeViewController.m in Sources */,
 				6105176E1E729523009CD323 /* TradeOrderDetailViewController.m in Sources */,
+				619BB6541E779A0800CE88CF /* NALLabelsMatrix.m in Sources */,
 				617111581E286104001B6BA5 /* CAAnimation+WAnimation.m in Sources */,
 				616A09B31E128AC600FCF886 /* MeCell.m in Sources */,
 				619605EC1E2EF6FD00377D95 /* GoodsPropertyCell.m in Sources */,
@@ -2139,6 +2203,8 @@
 				61B1EA921E26030B006F8276 /* PYSearchConst.m in Sources */,
 				615FBF3C1E14CB2200F50C0D /* OrderListViewController.m in Sources */,
 				617288F01E10BEF30037DB40 /* FirstPageViewController.m in Sources */,
+				619BB6581E77B7B400CE88CF /* LCStarRatingView.m in Sources */,
+				619BB63B1E77955600CE88CF /* TradeCommentViewController.m in Sources */,
 				612FB8FE1E557D9800DBE82E /* SellingProductModel.m in Sources */,
 				61581A8C1E1DD79100985112 /* RechargeModel.m in Sources */,
 				61661C2B1E29FD630022A1FC /* BuyerInfoCell.m in Sources */,

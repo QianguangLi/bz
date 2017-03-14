@@ -24,6 +24,12 @@
 
 @implementation TradeOrderDetailViewController
 
+- (void)dealloc
+{
+    [_task cancel];
+    NSLog(@"TradeOrderDetailViewController dealloc");
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
@@ -91,7 +97,7 @@
                 cell.conName.text = _buyerInfo[@"conName"];
                 cell.conPhone.text = _buyerInfo[@"conMobilePhone"];
                 cell.memberEmail.text = _buyerInfo[@"memberEmail"];
-                cell.conAddress.text = _buyerInfo[@"conAddress"];
+                cell.conAddress.text = [NSString stringWithFormat:@"%@", _buyerInfo[@"conAddress"]];
                 return cell;
             }
                 break;
@@ -112,7 +118,7 @@
         if (indexPath.row == 0) {
             WS(weakSelf);
             return [tableView fd_heightForCellWithIdentifier:@"TradeBuyerInfoCell" cacheByIndexPath:indexPath configuration:^(TradeBuyerInfoCell *cell) {
-                cell.conAddress.text = weakSelf.buyerInfo[@"conAddress"];
+                cell.conAddress.text = [NSString stringWithFormat:@"%@", weakSelf.buyerInfo[@"conAddress"]];
             }];
         }
     } else if (indexPath.section == 1) {

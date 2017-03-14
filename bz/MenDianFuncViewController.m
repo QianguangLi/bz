@@ -11,6 +11,7 @@
 //交易管理
 #import "OrderSendViewController.h"
 #import "TradeOrderViewController.h"
+#import "TradeCommentViewController.h"
 //门店设置
 #import "UpdateStoreViewController.h"
 #import "UpdateStoreLocationViewController.h"
@@ -187,7 +188,11 @@
         }
             break;
         case 4:
-            
+        {
+            //交易评价
+            TradeCommentViewController *vc = [[TradeCommentViewController alloc] init];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
             break;
         case 5:
             
