@@ -23,6 +23,7 @@
 //商品查询
 #import "GoodsQueryViewController.h"
 #import "OrderOnlineViewController.h"
+#import "MyOrdersViewController.h"
 //门店客户
 #import "AEStoreCustomerViewController.h"
 #import "CustomerListViewController.h"
@@ -314,7 +315,13 @@
         }
             break;
         case 3:
-            
+        {
+            //在线订货订单
+            MyOrdersViewController *vc = [[MyOrdersViewController alloc] init];
+            vc.orderType = OrderTypeAll;
+            vc.orderFrom = OrderFromOnline;//在线订货订单
+            [self.navigationController pushViewController:vc animated:YES];
+        }
             break;
             
         default:

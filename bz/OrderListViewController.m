@@ -57,7 +57,7 @@
                                  StringFromNumber(weakSelf.pageSize), kPageSize,
                                  StringFromNumber(_orderType), @"payStatus",
                                  @"", @"orderid", nil];
-    _task = [NetService POST:kGetMyOrders parameters:dict complete:^(id responseObject, NSError *error) {
+    _task = [NetService POST:_orderFrom==OrderFromMyOrder?kGetMyOrders:@"api/Store/MyOnlineOrders" parameters:dict complete:^(id responseObject, NSError *error) {
         endRefreshing(error);
         if (error) {
             NSLog(@"failure:%@", error);

@@ -295,6 +295,7 @@
         MyOrdersViewController *myOrderVC = [[MyOrdersViewController alloc] init];
         //从我进去默认全部订单
         myOrderVC.orderType = OrderTypeAll;
+        myOrderVC.orderFrom = OrderFromMyOrder;//会员 我的订单
         myOrderVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:myOrderVC animated:YES];
     } else if (type == 1) {

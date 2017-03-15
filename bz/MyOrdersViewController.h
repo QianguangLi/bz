@@ -15,5 +15,7 @@
 
 //设置订单类型，同事设置会显示对应类型的订单列表
 @property (assign, nonatomic) OrderType orderType;
+//订单来自哪里
+@property (assign, nonatomic) OrderFrom orderFrom;
 
 @end

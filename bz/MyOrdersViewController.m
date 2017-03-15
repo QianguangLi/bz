@@ -29,7 +29,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.title = Localized(@"我的订单");
+    self.title = _orderFrom==OrderFromMyOrder?Localized(@"我的订单"):Localized(@"在线订货订单");
     [self initNavigationBarItem];
     [self initSecondNavigation];
     [self initPageViewController];
@@ -90,22 +90,27 @@
     //创建5种订单列表
     OrderListViewController *allOrdersVC = [[OrderListViewController alloc] init];
     allOrdersVC.orderType = OrderTypeAll;
+    allOrdersVC.orderFrom = _orderFrom;
     allOrdersVC.isRequireRefreshFooter = YES;
     allOrdersVC.isRequireRefreshHeader = YES;
     OrderListViewController *waitPayVC = [[OrderListViewController alloc] init];
     waitPayVC.orderType = OrderTypeWaitPay;
+    waitPayVC.orderFrom = _orderFrom;
     waitPayVC.isRequireRefreshFooter = YES;
     waitPayVC.isRequireRefreshHeader = YES;
     OrderListViewController *waitPostVC = [[OrderListViewController alloc] init];
     waitPostVC.orderType = OrderTypeWaitPost;
+    waitPostVC.orderFrom = _orderFrom;
     waitPostVC.isRequireRefreshFooter = YES;
     waitPostVC.isRequireRefreshHeader = YES;
     OrderListViewController *waitReciveVC = [[OrderListViewController alloc] init];
     waitReciveVC.orderType = OrderTypeWaitRecive;
+    waitReciveVC.orderFrom = _orderFrom;
     waitReciveVC.isRequireRefreshFooter = YES;
     waitReciveVC.isRequireRefreshHeader = YES;
     OrderListViewController *waitCommentVC = [[OrderListViewController alloc] init];
     waitCommentVC.orderType = OrderTypeWaitComment;
+    waitCommentVC.orderFrom = _orderFrom;
     waitCommentVC.isRequireRefreshFooter = YES;
     waitCommentVC.isRequireRefreshHeader = YES;
 

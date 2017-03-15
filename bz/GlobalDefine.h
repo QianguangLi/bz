@@ -133,6 +133,11 @@ typedef NS_ENUM(NSInteger, UserLevel) {
     UserLevelStore,//门店
     UserLevelCompany,//供应商
 };
+////订单来源
+typedef enum : NSUInteger {
+    OrderFromMyOrder,//会员我的订单
+    OrderFromOnline,//在线订货订单
+} OrderFrom;
 //订单类型
 typedef NS_ENUM(NSInteger, OrderType) {
     OrderTypeAll = -1,//全部
