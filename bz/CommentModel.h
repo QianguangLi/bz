@@ -9,6 +9,7 @@
 #import <JSONModel/JSONModel.h>
 
 @protocol CommentModel;
+@protocol CommentImageModel;
 
 @interface CommentsModel : JSONModel
 
@@ -35,7 +36,17 @@
 @property (copy, nonatomic) NSString *faceUrl;//评论头像
 @property (copy, nonatomic) NSString *commentDate;//评论时间
 
-@property (strong, nonatomic) NSArray *images;//评论图片
+@property (strong, nonatomic) NSArray<CommentImageModel> *images;//评论图片
+@end
+
+/**
+ 评论图片model
+ */
+@interface CommentImageModel : JSONModel
+
+@property (strong, nonatomic) NSURL *min;//小图
+@property (strong, nonatomic) NSURL *src;//大图
+
 @end
 
 

@@ -13,6 +13,7 @@
 #import "UITableView+FDTemplateLayoutCell.h"
 #import "NetService.h"
 #import "CommentModel.h"
+#import "GoodsCommentViewController.h"
 
 @interface TradeCommentViewController () <UITableViewDataSource, UITableViewDelegate>
 {
@@ -176,7 +177,9 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.section == 2) {
-        
+        GoodsCommentViewController *vc = [[GoodsCommentViewController alloc] init];
+        vc.commentFrom = CommentFromTrade;
+        [self.navigationController pushViewController:vc animated:YES];
     }
 }
 

@@ -284,6 +284,7 @@
     GoodsCommentViewController *vc = [[GoodsCommentViewController alloc] init];
     vc.isRequireRefreshFooter = YES;
     vc.isRequireRefreshHeader = YES;
+    vc.commentFrom = CommentFromGoods;
     vc.productId = _productModel.productId;
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     //改变返回按钮文字

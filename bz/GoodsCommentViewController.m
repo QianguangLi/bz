@@ -12,10 +12,11 @@
 #import "UIView+Addition.h"
 #import "NetService.h"
 #import "CommentModel.h"
+#import "UIImageView+AFNetworking.h"
 
-#define kColunm 3 //3列
-#define kInterSpace 5.0 //列间距
-#define kLeftSpace 8.0 //左右缩进
+#define kColunm 3 //5列
+#define kInterSpace 0.0 //列间距
+#define kLeftSpace 0.0 //左右缩进
 #define kLineSpace 5 //列间距
 
 @interface GoodsCommentViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
@@ -42,7 +43,7 @@
     _filter = @"all";
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.title = Localized(@"商品评价");
+    self.title = _commentFrom==CommentFromGoods?Localized(@"商品评价"):Localized(@"交易评价");
     [self setupCommentButton];
     self.mCollectionView.frame = CGRectMake(0, 44, kScreenWidth, kScreenHeight-64-44);
 //    self.mCollectionView.backgroundColor = [UIColor whiteColor];
@@ -102,14 +103,23 @@
 
 - (void)requestDataListPullDown:(BOOL)pullDown andEndRefreshing:(EndRefreshing)endRefreshing
 {
-    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                 _productId, @"productId",
-                                 _filter, @"filter",
-                                 StringFromNumber(self.pageIndex), kPageIndex,
-                                 StringFromNumber(self.pageSize), kPageSize,
-                                 nil];
+    NSMutableDictionary *dict = nil;
+    if (_commentFrom == CommentFromGoods) {
+        dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                _productId, @"productId",
+                _filter, @"filter",
+                StringFromNumber(self.pageIndex), kPageIndex,
+                StringFromNumber(self.pageSize), kPageSize,
+                nil];
+    } else {
+        dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                kLoginToken, @"Token",
+                StringFromNumber(self.pageIndex), kPageIndex,
+                StringFromNumber(self.pageSize), kPageSize,
+                nil];
+    }
     WS(weakSelf);
-    _task = [NetService POST:@"api/Home/Comments" parameters:dict complete:^(id responseObject, NSError *error) {
+    _task = [NetService POST:_commentFrom==CommentFromGoods?@"api/Home/Comments":@"api/Store/GetAllTransactionEvaluation" parameters:dict complete:^(id responseObject, NSError *error) {
         endRefreshing(error);
         if (error) {
             NSLog(@"failure:%ld:%@", (long)error.code, error.localizedDescription);
@@ -144,8 +154,11 @@
 #pragma mark - UICollectionViewDelegate
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    CommentModel *commentModel = self.dataArray[section];
-    return commentModel.images.count;
+    CommentModel *model = self.dataArray[section];
+    if (model.images.count%kColunm != 0) {
+        return model.images.count + kColunm - model.images.count%kColunm;
+    }
+    return model.images.count;
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
@@ -156,7 +169,14 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     ImageCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ImageCollectionCell" forIndexPath:indexPath];
-
+    CommentModel *model = self.dataArray[indexPath.section];
+    NSArray *subArr = model.images;
+    if (indexPath.row >= subArr.count) {
+        cell.commentImage.image = nil;
+    } else {
+        CommentImageModel *imageModel = subArr[indexPath.row];
+        [cell.commentImage setImageWithURL:imageModel.min placeholderImage:[UIImage imageNamed:@"productpic"]];
+    }
     return cell;
 }
 

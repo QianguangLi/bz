@@ -25,3 +25,12 @@
 }
 
 @end
+
+@implementation CommentImageModel
+
++ (BOOL)propertyIsOptional:(NSString *)propertyName
+{
+    return YES;
+}
+
+@end

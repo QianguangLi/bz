@@ -43,10 +43,10 @@
     
 #if DEBUG
     //TODO:开发模式预设账户密码
-    _userNameTF.text = @"lisilisi";
-    _passwordTF.text = @"000000";
-//    _userNameTF.text = @"liqianguan";
+//    _userNameTF.text = @"lisilisi";
 //    _passwordTF.text = @"000000";
+    _userNameTF.text = @"admin";
+    _passwordTF.text = @"admin";
 #endif
 }
 
