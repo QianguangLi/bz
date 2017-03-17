@@ -116,6 +116,7 @@
                 kLoginToken, @"Token",
                 StringFromNumber(self.pageIndex), kPageIndex,
                 StringFromNumber(self.pageSize), kPageSize,
+                _filter, @"action",
                 nil];
     }
     WS(weakSelf);
