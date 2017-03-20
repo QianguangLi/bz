@@ -1770,8 +1770,13 @@
 				TargetAttributes = {
 					617288A61E10BCA40037DB40 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 4HQPVK3KX3;
+						DevelopmentTeam = 43C6RU9Q4S;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 0;
+							};
+						};
 					};
 					617288C21E10BCA40037DB40 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -2387,15 +2392,18 @@
 			baseConfigurationReference = 54D4FF3445E3FD7D387B5F0E /* Pods-bz.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: dongzhao Wang (6ZCW33M3L8)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 4HQPVK3KX3;
+				DEVELOPMENT_TEAM = 43C6RU9Q4S;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = bz/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ing.bz;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bozhen.chaoshi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				USER_HEADER_SEARCH_PATHS = "${PODS_ROOT}/**";
 			};
 			name = Debug;
@@ -2405,15 +2413,18 @@
 			baseConfigurationReference = EBF45E735FE83162CC2D25E5 /* Pods-bz.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: 18920709796@163.com (PX9M9J7439)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 4HQPVK3KX3;
+				DEVELOPMENT_TEAM = 43C6RU9Q4S;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = bz/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ing.bz;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bozhen.chaoshi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				USER_HEADER_SEARCH_PATHS = "${PODS_ROOT}/**";
 			};
 			name = Release;

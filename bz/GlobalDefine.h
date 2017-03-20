@@ -67,7 +67,7 @@
 //签名key
 #define kSignKey @"BzApi161227"
 //百度地图key
-#define kBaiduMapKey @"2oniPq1HOAliSu1lUnk7iZQINbBq7Lhu"
+#define kBaiduMapKey @"SIRBQyZbsNKi9tmSKSCk2hVzaTjDUf7O"
 //获取地址位置信息后的通知
 #define kLocateUserSuccessNotification @"locate_user_success_notification"
 //登陆成功后的通知

@@ -18,7 +18,8 @@
 #import "AppDelegate.h"
 
 #if DEBUG
-
+#define NSLog(fmt, ...) NSLog((@"%s[Line:%d] \n" fmt), __FUNCTION__, __LINE__, ##__VA_ARGS__);
+#else
+#define NSLog(...)
 #endif
-
 #endif /* PrefixHeader_pch */
