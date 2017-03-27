@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		113974981E88AF9B00EDDA8E /* StoreServiceOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 113974961E88AF9B00EDDA8E /* StoreServiceOrderViewController.m */; };
 		113974991E88AF9B00EDDA8E /* StoreServiceOrderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 113974971E88AF9B00EDDA8E /* StoreServiceOrderViewController.xib */; };
+		1139749C1E88BE2900EDDA8E /* QGDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1139749B1E88BE2900EDDA8E /* QGDatePickerView.m */; };
 		1154B99E1E113C3E00C8459D /* NetService.m in Sources */ = {isa = PBXBuildFile; fileRef = 1154B99D1E113C3E00C8459D /* NetService.m */; };
 		1154B9A41E11736A00C8459D /* NSObject+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 1154B9A31E11736A00C8459D /* NSObject+Addition.m */; };
 		115E35831E175258002A9957 /* RightCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 115E35811E175258002A9957 /* RightCell.m */; };
@@ -301,6 +302,8 @@
 		113974951E88AF9B00EDDA8E /* StoreServiceOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreServiceOrderViewController.h; sourceTree = "<group>"; };
 		113974961E88AF9B00EDDA8E /* StoreServiceOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreServiceOrderViewController.m; sourceTree = "<group>"; };
 		113974971E88AF9B00EDDA8E /* StoreServiceOrderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StoreServiceOrderViewController.xib; sourceTree = "<group>"; };
+		1139749A1E88BE2900EDDA8E /* QGDatePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QGDatePickerView.h; path = YLButton/QGDatePickerView.h; sourceTree = "<group>"; };
+		1139749B1E88BE2900EDDA8E /* QGDatePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QGDatePickerView.m; path = YLButton/QGDatePickerView.m; sourceTree = "<group>"; };
 		1154B99C1E113C3E00C8459D /* NetService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetService.h; sourceTree = "<group>"; };
 		1154B99D1E113C3E00C8459D /* NetService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetService.m; sourceTree = "<group>"; };
 		1154B9A21E11736A00C8459D /* NSObject+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Addition.h"; sourceTree = "<group>"; };
@@ -1438,6 +1441,8 @@
 				11FE82631E1F79A600309719 /* MMNumberKeyboard */,
 				619319801E1CB22200AF63E7 /* GFCalendar */,
 				617F79711E15FEF800E139CF /* Button */,
+				1139749A1E88BE2900EDDA8E /* QGDatePickerView.h */,
+				1139749B1E88BE2900EDDA8E /* QGDatePickerView.m */,
 				617F797A1E1633F600E139CF /* AddressPickerView.h */,
 				617F797B1E1633F600E139CF /* AddressPickerView.m */,
 				61A08CDF1E2CC670001063DC /* QGDropDownMenu.h */,
@@ -2223,6 +2228,7 @@
 				612FB8FE1E557D9800DBE82E /* SellingProductModel.m in Sources */,
 				61581A8C1E1DD79100985112 /* RechargeModel.m in Sources */,
 				61661C2B1E29FD630022A1FC /* BuyerInfoCell.m in Sources */,
+				1139749C1E88BE2900EDDA8E /* QGDatePickerView.m in Sources */,
 				61A09EC71E1386E200C58519 /* DataBaseService.m in Sources */,
 				6164482C1E1B4B290007E50E /* ShoppingAddressModel.m in Sources */,
 				6193199C1E1CEE5800AF63E7 /* DZMoneyRechargeViewController.m in Sources */,

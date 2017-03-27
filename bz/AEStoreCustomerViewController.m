@@ -10,7 +10,7 @@
 #import "NetService.h"
 #import "YLButton.h"
 #import "UIView+Addition.h"
-#import "GFCalendar.h"
+#import "QGDatePickerView.h"
 #import "AddressPickerView.h"
 #import "UIImageView+AFNetworking.h"
 #import "CustomerModel.h"
@@ -77,7 +77,7 @@
     _address.delegate = self;
     
     [_birthdayBtn setBorderCorneRadius:5];
-    _birthdayBtn.bounds = CGRectMake(0, 0, (kScreenWidth-62-20-10-10-8)/2, 30);
+//    _birthdayBtn.bounds = CGRectMake(0, 0, 130, 30);
     [_birthdayBtn setRightImage:[UIImage imageNamed:@"rili"] forState:UIControlStateNormal];
     
     [self initSexData];
@@ -214,20 +214,19 @@
 
 - (void)setupCalendar {
     
-    CGFloat width = kScreenWidth - 20.0;
-    CGPoint origin = CGPointMake(10.0, 64.0 + 70.0);
-    
-    GFCalendarView *calendar = [[GFCalendarView alloc] initWithFrameOrigin:origin width:width];
+    QGDatePickerView *calendar = [[QGDatePickerView alloc] initWithTrueFrame:CGRectMake(0, kScreenHeight-220, kScreenWidth, 220)];
     
     // 点击某一天的回调
-    __weak GFCalendarView *weakView = calendar;
-    calendar.didSelectDayHandler = ^(NSInteger year, NSInteger month, NSInteger day) {
-        NSLog(@"%@", [NSString stringWithFormat:@"%ld-%ld-%ld", year, month, day]);
-        [_currentBtn setTitle:[NSString stringWithFormat:@"%ld-%ld-%ld", year, month, day] forState:UIControlStateNormal];
+    __weak QGDatePickerView *weakView = calendar;
+    calendar.didSelectDayHandler = ^(NSString *dateString) {
+        NSLog(@"%@", dateString);
+        [_currentBtn setTitle:dateString forState:UIControlStateNormal];
         _birthdayDate = _currentBtn.titleLabel.text;
         [weakView removeFromSuperview];
     };
-    
+    calendar.cancleHander = ^(){
+        [weakView removeFromSuperview];
+    };
     [appDelegate.window addSubview:calendar];
 }
 
