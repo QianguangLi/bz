@@ -15,5 +15,6 @@
 
 @property (copy, nonatomic) NSString *action;//收件箱(rec) 发件箱(send) 废件箱(drop)
 
+@property (assign, nonatomic) UserLevel access;// 0会员 1门店
 
 @end

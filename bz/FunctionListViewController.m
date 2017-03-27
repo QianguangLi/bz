@@ -187,6 +187,7 @@
                 vc.isRequireRefreshFooter = YES;
                 vc.isRequireRefreshHeader = YES;
                 vc.action = @"rec";
+                vc.access = UserLevelMember;
                 vc.title = Localized(@"收件箱");
                 [self.navigationController pushViewController:vc animated:YES];
             }
@@ -198,6 +199,7 @@
                 vc.isRequireRefreshFooter = YES;
                 vc.isRequireRefreshHeader = YES;
                 vc.action = @"send";
+                vc.access = UserLevelMember;
                 vc.title = Localized(@"发件箱");
                 [self.navigationController pushViewController:vc animated:YES];
             }
@@ -209,6 +211,7 @@
                 vc.isRequireRefreshFooter = YES;
                 vc.isRequireRefreshHeader = YES;
                 vc.action = @"drop";
+                vc.access = UserLevelMember;
                 vc.title = Localized(@"废件箱");
                 [self.navigationController pushViewController:vc animated:YES];
             }

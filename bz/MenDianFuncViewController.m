@@ -28,6 +28,9 @@
 #import "ServiceTimeViewController.h"
 #import "AEStoreCustomerViewController.h"
 #import "CustomerListViewController.h"
+//门店信件
+#import "WriteEmailViewController.h"
+#import "EmailViewController.h"
 
 @interface MenDianFuncViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *functionTableView;
@@ -151,7 +154,7 @@
             [self storeCustomer:indexPath];
             break;
         case StoreMenuEmail:
-            
+            [self storeEmail:indexPath];
             break;
         case StoreMenuApply:
             
@@ -347,6 +350,60 @@
             CustomerListViewController *vc = [[CustomerListViewController alloc] init];
             vc.isRequireRefreshHeader = YES;
             vc.isRequireRefreshFooter = YES;
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+            break;
+            
+        default:
+            break;
+    }
+}
+
+#pragma mark -门店信件
+- (void)storeEmail:(NSIndexPath *)indexPath
+{
+    switch (indexPath.row) {
+        case 0:
+        {
+            //写信
+            WriteEmailViewController *vc= [[WriteEmailViewController alloc] init];
+            vc.access = UserLevelStore;
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+            break;
+        case 1:
+        {
+            //收件箱
+            EmailViewController *vc = [[EmailViewController alloc] init];
+            vc.isRequireRefreshFooter = YES;
+            vc.isRequireRefreshHeader = YES;
+            vc.action = @"rec";
+            vc.access = UserLevelStore;
+            vc.title = Localized(@"收件箱");
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+            break;
+        case 2:
+        {
+            //发件箱
+            EmailViewController *vc = [[EmailViewController alloc] init];
+            vc.isRequireRefreshFooter = YES;
+            vc.isRequireRefreshHeader = YES;
+            vc.action = @"send";
+            vc.access = UserLevelStore;
+            vc.title = Localized(@"发件箱");
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+            break;
+        case 3:
+        {
+            //废件箱
+            EmailViewController *vc = [[EmailViewController alloc] init];
+            vc.isRequireRefreshFooter = YES;
+            vc.isRequireRefreshHeader = YES;
+            vc.action = @"drop";
+            vc.access = UserLevelStore;
+            vc.title = Localized(@"废件箱");
             [self.navigationController pushViewController:vc animated:YES];
         }
             break;

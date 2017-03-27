@@ -47,6 +47,7 @@
                                  StringFromNumber(self.pageIndex), kPageIndex,
                                  StringFromNumber(self.pageSize), kPageSize,
                                  _action, @"action",
+                                 StringFromNumber(_access), @"access",
                                  nil];
     WS(weakSelf);
     _task = [NetService POST:@"api/User/Messages" parameters:dict complete:^(id responseObject, NSError *error) {
@@ -66,6 +67,7 @@
             }
             for (NSDictionary *dict in listArray) {
                 EmailModel *model = [[EmailModel alloc] initWithDictionary:dict error:nil];
+                model.type = weakSelf.action;
                 [weakSelf.dataArray addObject:model];
             }
             [weakSelf.mTableView reloadData];
@@ -158,7 +160,7 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     //TODO:设置已读状态
-//    [self readedRowAtIndexPath:indexPath];
+    [self readedRowAtIndexPath:indexPath];
     EmailModel *model = self.dataArray[indexPath.row];
     EmailDetailsViewController *vc = [[EmailDetailsViewController alloc] init];
     vc.model = model;

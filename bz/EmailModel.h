@@ -21,5 +21,6 @@
 @property (copy, nonatomic) NSString *sendDate;//发件时间
 @property (copy, nonatomic) NSString *sender;//发件人
 @property (copy, nonatomic) NSString *title;//邮件标题
+@property (copy, nonatomic) NSString *type;//邮件类型 rec收件箱 send发件箱 drop废件箱
 
 @end

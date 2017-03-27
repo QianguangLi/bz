@@ -26,7 +26,8 @@
 
 - (void)setContentWithEmailModel:(EmailModel *)model
 {
-    if (model.isRead) {
+    if (model.isRead || ![model.type isEqualToString:@"rec"]) {
+        //已读 或者不是收件箱的时候不显示红点
         [_sender setImage:nil forState:UIControlStateNormal];
     } else {
         [_sender setImage:[[UIImage imageNamed:@"dot"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
