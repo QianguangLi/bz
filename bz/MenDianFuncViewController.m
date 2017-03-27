@@ -12,10 +12,10 @@
 #import "OrderSendViewController.h"
 #import "TradeOrderViewController.h"
 #import "TradeCommentViewController.h"
+#import "StoreServiceOrderViewController.h"
 //门店设置
 #import "UpdateStoreViewController.h"
 #import "UpdateStoreLocationViewController.h"
-#import "ServiceTimeViewController.h"
 //库存管理
 #import "RepositoryListViewController.h"
 #import "StoreSellingViewController.h"
@@ -25,6 +25,7 @@
 #import "OrderOnlineViewController.h"
 #import "MyOrdersViewController.h"
 //门店客户
+#import "ServiceTimeViewController.h"
 #import "AEStoreCustomerViewController.h"
 #import "CustomerListViewController.h"
 
@@ -79,17 +80,17 @@
             break;
         case StoreMenuSetting:
         {
-            _functionArray = [NSArray arrayWithObjects:Localized(@"送达时间折扣"), Localized(@"我的门店"), Localized(@"门店装修"), Localized(@"域名设置"), Localized(@"门店信息修改"), Localized(@"门店位置设置"), nil];
+            _functionArray = [NSArray arrayWithObjects:Localized(@"我的门店"), Localized(@"域名设置"), Localized(@"门店信息修改"), Localized(@"门店位置设置"), nil];
         }
             break;
         case StoreMenuStockManager:
         {
-            _functionArray = [NSArray arrayWithObjects:Localized(@"商品上下架"), Localized(@"库存查询"), Localized(@"仓库管理"), Localized(@"申请入库"), Localized(@"入库查询"), nil];
+            _functionArray = [NSArray arrayWithObjects:Localized(@"商品上下架"), Localized(@"库存查询"), Localized(@"仓库管理"), Localized(@"入库查询"), nil];
         }
             break;
         case StoreMenuGoodsManager:
         {
-            _functionArray = [NSArray arrayWithObjects:Localized(@"商品发布"), Localized(@"商品查询"), Localized(@"在线订货"), Localized(@"在线订货订单"), nil];
+            _functionArray = [NSArray arrayWithObjects:Localized(@"商品查询"), Localized(@"在线订货"), Localized(@"在线订货订单"), nil];
         }
             break;
         case StoreMenuCustomer:
@@ -177,7 +178,13 @@
         }
             break;
         case 2:
-            
+        {
+            //送达订单
+            StoreServiceOrderViewController *vc = [[StoreServiceOrderViewController alloc] init];
+            vc.isRequireRefreshFooter = YES;
+            vc.isRequireRefreshHeader = YES;
+            [self.navigationController pushViewController:vc animated:YES];
+        }
             break;
         case 3:
         {
@@ -209,9 +216,7 @@
     switch (indexPath.row) {
         case 0:
         {
-            ServiceTimeViewController *vc = [[ServiceTimeViewController alloc] init];
-            vc.isRequireRefreshHeader = YES;
-            [self.navigationController pushViewController:vc animated:YES];
+            
         }
             break;
         case 1:
@@ -221,23 +226,13 @@
             break;
         case 2:
         {
-            
-        }
-            break;
-        case 3:
-        {
-            
-        }
-            break;
-        case 4:
-        {
             //门店信息修改
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"BZ1Storyboard" bundle:nil];
             UpdateStoreViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"UpdateStoreViewController"];
             [self.navigationController pushViewController:vc animated:YES];
         }
             break;
-        case 5:
+        case 3:
         {
             //门店位置设置
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"BZ1Storyboard" bundle:nil];
@@ -296,9 +291,6 @@
 {
     switch (indexPath.row) {
         case 0:
-            
-            break;
-        case 1:
         {
             //商品查询
             GoodsQueryViewController *vc = [[GoodsQueryViewController alloc] init];
@@ -307,14 +299,14 @@
             [self.navigationController pushViewController:vc animated:YES];
         }
             break;
-        case 2:
+        case 1:
         {
             //在线订货
             OrderOnlineViewController *vc = [[OrderOnlineViewController alloc] init];
             [self.navigationController pushViewController:vc animated:YES];
         }
             break;
-        case 3:
+        case 2:
         {
             //在线订货订单
             MyOrdersViewController *vc = [[MyOrdersViewController alloc] init];
@@ -334,7 +326,12 @@
 {
     switch (indexPath.row) {
         case 0:
-        
+        {
+            //门店级别设置
+            ServiceTimeViewController *vc = [[ServiceTimeViewController alloc] init];
+            vc.isRequireRefreshHeader = YES;
+            [self.navigationController pushViewController:vc animated:YES];
+        }
             break;
         case 1:
         {

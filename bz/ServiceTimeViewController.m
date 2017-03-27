@@ -30,7 +30,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refresh) name:kAddOrUpdateServiceTimeSuccess object:nil];
-    self.title = Localized(@"送达时间折扣");
+    self.title = Localized(@"门店级别设置");
     
     [self initView];
     [self initNavigation];

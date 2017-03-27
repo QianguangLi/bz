@@ -9,7 +9,7 @@
 #import "RefreshViewController.h"
 
 /**
- 送达时间折扣
+ 门店级别设置
  */
 @interface ServiceTimeViewController : RefreshViewController
 

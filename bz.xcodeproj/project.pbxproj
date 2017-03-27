@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		113974981E88AF9B00EDDA8E /* StoreServiceOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 113974961E88AF9B00EDDA8E /* StoreServiceOrderViewController.m */; };
+		113974991E88AF9B00EDDA8E /* StoreServiceOrderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 113974971E88AF9B00EDDA8E /* StoreServiceOrderViewController.xib */; };
 		1154B99E1E113C3E00C8459D /* NetService.m in Sources */ = {isa = PBXBuildFile; fileRef = 1154B99D1E113C3E00C8459D /* NetService.m */; };
 		1154B9A41E11736A00C8459D /* NSObject+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 1154B9A31E11736A00C8459D /* NSObject+Addition.m */; };
 		115E35831E175258002A9957 /* RightCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 115E35811E175258002A9957 /* RightCell.m */; };
@@ -296,6 +298,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		113974951E88AF9B00EDDA8E /* StoreServiceOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreServiceOrderViewController.h; sourceTree = "<group>"; };
+		113974961E88AF9B00EDDA8E /* StoreServiceOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreServiceOrderViewController.m; sourceTree = "<group>"; };
+		113974971E88AF9B00EDDA8E /* StoreServiceOrderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StoreServiceOrderViewController.xib; sourceTree = "<group>"; };
 		1154B99C1E113C3E00C8459D /* NetService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetService.h; sourceTree = "<group>"; };
 		1154B99D1E113C3E00C8459D /* NetService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetService.m; sourceTree = "<group>"; };
 		1154B9A21E11736A00C8459D /* NSObject+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Addition.h"; sourceTree = "<group>"; };
@@ -1093,6 +1098,9 @@
 				619BB6381E77955600CE88CF /* TradeCommentViewController.h */,
 				619BB6391E77955600CE88CF /* TradeCommentViewController.m */,
 				619BB63A1E77955600CE88CF /* TradeCommentViewController.xib */,
+				113974951E88AF9B00EDDA8E /* StoreServiceOrderViewController.h */,
+				113974961E88AF9B00EDDA8E /* StoreServiceOrderViewController.m */,
+				113974971E88AF9B00EDDA8E /* StoreServiceOrderViewController.xib */,
 			);
 			name = DealManger;
 			sourceTree = "<group>";
@@ -1837,6 +1845,7 @@
 				61661C271E29F5040022A1FC /* OrderInfoSendCell.xib in Resources */,
 				617289021E10CBEF0037DB40 /* Localizable.strings in Resources */,
 				616448231E1B39B90007E50E /* ShoppingAddressViewController.xib in Resources */,
+				113974991E88AF9B00EDDA8E /* StoreServiceOrderViewController.xib in Resources */,
 				615FBF421E14E9AC00F50C0D /* RefreshViewController.xib in Resources */,
 				115E358E1E17706B002A9957 /* LeftCell.xib in Resources */,
 				116DF06C1E20BF3800484D72 /* EmailCell.xib in Resources */,
@@ -2174,6 +2183,7 @@
 				61BB46121E31A9F5003C602B /* ImageCollectionCell.m in Sources */,
 				615FBF5C1E1506AB00F50C0D /* OrderListBottomCell.m in Sources */,
 				116DF0651E20BE8500484D72 /* EmailViewController.m in Sources */,
+				113974981E88AF9B00EDDA8E /* StoreServiceOrderViewController.m in Sources */,
 				11FE827D1E1F917500309719 /* RechargeDetailsViewController.m in Sources */,
 				6172891F1E1118670037DB40 /* UIView+Addition.m in Sources */,
 				619BB6461E7796A100CE88CF /* CumulativeCommentCell.m in Sources */,
