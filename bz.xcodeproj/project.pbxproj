@@ -2411,6 +2411,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: dongzhao Wang (6ZCW33M3L8)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 43C6RU9Q4S;
+				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = bz/Info.plist;
@@ -2432,6 +2433,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: 18920709796@163.com (PX9M9J7439)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 43C6RU9Q4S;
+				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = bz/Info.plist;

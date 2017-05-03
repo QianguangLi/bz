@@ -11,8 +11,12 @@
 #import "YLButton.h"
 #import "UIView+Addition.h"
 #import "GFCalendar.h"
+#import "OrderModel.h"
+#import "TradeOrderTopCell.h"
+#import "OrderProductCell.h"
+#import "TradeOrderBottomCell.h"
 
-@interface StoreServiceOrderViewController ()
+@interface StoreServiceOrderViewController () <UITableViewDelegate, UITableViewDataSource>
 {
     NSURLSessionTask *_task;
 }
@@ -44,6 +48,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    self.title = Localized(@"送达订单");
+    
+    self.mTableView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight-64);
+    self.mTableView.contentInset = UIEdgeInsetsZero;
+    self.mTableView.delegate = self;
+    self.mTableView.dataSource = self;
+    self.mTableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    
+    [self.mTableView registerNib:[UINib nibWithNibName:@"TradeOrderTopCell" bundle:nil] forCellReuseIdentifier:@"TradeOrderTopCell"];
+    [self.mTableView registerNib:[UINib nibWithNibName:@"OrderProductCell" bundle:nil] forCellReuseIdentifier:@"OrderProductCell"];
+    [self.mTableView registerNib:[UINib nibWithNibName:@"TradeOrderBottomCell" bundle:nil] forCellReuseIdentifier:@"TradeOrderBottomCell"];
     
     [self setupNavigationItem];
     [self setupSearchView];
@@ -150,8 +166,8 @@
             }
             NSArray *listArray = dataDict[@"list"];
             for (NSDictionary *orderDict in listArray) {
-//                OrderModel *model = [[OrderModel alloc] initWithDictionary:orderDict error:nil];
-//                [weakSelf.dataArray addObject:model];
+                OrderModel *model = [[OrderModel alloc] initWithDictionary:orderDict error:nil];
+                [weakSelf.dataArray addObject:model];
             }
             [weakSelf.mTableView reloadData];
         } else {
@@ -159,6 +175,67 @@
         }
         [weakSelf showTipWithNoData:IS_NULL_ARRAY(weakSelf.dataArray)];
     }];
+}
+
+#pragma mark - UITableViewDelegate
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return self.dataArray.count;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    OrderModel *orderModel = [self.dataArray objectAtIndex:section];
+    return orderModel.products.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    OrderModel *orderModel = self.dataArray[indexPath.section];
+    NSArray *products = orderModel.products;
+    OrderProductCell *productCell = [tableView dequeueReusableCellWithIdentifier:@"OrderProductCell" forIndexPath:indexPath];
+    [productCell setContentWithProductModel:products[indexPath.row] andIndexPath:indexPath];
+    return productCell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 91;//kScreenWidth/3.5
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    TradeOrderTopCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TradeOrderTopCell"];
+    [cell setContentWithOrderModel:self.dataArray[section] andSection:section];
+    return cell;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+{
+    TradeOrderBottomCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TradeOrderBottomCell"];
+    //    cell.delegate = self;
+    [cell setContentWithOrderModel:self.dataArray[section] andSection:section];
+    return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 35;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return 40;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+//    TradeOrderDetailViewController *vc = [[TradeOrderDetailViewController alloc] init];
+//    OrderModel *model = self.dataArray[indexPath.section];
+//    vc.orderId = model.orderId;
+//    vc.goodsArray = model.products;
+//    [self.navigationController pushViewController:vc animated:YES];
 }
 
 
