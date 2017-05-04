@@ -24,6 +24,8 @@
 
 #import "UIView+Addition.h"
 
+#import "GuideViewController.h"
+
 @interface AppDelegate () <UITabBarControllerDelegate, UIAlertViewDelegate>
 {
     BMKMapManager *_mapManager;
@@ -45,9 +47,26 @@
     [self systemSetting];
     //百度地图
     [self setBMKMap];
-    //初始化控制器
-    [self setRootController];
+    if ([UserDefaults boolForKey:kIsNotFirstOpenApp]) {
+        //初始化控制器
+        [self setRootController];
+    } else {
+        [self setGuidePageController];
+    }
     
+    self.window.backgroundColor = [UIColor whiteColor];
+    [self.window makeKeyAndVisible];
+    return YES;
+}
+
+- (void)setGuidePageController
+{
+    GuideViewController *vc = [[GuideViewController alloc] init];
+    self.window.rootViewController = vc;
+}
+
+- (void)loadAreaInformation
+{
     //处理地址 数据库
     BOOL addressCached = [[NSUserDefaults standardUserDefaults] boolForKey:@"address_cached"];
     DataBaseService *service = [DataBaseService sharedService];
@@ -57,14 +76,12 @@
     } else {
         
     }
-    
-    self.window.backgroundColor = [UIColor whiteColor];
-    [self.window makeKeyAndVisible];
-    return YES;
 }
 
 - (void)setRootController
 {
+    //加载地区信息
+    [self loadAreaInformation];
     //首页
     FirstPageViewController *firstPage = [[FirstPageViewController alloc] init];
     UITabBarItem *firstPageItem = [[UITabBarItem alloc] initWithTitle:Localized(@"首页") image:[[UIImage imageNamed:@"buttom_home-gray"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[[UIImage imageNamed:@"buttom_home-red"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];

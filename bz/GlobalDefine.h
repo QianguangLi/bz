@@ -40,6 +40,8 @@
 #define kHasNet [GlobalData sharedGlobalData].hasNet
 #define kUserLevel [GlobalData sharedGlobalData].userLevel
 
+#define kIsNotFirstOpenApp @"is_not_first_open_app"
+
 #define StringFromNumber(num) [NSString stringWithFormat:@"%ld", (long)num]
 #define StringFromFloat(num) [NSString stringWithFormat:@"%.2f", num]
 

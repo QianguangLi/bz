@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1122AA9C1EBAA3320051DFA9 /* GuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1122AA9A1EBAA3320051DFA9 /* GuideViewController.m */; };
+		1122AA9D1EBAA3320051DFA9 /* GuideViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1122AA9B1EBAA3320051DFA9 /* GuideViewController.xib */; };
 		113974981E88AF9B00EDDA8E /* StoreServiceOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 113974961E88AF9B00EDDA8E /* StoreServiceOrderViewController.m */; };
 		113974991E88AF9B00EDDA8E /* StoreServiceOrderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 113974971E88AF9B00EDDA8E /* StoreServiceOrderViewController.xib */; };
 		1139749C1E88BE2900EDDA8E /* QGDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1139749B1E88BE2900EDDA8E /* QGDatePickerView.m */; };
@@ -299,6 +301,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1122AA991EBAA3320051DFA9 /* GuideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuideViewController.h; sourceTree = "<group>"; };
+		1122AA9A1EBAA3320051DFA9 /* GuideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuideViewController.m; sourceTree = "<group>"; };
+		1122AA9B1EBAA3320051DFA9 /* GuideViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GuideViewController.xib; sourceTree = "<group>"; };
 		113974951E88AF9B00EDDA8E /* StoreServiceOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreServiceOrderViewController.h; sourceTree = "<group>"; };
 		113974961E88AF9B00EDDA8E /* StoreServiceOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreServiceOrderViewController.m; sourceTree = "<group>"; };
 		113974971E88AF9B00EDDA8E /* StoreServiceOrderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StoreServiceOrderViewController.xib; sourceTree = "<group>"; };
@@ -1249,6 +1254,9 @@
 				617288E01E10BDC90037DB40 /* BaseController */,
 				617288AD1E10BCA40037DB40 /* AppDelegate.h */,
 				617288AE1E10BCA40037DB40 /* AppDelegate.mm */,
+				1122AA991EBAA3320051DFA9 /* GuideViewController.h */,
+				1122AA9A1EBAA3320051DFA9 /* GuideViewController.m */,
+				1122AA9B1EBAA3320051DFA9 /* GuideViewController.xib */,
 				617F797E1E1651C700E139CF /* BZStoryboard.storyboard */,
 				617288B91E10BCA40037DB40 /* Assets.xcassets */,
 				617288BB1E10BCA40037DB40 /* LaunchScreen.storyboard */,
@@ -1908,6 +1916,7 @@
 				11FE827E1E1F917500309719 /* RechargeDetailsViewController.xib in Resources */,
 				116DF0661E20BE8500484D72 /* EmailViewController.xib in Resources */,
 				616A09AA1E11FF1600FCF886 /* RegistViewController.xib in Resources */,
+				1122AA9D1EBAA3320051DFA9 /* GuideViewController.xib in Resources */,
 				619319961E1CB41800AF63E7 /* DZMoneyCell.xib in Resources */,
 				611AF9C81E27197600F10C49 /* BuyerHeaderCell.xib in Resources */,
 				61A09ED21E13D86200C58519 /* GoodsViewController.xib in Resources */,
@@ -2256,6 +2265,7 @@
 				617111571E286104001B6BA5 /* UITabBarItem+WZLBadge.m in Sources */,
 				61E2F9071E25C2DD00CC61C1 /* GoodsCategoryModel.m in Sources */,
 				61E8CC521E6562FC00A0D01E /* QueryStorageCell.m in Sources */,
+				1122AA9C1EBAA3320051DFA9 /* GuideViewController.m in Sources */,
 				11C3C1431E1FDE6A005A2403 /* MyCollectionViewController.m in Sources */,
 				61BB46211E31E233003C602B /* ConfirmOrderViewController.m in Sources */,
 			);

@@ -22,6 +22,8 @@
 
 - (void)logout;
 
+- (void)setRootController;
+
 
 @end
 
