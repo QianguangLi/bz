@@ -19,10 +19,6 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="W4F-HK-6Qr">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                    <color key="backgroundColor" red="1" green="0.053884605189999997" blue="0.56246798379999996" alpha="1" colorSpace="calibratedRGB"/>
-                </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aza-Zu-0Or">
                     <rect key="frame" x="147" y="577" width="80" height="30"/>
                     <constraints>
@@ -41,16 +37,27 @@
                         <action selector="entryAction:" destination="-1" eventType="touchUpInside" id="YEm-Ct-4NP"/>
                     </connections>
                 </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wenzi" translatesAutoresizingMaskIntoConstraints="NO" id="CwT-NZ-W69">
+                    <rect key="frame" x="108" y="144.5" width="158" height="25"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shouji" translatesAutoresizingMaskIntoConstraints="NO" id="6Ge-V7-C25">
+                    <rect key="frame" x="20" y="199.5" width="355" height="348"/>
+                </imageView>
             </subviews>
             <constraints>
                 <constraint firstItem="aza-Zu-0Or" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="9DC-0D-vDz"/>
+                <constraint firstAttribute="trailing" secondItem="6Ge-V7-C25" secondAttribute="trailing" id="AQX-BW-q8h"/>
                 <constraint firstAttribute="bottom" secondItem="aza-Zu-0Or" secondAttribute="bottom" constant="60" id="EQj-OO-ar8"/>
-                <constraint firstAttribute="bottom" secondItem="W4F-HK-6Qr" secondAttribute="bottom" id="OX3-ka-ASw"/>
-                <constraint firstItem="W4F-HK-6Qr" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="b3V-RP-EyI"/>
-                <constraint firstAttribute="trailing" secondItem="W4F-HK-6Qr" secondAttribute="trailing" id="iWb-Yc-2Bd"/>
-                <constraint firstItem="W4F-HK-6Qr" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="pg0-eO-Jom"/>
+                <constraint firstItem="CwT-NZ-W69" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="SXh-cE-pmW"/>
+                <constraint firstItem="6Ge-V7-C25" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="kgh-RA-43E"/>
+                <constraint firstItem="6Ge-V7-C25" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="40" id="oG2-EC-6kj"/>
+                <constraint firstItem="6Ge-V7-C25" firstAttribute="top" secondItem="CwT-NZ-W69" secondAttribute="bottom" constant="30" id="sQ0-K1-fpl"/>
             </constraints>
             <point key="canvasLocation" x="50.5" y="100.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="shouji" width="336" height="348"/>
+        <image name="wenzi" width="158" height="25"/>
+    </resources>
 </document>

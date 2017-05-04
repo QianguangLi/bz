@@ -17,6 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    self.view.backgroundColor = QGCOLOR(255, 82, 99, 1);
 }
 
 - (IBAction)entryAction:(UIButton *)sender
