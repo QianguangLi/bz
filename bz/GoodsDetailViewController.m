@@ -187,7 +187,7 @@
     if (model) {
         [_selectProductButton setTitle:[NSString stringWithFormat:@"已选:%@", model.propertyname] forState:UIControlStateNormal];
     } else {
-        [_selectProductButton setTitle:@"请选择" forState:UIControlStateNormal];
+        [_selectProductButton setTitle:Localized(@"请选择") forState:UIControlStateNormal];
     }
     _selectedProductModel = model;
     _quantity = quantity;
